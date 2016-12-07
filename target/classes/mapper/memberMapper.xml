@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+	
+	<resultMap type="memberDTO" id="memberMap">
+		<id column="member_id" property="memberId"/>
+		<result column="member_no" property="memberNo"/>
+		<result column="member_pwd" property="memberPwd"/>
+		<result column="member_name" property="memberName"/>
+		<result column="member_birth" property="memberBirth"/>
+		<result column="member_addr" property="memberAddr"/>
+		<result column="member_bank" property="memberBank"/>
+		<result column="member_account" property="memberAccount"/>
+		<result column="member_valid_month" property="memberValidMonth"/>
+		<result column="member_valid_year" property="memberValidYear"/>
+		<result column="member_sharing_count" property="memberSharingCount"/>
+		<result column="member_phone" property="memberPhone"/>
+	</resultMap>
+	
+	<!-- 회원가입 -->
+	
+	<!-- id중복확인 -->
+	
+	<!-- 로그인 -->
+	<select id="loginCheck" parameterType="memberDTO" resultType="memberDTO">
+		select member_id as memberId, member_pwd as memberPwd, member_name as memberName from member
+		where member_id=#{memberId} and member_pwd=#{memberPwd}
+	</select>
+	
+	
+	<!-- 회원 정보 수정 -->
+	
+	<!-- 회원 탈퇴 -->
+</mapper>
