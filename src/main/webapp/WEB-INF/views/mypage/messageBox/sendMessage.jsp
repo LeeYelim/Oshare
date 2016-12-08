@@ -33,8 +33,78 @@
 					</div>
 				</div>
 			</div>
-			<div id="inbox" class="tab-pane fade">받은쪽지</div>
-			<div id="sent" class="tab-pane fade">보낸쪽지</div>
+			<div id="inbox" class="tab-pane fade">
+				<div class="inMessage">
+					<span>받은쪽지</span>
+					<form action="" method="">
+					<table>
+						<tr>
+						<td><input type="checkbox" disabled ></td>
+						<td>제목</td>
+						<td>받는이 / 보낸이</td>
+						<td>시간</td>	
+						</tr>
+						<tr>
+						<td><input type="checkbox" name=""></td>
+						<td>Apple</td>
+						<td>알아서 / 뭐해</td>
+						<td>12시</td>
+						</tr>
+					</table>
+					</form>	
+				</div>
+				<div class="inSendMessagePaging">
+				<ul class="pagination">
+					<li><a href="#">«</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+					<div class="inSendMessageBtn">
+						<input type="button" value="삭제">
+					</div>
+				</div>
+			</div>
+			<div id="sent" class="tab-pane fade">
+				<div class="outMessage">
+					<span>보낸쪽지</span>
+					<form action="" method="">
+					<table>
+						<tr>
+						<td><input type="checkbox" disabled ></td>
+						<td>제목</td>
+						<td>받는이 / 보낸이</td>
+						<td>시간</td>	
+						</tr>
+						<tr>
+						<td><input type="checkbox" name=""></td>
+						<td>Apple</td>
+						<td>알아서 / 뭐해</td>
+						<td>12시</td>
+						</tr>
+					</table>
+					</form>	
+				</div>
+				<div class="outSendMessagePaging">
+				<ul class="pagination">
+					<li><a href="#">«</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+					<div class="outSendMessageBtn">
+						<input type="button" value="삭제">
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
