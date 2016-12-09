@@ -152,8 +152,7 @@
 							</ul>
 						</div>
 					</div>
-					<div id="goodsQuestion" class="tab-pane fade">
-						<div class="panel-group" id="accordion">
+					<div id="goodsQuestion" class="tab-pane fade">	
 							<div class="goodsQuestionForm">
 								<div class="goodsQuestionTitle">
 									<span>Test</span>
@@ -162,7 +161,19 @@
 									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
 									<span class="goodsQuestionAdd">댓글달기</span>
 								</div>
+								<div class="goodsQuestionPlusForm">
+								<form action="" method="">
+									<div class="goodsQuestionPlusFormTitle">
+										<span>제목 : </span><input type="text" name="">
+									</div>
+									<div class="goodsQuestionPlusFormContent">
+										<span>내용 : </span><textarea ></textarea>
+									</div>
+								</form>
+								</div>
 							</div>
+						<div class="goodsQuestionPlus">
+							<span>질문하기</span>
 						</div>
 						<div class="goodsQuestionPaing">
 							<ul class="pagination">

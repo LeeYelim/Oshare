@@ -167,14 +167,22 @@ $(function(){
 		  $(document).on("click",".goodsQuestionContent .goodsQuestionAdd",function(){
 			//var str =$(this).parent().parent().children("td:first").next().text();
 			 $(".goodsChattingForm").remove();
-			  
+			  	
 			 $(this).parent().append("<div class='goodsChattingForm'>" +
 			 		"<p>cfrqw1234 에게 댓글 쓰기</p>" +
-			 		"<form action='' method='post'>" +
+			 		"<form>" +
 			 		"<textarea  name='goodsChatting'></textarea>" +
-			 		"<input type='submit' value='입력'>" +
+			 		"<input type='button' value='입력'>" +
 			 		"</form><p>200자내외</p></div>");
 		  	});
+		  
+		  $(document).on("click",".goodsChattingForm input[type=button]",function(){
+			  $(this).parent().parent().parent().children("span:nth-child(1)").append("<h1>asd</h1>");
+		  });
+		  
+		  $(document).on("click","#goodsQuestion .goodsQuestionPlus",function(){
+			 $(".goodsQuestionForm").append("<h1>asdasd</h1>");
+		  });
 		  
 		  /* saleItemList */
 		  $(document).on("click",".saleItemListForm input[value=비용청구]",function(){

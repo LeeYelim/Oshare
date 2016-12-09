@@ -183,6 +183,8 @@ footer h1{line-height: 100px;}
 #gooodsReview .goodsReviewPaing{width:100%; float:left; text-align: center;}
 
 #goodsQuestion .goodsQuestionPaing{width:100%; float:left; text-align: center;}
+#goodsQuestion .goodsQuestionPlus{width:100%; float:left;}
+#goodsQuestion .goodsQuestionPlus span{cursor:pointer;}
 #goodsQuestion .goodsQuestionForm{width:100%; float:left; position: relative;s}
 #goodsQuestion .goodsQuestionForm .goodsQuestionTitle{width:100%; height:40px;float:left; background:#B2EBF2; border-radius:5px; cursor: pointer;}
 #goodsQuestion .goodsQuestionForm .goodsQuestionTitle span{font-weight: bold; line-height:40px; margin-left:15px;}
@@ -190,10 +192,14 @@ footer h1{line-height: 100px;}
 #goodsQuestion .goodsQuestionForm .goodsQuestionContent>span{float:right;}
 #goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionAdd{float:right; cursor: pointer; }
 
-#goodsQuestioncollapse .goodsChattingForm{width:100%; float:left; }
-#goodsQuestioncollapse .goodsChattingForm textarea{width:80%; height: 100px; margin:1px; padding:1px; resize: none; float:left;}
-#goodsQuestioncollapse .goodsChattingForm input[type=submit]{width:19%; height: 100px; line-height: 100px; float:left; text-align: center;}
+#goodsQuestion .goodsQuestionPlusForm{width:100%; float:left; padding-top:15px; padding-bottom: 15px; border:1px solid #e8e8e8; }
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle{width:100%; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle span{width:5%; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle input{width:55%; float:left;}
 
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent{width:100%; float:left; margin-top:15px;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent span{width:5%; height:70px; line-height:70px; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent textarea{width:55%; height:70px; float:left;}
 /* loginForm */
 #login{width:100%; height: 100%; float:left; position: relative; text-align: center;}
 #login .loginForm{width:600px; height: 300px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);}
