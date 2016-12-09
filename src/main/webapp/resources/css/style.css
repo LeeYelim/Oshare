@@ -183,11 +183,14 @@ footer h1{line-height: 100px;}
 #gooodsReview .goodsReviewPaing{width:100%; float:left; text-align: center;}
 
 #goodsQuestion .goodsQuestionPaing{width:100%; float:left; text-align: center;}
-#goodsQuestion .goodsQuestionId{float:right;}
-#goodsQuestion .goodsQuestionDate{float:right; margin-left:15px;}
-#goodsQuestion .goodsChattingAdd{float:right; cursor: pointer; margin-top:20px;}
+#goodsQuestion .goodsQuestionForm{width:100%; float:left; position: relative;s}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle{width:100%; height:40px;float:left; background:#B2EBF2; border-radius:5px; cursor: pointer;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle span{font-weight: bold; line-height:40px; margin-left:15px;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent{width:100%; float:left; display: none;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent>span{float:right;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionAdd{float:right; cursor: pointer; }
 
-#goodsQuestioncollapse .goodsChattingForm{width:100%; float:left;}
+#goodsQuestioncollapse .goodsChattingForm{width:100%; float:left; }
 #goodsQuestioncollapse .goodsChattingForm textarea{width:80%; height: 100px; margin:1px; padding:1px; resize: none; float:left;}
 #goodsQuestioncollapse .goodsChattingForm input[type=submit]{width:19%; height: 100px; line-height: 100px; float:left; text-align: center;}
 
@@ -240,17 +243,34 @@ footer h1{line-height: 100px;}
 .saleItemListForm table tr td img{width:100%; height:100%;  float:left;}
 .saleItemListPaging{width:100%; float:left; text-align:center;}
 
-.saleItemListDialog{width:500px; height: 300px; float:left;  position:absolute; top:50%; left:60%; transform:translate(-50%,-50%); background:#fff; border:1px solid #e8e8e8; z-index: 1001; opacity:0; display:none; }
+.saleItemListDialog{width:600px; height:630px; float:left;  position:absolute; top:63%; left:60%; transform:translate(-50%,-50%); background:#fff; border:1px solid #e8e8e8; z-index: 1001; opacity:0; display:none; }
 .saleItemListDialog .saleItemListDialogTitle{width:100%; height:40px; line-height:40px;float:left; background:#90CAF9;}
 .saleItemListDialog .saleItemListDialogTitle span:nth-child(1){padding-left:10px;}
 .saleItemListDialog .saleItemListDialogTitle .saleItemListClose{padding:7px; color:#fff; float:right; cursor:pointer;}
-.saleItemListDialog .saleItemAddMoney{width:100%; float:left; margin-top:30px;}
-.saleItemListDialog .saleItemAddMoney span{width:20%; float:left; text-align: center;}
-.saleItemListDialog .saleItemAddMoney input{width:50%; float:left;}
-.saleItemListDialog .saleItemAddMoneyReason{width:100%; float:left; margin-top:20px;}
-.saleItemListDialog .saleItemAddMoneyReason span{width:20%; height:150px; line-height:150px; float:left; text-align: center;}
-.saleItemListDialog .saleItemAddMoneyReason textarea{width:50%; height:150px; float:left;}
-.saleItemListDialog .saleItemBtn{width:100%; float:left; text-align: center;}
+.saleItemListDialog .rentalFee{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .rentalFee>span{width:100%; float:left; padding:15px;}
+.saleItemListDialog .rentalFee ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .rentalFee ul li{margin-top:5px;}
+
+.saleItemListDialog .annualFee{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .annualFee>span{width:100%; float:left; padding:15px;}
+.saleItemListDialog .annualFee ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .annualFee ul li{margin-top:5px;}
+
+.saleItemListDialog .saleItemAddMoney{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .saleItemAddMoney>span{width:100%; float:left; padding:15px;}
+.saleItemListDialog .saleItemAddMoney ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .saleItemAddMoney ul li{margin-top:5px; width:100%; float:left;}
+.saleItemListDialog .saleItemAddMoney ul li span{width:15%; float:left;}
+.saleItemListDialog .saleItemAddMoney ul li textarea{width:50%; float:left;}
+.saleItemListDialog .saleItemAddMoney ul li input[type=number]{width:50%; float:left;}
+.saleItemListDialog .totalAmount{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .totalAmount ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .totalAmount ul li{margin-top:5px;}
+
+.saleItemListDialog .totalCharges{width:100%; float:left; border-bottom:2px solid #e8e8e8; padding-top:15px; padding-bottom:15px; text-align: center;}
+
+.saleItemListDialog .saleItemBtn{width:100%; float:left; text-align: center; margin-top:15px;}
 
 /* rentalItemList */
 .rentalItemListForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
@@ -355,6 +375,19 @@ footer h1{line-height: 100px;}
 .paymentMoney ul li:nth-child(1){margin-top:20px;}
 .goodsPaymentBtn{width:100%; float:left; text-align: center;}
 
+/* shoppingBasket */
+.shoppingBasketForm{width:100%; float:left;}
+.shoppingBasketForm span{width:100%; float:left; padding:10px; border-top:2px solid #e8e8e8; border-bottom:2px solid #e8e8e8; background: #eee;}
+.shoppingBasketForm table{width:100%; float:left;}
+.shoppingBasketForm table tr:nth-child(1) td{height: 80px; line-height: 80px; }
+.shoppingBasketForm table tr td{width:25%; float:left; text-align: center; height: 167px; line-height: 150px; }
+.shoppingBasketForm table tr td img{width:100%; float:left;}
+.shoppingBasketForm table tr td p{line-height: 20px;}
+.shoppingBasketTotalAmountForm{width:100%; float:left}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmount{width:100%; height:150PX; float:left; margin-right: 30px; border-top:2px solid #e8e8e8;}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmount>span{float: right; padding-top:24px;}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmountBtn{width:100%; height:150px;float:left;}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmountBtn input{width:130px; height:40px;float:right; margin-right: 30px; }
 
 /* bootstrap slide */
 #contentTiles{width:100%; height:100%;;float:left;}
@@ -390,12 +423,7 @@ footer h1{line-height: 100px;}
  
  /* mobileGoodsList */
  .mobileGoodsListForm .mobileGoodsListCategory ul{width:87%; }
- 
- 
- /* footer */
- footer{width:100%; height: 100px; float:left; position: absolute; bottom: 0; }
- footer h1{line-height: 100px;}
- 
+	
 }
 @media(min-width:0) and (max-width:580px){
 	#goodsListItemForm .goodsListItem:nth-child(even){margin-right: 0;}

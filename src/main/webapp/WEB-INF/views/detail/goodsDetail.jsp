@@ -154,26 +154,13 @@
 					</div>
 					<div id="goodsQuestion" class="tab-pane fade">
 						<div class="panel-group" id="accordion">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<span class="goodsQuestionNo">10</span>
-										<a data-toggle="collapse" data-parent="#accordion"
-											href="#goodsQuestioncollapse">제품을 살살살려고하는데?</a>
-										<span class="goodsQuestionDate">2016-12-05</span>
-										<span class="goodsQuestionId">cfrqw1234</span>
-										
-									</h4>
+							<div class="goodsQuestionForm">
+								<div class="goodsQuestionTitle">
+									<span>Test</span>
 								</div>
-								<div id="goodsQuestioncollapse" class="panel-collapse collapse">
-									<div class="panel-body">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit, sed do eiusmod tempor incididunt
-										ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-										ea commodo consequat.  <span class="goodsChattingAdd">댓글달기</span>
-									
-									</div>
-															
+								<div class="goodsQuestionContent">
+									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+									<span class="goodsQuestionAdd">댓글달기</span>
 								</div>
 							</div>
 						</div>

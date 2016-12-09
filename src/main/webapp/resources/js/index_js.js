@@ -1,7 +1,7 @@
 $(function(){
 	/* header + index */
 	$(document).on("scroll","",function(){
-		if($(window).scrollTop() ==0){
+		if($(window).scrollTop()<=0){
 			$(".headerNavaction").removeClass("headerNavactionAdvice");
 			$(".headerNavaction").css({"height":"85px","line-height":"65px"})
 		}
@@ -148,9 +148,23 @@ $(function(){
 				 $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
 				 $("#mobileGoodsListDetailSearchDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 		  });//mobilegoodsListDetailSearch Close Dialog Event End   
-		
+		  
+		  /* goodsDetail */
+		  var index=0;
+		  $(document).on("click",".goodsQuestionTitle",function(){	
+			  if($(".goodsQuestionContent").is(":animated"))return;
+			  if(index<=0){
+				  $(".goodsQuestionContent").slideDown();
+				  index=1;
+			  }else{
+				  $(".goodsQuestionContent").slideUp();		  
+				  index=0;
+				 
+			  }
+		  });
+		  
 		  /* goodsDetailChatting */
-		  $(document).on("click","#goodsQuestioncollapse .goodsChattingAdd",function(){
+		  $(document).on("click",".goodsQuestionContent .goodsQuestionAdd",function(){
 			//var str =$(this).parent().parent().children("td:first").next().text();
 			 $(".goodsChattingForm").remove();
 			  
