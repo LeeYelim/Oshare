@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class PaymentController {
 	
-	@RequestMapping("payment/paymentForm")
+	@RequestMapping("payment/goodsPayment")
 	public String paymentForm(){
 		return "payment/goodsPayment";
 	}

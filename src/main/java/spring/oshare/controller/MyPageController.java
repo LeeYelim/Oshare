@@ -15,6 +15,7 @@ import spring.oshare.service.MyPageService;
  *  - 결제관리
  *  - 회원정보수정
  *  - 장바구니
+ *  - 어드민[회원 관리]
  */
 @Controller
 @RequestMapping("mypage")
@@ -69,6 +70,15 @@ public class MyPageController {
 	@RequestMapping("shoppingBasket")
 	public String shoppingBasketForm(){
 		return "shoppingBasket/shoppingBasket";
+	}
+	
+	/**
+	 * 어드민[회원 관리]
+	 * */	
+	@RequestMapping("userManagement")
+	public String userManagementForm(){
+		return "mypage/admin/userManagement";
+		
 	}
 	
 	

@@ -10,45 +10,43 @@
 <body>
 	<div class="container">
 		<div class="col-xs-2">
-			<div class="goodsListDetailSearch">
-				<span class="material-icons">&#xE8B6; </span>세부검색
-			</div>
-			<div class="goodsListCategory">
-				<ul>
-					<li><a href="#">카테고리</a></li>
-					<li><a href="#">취미</a> / <a href="#">도서</a> / <a href="#">티켓</a></li>
-					<li><a href="#">가구</a> / <a href="#">생활</a> / <a href="#">주방</a>
-					</li>
-					<li><a href="#">출산</a> / <a href="#">유아</a></li>
-					<li><a href="#">가전</a> / <a href="#">디지털</a> / <a href="#">컴퓨터</a></li>
-					<li><a href="#">패션</a> / <a href="#">뷰티</a></li>
-					<li><a href="#">스포츠</a> / <a href="#">레져용품</a></li>
-					<li><a href="#">명품</a></li>
-				</ul>
-			</div>
+		<div class="goodsListDetailSearch">
+			<span class="material-icons">&#xE8B6; </span>세부검색
 		</div>
-		<div class="col-xs-10">
-
-			<div class="goodsAdd">
-				<span class="material-icons">&#xE87D;</span> <span
-					class="material-icons">&#xE8CC;</span>
+		<div class="goodsListCategory">
+		<ul>
+			<li><a href="#">카테고리</a></li>
+			<li><a href="#">취미 / 도서 / 티켓</a></li>
+			<li><a href="#">가구 / 생활 / 주방</a></li>
+			<li><a href="#">출산 / 유아</a></li>
+			<li><a href="#">가전 / 디지털 / 컴퓨터</a></li>
+			<li><a href="#">패션 / 뷰티</a></li>
+			<li><a href="#">스포츠 / 레져용품</a></li>
+			<li><a href="#">명품</a></li>
+		</ul>
+		</div>
+		</div>
+	<div class="col-xs-10">
+	
+	<!-- mobile goodsListCategory + goodsDetailSearch -->
+		<div class="mobileGoodsListForm">
+			<div class="mobileGoodsListCategory">
+			<span class="material-icons goodsListPrev">&#xE408;</span>
+			<ul class="owl-carousel">
+			<li class="item"><a href="#">취미 / 도서 / 티켓</a></li>
+			<li class="item"><a href="#">가구 / 생활 / 주방</a></li>
+			<li class="item"><a href="#">출산 / 유아</a></li>
+			<li class="item"><a href="#">가전 / 디지털 / 컴퓨터</a></li>
+			<li class="item"><a href="#">패션 / 뷰티</a></li>
+			<li class="item"><a href="#">스포츠 / 레져용품</a></li>
+			<li class="item"><a href="#">명품</a></li>
+			</ul>
+			<span class="material-icons goodsListNext">&#xE409;</span>
 			</div>
-
-			<!-- mobile goodsListCategory + goodsDetailSearch -->
-			<div class="mobileGoodsListForm">
-				<div class="mobileGoodsListCategory">
-					<span class="material-icons goodsListPrev">&#xE408;</span>
-					<ul class="owl-carousel">
-						<li class="item">취미 / 도서 / 티켓</li>
-						<li class="item">가구 / 생활 / 주방</li>
-						<li class="item">출산 / 유아</li>
-						<li class="item">가전 / 디지털 / 컴퓨터</li>
-						<li class="item">패션 / 뷰티</li>
-						<li class="item">스포츠 / 레져용품</li>
-						<li class="item">명품</li>
-					</ul>
-					<span class="material-icons goodsListNext">&#xE409;</span>
-				</div>
+			<div class="mobileDetailSearch">
+				<span class="material-icons mobilegoodsListDetailSearch">&#xE8B6;</span>
+			</div>
+		
 				<div class="mobileDetailSearch">
 					<span class="material-icons mobilegoodsListDetailSearch">&#xE8B6;</span>
 				</div>
@@ -108,6 +106,7 @@
 			<div id="calendar"></div>
 			
 			</div>
+
 			<div class="col-xs-12">
 				<ul class="nav nav-tabs goodsDetailNavaction">
 					<li class="active"><a data-toggle="tab"
@@ -161,16 +160,6 @@
 									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
 									<span class="goodsQuestionAdd">댓글달기</span>
 								</div>
-								<div class="goodsQuestionPlusForm">
-								<form action="" method="">
-									<div class="goodsQuestionPlusFormTitle">
-										<span>제목 : </span><input type="text" name="">
-									</div>
-									<div class="goodsQuestionPlusFormContent">
-										<span>내용 : </span><textarea ></textarea>
-									</div>
-								</form>
-								</div>
 							</div>
 						<div class="goodsQuestionPlus">
 							<span>질문하기</span>
@@ -194,7 +183,7 @@
 				</div>
 			</div>
 		</div>
-
+</div>
 		<!-- goodsListDetailSearchDialog  -->
 		<div id="goodsListDetailSearchDialog">
 			<form action="" method="post" name="goodsListDetailSearchDialog">

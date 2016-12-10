@@ -17,6 +17,7 @@
 			<li><a href="<c:url value='/mypage/billingManagement'/>">결제관리</a></li>
 			<li><a href="<c:url value='/mypage/message'/>">쪽지함</a></li>
 			<li><a href="<c:url value='/'/>">회원정보수정</a></li>
+			<li><a href="<c:url value='/mypage/userManagement'/>">회원관리</a></li>
 		</ul>
 	</div>
 </body>

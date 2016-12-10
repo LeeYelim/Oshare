@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="<c:url value='/resources/css/fullcalendar.css'/>" rel="stylesheet"/>
 <link href="<c:url value='/resources/css/fullcalendar.print.css'/>" rel='stylesheet' media='print'/>
-<title>Insert title here</title>
+<title>Oshare</title>
 <style>
 	#calendar {
 		width: 495px;

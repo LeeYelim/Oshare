@@ -1,16 +1,26 @@
 $(function(){
 	/* header + index */
-	$(document).on("scroll","",function(){
-		if($(window).scrollTop()<=0){
-			$(".headerNavaction").removeClass("headerNavactionAdvice");
-			$(".headerNavaction").css({"height":"85px","line-height":"65px"})
-		}
+	$(document).on("scroll",function(){
+		console.log($(window).scrollTop())
 		
-		if($(window).scrollTop() >=$(".headerNavaction").offset().top){
+		if($(window).scrollTop() > 0){	
 			$(".headerNavaction").addClass("headerNavactionAdvice");
-			$(".headerNavaction").css({"height":"65px","line-height":"45px"})
+			$(".headerNavaction").css({"height":"65px","line-height":"45px","position":"fixed"})
+		}else{
+			$(".headerNavaction").removeClass("headerNavactionAdvice");
+			$(".headerNavaction").css({"height":"85px","line-height":"65px","position":"relative"})
 		}
 	});
+	
+	$(document).on("click",".headerIconNavaction .headerSearchIcon",function(){
+		if($(".HeaderSearchForm").is(":animated"))return;
+		$(".HeaderSearchForm").animate({"opacity":"1"},500).show();
+	});//HeaaderSearch Event End
+	
+	$(document).on("click",".HeaderSearchForm .HeaderSearchClose",function(){
+		if($(".HeaderSearchForm").is(":animated"))return;
+		$(".HeaderSearchForm").animate({"opacity":"0"},500).hide(10);
+	});//HeaaderSearch Event Close End
 	
 	$(document).on("click",".mobileHeaderNavaction span",function(){
 		if($(".mobileHeaderNavactionMenu").is(":animated"))return;
@@ -132,6 +142,7 @@ $(function(){
 		  $(".goodsListNext").click(function(){
 		    owl3.trigger('next.owl');
 		  })
+		  
 		  $(".goodsListPrev").click(function(){
 		    owl3.trigger('prev.owl');
 		  })//mobileGoodsListCategory  Event End
@@ -181,7 +192,14 @@ $(function(){
 		  });
 		  
 		  $(document).on("click","#goodsQuestion .goodsQuestionPlus",function(){
-			 $(".goodsQuestionForm").append("<h1>asdasd</h1>");
+		  $(".goodsQuestionPlusForm").remove();
+		  
+			$(".goodsQuestionForm").append("<div class='goodsQuestionPlusForm'>" +
+	 		"<form action='' method=''><div class='goodsQuestionPlusFormTitle'>" +
+			"<span>제목 : </span><input type='text' name=''></div>" +
+			"<div class='goodsQuestionPlusFormContent'><span>내용 : </span>" +
+			"<textarea ></textarea></div><input type='submit' value='전송'>" +
+			"</form></div>");
 		  });
 		  
 		  /* saleItemList */

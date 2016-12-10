@@ -16,12 +16,14 @@
 			<tr>
 				<td><input type="checkbox" disabled></td>
 				<td>제품</td>
+				<td>제품명</td>
 				<td>예약일</td>
 				<td>총액</td>
 			</tr>
 			<tr>
 				<td><input type="checkbox" name=""></td>
-				<td><img src="<c:url value='/resources/image/book.jpg'/>" alt="장바구니 이미지"><p>노트북</p></td>
+				<td><img src="<c:url value='/resources/image/book.jpg'/>" alt="장바구니 이미지"></td>
+				<td>노트북</td>
 				<td>2016-12-01</td>
 				<td>76,000원</td>
 			</tr>

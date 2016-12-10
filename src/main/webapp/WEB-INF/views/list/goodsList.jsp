@@ -16,12 +16,12 @@
 		<div class="goodsListCategory">
 		<ul>
 			<li><a href="#">카테고리</a></li>
-			<li><a href="#">취미</a> / <a href="#">도서</a> / <a href="#">티켓</a></li>
-			<li><a href="#">가구</a> / <a href="#">생활</a> / <a href="#">주방</a> </li>
-			<li><a href="#">출산</a> / <a href="#">유아</a></li>
-			<li><a href="#">가전</a> / <a href="#">디지털</a> / <a href="#">컴퓨터</a></li>
-			<li><a href="#">패션</a> / <a href="#">뷰티</a></li>
-			<li><a href="#">스포츠</a> / <a href="#">레져용품</a></li>
+			<li><a href="#">취미 / 도서 / 티켓</a></li>
+			<li><a href="#">가구 / 생활 / 주방</a></li>
+			<li><a href="#">출산 / 유아</a></li>
+			<li><a href="#">가전 / 디지털 / 컴퓨터</a></li>
+			<li><a href="#">패션 / 뷰티</a></li>
+			<li><a href="#">스포츠 / 레져용품</a></li>
 			<li><a href="#">명품</a></li>
 		</ul>
 		</div>
@@ -33,13 +33,13 @@
 			<div class="mobileGoodsListCategory">
 			<span class="material-icons goodsListPrev">&#xE408;</span>
 			<ul class="owl-carousel">
-			<li class="item">취미 / 도서 / 티켓</li>
-			<li class="item">가구 / 생활 / 주방</li>
-			<li class="item">출산 / 유아</li>
-			<li class="item">가전 / 디지털 / 컴퓨터</li>
-			<li class="item">패션 / 뷰티</li>
-			<li class="item">스포츠 / 레져용품</li>
-			<li class="item">명품</li>
+			<li class="item"><a href="#">취미 / 도서 / 티켓</a></li>
+			<li class="item"><a href="#">가구 / 생활 / 주방</a></li>
+			<li class="item"><a href="#">출산 / 유아</a></li>
+			<li class="item"><a href="#">가전 / 디지털 / 컴퓨터</a></li>
+			<li class="item"><a href="#">패션 / 뷰티</a></li>
+			<li class="item"><a href="#">스포츠 / 레져용품</a></li>
+			<li class="item"><a href="#">명품</a></li>
 			</ul>
 			<span class="material-icons goodsListNext">&#xE409;</span>
 			</div>

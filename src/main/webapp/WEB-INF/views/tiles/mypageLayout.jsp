@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/jquery.rateyo.css'/>">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 
-<title>Insert title here</title>
+<title>Oshare</title>
 <style>
 
 #contentTiles {
