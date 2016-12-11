@@ -43,22 +43,7 @@
 		</footer> 
 	</div>
 	<div class="dialogBlack"></div>
-	<div class="mobileHeaderNavactionMenu">
-		<ul>
-			<li><span class="material-icons close">close</span></li>
-			<li><a href="#">My Page</a></li>
-			<li><a href="<c:url value='/'/>">Home</a></li>
-			<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
-			<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
-			<li><a href="#"><span class="material-icons">search</span></a></li>
-			<li><a href="#"><span class="material-icons">shopping_cart</span></a></li>
-			<li><a href="#"><span class="material-icons">notifications_none</span></a></li>
-			<li><a href="#"><span class="material-icons">attach_money</span></a></li>
-			<li><a href="<c:url value='/member/loginForm'/>">Login</a></li>
-			<li><a href="#">Join us</a></li>
-		</ul>
 
-	</div>
 
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/owl.carousel.min.js'/>"></script>
