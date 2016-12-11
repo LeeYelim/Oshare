@@ -1,7 +1,14 @@
 $(function(){
+	
+	 var index=0; //goodsDetail[Title]
+	 
+	 var hirtIndex=0; //index Wish
+	 
+	 var mobileHeaderMenuIndex =0; // mobile header menu
+	 
 	/* header + index */
 	$(document).on("scroll",function(){
-		console.log($(window).scrollTop())
+		
 		
 		if($(window).scrollTop() > 0){	
 			$(".headerNavaction").addClass("headerNavactionAdvice");
@@ -22,20 +29,29 @@ $(function(){
 		$(".HeaderSearchForm").animate({"opacity":"0"},500).hide(10);
 	});//HeaaderSearch Event Close End
 	
-	$(document).on("click",".mobileHeaderNavaction span",function(){
-		if($(".mobileHeaderNavactionMenu").is(":animated"))return;
-		$(".mobileHeaderNavactionMenu").css({"left":"100%"});
-		$(".mobileHeaderNavactionMenu").show().animate({"opacity":"1","left":"0"},500);
-		$("#contentTiles").hide();
-		$("footer").hide();
-	});//mobileMenu Click Event End
+	$(document).on("click",".heartWish",function(){
+		if(hirtIndex <= 0 ){
+		hirtIndex =1 ;
+		$(this).css({"color":"#ff0000"});
+		}else{
+		hirtIndex = 0;
+		$(this).css({"color":"#000"});
+		}
+	});//wish Event End
 	
-	$(document).on("click",".mobileHeaderNavactionMenu ul li .close",function(){
+	$(document).on("click",".mobileHeaderNavaction .mobileHeaderNavactionBtn",function(){
 		if($(".mobileHeaderNavactionMenu").is(":animated"))return;
-		$(".mobileHeaderNavactionMenu").animate({"opacity":"0","left":"-100%"},500).hide(10);
-		$("#contentTiles").show();
-		$("footer").show();
-	});//mobileMenu Click Close Event End
+		$(this).toggleClass('active-9');
+		if(mobileHeaderMenuIndex <=0){
+			mobileHeaderMenuIndex =1;
+			$(".mobileHeaderNavactionMenu").animate({"left":"0"},500);
+		}else{
+			mobileHeaderMenuIndex =0;
+			$(".mobileHeaderNavactionMenu").animate({"left":"-100%"},500);
+		}
+	});
+	
+	
 	
 	/* Sharing List Event */
 	 var owl = $(".indexSharingList");	
@@ -161,7 +177,6 @@ $(function(){
 		  });//mobilegoodsListDetailSearch Close Dialog Event End   
 		  
 		  /* goodsDetail */
-		  var index=0;
 		  $(document).on("click",".goodsQuestionTitle",function(){	
 			  if($(".goodsQuestionContent").is(":animated"))return;
 			  if(index<=0){

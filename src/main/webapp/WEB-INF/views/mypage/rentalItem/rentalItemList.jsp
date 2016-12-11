@@ -45,7 +45,7 @@
 				</ul>
 			</div>
 	<div class="rentalItemListDialog">
-	<form action="" method="">
+	<form action="" method="" onsubmit="return rentalItemValidityCheck()">
      	<div class="rentalItemListDialogTitle">
 		<span>반납신청</span>
 		<span class="material-icons rentalItemListClose ">&#xE5CD;</span>

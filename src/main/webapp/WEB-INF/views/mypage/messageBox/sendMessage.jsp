@@ -19,7 +19,7 @@
 
 			<div id="writeNote" class="tab-pane fade in active">
 				<div class="sendMessageTabForm">
-					<form action="" metohd="">
+					<form action="" metohd="" onsubmit="return sendMessageValidityCheck()">
 						<div class="recipient">
 							<span>받는이</span> <input type="text" name="">
 						</div>
@@ -27,10 +27,11 @@
 							<span>쪽지내용</span>
 							<textarea name=""></textarea>
 						</div>
-					</form>
+				
 					<div class="sendMessageBtn">
 						<input type="submit" value="쪽지보내기">
 					</div>
+					</form>
 				</div>
 			</div>
 			<div id="inbox" class="tab-pane fade">

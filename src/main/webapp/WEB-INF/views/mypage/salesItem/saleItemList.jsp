@@ -53,7 +53,7 @@
 	<span>비용청구</span>
 	<span class="material-icons saleItemListClose ">&#xE5CD;</span>
 	</div>	
-	<form action="" method="">
+	<form action="" method="" onsubmit="return saleItemAddMoneyValidityCheck()">
 		<div class="rentalFee">
 			<span>대여료</span>
 			<ul>

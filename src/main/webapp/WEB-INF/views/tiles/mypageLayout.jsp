@@ -65,6 +65,7 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery.rateyo.min.js'/>" ></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/index_js.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/validityCheck.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
 </body>
 </html>

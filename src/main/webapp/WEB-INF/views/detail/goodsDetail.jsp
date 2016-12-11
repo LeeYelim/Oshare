@@ -186,10 +186,16 @@
 </div>
 		<!-- goodsListDetailSearchDialog  -->
 		<div id="goodsListDetailSearchDialog">
-			<form action="" method="post" name="goodsListDetailSearchDialog">
+			<form action="" method="post" name="goodsListDetailSearchDialog" onsubmit="return detailSearchValidityCheck()">
 				<div class="goodsCategory">
 					<span>카테고리</span> <select>
-						<option value="0">ComboBox</option>
+						<option value="취미도서티켓">취미 / 도서 / 티켓</option>
+						<option value="가구생활주방">가구 / 생활 / 주방</option> 
+						<option value="출산유아">출산 / 유아</option> 
+						<option value="가전디지털컴퓨터">가전 / 디지털 / 컴퓨터</option> 
+						<option value="패션뷰티">패션 / 뷰티</option> 
+						<option value="스포츠레져용품">스포츠 / 레져용품</option> 
+						<option value="명품">명품 </option> 
 					</select> <span class="material-icons goodsListDialogClose">&#xE5CD;</span>
 				</div>
 				<div class="goodsArea">
@@ -228,11 +234,16 @@
 		</div>
 		<!-- mobilegoodsListDetailSearchDialog -->
 		<div id="mobileGoodsListDetailSearchDialog">
-			<form action="" method="post"
-				name="mobileGoodsListDetailSearchDialog">
+			<form action="" method="post" name="mobileGoodsListDetailSearchDialog"  onsubmit="return mobileDetailSearchValidityCheck()">
 				<div class="mobileGoodsCategory">
 					<span>카테고리</span> <select>
-						<option value="0">ComboBox</option>
+							<option value="취미도서티켓">취미 / 도서 / 티켓</option>
+							<option value="가구생활주방">가구 / 생활 / 주방</option> 
+							<option value="출산유아">출산 / 유아</option> 
+							<option value="가전디지털컴퓨터">가전 / 디지털 / 컴퓨터</option> 
+							<option value="패션뷰티">패션 / 뷰티</option> 
+							<option value="스포츠레져용품">스포츠 / 레져용품</option> 
+							<option value="명품">명품 </option> 
 					</select> <span class="material-icons mobileGoodsListDialogClose">&#xE5CD;</span>
 				</div>
 				<div class="mobileGoodsArea">

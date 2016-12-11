@@ -139,14 +139,15 @@
 				</ul>
 </div>
 <div class="userManagementSearch">
-<form>
+<form action="" method="" onsubmit="return userManagementValidityCheck()">
 	<select name="">
+		<option value="전체회원">전체회원</option>
 		<option value="아이디">아이디</option>
 		<option value="이름">이름</option>
 		<option value="주소">주소</option>
 	</select>
 	<input type="text" name="">
-	<input type="button" value="검색">
+	<input type="submit" value="검색">
 </form>
 </div>
 
