@@ -12,7 +12,7 @@
 		<div class="headerNavactionUser">
 			<ul>
 				<c:choose>
-					<c:when test="${empty sessionScope.loginMemberName}">
+					<c:when test="${empty sessionScope.loginMemberId}">
 						<li>			
 							<a href="<c:url value='/member/loginForm'/>">Login</a>
 						</li>

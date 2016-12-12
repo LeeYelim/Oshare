@@ -10,7 +10,7 @@ $(function(){
 	$(document).on("scroll",function(){
 		
 		
-		if($(window).scrollTop() > $(".headerNavactionUser").offset().top+65){	
+		if($(window).scrollTop() > $(".headerNavactionUser").offset().top+30){	
 			$(".headerNavaction").addClass("headerNavactionAdvice");
 			$(".headerNavaction").css({"height":"65px","line-height":"45px","position":"fixed"})
 		}else{
