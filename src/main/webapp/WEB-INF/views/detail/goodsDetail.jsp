@@ -5,50 +5,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here!!</title>
+<title>Insert title here!!nn</title>
 </head>
 <body>
 	<div class="container">
 		<div class="col-xs-2">
-			<div class="goodsListDetailSearch">
-				<span class="material-icons">&#xE8B6; </span>세부검색
-			</div>
-			<div class="goodsListCategory">
-				<ul>
-					<li><a href="#">카테고리</a></li>
-					<li><a href="#">취미</a> / <a href="#">도서</a> / <a href="#">티켓</a></li>
-					<li><a href="#">가구</a> / <a href="#">생활</a> / <a href="#">주방</a>
-					</li>
-					<li><a href="#">출산</a> / <a href="#">유아</a></li>
-					<li><a href="#">가전</a> / <a href="#">디지털</a> / <a href="#">컴퓨터</a></li>
-					<li><a href="#">패션</a> / <a href="#">뷰티</a></li>
-					<li><a href="#">스포츠</a> / <a href="#">레져용품</a></li>
-					<li><a href="#">명품</a></li>
-				</ul>
-			</div>
+		<div class="goodsListDetailSearch">
+			<span class="material-icons">&#xE8B6; </span>세부검색
 		</div>
-		<div class="col-xs-10">
-
-			<div class="goodsAdd">
-				<span class="material-icons">&#xE87D;</span> <span
-					class="material-icons">&#xE8CC;</span>
+		<div class="goodsListCategory">
+		<ul>
+			<li><a href="#">카테고리</a></li>
+			<li><a href="#">취미 / 도서 / 티켓</a></li>
+			<li><a href="#">가구 / 생활 / 주방</a></li>
+			<li><a href="#">출산 / 유아</a></li>
+			<li><a href="#">가전 / 디지털 / 컴퓨터</a></li>
+			<li><a href="#">패션 / 뷰티</a></li>
+			<li><a href="#">스포츠 / 레져용품</a></li>
+			<li><a href="#">명품</a></li>
+		</ul>
+		</div>
+		</div>
+	<div class="col-xs-10">
+	
+	<!-- mobile goodsListCategory + goodsDetailSearch -->
+		<div class="mobileGoodsListForm">
+			<div class="mobileGoodsListCategory">
+			<span class="material-icons goodsListPrev">&#xE408;</span>
+			<ul class="owl-carousel">
+			<li class="item"><a href="#">취미 / 도서 / 티켓</a></li>
+			<li class="item"><a href="#">가구 / 생활 / 주방</a></li>
+			<li class="item"><a href="#">출산 / 유아</a></li>
+			<li class="item"><a href="#">가전 / 디지털 / 컴퓨터</a></li>
+			<li class="item"><a href="#">패션 / 뷰티</a></li>
+			<li class="item"><a href="#">스포츠 / 레져용품</a></li>
+			<li class="item"><a href="#">명품</a></li>
+			</ul>
+			<span class="material-icons goodsListNext">&#xE409;</span>
 			</div>
-
-			<!-- mobile goodsListCategory + goodsDetailSearch -->
-			<div class="mobileGoodsListForm">
-				<div class="mobileGoodsListCategory">
-					<span class="material-icons goodsListPrev">&#xE408;</span>
-					<ul class="owl-carousel">
-						<li class="item">취미 / 도서 / 티켓</li>
-						<li class="item">가구 / 생활 / 주방</li>
-						<li class="item">출산 / 유아</li>
-						<li class="item">가전 / 디지털 / 컴퓨터</li>
-						<li class="item">패션 / 뷰티</li>
-						<li class="item">스포츠 / 레져용품</li>
-						<li class="item">명품</li>
-					</ul>
-					<span class="material-icons goodsListNext">&#xE409;</span>
-				</div>
+			<div class="mobileDetailSearch">
+				<span class="material-icons mobilegoodsListDetailSearch">&#xE8B6;</span>
+			</div>
+		
 				<div class="mobileDetailSearch">
 					<span class="material-icons mobilegoodsListDetailSearch">&#xE8B6;</span>
 				</div>
@@ -110,6 +108,7 @@
 			<div id="calendar"></div>
 			
 			</div>
+
 			<div class="col-xs-12">
 				<ul class="nav nav-tabs goodsDetailNavaction">
 					<li class="active"><a data-toggle="tab"
@@ -154,30 +153,18 @@
 							</ul>
 						</div>
 					</div>
-					<div id="goodsQuestion" class="tab-pane fade">
-						<div class="panel-group" id="accordion">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<span class="goodsQuestionNo">10</span>
-										<a data-toggle="collapse" data-parent="#accordion"
-											href="#goodsQuestioncollapse">제품을 살살살려고하는데?</a>
-										<span class="goodsQuestionDate">2016-12-05</span>
-										<span class="goodsQuestionId">cfrqw1234</span>
-										
-									</h4>
+					<div id="goodsQuestion" class="tab-pane fade">	
+							<div class="goodsQuestionForm">
+								<div class="goodsQuestionTitle">
+									<span>Test</span>
 								</div>
-								<div id="goodsQuestioncollapse" class="panel-collapse collapse">
-									<div class="panel-body">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit, sed do eiusmod tempor incididunt
-										ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-										ea commodo consequat.  <span class="goodsChattingAdd">댓글달기</span>
-									
-									</div>
-															
+								<div class="goodsQuestionContent">
+									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+									<span class="goodsQuestionAdd">댓글달기</span>
 								</div>
 							</div>
+						<div class="goodsQuestionPlus">
+							<span>질문하기</span>
 						</div>
 						<div class="goodsQuestionPaing">
 							<ul class="pagination">
@@ -198,13 +185,19 @@
 				</div>
 			</div>
 		</div>
-
+</div>
 		<!-- goodsListDetailSearchDialog  -->
 		<div id="goodsListDetailSearchDialog">
-			<form action="" method="post" name="goodsListDetailSearchDialog">
+			<form action="" method="post" name="goodsListDetailSearchDialog" onsubmit="return detailSearchValidityCheck()">
 				<div class="goodsCategory">
 					<span>카테고리</span> <select>
-						<option value="0">ComboBox</option>
+						<option value="취미도서티켓">취미 / 도서 / 티켓</option>
+						<option value="가구생활주방">가구 / 생활 / 주방</option> 
+						<option value="출산유아">출산 / 유아</option> 
+						<option value="가전디지털컴퓨터">가전 / 디지털 / 컴퓨터</option> 
+						<option value="패션뷰티">패션 / 뷰티</option> 
+						<option value="스포츠레져용품">스포츠 / 레져용품</option> 
+						<option value="명품">명품 </option> 
 					</select> <span class="material-icons goodsListDialogClose">&#xE5CD;</span>
 				</div>
 				<div class="goodsArea">
@@ -243,11 +236,16 @@
 		</div>
 		<!-- mobilegoodsListDetailSearchDialog -->
 		<div id="mobileGoodsListDetailSearchDialog">
-			<form action="" method="post"
-				name="mobileGoodsListDetailSearchDialog">
+			<form action="" method="post" name="mobileGoodsListDetailSearchDialog"  onsubmit="return mobileDetailSearchValidityCheck()">
 				<div class="mobileGoodsCategory">
 					<span>카테고리</span> <select>
-						<option value="0">ComboBox</option>
+							<option value="취미도서티켓">취미 / 도서 / 티켓</option>
+							<option value="가구생활주방">가구 / 생활 / 주방</option> 
+							<option value="출산유아">출산 / 유아</option> 
+							<option value="가전디지털컴퓨터">가전 / 디지털 / 컴퓨터</option> 
+							<option value="패션뷰티">패션 / 뷰티</option> 
+							<option value="스포츠레져용품">스포츠 / 레져용품</option> 
+							<option value="명품">명품 </option> 
 					</select> <span class="material-icons mobileGoodsListDialogClose">&#xE5CD;</span>
 				</div>
 				<div class="mobileGoodsArea">

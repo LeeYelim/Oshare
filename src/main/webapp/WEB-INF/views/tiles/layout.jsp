@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="<c:url value='/resources/css/fullcalendar.css'/>" rel="stylesheet"/>
 <link href="<c:url value='/resources/css/fullcalendar.print.css'/>" rel='stylesheet' media='print'/>
-<title>Insert title here</title>
+<title>Oshare</title>
 <style>
 	#calendar {
 		width: 495px;
@@ -41,27 +41,14 @@
 
 <div class="dialogBlack">
 </div>
-<div class="mobileHeaderNavactionMenu">
-		<ul>
-			<li><span class="material-icons close">close</span></li>
-			<li><a href="#">My Page</a></li>
-			<li><a href="<c:url value='/'/>">Home</a></li>
-			<li><a href="<c:url value='/list/goodsList'/>">Sharing</a></li>
-			<li><a href="<c:url value='/list/goodsList'/>">Rental</a></li>
-			<li><a href="#"><span class="material-icons">search</span></a></li>
-			<li><a href="#"><span class="material-icons">shopping_cart</span></a></li>
-			<li><a href="#"><span class="material-icons">notifications_none</span></a></li>
-			<li><a href="#"><span class="material-icons">attach_money</span></a></li>
-			<li><a href="<c:url value='/login/loginForm'/>">Login</a></li>
-			<li><a href="#">Join us</a></li>
-		</ul>	
-	</div>
+
 
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/owl.carousel.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery.rateyo.min.js'/>" ></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/index_js.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/validityCheck.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
 	<script src="<c:url value='/resources/js/moment.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/fullcalendar.min.js'/>"></script>
@@ -139,7 +126,7 @@
 					url:"/controller/reservation/selectByBoardNo",
 					type:"post",
 					dataType:"json",
-					data:"boardNo="+3, // 임의로 값 넣음!!!
+					data:"boardNo="+1, // 임의로 값 넣음!!!
 					allDay:true,
 					success : function(result) { // List<ReservationDTO>
 					var reservations = $('#calendar').fullCalendar('clientEvents'); // 달력에 있는 모든 이벤트(예약)

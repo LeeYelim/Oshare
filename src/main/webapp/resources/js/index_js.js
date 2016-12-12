@@ -1,31 +1,57 @@
 $(function(){
+	
+	 var index=0; //goodsDetail[Title]
+	 
+	 var hirtIndex=0; //index Wish
+	 
+	 var mobileHeaderMenuIndex =0; // mobile header menu
+	 
 	/* header + index */
-	$(document).on("scroll","",function(){
-		if($(window).scrollTop() ==0){
-			$(".headerNavaction").removeClass("headerNavactionAdvice");
-			$(".headerNavaction").css({"height":"85px","line-height":"65px"})
-		}
+	$(document).on("scroll",function(){
 		
-		if($(window).scrollTop() >=$(".headerNavaction").offset().top){
+		
+		if($(window).scrollTop() > $(".headerNavactionUser").offset().top+65){	
 			$(".headerNavaction").addClass("headerNavactionAdvice");
-			$(".headerNavaction").css({"height":"65px","line-height":"45px"})
+			$(".headerNavaction").css({"height":"65px","line-height":"45px","position":"fixed"})
+		}else{
+			$(".headerNavaction").removeClass("headerNavactionAdvice");
+			$(".headerNavaction").css({"height":"85px","line-height":"65px","position":"relative"})
 		}
 	});
 	
-	$(document).on("click",".mobileHeaderNavaction span",function(){
-		if($(".mobileHeaderNavactionMenu").is(":animated"))return;
-		$(".mobileHeaderNavactionMenu").css({"left":"100%"});
-		$(".mobileHeaderNavactionMenu").show().animate({"opacity":"1","left":"0"},500);
-		$("#contentTiles").hide();
-		$("footer").hide();
-	});//mobileMenu Click Event End
+	$(document).on("click",".headerIconNavaction .headerSearchIcon",function(){
+		if($(".HeaderSearchForm").is(":animated"))return;
+		$(".HeaderSearchForm").animate({"opacity":"1"},500).show();
+	});//HeaaderSearch Event End
 	
-	$(document).on("click",".mobileHeaderNavactionMenu ul li .close",function(){
+	$(document).on("click",".HeaderSearchForm .HeaderSearchClose",function(){
+		if($(".HeaderSearchForm").is(":animated"))return;
+		$(".HeaderSearchForm").animate({"opacity":"0"},500).hide(10);
+	});//HeaaderSearch Event Close End
+	
+	$(document).on("click",".heartWish",function(){
+		if(hirtIndex <= 0 ){
+		hirtIndex =1 ;
+		$(this).css({"color":"#ff0000"});
+		}else{
+		hirtIndex = 0;
+		$(this).css({"color":"#000"});
+		}
+	});//wish Event End
+	
+	$(document).on("click",".mobileHeaderNavaction .mobileHeaderNavactionBtn",function(){
 		if($(".mobileHeaderNavactionMenu").is(":animated"))return;
-		$(".mobileHeaderNavactionMenu").animate({"opacity":"0","left":"-100%"},500).hide(10);
-		$("#contentTiles").show();
-		$("footer").show();
-	});//mobileMenu Click Close Event End
+		$(this).toggleClass('active-9');
+		if(mobileHeaderMenuIndex <=0){
+			mobileHeaderMenuIndex =1;
+			$(".mobileHeaderNavactionMenu").animate({"left":"0"},500);
+		}else{
+			mobileHeaderMenuIndex =0;
+			$(".mobileHeaderNavactionMenu").animate({"left":"-100%"},500);
+		}
+	});
+	
+	
 	
 	/* Sharing List Event */
 	 var owl = $(".indexSharingList");	
@@ -132,6 +158,7 @@ $(function(){
 		  $(".goodsListNext").click(function(){
 		    owl3.trigger('next.owl');
 		  })
+		  
 		  $(".goodsListPrev").click(function(){
 		    owl3.trigger('prev.owl');
 		  })//mobileGoodsListCategory  Event End
@@ -148,19 +175,47 @@ $(function(){
 				 $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
 				 $("#mobileGoodsListDetailSearchDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 		  });//mobilegoodsListDetailSearch Close Dialog Event End   
-		
+		  
+		  /* goodsDetail */
+		  $(document).on("click",".goodsQuestionTitle",function(){	
+			  if($(".goodsQuestionContent").is(":animated"))return;
+			  if(index<=0){
+				  $(".goodsQuestionContent").slideDown();
+				  index=1;
+			  }else{
+				  $(".goodsQuestionContent").slideUp();		  
+				  index=0;
+				 
+			  }
+		  });
+		  
 		  /* goodsDetailChatting */
-		  $(document).on("click","#goodsQuestioncollapse .goodsChattingAdd",function(){
+		  $(document).on("click",".goodsQuestionContent .goodsQuestionAdd",function(){
 			//var str =$(this).parent().parent().children("td:first").next().text();
 			 $(".goodsChattingForm").remove();
-			  
+			  	
 			 $(this).parent().append("<div class='goodsChattingForm'>" +
 			 		"<p>cfrqw1234 에게 댓글 쓰기</p>" +
-			 		"<form action='' method='post'>" +
+			 		"<form>" +
 			 		"<textarea  name='goodsChatting'></textarea>" +
-			 		"<input type='submit' value='입력'>" +
+			 		"<input type='button' value='입력'>" +
 			 		"</form><p>200자내외</p></div>");
 		  	});
+		  
+		  $(document).on("click",".goodsChattingForm input[type=button]",function(){
+			  $(this).parent().parent().parent().children("span:nth-child(1)").append("<h1>asd</h1>");
+		  });
+		  
+		  $(document).on("click","#goodsQuestion .goodsQuestionPlus",function(){
+		  $(".goodsQuestionPlusForm").remove();
+		  
+			$(".goodsQuestionForm").append("<div class='goodsQuestionPlusForm'>" +
+	 		"<form action='' method=''><div class='goodsQuestionPlusFormTitle'>" +
+			"<span>제목 : </span><input type='text' name=''></div>" +
+			"<div class='goodsQuestionPlusFormContent'><span>내용 : </span>" +
+			"<textarea ></textarea></div><input type='submit' value='전송'>" +
+			"</form></div>");
+		  });
 		  
 		  /* saleItemList */
 		  $(document).on("click",".saleItemListForm input[value=비용청구]",function(){
