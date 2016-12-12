@@ -8,7 +8,13 @@ public class ReservationDTO {
 	private String endDate; // 예약 종료일
 	private String regDate; // 예약 등록일
 	
-	public ReservationDTO() {	}	
+	public ReservationDTO() {	}
+	public ReservationDTO(int boardNo, String startDate, String endDate) {
+		this.boardNo = boardNo;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+	
 	public ReservationDTO(int reservationNo, int boardNo, String startDate, String endDate, String regDate) {
 		super();
 		this.reservationNo = reservationNo;

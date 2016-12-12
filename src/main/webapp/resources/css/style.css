@@ -229,7 +229,7 @@ footer h1{line-height: 100px;}
 /* saleItemList */
 .saleItemListForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
 .saleItemListForm span{margin-bottom: 20px; }
-.saleItemListForm table{margin-top:20px; text-align: center;}
+.saleItemListForm table{width:100%; margin-top:20px; text-align: center;}
 .saleItemListForm table tr{border:2px solid #000; border-top:0;}
 .saleItemListForm table tr:nth-child(1){border:2px solid #000;}
 .saleItemListForm table tr td{width:16%; height:60px; line-height:60px; float:left; border-right: 2px solid #000;}
@@ -254,7 +254,7 @@ footer h1{line-height: 100px;}
 /* rentalItemList */
 .rentalItemListForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
 .rentalItemListForm span{margin-bottom: 20px; }
-.rentalItemListForm table{margin-top:20px; text-align: center;}
+.rentalItemListForm table{width:100%; margin-top:20px; text-align: center;}
 .rentalItemListForm table tr{border:2px solid #000; border-top:0;}
 .rentalItemListForm table tr:nth-child(1){border:2px solid #000;}
 .rentalItemListForm table tr td{width:20%; height:60px; line-height:60px; float:left; border-right: 2px solid #000;}
