@@ -90,9 +90,11 @@
 				</div>
 	
 					<div class="goodsPayment">
-						<button type="button">결제하기</button>
+						<form name="requestForm" method=post action="">
+							<button type="button">결제하기</button>
+						</form>
 					</div>
-			</div>
+			</div>s
 			<div class="col-xs-6">
 				<div class="goodsDetailInformation">
 					<ul>

@@ -11,6 +11,7 @@ public class SharingDTO {
 	private int boardNo; // 게시물 번호
 	private String sellerId; // 판매자 id
 	private String buyerId; // 대여자 id
+	private MemberDTO member;
 	
 	public SharingDTO() { 	}
 	public SharingDTO(String sharingNo, String sharingStart, String sharingEnd, String transactionState, int totalPrice,
@@ -27,7 +28,12 @@ public class SharingDTO {
 		this.buyerId = buyerId;
 	}
 
-
+	public MemberDTO getMember() {
+		return member;
+	}
+	public void setMember(MemberDTO member) {
+		this.member = member;
+	}
 	public String getSharingNo() {
 		return sharingNo;
 	}

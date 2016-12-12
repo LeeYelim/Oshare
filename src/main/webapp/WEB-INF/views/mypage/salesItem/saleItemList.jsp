@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -12,7 +13,39 @@
 	<div class="saleItemListForm">
 		<span>판매물품목록</span>
 		<table>
-				<tr>
+			<tr>
+					<td>사진</td>
+					<td>제품명</td>
+					<td>대여자 ID</td>
+					<td>대여자 연락처</td>
+					<td>판매상태</td>
+					<td>비용청구</td>
+			</tr>
+			<c:forEach items="${requestScope.saleslist}" var="board">
+				<c:forEach items="${board.sharing}" var="sharing">
+					<tr><td>
+						<img src="<c:url value='/resources/image/book.jpg'/>"alt="asd">
+					</td>
+					<td>
+						${board.productName} 
+					</td>
+					<td>
+						${sharing.buyerId}
+					</td>
+					<td>
+						${sharing.member.memberPhone}
+					</td>
+					<td>
+						${sharing.transactionState}
+					</td>
+					<td>
+						<input type="button" value="비용청구">
+					</td></tr>
+				</c:forEach>
+			</c:forEach>
+		
+		
+				<%-- <tr>
 					<td>사진</td>
 					<td>제품명</td>
 					<td>대여자 ID</td>
@@ -32,7 +65,8 @@
 					<td>123456</td>
 					<td>대여중..</td>
 					<td><input type="button" value="비용청구"></td>
-				</tr>
+				</tr> --%>
+				
 			</table>
 		</div>
 		<div class="saleItemListPaging">

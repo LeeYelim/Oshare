@@ -1,5 +1,7 @@
 package spring.oshare.dto;
 
+import java.util.List;
+
 public class BoardDTO {
 	private int boardNo; // 게시물 번호
 	private String productName; // 물품명
@@ -11,6 +13,7 @@ public class BoardDTO {
 	private String detail; // 상품 상세
 	private String regDate; // 글 등록 날짜
 	private int viewCount; // 조회수
+	private List<SharingDTO> sharing;	
 	
 	public BoardDTO() {}
 	public BoardDTO(int boardNo, String productName, String category, String price, String condition, String boardType,
@@ -28,7 +31,12 @@ public class BoardDTO {
 		this.viewCount = viewCount;
 	}
 
-
+	public List<SharingDTO> getSharing() {
+		return sharing;
+	}
+	public void setSharing(List<SharingDTO> sharing) {
+		this.sharing = sharing;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}

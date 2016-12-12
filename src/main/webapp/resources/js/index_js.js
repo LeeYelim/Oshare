@@ -248,9 +248,11 @@ $(function(){
 			  		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
 			  		$(".rentalItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 		  });//rentalItemListDialog Close Event End
+
 		  		
 		/* wishList */
 	    $(document).on("click",".wishListClose",function(){
 	    	$(this).parent().parent().remove();
 	    });
 	});
+
