@@ -16,6 +16,7 @@
 					<td>제품명</td>
 					<td>대여자 ID</td>
 					<td>대여자 연락처</td>
+					<td>반납일</td>
 					<td>반납신청</td>
 				</tr>
 				<c:forEach items="${requestScope.rentallist}" var="board">
@@ -31,6 +32,9 @@
 						</td>
 						<td>
 							${sharing.member.memberPhone}
+						</td>
+						<td>
+							${sharing.start} - ${sharing.end}
 						</td>
 						<td>
 							<input type="button" value="반납신청">

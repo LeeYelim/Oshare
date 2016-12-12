@@ -282,5 +282,76 @@
 				</div>
 			</form>
 		</div>
+		
+		<div class="saleProfile">
+		<div class="saleProfileTitle">
+		<span>프로필</span>
+		<span class="material-icons saleProfileClose">&#xE5CD;</span>
+		<span></span>
+		</div>
+		  <div class="saleProfileImg">
+			<img src="<c:url value='/resources/image/sampleProfile.png'/>" alt="프로필이미지">
+		  </div>
+		  <div class="saleProfileImformation">
+		  		아이디 : <span>qsdxc123</span>	  	
+		  </div>
+		  <span></span>
+		  <div class="saleReview">
+		  <span>판매자 후기</span>
+		  <table>
+		  	<tr>
+		  		<td>글번호</td>
+		  		<td>내용</td>
+		  		<td>작성일</td>
+		  		<td>작성자</td>
+		  	</tr>
+		  	<tr>
+		  		<td>1</td>
+		  		<td>Oshare so good</td>
+		  		<td>2016.12.12</td>
+		  		<td>박신혜</td>
+		  	</tr>
+		  </table>
+  			<div class="saleReviewPaging">
+				<ul class="pagination">
+					<li><a href="#">«</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+			</div>
+		  </div>
+		  <div class="saleProduct">
+		  <span>판매중인 제품</span>
+		  <table>
+		  	<tr>
+		  		<td>글번호</td>
+		  		<td>제품</td>
+		  		<td>제품명</td>
+		  	</tr>
+		  	<tr>
+		  		<td>1</td>
+		  		<td><img src="<c:url value='/resources/image/book.jpg'/>" alt="이미지"></td>
+		  		<td>노트북</td>
+		  	</tr>
+		  </table>
+  			<div class="saleProductPaging">
+				<ul class="pagination">
+					<li><a href="#">«</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">6</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+			</div>
+		  </div>
+		</div>
 </body>
 </html>

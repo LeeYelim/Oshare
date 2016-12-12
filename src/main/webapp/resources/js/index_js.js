@@ -187,7 +187,21 @@ $(function(){
 				  index=0;
 				 
 			  }
+		  });// q & a slide  
+		  
+		  $(document).on("click",".sellerInformation .sellerSub span:nth-child(1)",function(){
+			  if($(".saleProfile").is(":animated"))return;
+			  $(".saleProfile").css({"left":"60%"});
+			  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
+			  $(".saleProfile").animate({"opacity":"1","left":"50%"},500).show(); 
+		  });// goodsDetail Profile open Event End
+		  
+		  $(document).on("click",".saleProfile .saleProfileTitle .saleProfileClose",function(){
+			  if($(".saleProfile").is(":animated"))return;
+			  $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+			  $(".saleProfile").animate({"opacity":"0","left":"40%"},500).hide(10); 
 		  });
+		 	  
 		  
 		  /* goodsDetailChatting */
 		  $(document).on("click",".goodsQuestionContent .goodsQuestionAdd",function(){
