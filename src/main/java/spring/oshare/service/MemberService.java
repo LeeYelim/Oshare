@@ -3,11 +3,16 @@ package spring.oshare.service;
 import spring.oshare.dto.MemberDTO;
 
 public interface MemberService {
+	
+	/**
+	 * ID중복체크
+	 */
+	boolean serviceIdCheck(String memberId);
 
 	/**
 	 * 회원가입
 	 * */
-	int signUp(MemberDTO user);
+	void signUp(MemberDTO user);
 
 	/**
 	 * 로그인

@@ -15,16 +15,20 @@ public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/**
+	 * 회원가입
+	 */
 	@Override
-	public int signUp(MemberDTO user) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void signUp(MemberDTO member) {
+		sqlSession.insert("memberMapper.joinMember", member);
 	}
 
+	/**
+	 * ID중복
+	 */
 	@Override
-	public int idCheck(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public MemberDTO idCheck(String memberId) {
+		return sqlSession.selectOne("memberMapper.idCheck", memberId);
 	}
 	
 	@Override

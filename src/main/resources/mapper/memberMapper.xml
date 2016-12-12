@@ -22,13 +22,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<!-- 회원가입 -->
+	<insert id="joinMember" parameterType="memberDTO">
+	insert into Member
+	values(
+			seq_member_no.nextval, #{memberId}, #{memberPwd}, #{memberName}, 
+			#{memberBirth}, 
+			#{memberAddr}, #{memberBank}, #{memberAccount}, #{memberValidMonth}, #{memberValidYear}, #{memberSharingCount}, #{memberPhone}
+		  )
+	</insert>
 	
 	<!-- id중복확인 -->
+	<select id="idCheck" parameterType="string" resultMap="memberMap">
+		select member_id,member_pwd,member_name,member_birth,member_addr,member_bank,member_account,
+		member_valid_month,member_valid_year,member_sharing_count,member_phone
+		from member where member_id=#{value}
+	</select>
 	
 	<!-- 로그인 -->
 	<select id="loginCheck" parameterType="memberDTO" resultType="memberDTO">
-		select member_id as memberId, member_pwd as memberPwd, member_name as memberName from member
-		where member_id=#{memberId} and member_pwd=#{memberPwd}
+		select member_id as memberId ,member_pwd as memberPwd from member
+		where member_id=#{memberId}
+			  and
+			  member_pwd=#{memberPwd}
 	</select>
 	
 	

@@ -12,10 +12,30 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDao;
 	
+	/**
+	 * ID중복체크
+	 */
 	@Override
-	public int signUp(MemberDTO user) {
-		// TODO Auto-generated method stub
-		return 0;
+	public boolean serviceIdCheck(String memberId){
+
+		MemberDTO memberDTO = memberDao.idCheck(memberId);
+		
+	//존재여부 확인
+		boolean result = false;
+				
+	//ID중복
+		if(memberDTO!=null) return true;
+		
+	//ID사용가능
+		return result;
+	}
+	
+	/**
+	 * 회원가입
+	 */
+	@Override
+	public void signUp(MemberDTO member) {
+		memberDao.signUp(member);
 	}
 
 	@Override

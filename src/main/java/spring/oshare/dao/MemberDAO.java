@@ -6,16 +6,16 @@ import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
 
 public interface MemberDAO {
-
+	
 	/**
 	 * 회원가입
 	 * */
-	int signUp(MemberDTO user);
+	void signUp(MemberDTO member);
 	
 	/**
-	 * 중복체크
+	 * ID중복체크
 	 * */
-	int idCheck(String userId);
+	MemberDTO idCheck(String memberId);
 	
 	/**
 	 * 로그인 체크(아이디/비밀번호 확인)

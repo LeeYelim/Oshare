@@ -17,7 +17,7 @@
 							<a href="<c:url value='/member/loginForm'/>">Login</a>
 						</li>
 						<li>
-							<a href="#">Join us</a>
+							<a href="<c:url value='/member/signupForm'/>">Join us</a>
 						</li>
 					</c:when>
 					<c:otherwise>

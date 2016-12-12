@@ -15,4 +15,5 @@
 	<select id="selectBoardSeqNo" resultType="int">
 		SELECT SEQ_BOARD_NO.CURRVAL FROM DUAL
 	</select>
+	
 </mapper>

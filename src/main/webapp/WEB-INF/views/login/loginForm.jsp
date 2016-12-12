@@ -12,50 +12,55 @@ function checkValid() {
 	var f = window.document.loginForm;
 	
 	// 아이디 공백 체크
-	if(f.memberId.value == "") {
+	if(f.id.value == "") {
 		alert("아이디를 입력해주세요.");
 		f.id.focus();
 		return false;
 	}
 	
 	// 비밀번호 공백 체크
-	if(f.memberPwd.value == "") {
+	if(f.password.value == "") {
 		alert("비밀번호를 입력해주세요.");
 		f.password.focus();
 		return false;
 	}
-	return true;
 }
-	
+
 </script>
 </head>
+
 <body>
 	<div id="login">
 		<div class="loginForm">
-	<form name="loginForm" action="<c:url value='/member/loginCheck'/>" method="post" onsubmit='return checkValid()'>
-	<ul>
-		<li><span>아이디</span> <input type="text" name="memberId" placeholder="아이디"></li>
-		<li><span>비밀번호</span> <input type="password" name="memberPwd" placeholder="비밀번호"></li>
-		<li><input type="submit" value="로그인"> <input type="button" value="취소"></li>
-	</ul>
-	</form>
-	<div class="loginSub">
-	<a href="#">회원가입</a><a href="#">ID찾기</a><a href="#">비밀번호찾기</a>
-	</div>
+			
+			<form name="loginForm" action="<c:url value='/member/loginCheck'/>" method="post" onsubmit='return checkValid()'>
+				<ul>
+					<li><span>아이디</span> <input type="text" name="memberId" placeholder="아이디"></li>
+					<li><span>비밀번호</span> <input type="password" name="memberPwd" placeholder="비밀번호"></li>
+					<li><input type="submit" value="로그인"> <input type="button" value="취소"></li>
+				</ul>
+			</form>
+	
+			<div class="loginSub">
+				<a href="<c:url value='/member/signupForm'/>">회원가입</a><a href="#">ID찾기</a><a href="#">비밀번호찾기</a>
+			</div>
 		</div>
 	</div>
+	
 	<div id="mobileLogin">
 		<div class="mobileLoginForm">
 			<a href="<c:url value='/'/>"><h1>Logo</h1></a>
-			<form action="<c:url value='/member/loginCheck'/>" method="post" onsubmit="return mobileLoginValidityCheck()">
-			<input type="text" name="memberId" placeholder="아이디">
-			<input type="password" name="memberPwd" placeholder="패스워드">
+			
+			<form action="" method="post">
+			<input type="text" name="id" placeholder="아이디">
+			<input type="password" name="passowrd" placeholder="패스워드">
 			<input type="submit" value="로그인">
 			</form>	
+			
 			<div class="mobileLoginSub">		
 				<a href="#">아이디 찾기</a>
 				<a href="#">비밀번호 찾기</a>
-				<a href="#">회원가입</a>
+				<a href="<c:url value='/member/signupForm'/>">회원가입</a>
 			</div>	
 		</div>
 	</div>
