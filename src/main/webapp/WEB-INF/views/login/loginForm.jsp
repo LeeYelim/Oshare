@@ -12,18 +12,19 @@ function checkValid() {
 	var f = window.document.loginForm;
 	
 	// 아이디 공백 체크
-	if(f.id.value == "") {
+	if(f.memberId.value == "") {
 		alert("아이디를 입력해주세요.");
 		f.id.focus();
 		return false;
 	}
 	
 	// 비밀번호 공백 체크
-	if(f.password.value == "") {
+	if(f.memberPwd.value == "") {
 		alert("비밀번호를 입력해주세요.");
 		f.password.focus();
 		return false;
 	}
+	return true;
 }
 	
 </script>
@@ -46,9 +47,9 @@ function checkValid() {
 	<div id="mobileLogin">
 		<div class="mobileLoginForm">
 			<a href="<c:url value='/'/>"><h1>Logo</h1></a>
-			<form action="" method="post">
-			<input type="text" name="id" placeholder="아이디">
-			<input type="password" name="passowrd" placeholder="패스워드">
+			<form action="<c:url value='/member/loginCheck'/>" method="post" onsubmit="return mobileLoginValidityCheck()">
+			<input type="text" name="memberId" placeholder="아이디">
+			<input type="password" name="memberPwd" placeholder="패스워드">
 			<input type="submit" value="로그인">
 			</form>	
 			<div class="mobileLoginSub">		

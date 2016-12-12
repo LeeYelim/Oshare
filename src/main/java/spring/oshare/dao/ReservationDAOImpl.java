@@ -17,8 +17,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 	
 	@Override
 	public int insertReservation(ReservationDTO reservation) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("reservationMapper.insertReservation", reservation);
 	}
 
 	@Override

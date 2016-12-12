@@ -1,4 +1,5 @@
-*{padding:0; margin:0 auto; list-style:none; font-family: "¸¼Àº°íµñ"; outline:none;}
+
+*{padding:0; margin:0 auto; list-style:none; font-family:"³ª´®°íµñ"; outline:none;}
 html,body{height: 100%}
  
 a{text-decoration: none; color:inherit;}
@@ -9,12 +10,13 @@ a:focus{text-decoration: none; color:inherit;}
 
 /* layout */
 #main{width:100%; float:left; position: relative;}
+#mypageContentTiles{width:80%; float:left;}
 
 /* Header nav Class */
-.headerNavactionAdvice{float:left; z-index: 100; position: fixed;}
+.headerNavactionAdvice{z-index: 100;}
  
 /* header */
-.headerNavactionUser{width:100%; height:40px; line-height:40px; float:left; position: relative; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);	}
+.headerNavactionUser{width:100%; height:40px; line-height:40px; float:left; position: relative; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); z-index: 3;}
 .headerNavactionUser ul{float:right; text-align: center; }
 .headerNavactionUser ul li{float:left; padding-left:25px; padding-right:25px; }
 .headerNavactionUser ul li .myPageList{width:150px; flaot:left;  position: relative;}
@@ -22,12 +24,12 @@ a:focus{text-decoration: none; color:inherit;}
 .headerNavactionUser ul li .myPageList>ul>li:hover{background: #e8e8e8;}
 .headerNavactionUser ul li .myPageList>ul{position: absolute; text-align:center; z-index:1; background: #fff; display: none;   }
 .headerNavactionUser ul li .myPageList>ul>li{float:none; cursor: pointer; transition:0.4s;}
-.headerNavactionUser ul li:nth-child(1){padding:0;}
+
 .headerNavactionUser>ul>li:nth-child(2){padding-left:0;}
 .headerNavactionUser>ul>li:nth-last-child(1){padding-right: 45px;}
 
 
-.headerNavaction{height:85px; line-height:65px; float:left; background:#fff;transition:0.2s; overflow: hidden;}
+.headerNavaction{ height:85px; line-height:65px; float:left; margin-left:-15px; margin-right:-15px; background:#fff; transition:0.2s; overflow: hidden; position: relative;}
 .headerNavaction ul{float:right}
 .headerNavaction ul li{float:left; padding:10px 25px; transition:0.4s; cursor: pointer; }
 .headerNavaction ul li:hover{background:#e8e8e8;}
@@ -36,31 +38,102 @@ a:focus{text-decoration: none; color:inherit;}
 .headerNavaction .headerIconNavaction li:nth-last-child(1){margin-right: 16px;}
 .headerNavaction .headerIcon{float:left; padding:10px 25px;} 
 
+.HeaderSearchForm{width:97.5%; height: 100%; float:left; background: #fff; position: absolute; z-index: 100; z-index: 2; opacity:0; display:none;}
+.HeaderSearchForm form{width:90%; height: 100%; float:left;}
+.HeaderSearchForm form input{width:100%; height:100%; float:left; border:none; }
+
+.HeaderSearchForm .HeaderSearchClose{width:10%; height: 100%; float:left; position: relative;}
+.HeaderSearchForm .HeaderSearchClose span{position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); cursor: pointer;}
+
+
 /* header mobile */
-.mobileHeaderNavaction{width:100% ;height:55px; line-height:35px; float:left; cursor:pointer; background:#fff;transition:0.2s; overflow: hidden; display: none; }
-.mobileHeaderNavaction a{float:left; padding:10px 15px;}
-.mobileHeaderNavaction span{float:right; padding:15px 15px;}
+.mobileHeaderNavaction{width:100%; float:left; position: relative; display: none;}
+.mobileHeaderNavaction>ul{width:100%; float:left;}
+.mobileHeaderNavaction>ul>li{width:33.3%; float:left;}
+.mobileHeaderNavaction .mobileHeaderNavactionLogo{width: 100%;float:left;text-align: center; margin-top: 15px;} 
+.mobileHeaderNavaction .mobileHeaderNavactionIcon ul{float:right;margin-top: 15px;}
+.mobileHeaderNavaction .mobileHeaderNavactionIcon ul li{float:left; margin-right: 5px; tr}
+.mobileHeaderNavaction .mobileHeaderNavactionBtn{
+	position: relative;
+	width: 27px;
+	height: 27px;
+	float:left;
+	margin:15px;
+	margin-left:0;
+	cursor: pointer;
+}
+.mobileHeaderNavaction .mobileHeaderNavactionBtn,
+.mobileHeaderNavaction .mobileHeaderNavactionBtn span {
+	display: inline-block;
+	transition: all .4s;
+	box-sizing: border-box;
+}
 
-.mobileHeaderNavactionMenu{width:100%; height:100%; float:left; position: absolute; z-index: 101; display:none; left:100%; opacity:0; }
-.mobileHeaderNavactionMenu ul{width:100%; height:100%; ;}
-.mobileHeaderNavactionMenu ul li{width:100%; height: 15%; line-height:58px; text-align: center; background: blue; color:#fff; }
-.mobileHeaderNavactionMenu ul li .close{float:right; margin:15px; color:#fff; font-weight: bold; opacity:1;}
+.mobileHeaderNavaction .mobileHeaderNavactionBtn span {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	height: 3px;
+	background-color: #000;
+	/* border-radius: 0px; */
+}
 
+.mobileHeaderNavaction .mobileHeaderNavactionBtn span:nth-of-type(1) {
+	top: 0;
+}
+
+.mobileHeaderNavaction .mobileHeaderNavactionBtn span:nth-of-type(2) {
+	top: 7px;
+}
+
+.mobileHeaderNavaction .mobileHeaderNavactionBtn span:nth-of-type(3) {
+	bottom: 9px;
+}
+
+.mobileHeaderNavaction .mobileHeaderNavactionBtn.active-9 {
+	-webkit-transform : rotate(360deg);
+	transform : rotate(360deg);
+}
+.mobileHeaderNavaction .mobileHeaderNavactionBtn.active-9 span:nth-of-type(1),
+.mobileHeaderNavaction .mobileHeaderNavactionBtn.active-9 span:nth-of-type(3) {
+	width: 14px;
+}
+.mobileHeaderNavaction .mobileHeaderNavactionBtn.active-9 span:nth-of-type(1) {
+	-webkit-transform : translate(-1px, 13px) rotate(-45deg);
+	transform: translate(0px, 3px) rotate(-31deg);
+}
+.mobileHeaderNavaction .mobileHeaderNavactionBtn.active-9 span:nth-of-type(3) {
+	-webkit-transform : translate(-1px, -13px) rotate(45deg);
+	transform: translate(0px, -4px) rotate(31deg);
+}
+
+.mobileHeaderNavactionMenuActive{background:#42b294;  color:#fff;}
+
+.mobileHeaderNavactionMenu{width:85%; height:1000px; float:left; position: absolute; z-index: 16; top:66px; left:-100%; background: #fff;  }
+.mobileHeaderNavactionMenu ul{width:100%; float:left;}
+.mobileHeaderNavactionMenu ul li{width:100%; height:50px; line-height:50px;  float:left; padding-left:10px; transition:0.4s;}
+.mobileHeaderNavactionMenu ul li:hover{background:#42b294; color:#fff;}
+.mobileHeaderNavactionMenu ul li:nth-child(1){line-height: 1px; padding-left:0;}
+.mobileHeaderNavactionMenu ul li:nth-child(1):hover{background: #fff; color:#000;}
+.mobileHeaderNavactionMenu .mobileHeaderNavactionMenuSearch{width:95%; float:left; border:1px solid #e8e8e8; border-radius:5px; padding:5px;}
+.mobileHeaderNavactionMenu .mobileHeaderNavactionMenuSearch input[type=text]{width:90%; float:left; padding-left:15px; padding-top:3px; border:none;}
+.mobileHeaderNavactionMenu .mobileHeaderNavactionMenuSearch input[type=submit]{border:none; background: inherit;}
 
 /* footer */
 footer{width:100%; height: 100px; float:left; text-align: center; position: relative;}
 footer h1{line-height: 100px;}
 
 /* content */
-#contentTiles{width: 100%; height: 100%; float:left;}
+#contentTiles{width: 100%; height:100%; float:left;}
 
 /* index */
 #indexSharigForm{width:100%; height:50%; float:left; background: #fff; position: relative;}
 #indexSharigForm .indexSharingList{width:100%; height:100%;float:left;}
-#indexSharigForm .indexSharingTitle{width:100%; float:left;}
-#indexSharigForm .indexSharingTitle>span{line-height: 50px; }
-#indexSharigForm .indexSharingTitle .indexSharingBtn{float: right;}
-#indexSharigForm .indexSharingTitle .indexSharingBtn span{cursor: pointer; margin:15px 15px; }
+#indexSharigForm .indexSharingTitle{width:100%; float:left; text-align: center; position: relative;}
+#indexSharigForm .indexSharingTitle>span{font-size:33px; line-height:100px; font-weight:bold;}
+#indexSharigForm .indexSharingTitle .indexSharingBtn{position: absolute;  top:50%; right: 0; transform: translate(0,-50%);}
+#indexSharigForm .indexSharingTitle .indexSharingBtn span{background:#fbc02d; border-radius:5px; padding:5px; cursor:pointer; transition:0.4s;}
+#indexSharigForm .indexSharingTitle .indexSharingBtn span:hover{background:#000; color:#fff;}
 #indexSharigForm .indexSharingList .item{width:100%;; float:left;}
 #indexSharigForm .indexSharingList .item ul{text-align: center;}
 #indexSharigForm .indexSharingList .item ul li{margin-top:10px;}
@@ -69,18 +142,18 @@ footer h1{line-height: 100px;}
 #indexSharigForm .indexSharingList .item ul li span:hover{color:#ff0000;}
 #indexSharigForm .indexSharingList .item ul li img{width:100%;}
 
-#indexRentalForm{width:100%; height:50%; float:left; background: #fff; position: relative; }
+#indexRentalForm{width:100%; height:50%; float:left; background: #fff; position: relative;}
 #indexRentalForm .indexRentalList{width:100%; height:100%;float:left;}
-#indexRentalForm .indexRentalTitle{width:100%; float:left; }
-#indexRentalForm .indexRentalTitle>span{line-height: 50px; }
-#indexRentalForm .indexRentalTitle .indexRentalBtn{float: right;}
-#indexRentalForm .indexRentalTitle .indexRentalBtn span{cursor: pointer; margin:15px 15px; }
+#indexRentalForm .indexRentalTitle{width:100%; float:left; text-align: center; position: relative }
+#indexRentalForm .indexRentalTitle>span{font-size:33px; line-height:100px; font-weight:bold;}
+#indexRentalForm .indexRentalTitle .indexRentalBtn{position: absolute;  top:50%; right: 0; transform: translate(0,-50%);}
+#indexRentalForm .indexRentalTitle .indexRentalBtn span{background:#fbc02d; border-radius:5px; padding:5px; cursor:pointer; transition:0.4s;}
+#indexRentalForm .indexRentalTitle .indexRentalBtn span:hover{background:#000; color:#fff;}
 #indexRentalForm .indexRentalList .item{width:100%;; float:left;}
 #indexRentalForm .indexRentalList .item ul{text-align: center;}
 #indexRentalForm .indexRentalList .item ul li{margin-top:10px;}
 #indexRentalForm .indexRentalList .item ul li:nth-child(1){margin-top:0;}
 #indexRentalForm .indexRentalList .item ul li span{border-radius:100%; padding:10px; color:#000; cursor: pointer; transition:0.4s;}
-#indexRentalForm .indexRentalList .item ul li span:hover{color:#ff0000;}
 #indexRentalForm .indexRentalList .item ul li img{width:100%;}
 
 /* goodsList */
@@ -183,14 +256,23 @@ footer h1{line-height: 100px;}
 #gooodsReview .goodsReviewPaing{width:100%; float:left; text-align: center;}
 
 #goodsQuestion .goodsQuestionPaing{width:100%; float:left; text-align: center;}
-#goodsQuestion .goodsQuestionId{float:right;}
-#goodsQuestion .goodsQuestionDate{float:right; margin-left:15px;}
-#goodsQuestion .goodsChattingAdd{float:right; cursor: pointer; margin-top:20px;}
+#goodsQuestion .goodsQuestionPlus{width:100%; float:left;}
+#goodsQuestion .goodsQuestionPlus span{cursor:pointer;}
+#goodsQuestion .goodsQuestionForm{width:100%; float:left; position: relative;s}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle{width:100%; height:40px;float:left; background:#B2EBF2; border-radius:5px; cursor: pointer;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle span{font-weight: bold; line-height:40px; margin-left:15px;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent{width:100%; float:left; display: none;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent>span{float:right;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionAdd{float:right; cursor: pointer; }
 
-#goodsQuestioncollapse .goodsChattingForm{width:100%; float:left;}
-#goodsQuestioncollapse .goodsChattingForm textarea{width:80%; height: 100px; margin:1px; padding:1px; resize: none; float:left;}
-#goodsQuestioncollapse .goodsChattingForm input[type=submit]{width:19%; height: 100px; line-height: 100px; float:left; text-align: center;}
+#goodsQuestion .goodsQuestionPlusForm{width:100%; float:left; padding-top:15px; padding-bottom: 15px; border:1px solid #e8e8e8;  }
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle{width:100%; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle span{width:5%; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle input{width:55%; float:left;}
 
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent{width:100%; float:left; margin-top:15px;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent span{width:5%; height:70px; line-height:70px; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent textarea{width:55%; height:70px; float:left;}
 /* loginForm */
 #login{width:100%; height: 100%; float:left; position: relative; text-align: center;}
 #login .loginForm{width:600px; height: 300px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5);}
@@ -216,6 +298,12 @@ footer h1{line-height: 100px;}
  .mypageMenu ul li:nth-child(1){background: #e9e9e9; margin-top:0; border-bottom: 3px solid #000;}
  .mypageMenu ul li:nth-child(6){border-top:2px dotted #e9e9e9; margin-left:15px; margin-right: 15px;}
 
+.mobileMypageMenu{width:100%; float:left; text-align: center; position: relative; display: none;}
+.mobileMypageMenu .mypagePrev{color:#000;position: absolute;left:17px;line-height: 27px;z-index: 2;cursor: pointer;}
+.mobileMypageMenu .mypageNext{color:#000;position: absolute;right: 10px;line-height: 27px;z-index: 2;cursor: pointer;}
+.mobileMypageMenu ul{width:100%; float:left; }
+.mobileMypageMenu ul li{width:30%; height:30px; line-height:30px; float:left; border:1px solid #e8e8e8; }
+
  /* wishList */
 .wishListForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
 .wishListForm span{margin-bottom: 20px; }
@@ -227,10 +315,10 @@ footer h1{line-height: 100px;}
 .wishListForm table tr td:nth-child(2){width:75%; float:left;} 
 .wishListPaging{width:100%; float:left; text-align:center;}
 
-/* saleItemList */
+/* salesItemList */
 .saleItemListForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
 .saleItemListForm span{margin-bottom: 20px; }
-.saleItemListForm table{margin-top:20px; text-align: center;}
+.saleItemListForm table{width:100%; margin-top:20px; text-align: center;}
 .saleItemListForm table tr{border:2px solid #000; border-top:0;}
 .saleItemListForm table tr:nth-child(1){border:2px solid #000;}
 .saleItemListForm table tr td{width:16%; height:60px; line-height:60px; float:left; border-right: 2px solid #000;}
@@ -240,22 +328,39 @@ footer h1{line-height: 100px;}
 .saleItemListForm table tr td img{width:100%; height:100%;  float:left;}
 .saleItemListPaging{width:100%; float:left; text-align:center;}
 
-.saleItemListDialog{width:500px; height: 300px; float:left;  position:absolute; top:50%; left:60%; transform:translate(-50%,-50%); background:#fff; border:1px solid #e8e8e8; z-index: 1001; opacity:0; display:none; }
+.saleItemListDialog{width:600px; height:630px; float:left;  position:absolute; top:63%; left:60%; transform:translate(-50%,-50%); background:#fff; border:1px solid #e8e8e8; z-index: 1001; opacity:0; display:none; }
 .saleItemListDialog .saleItemListDialogTitle{width:100%; height:40px; line-height:40px;float:left; background:#90CAF9;}
 .saleItemListDialog .saleItemListDialogTitle span:nth-child(1){padding-left:10px;}
 .saleItemListDialog .saleItemListDialogTitle .saleItemListClose{padding:7px; color:#fff; float:right; cursor:pointer;}
-.saleItemListDialog .saleItemAddMoney{width:100%; float:left; margin-top:30px;}
-.saleItemListDialog .saleItemAddMoney span{width:20%; float:left; text-align: center;}
-.saleItemListDialog .saleItemAddMoney input{width:50%; float:left;}
-.saleItemListDialog .saleItemAddMoneyReason{width:100%; float:left; margin-top:20px;}
-.saleItemListDialog .saleItemAddMoneyReason span{width:20%; height:150px; line-height:150px; float:left; text-align: center;}
-.saleItemListDialog .saleItemAddMoneyReason textarea{width:50%; height:150px; float:left;}
-.saleItemListDialog .saleItemBtn{width:100%; float:left; text-align: center;}
+.saleItemListDialog .rentalFee{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .rentalFee>span{width:100%; float:left; padding:15px;}
+.saleItemListDialog .rentalFee ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .rentalFee ul li{margin-top:5px;}
+
+.saleItemListDialog .annualFee{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .annualFee>span{width:100%; float:left; padding:15px;}
+.saleItemListDialog .annualFee ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .annualFee ul li{margin-top:5px;}
+
+.saleItemListDialog .saleItemAddMoney{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .saleItemAddMoney>span{width:100%; float:left; padding:15px;}
+.saleItemListDialog .saleItemAddMoney ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .saleItemAddMoney ul li{margin-top:5px; width:100%; float:left;}
+.saleItemListDialog .saleItemAddMoney ul li span{width:15%; float:left;}
+.saleItemListDialog .saleItemAddMoney ul li textarea{width:50%; float:left;}
+.saleItemListDialog .saleItemAddMoney ul li input[type=number]{width:50%; float:left;}
+.saleItemListDialog .totalAmount{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
+.saleItemListDialog .totalAmount ul{padding:5px; margin-left:50px;}
+.saleItemListDialog .totalAmount ul li{margin-top:5px;}
+
+.saleItemListDialog .totalCharges{width:100%; float:left; border-bottom:2px solid #e8e8e8; padding-top:15px; padding-bottom:15px; text-align: center;}
+
+.saleItemListDialog .saleItemBtn{width:100%; float:left; text-align: center; margin-top:15px;}
 
 /* rentalItemList */
 .rentalItemListForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
 .rentalItemListForm span{margin-bottom: 20px; }
-.rentalItemListForm table{margin-top:20px; text-align: center;}
+.rentalItemListForm table{width:100%; margin-top:20px; text-align: center;}
 .rentalItemListForm table tr{border:2px solid #000; border-top:0;}
 .rentalItemListForm table tr:nth-child(1){border:2px solid #000;}
 .rentalItemListForm table tr td{width:20%; height:60px; line-height:60px; float:left; border-right: 2px solid #000;}
@@ -283,7 +388,7 @@ footer h1{line-height: 100px;}
 /* billingManagement */
 .billingManagementForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
 .billingManagementForm span{margin-bottom: 20px; }
-.billingManagementForm table{margin-top:20px; text-align: center;}
+.billingManagementForm table{width:100%; argin-top:20px; text-align: center;}
 .billingManagementForm table tr{border:2px solid #000; border-top:0;}
 .billingManagementForm table tr:nth-child(1){border:2px solid #000;}
 .billingManagementForm table tr td{width:12%; height:60px; line-height:60px; float:left; border-right: 2px solid #000;}
@@ -355,9 +460,28 @@ footer h1{line-height: 100px;}
 .paymentMoney ul li:nth-child(1){margin-top:20px;}
 .goodsPaymentBtn{width:100%; float:left; text-align: center;}
 
+/* shoppingBasket */
+.shoppingBasketForm{width:100%; float:left;}
+.shoppingBasketForm span{width:100%; float:left; padding:10px; border-top:2px solid #e8e8e8; border-bottom:2px solid #e8e8e8; background: #eee;}
+.shoppingBasketForm table{width:100%; float:left;}
+.shoppingBasketForm table tr:nth-child(1) td{height: 80px; line-height: 80px; }
+.shoppingBasketForm table tr td{width:20%; float:left; text-align: center; height: 167px; line-height: 150px; }
+.shoppingBasketForm table tr td img{width:100%; float:left;}
+.shoppingBasketTotalAmountForm{width:100%; float:left}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmount{width:100%; height:150PX; float:left; margin-right: 30px; border-top:2px solid #e8e8e8;}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmount>span{float: right; padding-top:24px;}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmountBtn{width:100%;float:left;}
+.shoppingBasketTotalAmountForm .shoppingBasketTotalAmountBtn input{width:130px; height:40px;float:right; margin-right: 30px; }
 
-/* bootstrap slide */
-#contentTiles{width:100%; height:100%;;float:left;}
+/* userManagement */
+#userManagement{width:100%; float:left; margin-left:20px; margin-top:45px;}
+#userManagement table{width:100%; float;left;}
+#userManagement table tr{border:1px solid #e8e8e8; text-align: center;}
+#userManagement table tr td{border-right: 1px solid #e8e8e8; }
+
+.userManagementPaging{width:100%; float:left; text-align: center;}
+.userManagementSearch{float:right;}
+
 
 /* bootstrap pan icon */
 .glyphicon-pencil:before{margin-right:5px;}
@@ -374,9 +498,14 @@ footer h1{line-height: 100px;}
 }
 
 @media(min-width:0) and (max-width:768px){
+ /* layout */
+#mypageContentTiles{width:100%;}
+.wishListForm{margin-left:0;}
+ 
  /* header */
  .headerNavaction{display:none;}
  .headerNavactionUser{display:none;}
+
   
  /* mobile header*/
  .mobileHeaderNavaction{display: block;}
@@ -391,14 +520,21 @@ footer h1{line-height: 100px;}
  /* mobileGoodsList */
  .mobileGoodsListForm .mobileGoodsListCategory ul{width:87%; }
  
+ /* mypage */
+  .mypageMenu{display:none;}
+ .mobileMypageMenu{display:block;}
  
- /* footer */
- footer{width:100%; height: 100px; float:left; position: absolute; bottom: 0; }
- footer h1{line-height: 100px;}
- 
+ /* wishList */
+ .wishListForm table tr td{height: 200px;}
+ .wishListForm table tr td:nth-child(1){width:50%}
+ .wishListForm table tr td:nth-child(2){width:50%}
+ .wishListForm table tr td h3{font-size: 20px; line-height: 150px;font-weight: bold;}
 }
 @media(min-width:0) and (max-width:580px){
 	#goodsListItemForm .goodsListItem:nth-child(even){margin-right: 0;}
+	
+	/* wishList */
+	.wishListForm table tr td h3{font-size:7px}
 }
 
 @media(min-width:0) and (max-width:450px){

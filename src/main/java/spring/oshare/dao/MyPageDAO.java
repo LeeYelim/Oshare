@@ -1,11 +1,25 @@
 package spring.oshare.dao;
 
+import java.util.List;
+
+import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.LocationDTO;
 import spring.oshare.dto.MessageDTO;
+import spring.oshare.dto.SharingDTO;
 
 public interface MyPageDAO {
 
+	/**
+	 * 빌려준 물품 목록
+	 */
+	public List<BoardDTO> salesItemList(String memberId);
+	
+	/**
+	 * 대여한 물품 목록
+	 * */
+	public List<BoardDTO> rentalItemList(String memberId);
+	
 	/**
 	 * 판매자 평가
 	 * */

@@ -58,9 +58,10 @@
 		<div class="container">
 			<div class="indexSharingTitle">
 				<span>Sharing</span>
+				
 				<div class="indexSharingBtn">
-					<span class="material-icons SharingPrev">&#xE5CB;</span> <span
-						class="material-icons SharingNext">&#xE409;</span>
+					<span class="material-icons SharingPrev">&#xE5CB;</span>
+					<span class="material-icons SharingNext">&#xE409;</span>
 				</div>
 			</div>
 			<div class="indexSharingList owl-carousel">
@@ -70,7 +71,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -79,7 +80,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS2</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -88,7 +89,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS3</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -97,7 +98,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS4</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -106,7 +107,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS5</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 			</div>
@@ -131,7 +132,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -140,7 +141,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS2</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -149,7 +150,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS3</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -158,7 +159,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS4</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 				<div class="item">
@@ -167,7 +168,7 @@
 							alt="book"></li>
 						<li>제품명 : IOS5</li>
 						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons">&#xE87D;</span></li>
+						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
 			</div>

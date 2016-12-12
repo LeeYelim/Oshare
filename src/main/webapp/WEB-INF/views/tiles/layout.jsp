@@ -15,7 +15,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="<c:url value='/resources/css/fullcalendar.css'/>" rel="stylesheet"/>
 <link href="<c:url value='/resources/css/fullcalendar.print.css'/>" rel='stylesheet' media='print'/>
-<title>Insert title here</title>
+<title>Oshare</title>
 <style>
 	#calendar {
 		width: 495px;
@@ -42,27 +42,14 @@
 
 <div class="dialogBlack">
 </div>
-<div class="mobileHeaderNavactionMenu">
-		<ul>
-			<li><span class="material-icons close">close</span></li>
-			<li><a href="#">My Page</a></li>
-			<li><a href="<c:url value='/'/>">Home</a></li>
-			<li><a href="<c:url value='/list/goodsList'/>">Sharing</a></li>
-			<li><a href="<c:url value='/list/goodsList'/>">Rental</a></li>
-			<li><a href="#"><span class="material-icons">search</span></a></li>
-			<li><a href="#"><span class="material-icons">shopping_cart</span></a></li>
-			<li><a href="#"><span class="material-icons">notifications_none</span></a></li>
-			<li><a href="#"><span class="material-icons">attach_money</span></a></li>
-			<li><a href="<c:url value='/login/loginForm'/>">Login</a></li>
-			<li><a href="#">Join us</a></li>
-		</ul>	
-	</div>
+
 
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/owl.carousel.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/jquery.rateyo.min.js'/>" ></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/index_js.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/validityCheck.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
 	<script src="<c:url value='/resources/js/moment.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/fullcalendar.min.js'/>"></script>
@@ -95,9 +82,9 @@
 					return;
 				 }
 		    	
-		    	// 달력에 그려진 모든 예약일정 지우기
+		    	// 달력에 그려진 내 예약 지우기
 		    	for (var i = 0; reservations.length !== 0 && i < reservations.length; i++) {
-		        	if(reservations[i].id=="myReservation") { // 나중에 게시판 번호 받아오는 걸로 변경 해야 함
+		        	if(reservations[i].id=="myReservation") { 
 		        		$('#calendar').fullCalendar('removeEvents', reservations[i].id);
 		        	}
 				};
@@ -113,12 +100,13 @@
 		        var eventData;
 		        if (title && title.trim()) {
 		        	eventData = {
-		        			id : "myReservation", // 나중에 게시판 번호로
+		        			id : "myReservation",
 		        			title: title,
 		        			start: start,
-		             		end: end
+		             		end: end,
+		             		color : "#EE8787"
 		           };
-		           if(isOverlapping(start, end)==true) { // 현재 달력과 겹치는 일정이라면 select 불가
+		           if(isOverlapping(start, end)==true) { // 현재 달력과 겹치는 일정이라면 select 불가, 겹치지 않다면 예약 추가
 		        	   calendar.fullCalendar('renderEvent', eventData, true);
 		           }
 		         } 
@@ -140,24 +128,26 @@
 					type:"post",
 					dataType:"json",
 					data:"boardNo="+1, // 임의로 값 넣음!!!
+					allDay:true,
 					success : function(result) { // List<ReservationDTO>
 					var reservations = $('#calendar').fullCalendar('clientEvents'); // 달력에 있는 모든 이벤트(예약)
 						
 						// 달력에 그려진 모든 예약일정 지우기
 						for (var i = 0; reservations.length !== 0 && i < reservations.length; i++) {
-							if(reservations[i].id!="내예약") { 
+							if(reservations[i].id!="myReservation") { 
 								$('#calendar').fullCalendar('removeEvents', reservations[i].id);
 							}
 						}
 						// DB의 예약일정 달력에 추가
 						$.each(result, function(index, item){
 							var reservation = {
-								id : item.boardNo,
+								id : item.boardNo, //1
 								title : "예약불가",
 								start : moment(item.startDate).format('YYYY-MM-DD'),
-								end : moment(item.endDate+(1000*60*60*24)).format('YYYY-MM-DD'), 
+								end : moment(item.endDate).add(1, 'days').format('YYYY-MM-DD'), 
 								editable : false,
-								allDay:true
+								allDay:true,
+								color:"#887BF8"
 							}
 							calendar.fullCalendar('renderEvent', reservation, true); 
 						})  
@@ -177,7 +167,7 @@
 		    var i;
 		    for (i = 0; reservations.length !== 0 && i < reservations.length; i++) {
 		    	var arrayStartTime = new Date(reservations[i].start).getTime();
-		    	var arrayEndTime = new Date(reservations[i].end).getTime();
+		    	var arrayEndTime = new Date(reservations[i].end-(1000*60*60*24)).getTime();
 		    	if(((arrayStartTime<=startTime) && (arrayEndTime>=endTime)) || ((arrayStartTime >= startTime) && (arrayStartTime<=endTime))
 		    			|| ((arrayEndTime>=startTime)&&(arrayEndTime<=endTime))) {
 		    		alert("==st"+startTime);
@@ -193,6 +183,39 @@
 				revertFunc();
 			} 
 		}
+		
+		$(".goodsPayment").click(function() {
+			var result = confirm('신청하시겠습니까');
+
+	        if(result) {
+	        	var eventArray = $('#calendar').fullCalendar('clientEvents');
+	        	for (var i = 0; eventArray.length !== 0 && i < eventArray.length; i++) {
+	        		if(eventArray[i].id=="myReservation") { // 내가 선택한 예약이라면
+	        			var start = eventArray[i].start.format('YYYYMMDD000000');
+	    	        	var end = moment(eventArray[i].end-(1000*60*60*24)).format('YYYYMMDD000000');
+	    	        	var productid = 3; // 나중에 값 변경필요
+	    	        	//alert("end : " + moment(eventArray[i].end-(1000*60*60*24)).format('YYYYMMDD000000'));
+	    	        	var form = $('<form></form>');
+	    	        	    form.attr('action', "/controller/reservation/apply");
+	    	        	    form.attr('method', 'post');
+	    	        	    form.appendTo('body');
+	    	        	    var st = $("<input type='hidden' value="+start+" name='start'>");
+	    	        	    var e = $("<input type='hidden' value="+end+" name='end'>");
+	    	        	    var mId = $("<input type='hidden' value="+productid+" name='productid'>");
+	    	        	    form.append(st);
+	    	        	    form.append(e);
+	    	        	    form.append(mId);
+	    	        	    form.submit();
+	    	        	// location.href="<c:url value='/reservation/apply?productid="+productid+"&start="+start+"&end="+end+"'/>";
+	    	    		return;
+	        		}	
+	        	}
+	        	alert("예약 날을 선택해 주세요");
+	        } else {
+	            //no
+	            alert(11);
+	        } 
+		})
 		
 	});
 	</script>

@@ -1,6 +1,8 @@
 package spring.oshare.dto;
 
+
 import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
 
 public class BoardDTO {
 	private int boardNo; // 게시물 번호
@@ -13,6 +15,7 @@ public class BoardDTO {
 	private String detail; // 상품 상세
 	private String regDate; // 글 등록 날짜
 	private int viewCount; // 조회수
+	private List<SharingDTO> sharing;	
 	
 	private MultipartFile file; // 썸네일 대표 이미지
 	private String filePath;
@@ -28,7 +31,9 @@ public class BoardDTO {
 		this.boardType = boardType;
 		this.detail = detail;
 		this.filePath = filePath;
-	}	
+		this.regDate = regDate;
+		this.viewCount = viewCount;
+	}
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -89,6 +94,12 @@ public class BoardDTO {
 	}
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
+	}
+	public List<SharingDTO> getSharing() {
+		return sharing;
+	}
+	public void setSharing(List<SharingDTO> sharing) {
+		this.sharing = sharing;
 	}
 	public MultipartFile getFile() {
 		return file;

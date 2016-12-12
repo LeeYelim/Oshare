@@ -18,4 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT reserv_no, board_no, reserv_start, reserv_end, reg_date 
 		FROM RESERVATION where board_no=#{value}
 	</select>
+	
+	<insert id="insertReservation" parameterType="reservationDTO">
+		insert into RESERVATION 
+		values (SEQ_RESERV_NO.NEXTVAL, #{boardNo}, to_date(#{startDate},'yyyymmddhh24miss'), to_date(#{endDate},'yyyymmddhh24miss'), sysdate)
+	</insert>
 </mapper>

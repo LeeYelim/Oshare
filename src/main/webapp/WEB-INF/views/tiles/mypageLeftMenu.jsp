@@ -17,7 +17,23 @@
 			<li><a href="<c:url value='/mypage/billingManagement'/>">결제관리</a></li>
 			<li><a href="<c:url value='/mypage/message'/>">쪽지함</a></li>
 			<li><a href="<c:url value='/'/>">회원정보수정</a></li>
+			<li><a href="<c:url value='/mypage/userManagement'/>">회원관리</a></li>
 		</ul>
 	</div>
+	
+	<!-- mobile mypageMenu -->
+	<div class="mobileMypageMenu">
+		<ul>
+			<li><a href="<c:url value='/mypage/wishList'/>">WishList</a></li>
+			<li><a href="<c:url value='/mypage/salesItem'/>">판매물품목록</a></li>
+			<li><a href="<c:url value='/mypage/rentalItem'/>">대여물품목록</a></li>
+			<li><a href="<c:url value='/mypage/billingManagement'/>">결제관리</a></li>
+			<li><a href="<c:url value='/mypage/message'/>">쪽지함</a></li>
+			<li><a href="<c:url value='/'/>">회원정보수정</a></li>
+			<li><a href="<c:url value='/mypage/userManagement'/>">회원관리</a></li>
+		</ul>
+	</div>
+		
+	
 </body>
 </html>

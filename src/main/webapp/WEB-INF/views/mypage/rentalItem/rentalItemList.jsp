@@ -18,18 +18,25 @@
 					<td>대여자 연락처</td>
 					<td>반납신청</td>
 				</tr>
-				<tr>
-					<td><img src="<c:url value='/resources/image/book.jpg'/>"
-						alt="asd"></td>
-					<td>
-						Apple 
-					</td>
-					<td>
-						abc1234
-					</td>
-					<td>123456</td>
-					<td><input type="button" value="반납신청"></td>
-				</tr>
+				<c:forEach items="${requestScope.rentallist}" var="board">
+					<c:forEach items="${board.sharing}" var="sharing">
+						<tr><td>
+							<img src="<c:url value='/resources/image/book.jpg'/>"alt="asd">
+						</td>
+						<td>
+							${board.productName} 
+						</td>
+						<td>
+							${sharing.buyerId}
+						</td>
+						<td>
+							${sharing.member.memberPhone}
+						</td>
+						<td>
+							<input type="button" value="반납신청">
+						</td></tr>
+					</c:forEach>
+				</c:forEach>
 			</table>
 		</div>
 		<div class="rentalItemListPaging">
@@ -45,7 +52,7 @@
 				</ul>
 			</div>
 	<div class="rentalItemListDialog">
-	<form action="" method="">
+	<form action="" method="" onsubmit="return rentalItemValidityCheck()">
      	<div class="rentalItemListDialogTitle">
 		<span>반납신청</span>
 		<span class="material-icons rentalItemListClose ">&#xE5CD;</span>

@@ -48,17 +48,76 @@
 				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
 				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
 				<div class="headerIconNavaction">
-					<li><a href="#"><span class="material-icons">search</span></a></li>
-					<li><a href="#"><span class="material-icons">shopping_cart</span></a></li>
+					<li><span class="material-icons headerSearchIcon">search</span></li>
+					<li><a href="<c:url value='/mypage/shoppingBasket'/>"><span class="material-icons">shopping_cart</span></a></li>
 					<li><a href="#"><span class="material-icons">notifications_none</span></a></li>
 					<li><a href="#"><span class="material-icons">attach_money</span></a></li>
 				</div>
 			</ul>
+			<div class="HeaderSearchForm">
+			<form action="" method="" onsubmit="return headerSearchValidityCheck()">
+			<input type="text" name="" placeholder="Search">
+			</form>
+			<div class="HeaderSearchClose">
+			<span class="material-icons">&#xE5CD;</span>
+			</div>
+			</div>
 		</div>
 		<div class="mobileHeaderNavaction">
-			<a href="<c:url value='/'/>">Logo</a> <span class="material-icons">&#xE5D2;</span>
+		<ul>
+		<li>
+			<div class="mobileHeaderNavactionBtn">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</li>
+		<li>
+			<div class="mobileHeaderNavactionLogo">
+			<a href="<c:url value='/'/>">Logo</a>
+			</div>
+		</li>
+		<li>
+			<div class="mobileHeaderNavactionIcon">
+			<ul>
+			<li><a href="<c:url value='/mypage/shoppingBasket'/>"><span class="material-icons">shopping_cart</span></a></li>
+			<li><a href="#"><span class="material-icons">notifications_none</span></a></li>
+			<li><a href="#"><span class="material-icons">attach_money</span></a></li>
+			</ul>
+			</div>
+		</li>
+		</ul>
+		<!-- mobile menu -->
+				<div class="mobileHeaderNavactionMenu">
+			<ul>
+				<li>
+					<div class="mobileHeaderNavactionMenuSearch">
+						<form action="" method="" onsubmit="return mobileHeaderSearchValidityCheck()">
+							<input type="text" name="">
+							<input type="submit" class="material-icons" value="&#xE8B6;">
+						</form>
+					</div>
+				</li>
+				<c:choose>
+					<c:when test="${!empty sessionScope.loginMemberName}">
+				<li><a href="<c:url value='/mypage/wishList'/>">My Page</a></li>
+				<li><a href="<c:url value='/'/>">Home</a></li>
+				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
+				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>	
+				<li><a href="<c:url value='/member/loginForm'/>">Login</a></li>
+				<li><a href="<c:url value='/member/logout'/>">logout</a></li>
+					</c:when>
+					<c:otherwise>
+				<li><a href="<c:url value='/'/>">Home</a></li>
+				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
+				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>	
+				<li><a href="<c:url value='/member/loginForm'/>">Login</a></li>
+				<li><a href="#">Join us</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>	
 		</div>
-
+		</div>
 	</div>
 
 </body>
