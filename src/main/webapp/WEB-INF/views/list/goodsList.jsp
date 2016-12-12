@@ -158,8 +158,7 @@
 				</div>
 				<div class="goodsListInsertBtn">
 				
-				<span class="glyphicon glyphicon-pencil
-				">제품등록</span>
+				<span class="glyphicon glyphicon-pencil"><a href="<c:url value='/editor/insertProduct'/>?boardType=sharing">제품등록</a></span>
 				</div>
 				<div class="goodsListNavaction">
 					<ul class="pagination">

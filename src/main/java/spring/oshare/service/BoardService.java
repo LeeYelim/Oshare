@@ -7,7 +7,7 @@ public interface BoardService {
 	/**
 	 * 물품 등록
 	 * */
-	int insertBoard(BoardDTO board);
+	void insertBoard(BoardDTO board);
 
 	/**
 	 * 물품 수정

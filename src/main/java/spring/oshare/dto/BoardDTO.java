@@ -1,10 +1,12 @@
 package spring.oshare.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BoardDTO {
 	private int boardNo; // 게시물 번호
 	private String productName; // 물품명
 	private String category; // 카테고리
-	private String price; // 1일당 대여가격
+	private int price; // 1일당 대여가격
 	private String condition; // 물품 상태
 	private String boardType; // 게시물 유형(쉐어링 or 렌탈)
 	private String dealingType; // 거래 종류(택배 or 직거래)
@@ -12,23 +14,22 @@ public class BoardDTO {
 	private String regDate; // 글 등록 날짜
 	private int viewCount; // 조회수
 	
+	private MultipartFile file; // 썸네일 대표 이미지
+	private String filePath;
+	
+	// Default Constructor
 	public BoardDTO() {}
-	public BoardDTO(int boardNo, String productName, String category, String price, String condition, String boardType,
-			String dealingType, String detail, String regDate, int viewCount) {
-		super();
-		this.boardNo = boardNo;
+	// Constructor for inserting Product
+	public BoardDTO(String productName, String category, int price, String condition, String boardType, String detail, String filePath) {
 		this.productName = productName;
 		this.category = category;
 		this.price = price;
 		this.condition = condition;
 		this.boardType = boardType;
-		this.dealingType = dealingType;
 		this.detail = detail;
-		this.regDate = regDate;
-		this.viewCount = viewCount;
-	}
-
-
+		this.filePath = filePath;
+	}	
+	
 	public int getBoardNo() {
 		return boardNo;
 	}
@@ -47,10 +48,10 @@ public class BoardDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getCondition() {
@@ -89,5 +90,25 @@ public class BoardDTO {
 	public void setViewCount(int viewCount) {
 		this.viewCount = viewCount;
 	}
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	
+	@Override
+	public String toString() {
+		return "BoardDTO [boardNo=" + boardNo + ", productName=" + productName + ", category=" + category + ", price="
+				+ price + ", condition=" + condition + ", boardType=" + boardType + ", dealingType=" + dealingType
+				+ ", detail=" + detail + ", regDate=" + regDate + ", viewCount=" + viewCount + ", file=" + file
+				+ ", filePath=" + filePath + "]";
+	}
+
 }

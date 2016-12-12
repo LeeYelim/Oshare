@@ -16,8 +16,7 @@
 
 
 	<!-- 외부설정문서(properties파일) 가져오기 -->
-	<beans:bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<beans:property name="locations"><!-- setLocations()호출 -->
 			<beans:value>/WEB-INF/spring/appServlet/dbInfo.properties</beans:value>
 		</beans:property>
@@ -30,11 +29,10 @@
 		p:username="${userName}"
 		p:password="${userPass}" p:maxActive="10" />
 
-
-
-	<!-- <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
-		p:dataSource-ref="dataSource" p:configLocation="classpath:kdb/spring/conf/SqlMapConfig.xml" 
-		/> -->
+	<!-- 
+		<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
+		p:dataSource-ref="dataSource" p:configLocation="classpath:kdb/spring/conf/SqlMapConfig.xml"/>
+	 -->
 
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -50,26 +48,10 @@
 	</beans:bean>
 
 
-
-
-
 	<!-- spring tx를 위한 스키마 설정 -->
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		p:dataSource-ref="dataSource" />
-
-
-	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager"> 
-		<tx:attributes> <tx:method name="*" propagation="REQUIRED" /> </tx:attributes> 
-		</tx:advice> -->
-
-
-	<!-- <aop:config> <aop:advisor advice-ref="txAdvice" pointcut="execution(public 
-		* spring.web.service.*.*(..))" /> </aop:config> -->
-
-
-	<!-- spring transaction annotaion설정 -->
-	<!-- <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/> -->
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 

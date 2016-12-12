@@ -31,6 +31,8 @@ public class BoardController {
 	 */
 	@RequestMapping("goodsDetail")
 	public String goodsDetailFrom(){
+		
+		
 		return "detail/goodsDetail";
 	}
 }

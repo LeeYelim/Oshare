@@ -15,9 +15,13 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public int insertBoard(BoardDTO board) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void insertBoard(BoardDTO board) {
+		sqlSession.insert("boardMapper.insertBoard", board);
+	}
+
+	@Override
+	public int selectBoardSeqNo() {
+		return sqlSession.selectOne("boardMapper.selectBoardSeqNo");
 	}
 
 	@Override

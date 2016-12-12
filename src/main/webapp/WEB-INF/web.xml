@@ -23,6 +23,10 @@
 	   <param-value>UTF-8</param-value>
 	 </init-param>
 	</filter>
+	<filter-mapping>
+        <filter-name>encFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>
@@ -37,7 +41,6 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>

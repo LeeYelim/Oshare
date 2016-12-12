@@ -1,7 +1,5 @@
 package spring.oshare.dao;
 
-import org.springframework.stereotype.Repository;
-
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.ReviewDTO;
@@ -11,8 +9,13 @@ public interface BoardDAO {
 	/**
 	 * 물품 등록
 	 * */
-	int insertBoard(BoardDTO board);
-
+	void insertBoard(BoardDTO board);
+	
+	/**
+	 * 물품 등록 후, viewdetail에 반환하기 위해 sequence no 반환
+	 */
+	int selectBoardSeqNo();
+	
 	/**
 	 * 물품 수정
 	 * */

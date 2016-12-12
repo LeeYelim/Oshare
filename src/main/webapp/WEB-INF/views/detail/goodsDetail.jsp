@@ -17,8 +17,7 @@
 				<ul>
 					<li><a href="#">카테고리</a></li>
 					<li><a href="#">취미</a> / <a href="#">도서</a> / <a href="#">티켓</a></li>
-					<li><a href="#">가구</a> / <a href="#">생활</a> / <a href="#">주방</a>
-					</li>
+					<li><a href="#">가구</a> / <a href="#">생활</a> / <a href="#">주방</a></li>
 					<li><a href="#">출산</a> / <a href="#">유아</a></li>
 					<li><a href="#">가전</a> / <a href="#">디지털</a> / <a href="#">컴퓨터</a></li>
 					<li><a href="#">패션</a> / <a href="#">뷰티</a></li>
@@ -30,8 +29,8 @@
 		<div class="col-xs-10">
 
 			<div class="goodsAdd">
-				<span class="material-icons">&#xE87D;</span> <span
-					class="material-icons">&#xE8CC;</span>
+				<span class="material-icons">&#xE87D;</span>
+				<span class="material-icons">&#xE8CC;</span>
 			</div>
 
 			<!-- mobile goodsListCategory + goodsDetailSearch -->
@@ -59,16 +58,11 @@
 					<img src="<c:url value='/resources/image/NoteBook.jpg'/>"
 						alt="goodsDetailMainImg">
 					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="goodsDetailMainImg"></li>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="goodsDetailMainImg"></li>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="goodsDetailMainImg"></li>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="goodsDetailMainImg"></li>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="goodsDetailMainImg"></li>
+						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>" alt="goodsDetailMainImg"></li>
+						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>" alt="goodsDetailMainImg"></li>
+						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>" alt="goodsDetailMainImg"></li>
+						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>" alt="goodsDetailMainImg"></li>
+						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>" alt="goodsDetailMainImg"></li>
 					</ul>
 				</div>
 				<div class="sellerInformation">
