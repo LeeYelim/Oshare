@@ -14,13 +14,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 
 <title>Oshare</title>
-<style>
-
-#contentTiles {
-	width: 80%;
-	float: left;
-}
-</style>
 </head>
 <body>
 	<div id="main">
@@ -33,7 +26,7 @@
 		<div id="mypageLeftMenuTiles">
 			<tiles:insertAttribute name="mypageMenu" />
 		</div>
-		<div id="contentTiles">
+		<div id="mypageContentTiles">
 			<tiles:insertAttribute name="mypageContent" />
 			
 		</div>

@@ -98,13 +98,23 @@
 						</form>
 					</div>
 				</li>
-				<li><a href="#">My Page</a></li>
+				<c:choose>
+					<c:when test="${!empty sessionScope.loginMemberName}">
+				<li><a href="<c:url value='/mypage/wishList'/>">My Page</a></li>
 				<li><a href="<c:url value='/'/>">Home</a></li>
 				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
-				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
-				
+				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>	
+				<li><a href="<c:url value='/member/loginForm'/>">Login</a></li>
+				<li><a href="<c:url value='/member/logout'/>">logout</a></li>
+					</c:when>
+					<c:otherwise>
+				<li><a href="<c:url value='/'/>">Home</a></li>
+				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
+				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>	
 				<li><a href="<c:url value='/member/loginForm'/>">Login</a></li>
 				<li><a href="#">Join us</a></li>
+					</c:otherwise>
+				</c:choose>
 			</ul>	
 		</div>
 		</div>

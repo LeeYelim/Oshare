@@ -47,7 +47,7 @@ function checkValid() {
 	<div id="mobileLogin">
 		<div class="mobileLoginForm">
 			<a href="<c:url value='/'/>"><h1>Logo</h1></a>
-			<form action="" method="post" onsubmit="return mobileLoginValidityCheck()">
+			<form action="<c:url value='/member/loginCheck'/>" method="post" onsubmit="return mobileLoginValidityCheck()">
 			<input type="text" name="memberId" placeholder="아이디">
 			<input type="password" name="memberPwd" placeholder="패스워드">
 			<input type="submit" value="로그인">

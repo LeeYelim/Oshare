@@ -58,9 +58,10 @@
 		<div class="container">
 			<div class="indexSharingTitle">
 				<span>Sharing</span>
+				
 				<div class="indexSharingBtn">
-					<span class="material-icons SharingPrev">&#xE5CB;</span> <span
-						class="material-icons SharingNext">&#xE409;</span>
+					<span class="material-icons SharingPrev">&#xE5CB;</span>
+					<span class="material-icons SharingNext">&#xE409;</span>
 				</div>
 			</div>
 			<div class="indexSharingList owl-carousel">
