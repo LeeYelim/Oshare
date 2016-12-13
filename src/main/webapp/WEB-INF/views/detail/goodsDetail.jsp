@@ -78,7 +78,11 @@
 							</div>
 							<div class="starGrade">
 								<span>★</span> <span>★</span> <span>★</span> <span>★</span> <span>★</span>
-							</div></li>
+							</div>
+							<div class="declaration">
+							<img src="<c:url value='/resources/image/siren.png'/>" alt="신고버튼">
+							</div>
+							</li>
 						<li><div class="sellerSub">
 								<span>프로필보기</span><span>쪽지보내기</span>
 							</div></li>
@@ -96,6 +100,10 @@
 					</div>
 			</div>
 			<div class="col-xs-6">
+				<div class="goodsDetailIcon">
+				<span class="material-icons">&#xE87D;</span>
+				<span class="material-icons">&#xE8CC;</span>
+				</div>
 				<div class="goodsDetailInformation">
 					<ul>
 						<li>제품이름 : <span class="goodsName">iPhone</span></li>
@@ -113,7 +121,7 @@
 				<ul class="nav nav-tabs goodsDetailNavaction">
 					<li class="active"><a data-toggle="tab"
 						href="#goodsInformation">상품정보</a></li>
-					<li><a data-toggle="tab" href="#gooodsReview">상품후기</a></li>
+					<li><a data-toggle="tab" href="#goodsReview">상품후기</a></li>
 					<li><a data-toggle="tab" href="#goodsQuestion">Q &amp; A</a></li>
 					<li><a data-toggle="tab" href="#instructionsResume">안내사항</a></li>
 				</ul>
@@ -122,24 +130,33 @@
 					<div id="goodsInformation" class="tab-pane fade in active">
 						<h3>상품정보</h3>
 					</div>
-					<div id="gooodsReview" class="tab-pane fade">
-						<div class="panel-group" id="accordion">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordion"
-											href="#gooodsReviewcollapse">제품 조금 쓸만하네요</a>
-									</h4>
+					<div id="goodsReview" class="tab-pane fade">
+					  <div class="goodsReviewFrame">
+						<div class="goodsReviewForm">
+								<div class="goodsReviewTitle">
+										<span>Test</span>
 								</div>
-								<div id="gooodsReviewcollapse" class="panel-collapse collapse">
-									<div class="panel-body">Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit, sed do eiusmod tempor incididunt
-										ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-										quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-										ea commodo consequat.</div>
+								<div class="goodsReviewContent">
+									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+									<span class="goodsReviewAdd">댓글달기</span>
 								</div>
-							</div>
 						</div>
+						
+						<div class="goodsReviewForm">
+								<div class="goodsReviewTitle">
+										<span>Test</span>
+								</div>
+								<div class="goodsReviewContent">
+									<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span>
+									<span class="goodsReviewAdd">댓글달기</span>
+								</div>
+						</div>
+					  </div>
+													
+						<div class="goodsReviewPlus">
+							<span>질문하기</span>
+						</div>						
+						
 						<div class="goodsReviewPaing">
 							<ul class="pagination">
 								<li><a href="#">«</a></li>
@@ -154,7 +171,8 @@
 						</div>
 					</div>
 					<div id="goodsQuestion" class="tab-pane fade">	
-							<div class="goodsQuestionForm">
+						<div class="goodsQuestionFrame">
+						<div class="goodsQuestionForm">
 								<div class="goodsQuestionTitle">
 									<span>Test</span>
 								</div>
@@ -163,6 +181,7 @@
 									<span class="goodsQuestionAdd">댓글달기</span>
 								</div>
 							</div>
+						</div>
 						<div class="goodsQuestionPlus">
 							<span>질문하기</span>
 						</div>
@@ -287,7 +306,6 @@
 		<div class="saleProfileTitle">
 		<span>프로필</span>
 		<span class="material-icons saleProfileClose">&#xE5CD;</span>
-		<span></span>
 		</div>
 		  <div class="saleProfileImg">
 			<img src="<c:url value='/resources/image/sampleProfile.png'/>" alt="프로필이미지">
@@ -352,6 +370,44 @@
 				</ul>
 			</div>
 		  </div>
+		</div>
+		<div class="saleMessage">
+			<div class="saleMessageTitle">
+				<span>쪽지쓰기</span>
+				<span class="material-icons saleMessageClose">&#xE5CD;</span>
+			</div>
+		  <form action="" method="">
+		  	<div class="saleMessageRecipient">
+			<span>받는이 </span><input type="text">
+			</div>
+			<div class="saleMessageContent">
+			<span>쪽지내용</span>
+			<textarea></textarea>
+			</div>
+			<div class="saleMessageBtn">
+			<input type="submit" value="쪽지보내기">
+		  	</div>
+		  </form>
+		</div>
+		<div class="declarationDialog">
+			<div class="declarationTitle">
+				<span>신고하기</span>
+				<span class="material-icons declarationClose">&#xE5CD;</span>
+			</div>
+			<form action="" method="">
+				<div class="declarationList">
+					<span>신고사유</span>
+					<select name="">
+						<option value=""></option>
+					</select>
+				</div>
+				<div class="">
+					<span>신고이유</span>
+					<textarea></textarea>
+				</div>
+				<div class="declarationBtn">
+				</div>
+			</form>	
 		</div>
 </body>
 </html>

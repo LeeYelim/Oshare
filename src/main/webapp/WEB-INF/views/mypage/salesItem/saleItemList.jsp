@@ -42,17 +42,7 @@
 						<input type="button" value="비용청구">
 					</td></tr>
 				</c:forEach>
-			</c:forEach>
-		
-		
-				<%-- <tr>
-					<td>사진</td>
-					<td>제품명</td>
-					<td>대여자 ID</td>
-					<td>대여자 연락처</td>
-					<td>판매상태</td>
-					<td>비용청구</td>
-				</tr>
+			</c:forEach>	
 				<tr>
 					<td><img src="<c:url value='/resources/image/book.jpg'/>"
 						alt="asd"></td>
@@ -65,7 +55,7 @@
 					<td>123456</td>
 					<td>대여중..</td>
 					<td><input type="button" value="비용청구"></td>
-				</tr> --%>
+				</tr>
 				
 			</table>
 		</div>

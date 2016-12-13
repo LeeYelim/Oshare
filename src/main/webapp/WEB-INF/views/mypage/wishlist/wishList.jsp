@@ -13,6 +13,10 @@
 			<span>WishList</span>
 			<table>
 				<tr>
+					<td>제품</td>
+					<td>제품명</td>
+				</tr>
+				<tr>
 					<td><img src="<c:url value='/resources/image/book.jpg'/>"
 						alt="asd"></td>
 					<td>

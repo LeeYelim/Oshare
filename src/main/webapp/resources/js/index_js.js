@@ -9,14 +9,18 @@ $(function(){
 	/* header + index */
 	$(document).on("scroll",function(){
 		
-		
-		if($(window).scrollTop() > $(".headerNavactionUser").offset().top+30){	
+		if($(window).scrollTop() > 30){	
+			
 			$(".headerNavaction").addClass("headerNavactionAdvice");
 			$(".headerNavaction").css({"height":"65px","line-height":"45px","position":"fixed"})
 		}else{
+			
 			$(".headerNavaction").removeClass("headerNavactionAdvice");
 			$(".headerNavaction").css({"height":"85px","line-height":"65px","position":"relative"})
+		
 		}
+		
+		//$(window).scrollTop()
 	});
 	
 	$(document).on("click",".headerIconNavaction .headerSearchIcon",function(){
@@ -53,7 +57,7 @@ $(function(){
 	
 	
 	
-	/* Sharing List Event */
+	 //Sharing List Event 
 	 var owl = $(".indexSharingList");	
 	 owl.owlCarousel({
 	      items : 4, //10 items above 1000px browser width
@@ -83,7 +87,7 @@ $(function(){
 	    owl.trigger('prev.owl');
 	  })//Sharing List Event End
 	  
-  	/* Rental List Event */
+  	 //Rental List Event 
 	 var owl2 = $(".indexRentalList");	
 	 owl2.owlCarousel({
 	      items : 4, //10 items above 1000px browser width
@@ -113,7 +117,7 @@ $(function(){
 	    owl2.trigger('prev.owl');
 	  })//Rental List Event End
 	  
-	  /* goodsList Search */
+	  // goodsList Search 
 	  $(document).on("click",".goodsListDetailSearch,.goodsListDetailSearch2",function(){
 	  if($("#goodsListDetailSearchDialog").is(":animated"))return;
 	  	$("#goodsListDetailSearchDialog").css({"left":"60%"});
@@ -127,7 +131,7 @@ $(function(){
 			 $("#goodsListDetailSearchDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 	  }); //goodsListDetailSearch Close Dialog Event end 
 	   
-	  /* goodsList mobileSearch*/
+	   //goodsList mobileSearch
 	  if($(window).width()<=992 && $(window).width() >=768 ){
 		  $(".mobileDetailSearch span").addClass("goodsListDetailSearch2");
 		  $(".mobileDetailSearch span").removeClass("mobilegoodsListDetailSearch");
@@ -176,16 +180,30 @@ $(function(){
 				 $("#mobileGoodsListDetailSearchDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 		  });//mobilegoodsListDetailSearch Close Dialog Event End   
 		  
-		  /* goodsDetail */
+		  //goodsDetail 
+		  $(document).on("click",".goodsReviewTitle",function(){	
+			  if($(".goodsReviewContent").is(":animated"))return;
+			  if(  $(this).next().is(':hidden'))index = 0;
+			  if(  $(this).next().is(':visible'))index = 1;
+			  
+			 if(index<=0){
+				  $(this).next().slideDown();
+			  }else{
+				  $(this).next().slideUp();		  			 
+			  }
+		  });//review slide  
+		  
+		  
+		
 		  $(document).on("click",".goodsQuestionTitle",function(){	
 			  if($(".goodsQuestionContent").is(":animated"))return;
-			  if(index<=0){
-				  $(".goodsQuestionContent").slideDown();
-				  index=1;
+			  if(  $(this).next().is(':hidden'))index = 0;
+			  if(  $(this).next().is(':visible'))index = 1;
+			  
+			 if(index<=0){
+				  $(this).next().slideDown();
 			  }else{
-				  $(".goodsQuestionContent").slideUp();		  
-				  index=0;
-				 
+				  $(this).next().slideUp();		  			 
 			  }
 		  });// q & a slide  
 		  
@@ -200,15 +218,29 @@ $(function(){
 			  if($(".saleProfile").is(":animated"))return;
 			  $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
 			  $(".saleProfile").animate({"opacity":"0","left":"40%"},500).hide(10); 
-		  });
-		 	  
+		  });// goodsDetail Profile Close Event End
+		 
 		  
-		  /* goodsDetailChatting */
+		  $(document).on("click",".sellerInformation .sellerSub span:nth-child(2)",function(){
+			 if($(".saleMessage").is(":animated"))return;
+			 $(".saleMessage").css({"left":"60%"});
+			 $(".dialogBlack").animate({"opacity":"0.7"},500).show();
+			 $(".saleMessage").animate({"opacity":"1","left":"50%"},500).show();
+		  });// goodsDetail saleMessage Open Event End
+		  
+		  $(document).on("click",".saleMessage .saleMessageTitle .saleMessageClose",function(){
+				 if($(".saleMessage").is(":animated"))return;
+				 $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+				 $(".saleMessage").animate({"opacity":"0","left":"40%"},500).hide(10);
+			  });// goodsDetail saleMessage Close Event End
+		  
+		  
+		   //goodsDetailChatting  q & a
 		  $(document).on("click",".goodsQuestionContent .goodsQuestionAdd",function(){
 			//var str =$(this).parent().parent().children("td:first").next().text();
-			 $(".goodsChattingForm").remove();
+			 $(".goodsQuestionChattingForm").remove();
 			  	
-			 $(this).parent().append("<div class='goodsChattingForm'>" +
+			 $(this).parent().append("<div class='goodsQuestionChattingForm'>" +
 			 		"<p>cfrqw1234 에게 댓글 쓰기</p>" +
 			 		"<form>" +
 			 		"<textarea  name='goodsChatting'></textarea>" +
@@ -216,14 +248,14 @@ $(function(){
 			 		"</form><p>200자내외</p></div>");
 		  	});
 		  
-		  $(document).on("click",".goodsChattingForm input[type=button]",function(){
+		  $(document).on("click",".goodsQuestionChattingForm input[type=button]",function(){
 			  $(this).parent().parent().parent().children("span:nth-child(1)").append("<h1>asd</h1>");
 		  });
 		  
 		  $(document).on("click","#goodsQuestion .goodsQuestionPlus",function(){
 		  $(".goodsQuestionPlusForm").remove();
 		  
-			$(".goodsQuestionForm").append("<div class='goodsQuestionPlusForm'>" +
+			$(".goodsQuestionFrame").append("<div class='goodsQuestionPlusForm'>" +
 	 		"<form action='' method=''><div class='goodsQuestionPlusFormTitle'>" +
 			"<span>제목 : </span><input type='text' name=''></div>" +
 			"<div class='goodsQuestionPlusFormContent'><span>내용 : </span>" +
@@ -231,7 +263,37 @@ $(function(){
 			"</form></div>");
 		  });
 		  
-		  /* saleItemList */
+		  //goodsDetailChatting  review
+		  $(document).on("click",".goodsReviewContent .goodsReviewAdd",function(){
+				//var str =$(this).parent().parent().children("td:first").next().text();
+				 $(".goodsReviewChattingForm").remove();
+				  	
+				 $(this).parent().append("<div class='goodsReviewChattingForm'>" +
+				 		"<p>cfrqw1234 에게 댓글 쓰기</p>" +
+				 		"<form>" +
+				 		"<textarea  name='goodsReviewChatting'></textarea>" +
+				 		"<input type='button' value='입력'>" +
+				 		"</form><p>200자내외</p></div>");
+			  	});
+			  
+			  $(document).on("click",".goodsReviewChattingForm input[type=button]",function(){
+				  $(this).parent().parent().parent().children("span:nth-child(1)").append("<h1>asd2</h1>");
+			  });
+			  
+			  $(document).on("click","#goodsReview .goodsReviewPlus",function(){
+			  $(".goodsReviewPlusForm").remove();
+			  
+				$(".goodsReviewFrame").append("<div class='goodsReviewPlusForm'>" +
+		 		"<form action='' method=''><div class='goodsReviewPlusFormTitle'>" +
+				"<span>제목 : </span><input type='text' name=''></div>" +
+				"<div class='goodsReviewPlusFormContent'><span>내용 : </span>" +
+				"<textarea ></textarea></div><input type='submit' value='전송'>" +
+				"</form></div>");
+			  });
+		  
+		  
+		  
+		   //saleItemList 
 		  $(document).on("click",".saleItemListForm input[value=비용청구]",function(){
 			 		if($(".saleItemListDialog").is(":animated"))return;
 			  		$(".saleItemListDialog").css({"left":"60%"});
@@ -245,7 +307,7 @@ $(function(){
 			  		$(".saleItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 		  });//saleItemListDialog Close Event End
 		  
-		  /* rentalItemList */
+		   //rentalItemList 
 		  $(".rentalItemEvaluation #rateYo").rateYo().on("rateyo.set", function (e, data) {
               alert("The rating is set to " + data.rating + "!");
            });//rentalItemEvaluation Event End		
@@ -264,7 +326,7 @@ $(function(){
 		  });//rentalItemListDialog Close Event End
 
 		  		
-		/* wishList */
+		 //wishList 
 	    $(document).on("click",".wishListClose",function(){
 	    	$(this).parent().parent().remove();
 	    });

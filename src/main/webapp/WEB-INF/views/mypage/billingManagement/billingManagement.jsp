@@ -15,7 +15,7 @@
 					<td>사진</td>
 					<td>제품명</td>
 					<td>일일대여비</td>
-					<td>대여기간</td>
+					<td style="line-height: 40px;">대여기간</td>
 					<td>대여료</td>
 					<td>추가비용</td>
 					<td>총액</td>
