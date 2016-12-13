@@ -307,6 +307,13 @@ $(function(){
 			  		$(".saleItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 		  });//saleItemListDialog Close Event End
 		  
+		  $(document).on("click",".saleItemListDialog .saleItemBtn input[value=취소]",function(){
+		  		if($(".saleItemListDialog").is(":animated"))return;
+		  		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+		  		$(".saleItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
+	  	  });//saleItemListDialog Close Event End
+		  
+		  
 		   //rentalItemList 
 		  $(".rentalItemEvaluation #rateYo").rateYo().on("rateyo.set", function (e, data) {
               alert("The rating is set to " + data.rating + "!");
@@ -324,11 +331,43 @@ $(function(){
 			  		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
 			  		$(".rentalItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 		  });//rentalItemListDialog Close Event End
-
+		  
+		  $(document).on("click",".rentalItemListDialog .rentalItemListBtn input[value=취소]",function(){
+		  		if($(".rentalItemListDialog").is(":animated"))return;
+		  		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+		  		$(".rentalItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
+	  });//rentalItemListDialog Close Event End
+		  
+		  //declaration
+		  $(document).on("click",".declaration img",function(){
+			  if($(".declarationDialog").is(":animated"))return;
+			  $(".declarationDialog").css({"left":"60%"});
+			  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
+			  $(".declarationDialog").animate({"opacity":"1","left":"50%"},500).show()
+		  });//declarationDialog Open Event End
+		  
+		  $(document).on("click",".declarationDialog .declarationTitle .declarationClose",function(){
+			  if($(".declarationDialog").is(":animated"))return;
+			  $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+			  $(".declarationDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
+		  });//declarationDialog Close Event End
+		  
+		  $(document).on("click",".declarationDialog .declarationBtn input[value=취소] ",function(){
+			  if($(".declarationDialog").is(":animated"))return;
+			  $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+			  $(".declarationDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
+		  });//declarationDialog Close Event End
 		  		
 		 //wishList 
 	    $(document).on("click",".wishListClose",function(){
 	    	$(this).parent().parent().remove();
+	    });
+	    
+	     //userManagement
+	    $(document).on("click","#userManagement ul li a",function(){
+	    	if($(this).text() == "전체회원")$(".userManagementBtn input").val("정지");
+    		if($(this).text() == "신고당한 회원")$(".userManagementBtn input").val("정지");
+			if($(this).text() == "정지회원")$(".userManagementBtn input").val("정지해제");
 	    });
 	});
 

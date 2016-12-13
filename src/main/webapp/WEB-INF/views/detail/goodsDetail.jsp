@@ -398,14 +398,19 @@
 				<div class="declarationList">
 					<span>신고사유</span>
 					<select name="">
-						<option value=""></option>
+						<option value="비속어사용">비속어사용</option>
+						<option value="태도분량">태도분량</option>
+						<option value="타홍보">타홍보</option>
+						<option value="사기성">사기성</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="reasonForReport">
 					<span>신고이유</span>
 					<textarea></textarea>
 				</div>
 				<div class="declarationBtn">
+					<input type="submit" value="전송">
+					<input type="button" value="취소" >
 				</div>
 			</form>	
 		</div>

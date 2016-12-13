@@ -126,6 +126,9 @@
     </div>
   </div>
 </div>
+<div class="userManagementBtn">
+	<input type="button" value="정지">
+</div>
 <div class="userManagementPaging">
 				<ul class="pagination">
 					<li><a href="#">«</a></li>
