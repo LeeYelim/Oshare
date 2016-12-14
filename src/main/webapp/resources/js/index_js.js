@@ -365,11 +365,11 @@ $(function(){
 	  function saleItemListText(){
 		  if($(".saleItemListTransactionStatus span").text() == "대여대기"){
 			  //예약취소
-			  $(".saleItemListTransactionStatus span").css({"height":"60px","line-height":"60px"});
+			  $(".saleItemListTransactionStatus span").css({"line-height":"78px"});
 			  $(".saleItemListTransactionStatus input[type=button]").hide();
 		  }else if($(".saleItemListTransactionStatus span").text() == "대여중"){
 			  //반납신청
-			  $(".saleItemListTransactionStatus span").css({"line-height":"60px"});
+			  $(".saleItemListTransactionStatus span").css({"line-height":"78px"});
 			  $(".saleItemListTransactionStatus input[type=button]").hide();
 		  }else if($(".saleItemListTransactionStatus span").text() == "반납신청 중"){
 			  //판매자한테 청구하기 버튼 생성
@@ -377,7 +377,7 @@ $(function(){
 			  $(".saleItemListTransactionStatus input[type=button]").show().val("반납완료");		  
 			  //판매자가 청구하기 할때 대여자도 청구하기 버튼이 생김
 			  //대여자 버튼 사라짐
-			  $(".saleItemListTransactionStatus span").css({"height":"60px","line-height":"60px"});
+			  $(".saleItemListTransactionStatus span").css({"line-height":"78px"});
 			  $(".saleItemListTransactionStatus input[type=button]").remove();
 		  }else if($(".saleItemListTransactionStatus span").text() == "거래완료"){
 			  //거래완료
