@@ -59,19 +59,26 @@ public class MyPageDAOImpl implements MyPageDAO{
 	}
 
 	@Override
-	public int deleteMessage(String messageNo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteMessage(String[] messageNo) {
+		int result =0;
+		for(String messageNumber : messageNo){
+			result =sqlSession.update("sendMessageMapper.sendMessageDelete", messageNumber);
+		}
+		return result;
 	}
 
 	@Override
 	public List<MessageDTO> selectSenderMessage(String sender) {
-		return sqlSession.selectList("sendMessageMapper.senedMessageReceiverSelect",sender);
+		System.out.println("sender : " +sender);
+		return sqlSession.selectList("sendMessageMapper.senedMessageSenderSelect",sender);
 	}
 
 	@Override
 	public List<MessageDTO> selectReceiverMessage(String receiver) {
-		return sqlSession.selectList("sendMessageMapper.senedMessageSenderSelect",receiver);		
+		System.out.println("recevier : "+receiver);
+		List<MessageDTO>  list =sqlSession.selectList("sendMessageMapper.senedMessageReceiverSelect",receiver);
+		System.out.println("list : "+list.get(0).getMessageNo()+"  "+list.get(0).getSendingDate());
+		return list;
 	}
 	
 }

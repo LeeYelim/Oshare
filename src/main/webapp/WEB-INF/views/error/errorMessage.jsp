@@ -31,7 +31,8 @@
 		<div class="col-lg-6  col-lg-offset-3">
 			<div class="btn-group btn-group-justified">
 				<a href="<c:url value="/member/loginForm"/>" class="btn btn-primary">Login</a>
-				<a href="<c:url value="/"/>" class="btn btn-success">Return Website</a>
+				<a href="<c:url value="/"/>" class="btn btn-success">Return
+					Website</a>
 			</div>
 
 		</div>

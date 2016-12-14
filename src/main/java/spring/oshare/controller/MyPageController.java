@@ -117,11 +117,21 @@ public class MyPageController {
 	@RequestMapping("sendMessageSelect")
 	@ResponseBody
 	public List<MessageDTO>  selectMessage(String posts , String division){
-		return myPageService.selectMessage(posts, division);
+		 List<MessageDTO> list = myPageService.selectMessage(posts, division);
+		 
+		 return list;
 		
 	}
 	
-
+	/**
+	 * 率瘤 昏力
+	 * */
+	@RequestMapping("sendMessageDelete")
+	@ResponseBody
+	public int deleteMessage(String[] messageNo){
+		return myPageService.deleteMessage(messageNo);
+	}
+	
 	/**
 	 * 搬力 包府 格废
 	 */

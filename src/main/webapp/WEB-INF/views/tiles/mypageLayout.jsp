@@ -5,13 +5,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css"href="<c:url value='/resources/css/bootstrap.min.css'/>">
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>">
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/owl.carousel.css'/>">
-<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/jquery.rateyo.css'/>">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/resources/css/bootstrap.min.css'/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/resources/css/style.css'/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/resources/css/owl.carousel.css'/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='/resources/css/jquery.rateyo.css'/>">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 <title>Oshare</title>
 </head>
@@ -20,30 +26,37 @@
 		<header>
 			<tiles:insertAttribute name="header" />
 		</header>
-	
+
 		<div class="container">
-			
-		<div id="mypageLeftMenuTiles">
-			<tiles:insertAttribute name="mypageMenu" />
+
+			<div id="mypageLeftMenuTiles">
+				<tiles:insertAttribute name="mypageMenu" />
+			</div>
+			<div id="mypageContentTiles">
+				<tiles:insertAttribute name="mypageContent" />
+
+			</div>
 		</div>
-		<div id="mypageContentTiles">
-			<tiles:insertAttribute name="mypageContent" />
-			
-		</div>
-	</div>
 		<footer>
 			<tiles:insertAttribute name="footer" />
-		</footer> 
+		</footer>
 	</div>
 	<div class="dialogBlack"></div>
 
 
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/owl.carousel.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/jquery.rateyo.min.js'/>" ></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/index_js.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/validityCheck.js'/>"></script>
-	<script type="text/javascript" src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/owl.carousel.min.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/jquery.rateyo.min.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/index_js.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/validityCheck.js'/>"></script>
+	<script type="text/javascript"
+		src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
 </body>
 </html>

@@ -7,13 +7,15 @@
 
 	<!-- sharing, rental 제품 등록 -->
 	<insert id="insertBoard" parameterType="boardDTO">
-		INSERT INTO BOARD(BOARD_NO,PRODUCT_NAME,PRODUCT_CATEGORY,BOARD_TYPE,PRODUCT_PRICE_PER_DAY,PRODUCT_CONDITION,PRODUCT_DETAIL,REG_DATE,THUMBNAIL,VIEWCOUNT)
+		INSERT INTO
+		BOARD(BOARD_NO,PRODUCT_NAME,PRODUCT_CATEGORY,BOARD_TYPE,PRODUCT_PRICE_PER_DAY,PRODUCT_CONDITION,PRODUCT_DETAIL,REG_DATE,THUMBNAIL,VIEWCOUNT)
 		VALUES(SEQ_BOARD_NO.NEXTVAL,#{productName},#{category},#{boardType},#{price},#{condition},#{detail},SYSDATE,#{filePath},0)
 	</insert>
-	
+
 	<!-- selectBoardSeqNo -->
 	<select id="selectBoardSeqNo" resultType="int">
-		SELECT SEQ_BOARD_NO.CURRVAL FROM DUAL
+		SELECT
+		SEQ_BOARD_NO.CURRVAL FROM DUAL
 	</select>
-	
+
 </mapper>

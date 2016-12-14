@@ -19,7 +19,7 @@
 			<li><a href="<c:url value='/mypage/userManagement'/>">회원관리</a></li>
 		</ul>
 	</div>
-	
+
 	<!-- mobile mypageMenu -->
 	<div class="mobileMypageMenu">
 		<ul>
@@ -31,7 +31,7 @@
 			<li><a href="<c:url value='/mypage/userManagement'/>">회원관리</a></li>
 		</ul>
 	</div>
-		
-	
+
+
 </body>
 </html>

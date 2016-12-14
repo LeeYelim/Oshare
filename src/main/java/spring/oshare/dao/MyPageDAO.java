@@ -49,7 +49,7 @@ public interface MyPageDAO {
 	/**
 	 * 쪽지 삭제
 	 * */
-	int deleteMessage(String messageNo);
+	int deleteMessage(String[] messageNo);
 	
 	/**
 	 * 송신자 쪽지 조회

@@ -418,27 +418,126 @@ $(function(){
 	   
 	    //sendMessage
 	    //받은 쪽지함
-	    $(document).on("click",".sendMessageForm .receiverMessage",function(){
+	    function sendInMessage(){
 	    	var user = $(".sendMessageTabForm input[name=sender]").val();
-	    	alert(user);
+	    	$(".inMessage table tr:gt(0)").remove();
 	    	$.ajax({
 				url: "/controller/mypage/sendMessageSelect" , //서버요청이름
 				type : "post" , //method방식 (get , post) 
 				dataType : "json" , //요청결과타입 (text ,xml , html , json)
 				data : "posts=receiver&division="+user,
 				success : function(result){
-					var table;
+					var table="";
 					$.each(result,function(index,item){
 						console.log(item)
-						table+="<tr><td><input type='checkbox' name=''></td><td>"+item.age+"</td><td>"+item.addr+"</td></tr>"
+						table+="<tr><td><input type='checkbox' name='inMessageCheckbox' value='"+item.messageNo+"'></td><td>"+item.content+"</td><td>"+item.sender+"</td><td>"+item.sendingDate+"</td></tr>"
 					});
-					table+="</table>"
-					$(".inMessage table tr:nth-child(1)").append(table);
+					$(".inMessage table tr:nth-child(1)").parent().append(table);
 				} , //성공
 				error : function(err){
 					alert("err :"+err)
 				} , //실패
 			});
-	    });    
+	    }
+	    
+	    $(document).on("click",".sendMessageForm .receiverMessage",function(){
+	    	sendInMessage();
+	    }); //받은 쪽지함 Event end
+	    
+	    //받은 쪽지함 check all
+	    $(document).on("click",".inMessage .allCheck",function(){
+	    	if($(".inMessage .allCheck").prop("checked")){
+	    		$(".inMessage table tr td input[type=checkbox]").prop("checked",true);
+	    	}else{
+	    		$(".inMessage table tr td input[type=checkbox]").prop("checked",false);
+	    	}
+	    });
+	    
+	    //받은 쪽지함 
+	    $(document).on("click",".inSendMessageBtn input[type=button]",function(){
+	    	var inSendMessageCheckBoxVal = [];
+	    	$(".inMessage table tr td input[name=inMessageCheckbox]:checked").each(function(index){
+	    		inSendMessageCheckBoxVal.push($(this).val());
+	    	});
+	    	
+	    	$.ajax({
+				url: "/controller/mypage/sendMessageDelete" , //서버요청이름
+				type : "post" , //method방식 (get , post) 
+				dataType : "text" , //요청결과타입 (text ,xml , html , json)
+				data : "messageNo="+inSendMessageCheckBoxVal,
+				success : function(result){
+					if(result <=0){
+						alert("삭제할 항목을 선택해 주십시오")
+					}
+					sendInMessage();
+				} , //성공
+				error : function(err){
+					alert("err :"+err)
+				} , //실패
+			});
+	    	
+	    });
+	        
+	  //보낸 쪽지함
+	    function sendOutMessage(){
+	    	var user = $(".sendMessageTabForm input[name=sender]").val();
+	    	$(".outMessage table tr:gt(0)").remove();
+	    	$.ajax({
+				url: "/controller/mypage/sendMessageSelect" , //서버요청이름
+				type : "post" , //method방식 (get , post) 
+				dataType : "json" , //요청결과타입 (text ,xml , html , json)
+				data : "posts=sender&division="+user,
+				success : function(result){
+					var table="";
+					$.each(result,function(index,item){
+						console.log(item)
+						table+="<tr><td><input type='checkbox' name='outMessageCheckbox' value='"+item.messageNo+"'></td><td>"+item.content+"</td><td>"+item.receiver+"</td><td>"+item.sendingDate+"</td></tr>"
+					});
+					$(".outMessage table tr:nth-child(1)").parent().append(table);
+				} , //성공
+				error : function(err){
+					alert("err :"+err)
+				} , //실패
+			});
+	    }
+	    
+	    $(document).on("click",".sendMessageForm .receiverMessage",function(){
+	    	sendOutMessage();
+	    }); //보낸 쪽지함 Event end
+	    
+	    //보낸 쪽지함 check all
+	    $(document).on("click",".outMessage .allCheck",function(){
+	    	if($(".outMessage .allCheck").prop("checked")){
+	    		$(".outMessage table tr td input[type=checkbox]").prop("checked",true);
+	    	}else{
+	    		$(".outMessage table tr td input[type=checkbox]").prop("checked",false);
+	    	}
+	    });
+	    
+	    //보낸 쪽지함
+	    $(document).on("click",".outSendMessageBtn input[type=button]",function(){
+	    	var outSendMessageCheckBoxVal = [];
+	    	$(".outMessage table tr td input[name=outMessageCheckbox]:checked").each(function(index){
+	    		outSendMessageCheckBoxVal.push($(this).val());
+	    	});
+	    	
+	    	$.ajax({
+				url: "/controller/mypage/sendMessageDelete" , //서버요청이름
+				type : "post" , //method방식 (get , post) 
+				dataType : "text" , //요청결과타입 (text ,xml , html , json)
+				data : "messageNo="+outSendMessageCheckBoxVal,
+				success : function(result){
+					if(result <=0){
+						alert("삭제할 항목을 선택해 주십시오")
+					}
+					sendOutMessage();
+				} , //성공
+				error : function(err){
+					alert("err :"+err)
+				} , //실패
+			});
+	    	
+	    });
+	   
 	});
 

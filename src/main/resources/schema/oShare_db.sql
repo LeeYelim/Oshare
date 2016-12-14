@@ -214,7 +214,18 @@ MEMBER(MEMBER_NO,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_ADDR,MEMBE
 VALUES(1,'qwe','123','테스트',sysdate,'경기도성남시판교동','국민은행','0000000010000000',02,2019,2,'01012345678');
 
 
-	
+INSERT INTO 
+MEMBER(MEMBER_NO,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_ADDR,MEMBER_BANK,MEMBER_ACCOUNT,MEMBER_VALID_MONTH,MEMBER_VALID_YEAR,MEMBER_SHARING_COUNT,MEMBER_PHONE) 
+VALUES(3,'eee3','123','테스트2',sysdate,'경기도성남시판교동','국민은행','0000000010000000',02,2019,2,'01012345678');
+
+select * from message;
+
+select message_no , sender , receiver , message_content , to_char(sending_date,'mm/dd/yyyy hh24:mi:ss') from message
+
+select to_char(sending_date,'yyyy-mm-dd hh:mi:ss') from message;
+
+
+
 
 
 

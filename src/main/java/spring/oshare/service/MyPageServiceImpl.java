@@ -34,12 +34,18 @@ public class MyPageServiceImpl implements MyPageService{
 	@Override
 	public List<MessageDTO> selectMessage(String posts , String division) {
 		List<MessageDTO> messageList;
-		if(division.equals("receiver")){
-			messageList = myPageDAO.selectReceiverMessage(posts);//수신자
+		if(posts.equals("receiver")){
+			messageList = myPageDAO.selectReceiverMessage(division);//수신자
 		}else{	
-			messageList = myPageDAO.selectSenderMessage(posts);//송신자
+			messageList = myPageDAO.selectSenderMessage(division);//송신자
 		}
 		return messageList;
+	}
+
+	@Override
+	public int deleteMessage(String[] messageNo) {
+		// TODO Auto-generated method stub
+		return myPageDAO.deleteMessage(messageNo);
 	}
 	
 }

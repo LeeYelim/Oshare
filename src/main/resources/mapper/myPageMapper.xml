@@ -5,38 +5,46 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="myPageMapper">
-	
+
 	<resultMap type="BoardDTO" id="salesDTO">
-		<id column="board_no" property="boardNo"/>
-		<result column="product_name" property="productName"/>	
+		<id column="board_no" property="boardNo" />
+		<result column="product_name" property="productName" />
 		<collection property="sharing" ofType="sharingDTO">
-			<id column="sharing_no" property="sharingNo"/>
-			<result column="seller_id" property="sellerId"/>
-			<result column="buyer_id" property="buyerId"/>
-			<result column="sharing_start" property="sharingStart"/>
-			<result column="sharing_end" property="sharingEnd"/>
-			<result column="transaction_state" property="transactionState"/>
+			<id column="sharing_no" property="sharingNo" />
+			<result column="seller_id" property="sellerId" />
+			<result column="buyer_id" property="buyerId" />
+			<result column="sharing_start" property="sharingStart" />
+			<result column="sharing_end" property="sharingEnd" />
+			<result column="transaction_state" property="transactionState" />
 			<association property="member" javaType="memberDTO">
-				<result column="member_phone" property="memberPhone"/>
+				<result column="member_phone" property="memberPhone" />
 			</association>
-		</collection>	
+		</collection>
 	</resultMap>
-	
+
 	<!-- 판매 물품 조회 -->
 	<select id="salesItemList" parameterType="string" resultMap="salesDTO">
-		select DISTINCT b.board_no, b.product_name, s.sharing_no, s.seller_id, s.buyer_id, m.member_phone, s.sharing_start, s.sharing_end, s.transaction_state 
-		from (sharing s join board b on s.seller_id=#{value} and s.board_no=b.board_no) 
+		select DISTINCT b.board_no, b.product_name, s.sharing_no, s.seller_id,
+		s.buyer_id, m.member_phone, s.sharing_start, s.sharing_end,
+		s.transaction_state
+		from (sharing s join board b on s.seller_id=#{value} and
+		s.board_no=b.board_no)
 		join (sharing s2 join member m on s2.buyer_id=m.member_id)
-		on s.buyer_id=s2.buyer_id
+		on
+		s.buyer_id=s2.buyer_id
 		order by board_no
 	</select>
-	
+
 	<!-- 대여 물품 조회 -->
 	<select id="rentalItemList" parameterType="string" resultMap="salesDTO">
-		select DISTINCT b.board_no, b.product_name, s.sharing_no, s.seller_id, s.buyer_id, m.member_phone, s.sharing_start, s.sharing_end, s.transaction_state 
-		from (sharing s join board b on s.buyer_id=#{value} and s.board_no=b.board_no) 
+		select DISTINCT b.board_no, b.product_name, s.sharing_no, s.seller_id,
+		s.buyer_id, m.member_phone, s.sharing_start, s.sharing_end,
+		s.transaction_state
+		from (sharing s join board b on s.buyer_id=#{value} and
+		s.board_no=b.board_no)
 		join (sharing s2 join member m on s2.buyer_id=m.member_id)
-		on s.buyer_id=s2.buyer_id
+		on
+		s.buyer_id=s2.buyer_id
 		order by board_no
 	</select>
 </mapper>

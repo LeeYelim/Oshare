@@ -34,6 +34,11 @@ public interface MyPageService {
 	 * */
 	List<MessageDTO> selectMessage(String posts , String division);
 	
+	/**
+	 * 쪽지 삭제
+	 * */
+	int deleteMessage(String[] messageNo);
+	
 	/*//**
 	 * 메세지 보관함 목록
 	 *//*
