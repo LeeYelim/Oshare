@@ -5,6 +5,7 @@ import java.util.List;
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.LocationDTO;
+import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
 import spring.oshare.dto.SharingDTO;
 
@@ -51,9 +52,13 @@ public interface MyPageDAO {
 	int deleteMessage(String messageNo);
 	
 	/**
-	 * 쪽지 조회
+	 * 송신자 쪽지 조회
 	 * */
-	void selectAllMessage();
+	List<MessageDTO> selectSenderMessage(String sender);
 	
+	/**
+	 * 수신자 쪽지 조회
+	 * */
+	List<MessageDTO> selectReceiverMessage(String receiver);
 	
 }

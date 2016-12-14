@@ -30,5 +30,16 @@ public class MyPageServiceImpl implements MyPageService{
 	public int insertMessage(MessageDTO message) {
 		return myPageDAO.insertMessage(message);
 	}
+
+	@Override
+	public List<MessageDTO> selectMessage(String posts , String division) {
+		List<MessageDTO> messageList;
+		if(division.equals("receiver")){
+			messageList = myPageDAO.selectReceiverMessage(posts);//수신자
+		}else{	
+			messageList = myPageDAO.selectSenderMessage(posts);//송신자
+		}
+		return messageList;
+	}
 	
 }

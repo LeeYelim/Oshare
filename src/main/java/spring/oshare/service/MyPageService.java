@@ -29,6 +29,11 @@ public interface MyPageService {
 	 * */
 	int insertMessage(MessageDTO message);
 	
+	/**
+	 * 쪽지 보관함
+	 * */
+	List<MessageDTO> selectMessage(String posts , String division);
+	
 	/*//**
 	 * 메세지 보관함 목록
 	 *//*

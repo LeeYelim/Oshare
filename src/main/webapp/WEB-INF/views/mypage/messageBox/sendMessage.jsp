@@ -11,8 +11,8 @@
 	<div class="sendMessageForm">
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab" href="#writeNote">쪽지쓰기</a></li>
-			<li><a data-toggle="tab" href="#inbox">받은쪽지함</a></li>
-			<li><a data-toggle="tab" href="#sent">보낸쪽지함</a></li>
+			<li><a data-toggle="tab" href="#inbox" class="receiverMessage">받은쪽지함</a></li>
+			<li><a data-toggle="tab" href="#sent" class="senderMessage">보낸쪽지함</a></li>
 		</ul>
 
 		<div class="tab-content">

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.LocationDTO;
+import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
 import spring.oshare.dto.SharingDTO;
 
@@ -64,9 +65,13 @@ public class MyPageDAOImpl implements MyPageDAO{
 	}
 
 	@Override
-	public void selectAllMessage() {
-		// TODO Auto-generated method stub
-		
+	public List<MessageDTO> selectSenderMessage(String sender) {
+		return sqlSession.selectList("sendMessageMapper.senedMessageReceiverSelect",sender);
+	}
+
+	@Override
+	public List<MessageDTO> selectReceiverMessage(String receiver) {
+		return sqlSession.selectList("sendMessageMapper.senedMessageSenderSelect",receiver);		
 	}
 	
 }

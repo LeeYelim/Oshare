@@ -15,7 +15,12 @@
 		insert into message values(SEQ_MESSAGE_NO.nextval,#{sender},#{receiver},#{content},sysdate)
 	</insert>
 	<!-- 받은쪽지함 --> 
-	
+	<select id="senedMessageReceiverSelect" resultMap="messageMap" parameterType="String">
+		select * from message where RECEIVER =#{value}; 
+	</select>
 	<!-- 보낸쪽지함 -->
+		<select id="senedMessageSenderSelect" resultMap="messageMap" parameterType="String">
+		select * from message where sender =#{value}; 
+	</select>
 	
 </mapper>

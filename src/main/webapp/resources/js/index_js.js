@@ -383,10 +383,7 @@ $(function(){
 			  //거래완료
 		  }
 	  }
-		  
-		  
-		  
-		  
+	 
 		  //declaration
 		  $(document).on("click",".declaration img",function(){
 			  if($(".declarationDialog").is(":animated"))return;
@@ -418,5 +415,30 @@ $(function(){
     		if($(this).text() == "신고당한 회원")$(".userManagementBtn input").val("정지");
 			if($(this).text() == "정지회원")$(".userManagementBtn input").val("정지해제");
 	    });
+	   
+	    //sendMessage
+	    //받은 쪽지함
+	    $(document).on("click",".sendMessageForm .receiverMessage",function(){
+	    	var user = $(".sendMessageTabForm input[name=sender]").val();
+	    	alert(user);
+	    	$.ajax({
+				url: "/controller/mypage/sendMessageSelect" , //서버요청이름
+				type : "post" , //method방식 (get , post) 
+				dataType : "json" , //요청결과타입 (text ,xml , html , json)
+				data : "posts=receiver&division="+user,
+				success : function(result){
+					var table;
+					$.each(result,function(index,item){
+						console.log(item)
+						table+="<tr><td><input type='checkbox' name=''></td><td>"+item.age+"</td><td>"+item.addr+"</td></tr>"
+					});
+					table+="</table>"
+					$(".inMessage table tr:nth-child(1)").append(table);
+				} , //성공
+				error : function(err){
+					alert("err :"+err)
+				} , //실패
+			});
+	    });    
 	});
 

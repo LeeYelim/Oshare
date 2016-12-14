@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
@@ -110,6 +111,17 @@ public class MyPageController {
 		return "mypage/messageBox/sendMessage";
 	}
 	
+	/**
+	 * 荐脚 价脚
+	 * */
+	@RequestMapping("sendMessageSelect")
+	@ResponseBody
+	public List<MessageDTO>  selectMessage(String posts , String division){
+		return myPageService.selectMessage(posts, division);
+		
+	}
+	
+
 	/**
 	 * 搬力 包府 格废
 	 */
