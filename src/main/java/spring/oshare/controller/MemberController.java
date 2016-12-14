@@ -142,7 +142,7 @@ public class MemberController {
 		if(dbMemberDTO == null) {
 			request.setAttribute("errorMsg", "계정정보를 다시 확인해주세요.");
 		}
-		
+		System.out.println("asdasdasd: "+dbMemberDTO.getMemberName());
 		// 세션에 계정정보 저장
 		session.setAttribute("loginMemberName", dbMemberDTO.getMemberName());
 		session.setAttribute("loginMemberId", dbMemberDTO.getMemberId());

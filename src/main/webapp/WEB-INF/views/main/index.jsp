@@ -68,7 +68,7 @@
 				<div class="item">
 					<ul>
 						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
+							alt="book"><a href="<c:url value='/board/goodsDetail'/>"><span class="material-icons goodsDetailViewSee">&#xE8F4;</span></a></li>
 						<li>제품명 : IOS</li>
 						<li>가격 : 0원 / 0 일</li>
 						<li><span class="material-icons heartWish">&#xE87D;</span></li>
@@ -129,7 +129,7 @@
 				<div class="item">
 					<ul>
 						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
+							alt="book"><a href="<c:url value='/board/goodsDetail'/>"><span class="material-icons goodsDetailViewSee">&#xE8F4;</span></a></li>
 						<li>제품명 : IOS</li>
 						<li>가격 : 0원 / 0 일</li>
 						<li><span class="material-icons heartWish">&#xE87D;</span></li>

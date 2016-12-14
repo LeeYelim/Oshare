@@ -6,10 +6,13 @@ $(function(){
 	 
 	 var mobileHeaderMenuIndex =0; // mobile header menu
 	 
+	 retalItemText();
+	 saleItemListText();
+	 
 	/* header + index */
 	$(document).on("scroll",function(){
 		
-		if($(window).scrollTop() > 30){	
+		if($(window).scrollTop() > 65){	
 			
 			$(".headerNavaction").addClass("headerNavactionAdvice");
 			$(".headerNavaction").css({"height":"65px","line-height":"45px","position":"fixed"})
@@ -34,13 +37,11 @@ $(function(){
 	});//HeaaderSearch Event Close End
 	
 	$(document).on("click",".heartWish",function(){
-		if(hirtIndex <= 0 ){
-		hirtIndex =1 ;
-		$(this).css({"color":"#ff0000"});
+		if($(this).css('color') == 'rgb(0, 0, 0)' == true){
+			$(this).css({"color":"#ff0000"});
 		}else{
-		hirtIndex = 0;
-		$(this).css({"color":"#000"});
-		}
+			$(this).css({"color":"#000"});
+		}	
 	});//wish Event End
 	
 	$(document).on("click",".mobileHeaderNavaction .mobileHeaderNavactionBtn",function(){
@@ -336,7 +337,55 @@ $(function(){
 		  		if($(".rentalItemListDialog").is(":animated"))return;
 		  		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
 		  		$(".rentalItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
-	  });//rentalItemListDialog Close Event End
+		  });//rentalItemListDialog Close Event End
+		  
+		  //rentalItem Text 
+	  function retalItemText(){
+		  if($(".rentalItemListTransactionStatus span").text() == "대여대기"){
+			  //예약취소
+			  $(".rentalItemListTransactionStatus input[type=button]").val("예약취소");
+		  }else if($(".rentalItemListTransactionStatus span").text() == "대여중"){
+			  //반납신청
+			  $(".rentalItemListTransactionStatus input[type=button]").val("반납신청");
+		  }else if($(".rentalItemListTransactionStatus span").text() == "반납신청 중"){
+			  //판매자한테 청구하기 버튼 생성
+			  //판매자가 청구하기 할때 대여자도 청구하기 버튼이 생김
+			  //대여자 버튼 사라짐
+			  $(".rentalItemListTransactionStatus span").css({"height":"60px","line-height":"60px"});
+			  $(".rentalItemListTransactionStatus input[type=button]").hide();
+		  }else if($(".rentalItemListTransactionStatus span").text() == "추가금결제"){
+			  $(".rentalItemListTransactionStatus span").css({"line-height":"30px"});
+			  $(".rentalItemListTransactionStatus input[type=button]").show().val("결제하기");
+		  }else if($(".rentalItemListTransactionStatus span").text() == "거래완료"){
+			  $(".rentalItemListTransactionStatus input[type=button]").remove();
+			  //거래완료
+		  }
+	  }
+	  //saleItemList Text
+	  function saleItemListText(){
+		  if($(".saleItemListTransactionStatus span").text() == "대여대기"){
+			  //예약취소
+			  $(".saleItemListTransactionStatus span").css({"height":"60px","line-height":"60px"});
+			  $(".saleItemListTransactionStatus input[type=button]").hide();
+		  }else if($(".saleItemListTransactionStatus span").text() == "대여중"){
+			  //반납신청
+			  $(".saleItemListTransactionStatus span").css({"line-height":"60px"});
+			  $(".saleItemListTransactionStatus input[type=button]").hide();
+		  }else if($(".saleItemListTransactionStatus span").text() == "반납신청 중"){
+			  //판매자한테 청구하기 버튼 생성
+			  $(".saleItemListTransactionStatus span").css({"line-height":"38px"});
+			  $(".saleItemListTransactionStatus input[type=button]").show().val("반납완료");		  
+			  //판매자가 청구하기 할때 대여자도 청구하기 버튼이 생김
+			  //대여자 버튼 사라짐
+			  $(".saleItemListTransactionStatus span").css({"height":"60px","line-height":"60px"});
+			  $(".saleItemListTransactionStatus input[type=button]").remove();
+		  }else if($(".saleItemListTransactionStatus span").text() == "거래완료"){
+			  //거래완료
+		  }
+	  }
+		  
+		  
+		  
 		  
 		  //declaration
 		  $(document).on("click",".declaration img",function(){

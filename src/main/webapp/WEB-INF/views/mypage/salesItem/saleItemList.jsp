@@ -18,8 +18,7 @@
 					<td>제품명</td>
 					<td>대여자 ID</td>
 					<td>대여자 연락처</td>
-					<td>판매상태</td>
-					<td>비용청구</td>
+					<td>거래상태</td>
 			</tr>
 			<c:forEach items="${requestScope.saleslist}" var="board">
 				<c:forEach items="${board.sharing}" var="sharing">
@@ -53,8 +52,12 @@
 						abc1234
 					</td>
 					<td>123456</td>
-					<td>대여중..</td>
-					<td><input type="button" value="비용청구"></td>
+					<td>
+					<div class="saleItemListTransactionStatus">
+					<span>대여중</span>
+					<input type="button" value="비용청구">
+					</div>
+					</td>
 				</tr>
 				
 			</table>

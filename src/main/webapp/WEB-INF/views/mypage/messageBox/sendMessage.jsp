@@ -18,14 +18,18 @@
 		<div class="tab-content">
 
 			<div id="writeNote" class="tab-pane fade in active">
-				<div class="sendMessageTabForm">
-					<form action="" metohd="" onsubmit="return sendMessageValidityCheck()">
+				<div class="sendMessageTabForm">	
+					<form action="<c:url value='/mypage/sendMessageInsert'/>" metohd="" onsubmit="return sendMessageValidityCheck()">
+						<input type="text" value="${sessionScope.loginMemberId}" name="sender" hidden>
+						<div class="receiver">
+						<span>송신자 ${sessionScope.loginMemberId}</span>
+						</div>
 						<div class="recipient">
-							<span>받는이</span> <input type="text" name="">
+							<span>수신자</span> <input type="text" name="receiver">
 						</div>
 						<div class="noteContent">
 							<span>쪽지내용</span>
-							<textarea name=""></textarea>
+							<textarea name="content"></textarea>
 						</div>
 				
 					<div class="sendMessageBtn">

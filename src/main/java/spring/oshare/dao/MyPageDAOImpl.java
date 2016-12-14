@@ -54,8 +54,7 @@ public class MyPageDAOImpl implements MyPageDAO{
 
 	@Override
 	public int insertMessage(MessageDTO message) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("sendMessageMapper.sendMessageInsert", message);
 	}
 
 	@Override

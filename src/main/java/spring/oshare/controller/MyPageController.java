@@ -2,6 +2,7 @@ package spring.oshare.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.MemberDTO;
+import spring.oshare.dto.MessageDTO;
 import spring.oshare.dto.SharingDTO;
 import spring.oshare.service.MyPageService;
 
@@ -92,6 +94,19 @@ public class MyPageController {
 	 */
 	@RequestMapping("message")
 	public String messageBox(){
+		return "mypage/messageBox/sendMessage";
+	}
+	
+	/**
+	 * 쪽지 보내기
+	 * */
+	@RequestMapping("sendMessageInsert")
+	public String insertMessage(MessageDTO message , HttpServletRequest request){
+		
+		int result = myPageService.insertMessage(message);
+		if(result <=0){
+			request.setAttribute("errorMsg", "수신자가 존재하지 않습니다 다시 확인해주세요.");
+		}
 		return "mypage/messageBox/sendMessage";
 	}
 	

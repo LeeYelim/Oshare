@@ -21,7 +21,13 @@ footer h1{line-height: 100px;}
 
 /* Header nav Class */
 .headerNavactionAdvice{z-index: 100;}
- 
+
+/* heartWish */
+.heartWish{border-radius:100%;color:#000; cursor: pointer; transition:0.4s;}
+
+/* goodsDetailViewSee*/
+.goodsDetailViewSee{background:#fff; padding:10px; border-radius:100%; 	position:absolute; top:70%; left:50%; transform:translate(-50%,-50%); z-index: 5; opacity:0; transition:0.4s;}
+
 /* header */
 .headerNavactionUser{width:100%; height:40px; line-height:40px; float:left; position: relative; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); z-index: 3;}
 .headerNavactionUser ul{float:right; text-align: center; }
@@ -132,48 +138,54 @@ footer h1{line-height: 100px;}
 #indexSharigForm .indexSharingTitle{width:100%; float:left; text-align: center; position: relative;}
 #indexSharigForm .indexSharingTitle>span{font-size:33px; line-height:100px; font-weight:bold;}
 #indexSharigForm .indexSharingTitle .indexSharingBtn{position: absolute;  top:50%; right: 0; transform: translate(0,-50%);}
-#indexSharigForm .indexSharingTitle .indexSharingBtn span{background:#fbc02d; border-radius:5px; padding:5px; cursor:pointer; transition:0.4s;}
-#indexSharigForm .indexSharingTitle .indexSharingBtn span:hover{background:#000; color:#fff;}
-#indexSharigForm .indexSharingList .item{width:100%;; float:left;}
+#indexSharigForm .indexSharingTitle .indexSharingBtn span{color:#fff; background:#2196F3; border:1px solid #1E88E5; border-radius:5px; padding:5px; cursor:pointer; transition:0.4s;}
+#indexSharigForm .indexSharingTitle .indexSharingBtn span:hover{background:#1976D2; color:#fff;}
+#indexSharigForm .indexSharingList .item{width:100%;; float:left; border:1px solid #e8e8e8;}
 #indexSharigForm .indexSharingList .item ul{text-align: center;}
-#indexSharigForm .indexSharingList .item ul li{margin-top:10px;}
+#indexSharigForm .indexSharingList .item ul li{margin-top:10px; position: relative;}
 #indexSharigForm .indexSharingList .item ul li:nth-child(1){margin-top:0;}
-#indexSharigForm .indexSharingList .item ul li span{border-radius:100%; padding:10px; color:#000; cursor: pointer; transition:0.4s;}
-#indexSharigForm .indexSharingList .item ul li span:hover{color:#ff0000;}
 #indexSharigForm .indexSharingList .item ul li img{width:100%;}
+#indexSharigForm .indexSharingList .item ul li:nth-child(1)::before{content:"";width:100%; height:100%; float:left; background: #000; position: absolute; left:0;  z-index: 4; opacity:0; transition:0.4s;}
+#indexSharigForm .indexSharingList .item:hover ul li::before{opacity:0.7;}
+#indexSharigForm .indexSharingList .item:hover .goodsDetailViewSee{top:50%; opacity:1;transition:0.4s;}
+
 
 #indexRentalForm{width:100%; height:50%; float:left; background: #fff; position: relative;}
 #indexRentalForm .indexRentalList{width:100%; height:100%;float:left;}
 #indexRentalForm .indexRentalTitle{width:100%; float:left; text-align: center; position: relative }
 #indexRentalForm .indexRentalTitle>span{font-size:33px; line-height:100px; font-weight:bold;}
 #indexRentalForm .indexRentalTitle .indexRentalBtn{position: absolute;  top:50%; right: 0; transform: translate(0,-50%);}
-#indexRentalForm .indexRentalTitle .indexRentalBtn span{background:#fbc02d; border-radius:5px; padding:5px; cursor:pointer; transition:0.4s;}
-#indexRentalForm .indexRentalTitle .indexRentalBtn span:hover{background:#000; color:#fff;}
-#indexRentalForm .indexRentalList .item{width:100%;; float:left;}
+#indexRentalForm .indexRentalTitle .indexRentalBtn span{color:#fff; background:#2196F3; border:1px solid #1E88E5; border-radius:5px; padding:5px; cursor:pointer; transition:0.4s;}
+#indexRentalForm .indexRentalTitle .indexRentalBtn span:hover{background:#1976D2; color:#fff;}
+#indexRentalForm .indexRentalList .item{width:100%;; float:left; border:1px solid #e8e8e8;}
 #indexRentalForm .indexRentalList .item ul{text-align: center;}
-#indexRentalForm .indexRentalList .item ul li{margin-top:10px;}
+#indexRentalForm .indexRentalList .item ul li{margin-top:10px; position: relative;}
 #indexRentalForm .indexRentalList .item ul li:nth-child(1){margin-top:0;}
 #indexRentalForm .indexRentalList .item ul li span{border-radius:100%; padding:10px; color:#000; cursor: pointer; transition:0.4s;}
 #indexRentalForm .indexRentalList .item ul li img{width:100%;}
+#indexRentalForm .indexRentalList .item ul li:nth-child(1)::before{content:"";width:100%; height:100%; float:left; background: #000; position: absolute; left:0;  z-index: 4; opacity:0; transition:0.4s;}
+#indexRentalForm .indexRentalList .item:hover ul li::before{opacity:0.7;}
+#indexRentalForm .indexRentalList .item:hover .goodsDetailViewSee{top:50%; opacity:1;transition:0.4s;}
 
 /* goodsList */
-.goodsListDetailSearch{width:100%; height:100%;;float:left; position: relative;  font-weight:bold; background:#C8E6C9; border-top-right-radius:15px; border:1px solid #C8E6C9; border-radius:5px; padding:5px; cursor: pointer;}
-.goodsListDetailSearch span{width:10%; height:100%; float:left; margin-right:15px; }
+.goodsListDetailSearch{width:100%; height:100%;;float:left; position: relative;  font-weight:bold;  color:#fff; background:#2196F3 ; border-top-right-radius:15px; border:1px solid #2196F3 ; border-radius:5px; padding:5px; cursor: pointer;}
+.goodsListDetailSearch span{width:10%; height:100%; float:left; margin-right:15px;}
 .goodsListDetailSearch input{width:86%;  height:100%; float:left;border:none; outline: none;}
 
-.goodsListCategory{width:100%; height: 600px; float:left;  margin-top:25px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); border-top-right-radius:15px;}
+.goodsListCategory{width:100%; height: 600px; float:left;  margin-top:25px; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); border-top-right-radius:15px; border-top-left-radius:15px;}
 .goodsListCategory ul li{margin-top:14px; text-align:center;}
-.goodsListCategory ul li:nth-child(1){ margin-top:0; padding-bottom:15px; padding-top:15px; border-bottom:1px solid #e8e8e8; font-size:14px; font-weight:bold; background:#C8E6C9; border-top-right-radius:15px; border:1px solid #C8E6C9; }
+.goodsListCategory ul li:nth-child(1){ margin-top:0; padding-bottom:15px; padding-top:15px; border-bottom:1px solid #e8e8e8; font-size:14px; font-weight:bold; color:#fff; background:#2196F3 ; border-top-right-radius:15px; border-top-left-radius:15px; border:1px solid #2196F3 ; }
 
 #goodsListItemForm{width:100%;  float;left; position: relative;}
-#goodsListItemForm .goodsListItem{width:30%; float:left; margin:25px 10px;}
+#goodsListItemForm .goodsListItem{width:30%; float:left; margin:25px 10px; border:1px solid #e8e8e8; transition:0.4s;}
 #goodsListItemForm .goodsListItem:nth-child(3n+0){margin-right:0;}
 #goodsListItemForm .goodsListItem ul{text-align: center;}
-#goodsListItemForm .goodsListItem ul li{margin-top:10px}
-#goodsListItemForm .goodsListItem ul li span{border-radius:100%;color:#000; cursor: pointer; transition:0.4s;}
-#goodsListItemForm .goodsListItem ul li span:hover{color:#ff0000;}
-#goodsListItemForm .goodsListItem ul li:nth-child(1){margin-top:0;}
+#goodsListItemForm .goodsListItem ul li{margin-top:10px; transition:0.4s;}
+#goodsListItemForm .goodsListItem ul li:nth-child(1){margin-top:0; position: relative;}
 #goodsListItemForm .goodsListItem ul li img{width:100%;}
+#goodsListItemForm .goodsListItem ul li:nth-child(1)::before{content:"";width:100%; height:100%; float:left; background: #000; position: absolute; z-index: 4; opacity:0; transition:0.4s;}
+#goodsListItemForm .goodsListItem:hover ul li::before{opacity:0.7;}
+#goodsListItemForm .goodsListItem:hover .goodsDetailViewSee{top:50%; opacity:1;transition:0.4s;}
 #goodsListItemForm .goodsListInsertBtn{width:100%; float:left; }
 #goodsListItemForm .goodsListInsertBtn span{float:right; margin-right:5px; width:110px; height: 40px; background:#3b3b3b; border-color:#282828; text-align: center; line-height: 40px; color:#fff; border-radius:5px; cursor: pointer;}
 #goodsListItemForm .goodsListNavaction{width:100%; float:left; text-align: center;}
@@ -230,7 +242,7 @@ footer h1{line-height: 100px;}
 .goodsImg ul{width:100%; float:left;}
 .goodsImg ul li{width:20%; float:left; }
 
-.sellerInformation{width:100%; float:left; position:relative; border:3px solid #000; margin-top:15px;}
+.sellerInformation{width:100%; float:left; position:relative; border:1px solid #e8e8e8; margin-top:15px;}
 .sellerInformation ul li{width:100%; float:left; margin-top:15px; padding:5px; } 
 .sellerInformation ul li:nth-child(1){margin-top:0;}
 .sellerInformation ul li:nth-last-child(1){padding:0;}
@@ -238,11 +250,11 @@ footer h1{line-height: 100px;}
 .sellerInformation ul li .starGrade{float:left;}
 .sellerInformation ul li .declaration{float:right; cursor: pointer;}
 .sellerInformation .sellerSub{width:100%; float:left; }
-.sellerInformation .sellerSub span{width:50%; height:50px; line-height:50px; float:left; text-align: center; border-top:3px solid #000; cursor: pointer;}
-.sellerInformation .sellerSub span:nth-child(1){border-right:3px solid #000; }
+.sellerInformation .sellerSub span{width:50%; height:50px; line-height:50px; float:left; text-align: center; border-top:1px solid #e8e8e8; cursor: pointer;}
+.sellerInformation .sellerSub span:nth-child(1){border-right:1px solid #e8e8e8; }
 
 .goodsDetailChage{width:100%; float;left}
-.goodsDetailChage span{width:49%; height:50px; line-height:50px; float:left; text-align:center; border:3px solid #000; margin-right: 6px; margin-top:15px;}
+.goodsDetailChage span{width:49%; height:50px; line-height:50px; float:left; text-align:center; border:1px solid #e8e8e8; margin-right: 6px; margin-top:15px;}
 .goodsDetailChage span:nth-last-child(1){margin-right: 0;}
 
 .goodsDetailIcon{position: absolute; right: 0; top:0;  z-index: 3;}
@@ -251,8 +263,8 @@ footer h1{line-height: 100px;}
 .goodsDetailInformation{width:100%; float:left; position: relative;}
 .goodsDetailInformation ul li{width:100%; float:left; padding:10px; padding-left:0;}
 
-.goodsPayment{width:100%; position: absolute; bottom: -104px; left: 104%; z-index: 3;}
-.goodsPayment button{width:49%;; height: 50px; border:none; border:3px solid #000; background: #fff;  }
+.goodsPayment{width:100%; position: relative; }
+.goodsPayment button{width:49%;; height: 50px; border:none; border:1px solid #e8e8e8; background: #fff;  }
 
 .goodsDetailNavaction{margin-top:74px;}
 
@@ -268,36 +280,36 @@ footer h1{line-height: 100px;}
 
 #goodsReview .goodsReviewPlusForm{width:100%; float:left; padding-top:15px; padding-bottom: 15px; border:1px solid #e8e8e8;  }
 #goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle{width:100%; float:left;}
-#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle span{width:5%; float:left;}
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle span{width:10%; float:left;}
 #goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle input{width:55%; float:left;}
 
-#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent{width:100%; float:left; margin-top:15px;}
-#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent span{width:5%; height:70px; line-height:70px; float:left;}
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent{width:90%; float:left; text-align:center; margin-top:15px;}
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent span{width:10%; height:70px; line-height:70px; float:left;}
 #goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent textarea{width:55%; height:70px; float:left;}
 
 #goodsQuestion .goodsQuestionPaing{width:100%; float:left; text-align: center;}
 #goodsQuestion .goodsQuestionPlus{width:100%; float:left;}
 #goodsQuestion .goodsQuestionPlus span{cursor:pointer;}
-#goodsQuestion .goodsQuestionForm{width:100%; float:left; position: relative;s}
-#goodsQuestion .goodsQuestionForm .goodsQuestionTitle{width:100%; height:40px;float:left; background:#B2EBF2; border-radius:5px; cursor: pointer;}
-#goodsQuestion .goodsQuestionForm .goodsQuestionTitle span{font-weight: bold; line-height:40px; margin-left:15px;}
-#goodsQuestion .goodsQuestionForm .goodsQuestionContent{width:100%; float:left; display: none;}
-#goodsQuestion .goodsQuestionForm .goodsQuestionContent>span{float:right;}
+#goodsQuestion .goodsQuestionForm{width:100%; float:left; position: relative;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle{width:100%; height:40px;float:left;  background:#2196F3 ; border-radius:5px; cursor: pointer; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.7); }
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle span{font-weight: bold; line-height:40px; margin-left:15px; color:#fff;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent{width:95%;float:left; display: none; background-color:#fff; border:1px solid #e8e8e8; margin-left:3%; border-radius:10px; border-top-left-radius:0; border-top-right-radius:0;}	
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent span{padding:15px; float:left;}
 #goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionAdd{float:right; cursor: pointer; }
 
 #goodsQuestion .goodsQuestionPlusForm{width:100%; float:left; padding-top:15px; padding-bottom: 15px; border:1px solid #e8e8e8;  }
 #goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle{width:100%; float:left;}
-#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle span{width:5%; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle span{width:10%; float:left;}
 #goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle input{width:55%; float:left;}
 
 #goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent{width:100%; float:left; margin-top:15px;}
-#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent span{width:5%; height:70px; line-height:70px; float:left;}
+#goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent span{width:10%; height:70px; line-height:70px; float:left;}
 #goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent textarea{width:55%; height:70px; float:left;}
 
 
 .saleProfile{width:900px; float:left;  position: absolute; top:54%; left:60%; transform:translate(-50%,-50%); background: #fff; z-index:1001; opacity:0; display: none;}
-.saleProfile .saleProfileTitle{width:100%; height: 50px; float:left; background:#C8E6C9; border:1px solid #E8F5E9;} 
-.saleProfile .saleProfileTitle span{float:left; margin:15px;}
+.saleProfile .saleProfileTitle{width:100%; height: 50px; float:left; background:#2196F3 ;} 
+.saleProfile .saleProfileTitle span{color:#fff; float:left; margin:15px;}
 .saleProfile .saleProfileTitle .saleProfileClose{float:right; cursor: pointer; margin:10px;}
 
 .saleProfile .saleProfileImg{width:100%; float:left; text-align: center; margin-top:15px;}
@@ -321,8 +333,8 @@ footer h1{line-height: 100px;}
 .saleProfile .saleProduct .saleProductPaging{width:100%; float:left; text-align: center;}
 
 .saleMessage{width:500px; height: 400px; position: absolute; top:50%; left:60%; transform:translate(-50%,-50%); background: #fff; z-index: 1001; opacity:0; display:none;}
-.saleMessage .saleMessageTitle{width:100%; height: 50px; float:left; background:#C8E6C9; border:1px solid #E8F5E9;} 
-.saleMessage .saleMessageTitle span{float:left; margin:15px;}
+.saleMessage .saleMessageTitle{width:100%; height: 50px; float:left; background:#2196F3;} 
+.saleMessage .saleMessageTitle span{color:#fff; float:left; margin:15px;}
 .saleMessage .saleMessageTitle .saleMessageClose{float:right; cursor: pointer; margin:10px;}
 .saleMessage .saleMessageRecipient{width:100%; float:left; padding:15px;}
 .saleMessage .saleMessageRecipient input{width:200px;}
@@ -333,8 +345,8 @@ footer h1{line-height: 100px;}
 .saleMessage .saleMessageBtn input{float:right; margin:15px;}
 
 .declarationDialog{width:500px; height: 400px; position: absolute; top:50%; left:60%; transform:translate(-50%,-50%); background: #fff; z-index:1001; opacity:0; display:none;}
-.declarationDialog .declarationTitle{width:100%; height: 50px; float:left; background:#C8E6C9; border:1px solid #E8F5E9;}
-.declarationDialog .declarationTitle span{float:left; margin:15px;}
+.declarationDialog .declarationTitle{width:100%; height: 50px; float:left; background:#2196F3 ; }
+.declarationDialog .declarationTitle span{color:#fff; float:left; margin:15px;}
 .declarationDialog .declarationTitle .declarationClose{float:right; cursor: pointer; margin:10px;}
 .declarationDialog .declarationList{width:100%; float:left; padding:15px;}
 .declarationDialog .declarationList span{width:20%; float:left; text-align: center;}
@@ -363,10 +375,10 @@ footer h1{line-height: 100px;}
 
  /* myPageMenu */
  .mypageMenu{width:120px; float:left; margin-top:50px;}
- .mypageMenu ul{text-align: center; border:3px solid #000;}
- .mypageMenu ul li{ line-height:25px;}
- .mypageMenu ul li:nth-child(1){background: #e9e9e9; margin-top:0; border-bottom: 3px solid #000;}
- .mypageMenu ul li:nth-child(6){border-top:2px dotted #e9e9e9; margin-left:15px; margin-right: 15px;}
+ .mypageMenu ul{text-align: center; box-shadow:2px 2px 2px 2px rgba(0,0,0,0.5); border-top-right-radius:15px; border-top-left-radius:15px;}
+ .mypageMenu ul li{height:40px; line-height:40px; }
+ .mypageMenu ul li:nth-child(1){color:#fff; background:#2196F3 ; border-top-right-radius:15px; border-top-left-radius:15px;}
+ .mypageMenu ul li:nth-child(5){border-top:2px dotted #e9e9e9; margin-left:15px; margin-right: 15px;}
 
 .mobileMypageMenu{width:100%; float:left; text-align: center; position: relative; display: none;}
 .mobileMypageMenu .mypagePrev{color:#000;position: absolute;left:17px;line-height: 27px;z-index: 2;cursor: pointer;}
@@ -392,17 +404,20 @@ footer h1{line-height: 100px;}
 .saleItemListForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
 .saleItemListForm span{margin-bottom: 20px; }
 .saleItemListForm table{width:100%; margin-top:20px; text-align: center; }
-.saleItemListForm table tr{height:72px; line-height:69px;border:1px solid #e8e8e8;}
+.saleItemListForm table tr{height:75px; line-height:75px;border:1px solid #e8e8e8;}
 .saleItemListForm table tr:nth-child(1){height:40px; line-height:40px; background: #2196F3; color:#fff; border:1px solid #1E88E5;}
-.saleItemListForm table tr td{width:16%;float:left; }
+.saleItemListForm table tr td{width:20%;float:left; }
 .saleItemListForm table tr td:nth-child(2){width:20%;}
 .saleItemListForm table tr td:nth-last-child(1){border-right: 0;}
 .saleItemListForm table tr td input{width:100%; height: 100%; float:left;}
 .saleItemListForm table tr td img{width:100%; height:100%;  float:left;}
+.saleItemListForm table tr td .saleItemListTransactionStatus{width:100%; height:100%; float:left;}
+.saleItemListForm table tr td .saleItemListTransactionStatus span{width:100%; line-height: 38px; float:left; margin:0;}
+.saleItemListForm table tr td .saleItemListTransactionStatus input[type=button]{width:100%; height:37px; line-height: 37px; float:left; }
 .saleItemListPaging{width:100%; float:left; text-align:center;}
 
 .saleItemListDialog{width:600px; height:630px; float:left;  position:absolute; top:63%; left:60%; transform:translate(-50%,-50%); background:#fff; border:1px solid #e8e8e8; z-index: 1001; opacity:0; display:none; }
-.saleItemListDialog .saleItemListDialogTitle{width:100%; height:40px; line-height:40px;float:left; background:#90CAF9;}
+.saleItemListDialog .saleItemListDialogTitle{width:100%; height:40px; line-height:40px;float:left; color:#fff; background:#2196F3 ;}
 .saleItemListDialog .saleItemListDialogTitle span:nth-child(1){padding-left:10px;}
 .saleItemListDialog .saleItemListDialogTitle .saleItemListClose{padding:7px; color:#fff; float:right; cursor:pointer;}
 .saleItemListDialog .rentalFee{width:100%; float:left; border-bottom:2px solid #e8e8e8;}
@@ -442,6 +457,9 @@ footer h1{line-height: 100px;}
 .rentalItemListForm table tr td:nth-child(2){width:20%;}
 .rentalItemListForm table tr td input{width:100%; height: 100%; float:left;}
 .rentalItemListForm table tr td img{width:100%; height:100%;  float:left;}
+.rentalItemListForm table tr td .rentalItemListTransactionStatus{width:100%; height:100%; float:left;}
+.rentalItemListForm table tr td .rentalItemListTransactionStatus span{width:100%; line-height: 30px; float:left; margin:0;}
+.rentalItemListForm table tr td .rentalItemListTransactionStatus input[type=button]{width:100%; height:30px; line-height: 30px; float:left; }
 .rentalItemListPaging{width:100%; float:left; text-align:center;}
 
 .rentalItemListDialog{width:700px; height: 500px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; border:1px solid #e8e8e8; z-index:1001; opacity:0; display: none; }
@@ -459,24 +477,11 @@ footer h1{line-height: 100px;}
 .rentalItemListDialog .rentalItemListDialogForm .rentalItemListBtn{width:100%; float:left; text-align: center;}
 .rentalItemListDialog .rentalItemListDialogForm .rentalItemListBtn input{margin-right: 15px;}
 
-
-/* billingManagement */
-.billingManagementForm{width:100%; float:left; margin-left:20px; margin-top:45px;}
-.billingManagementForm span{margin-bottom: 20px; }
-.billingManagementForm table{width:100%; argin-top:20px; text-align: center;}
-.billingManagementForm table tr{ border:1px solid #e8e8e8;}
-.billingManagementForm table tr:nth-child(1){background:#2196F3; color:#fff; border:1px solid #1E88E5;}
-.billingManagementForm table tr td{width:12%; height:60px; line-height:60px; float:left;}
-.billingManagementForm table tr:nth-child(1) td{height: 40px; line-height: 40px;}
-.billingManagementForm table tr td:nth-child(4){width:16%; line-height: 30px;}
-.billingManagementForm table tr td:nth-last-child(1){border-right: 0;}
-.billingManagementForm table tr td input{width:100%; height: 100%; float:left;}
-.billingManagementForm table tr td img{width:100%; height:100%;  float:left;}
-.billingManagementPaging{width:100%; float:left; text-align:center;}
-
 /* sendMessage */
 .sendMessageForm{width:100%; height:600px; float:left; border:1px solid #e8e8e8; margin-left:20px;  margin-top:45px;}
 .sendMessageTabForm{width:80%; height: 80%; float:left; background: #eee;  margin:97px; margin-top:30px; padding-bottom: 58px;}
+.sendMessageForm  #writeNote .sendMessageTabForm .receiver{width:100%; float:left; margin-top:30px; margin-left:15px;}
+.sendMessageForm  #writeNote .sendMessageTabForm .receiver span{width:100%; float:left;}
 .sendMessageForm  #writeNote .sendMessageTabForm .recipient{width:100%; float:left; margin-top:30px;}
 .sendMessageForm  #writeNote .sendMessageTabForm .recipient span{width:10%; float:left; text-align: center;}
 .sendMessageForm  #writeNote .sendMessageTabForm .noteContent{width:100%; float:left; margin-top:50px;}
@@ -488,7 +493,8 @@ footer h1{line-height: 100px;}
 .sendMessageForm #inbox .inMessage{width:100%; float:left;}
 .sendMessageForm #inbox .inMessage span{width:100%; float:left; padding:15px; padding-left:38px;}
 .sendMessageForm #inbox .inMessage table{width:90%; float:left; text-align: center; margin-left:38px;}
-.sendMessageForm #inbox .inMessage table tr td{width:25%; line-height:30px; float:left; border:1px solid #000;}
+.sendMessageForm #inbox .inMessage table tr:nth-child(1){background: #2196F3; color:#fff;}
+.sendMessageForm #inbox .inMessage table tr td{width:25%; line-height:30px; float:left; }
 .sendMessageForm #inbox .inSendMessagePaging{width:100%; float:left; text-align: center; position: relative;}
 .sendMessageForm #inbox .inSendMessagePaging .inSendMessageBtn{width:140px; height:40px; position: absolute; top:0; right:0; margin-top:22px; margin-right:52px;  }
 .sendMessageForm #inbox .inSendMessagePaging .inSendMessageBtn input[type=button]{width:100%; height:100%; float:left;}
@@ -496,7 +502,8 @@ footer h1{line-height: 100px;}
 .sendMessageForm #sent .outMessage{width:100%; float:left;}
 .sendMessageForm #sent .outMessage span{width:100%; float:left; padding:15px; padding-left:38px;}
 .sendMessageForm #sent .outMessage table{width:90%; float:left; text-align: center; margin-left:38px;}
-.sendMessageForm #sent .outMessage table tr td{width:25%; line-height:30px; float:left; border:1px solid #000;}
+.sendMessageForm #sent .outMessage table tr:nth-child(1){background: #2196F3; color:#fff;}
+.sendMessageForm #sent .outMessage table tr td{width:25%; line-height:30px; float:left; }
 .sendMessageForm #sent .outSendMessagePaging{width:100%; float:left; text-align: center; position: relative;}
 .sendMessageForm #sent .outSendMessagePaging .outSendMessageBtn{width:140px; height:40px; position: absolute; top:0; right:0; margin-top:22px; margin-right:52px;  }
 .sendMessageForm #sent .outSendMessagePaging .outSendMessageBtn input[type=button]{width:100%; height:100%; float:left;}

@@ -92,12 +92,6 @@
 				<div class="goodsDetailChage">
 					<span>수정하기</span><span>삭제하기</span>
 				</div>
-	
-					<div class="goodsPayment">
-						<form name="requestForm" method=post action="">
-							<button type="button">결제하기</button>
-						</form>
-					</div>
 			</div>
 			<div class="col-xs-6">
 				<div class="goodsDetailIcon">
@@ -114,7 +108,11 @@
 					</ul>
 				</div>
 			<div id="calendar"></div>
-			
+				<div class="goodsPayment">
+						<form name="requestForm" method=post action="">
+							<button type="button">결제하기</button>
+						</form>
+					</div>
 			</div>
 
 			<div class="col-xs-12">
@@ -154,7 +152,7 @@
 					  </div>
 													
 						<div class="goodsReviewPlus">
-							<span>질문하기</span>
+							<span>후기남기기</span>
 						</div>						
 						
 						<div class="goodsReviewPaing">

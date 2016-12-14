@@ -50,7 +50,7 @@
 		<div id="goodsListItemForm">
 				<div class="goodsListItem">
 					<ul>
-						<li><a href="<c:url value='/board/goodsDetail'/>"><img src="<c:url value='/resources/image/NoteBook.jpg'/>" alt="book"></a></li>
+						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>" alt="book"><a href="<c:url value='/board/goodsDetail'/>"><span class="material-icons goodsDetailViewSee">&#xE8F4;</span></a></li>
 						<li>제품명 : IOS</li>
 						<li>가격 : 0원 / 0 일</li>
 						<li><span class="material-icons heartWish">&#xE87D;</span></li>

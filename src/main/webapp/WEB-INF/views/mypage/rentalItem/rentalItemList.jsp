@@ -17,7 +17,7 @@
 					<td>대여자 ID</td>
 					<td>대여자 연락처</td>
 					<td>반납일</td>
-					<td>반납신청</td>
+					<td>거래상태</td>
 				</tr>
 				<c:forEach items="${requestScope.rentallist}" var="board">
 					<c:forEach items="${board.sharing}" var="sharing">
@@ -41,6 +41,19 @@
 						</td></tr>
 					</c:forEach>
 				</c:forEach>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>
+					  <div class="rentalItemListTransactionStatus">
+						<span>반납신청 중</span>
+						<input type="button" value="">
+					  </div>
+					</td>
+				</tr>
 			</table>
 		</div>
 		<div class="rentalItemListPaging">
