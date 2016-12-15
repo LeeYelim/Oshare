@@ -104,6 +104,26 @@ function sendMessageValidityCheck(){
 		$(".noteContent textarea").focus();
 		return false;
 	}
+	
+	$.ajax({
+		url: "/controller/mypage/receiverSelect" , //서버요청이름
+		type : "post" , //method방식 (get , post) 
+		dataType : "text" , //요청결과타입 (text ,xml , html , json)
+		data : "receiver="+$("").val(),
+		success : function(result){
+			if(result <=0){
+				alert("사용자가 존재하지 않습니다.")
+				return false;
+			}else{
+				return true;
+			}
+			
+		} , //성공
+		error : function(err){
+			alert("err :"+err)
+		} , //실패
+	});
+	
 	return true;
 }
 
@@ -120,4 +140,5 @@ if($(".userManagementSearch select").val() == "전체회원"){
 }
 	return true;
 }
+
 

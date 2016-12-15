@@ -424,18 +424,22 @@ $(function(){
 	    	$.ajax({
 				url: "/controller/mypage/sendMessageSelect" , //서버요청이름
 				type : "post" , //method방식 (get , post) 
-				dataType : "json" , //요청결과타입 (text ,xml , html , json)
+				dataType :  "json" , //요청결과타입 (text ,xml , html , json)
 				data : "posts=receiver&division="+user,
 				success : function(result){
+					if(result.length <=0){
+						$(".inMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%'>쪽지가 존재하지 않습니다</td></tr>");
+					}else{					
 					var table="";
 					$.each(result,function(index,item){
 						console.log(item)
 						table+="<tr><td><input type='checkbox' name='inMessageCheckbox' value='"+item.messageNo+"'></td><td>"+item.content+"</td><td>"+item.sender+"</td><td>"+item.sendingDate+"</td></tr>"
 					});
 					$(".inMessage table tr:nth-child(1)").parent().append(table);
+					}
 				} , //성공
 				error : function(err){
-					alert("err :"+err)
+					alert("err :"+err);
 				} , //실패
 			});
 	    }
@@ -453,7 +457,7 @@ $(function(){
 	    	}
 	    });
 	    
-	    //받은 쪽지함 
+	    //받은 쪽지함 삭제
 	    $(document).on("click",".inSendMessageBtn input[type=button]",function(){
 	    	var inSendMessageCheckBoxVal = [];
 	    	$(".inMessage table tr td input[name=inMessageCheckbox]:checked").each(function(index){
@@ -488,15 +492,19 @@ $(function(){
 				dataType : "json" , //요청결과타입 (text ,xml , html , json)
 				data : "posts=sender&division="+user,
 				success : function(result){
+					if(result.length <=0 ){
+						$(".outMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%'>쪽지가 존재하지 않습니다</td></tr>");
+					}else{
 					var table="";
 					$.each(result,function(index,item){
 						console.log(item)
 						table+="<tr><td><input type='checkbox' name='outMessageCheckbox' value='"+item.messageNo+"'></td><td>"+item.content+"</td><td>"+item.receiver+"</td><td>"+item.sendingDate+"</td></tr>"
 					});
 					$(".outMessage table tr:nth-child(1)").parent().append(table);
+					}
 				} , //성공
 				error : function(err){
-					alert("err :"+err)
+					alert(err)
 				} , //실패
 			});
 	    }
@@ -514,7 +522,7 @@ $(function(){
 	    	}
 	    });
 	    
-	    //보낸 쪽지함
+	    //보낸 쪽지함 삭제
 	    $(document).on("click",".outSendMessageBtn input[type=button]",function(){
 	    	var outSendMessageCheckBoxVal = [];
 	    	$(".outMessage table tr td input[name=outMessageCheckbox]:checked").each(function(index){

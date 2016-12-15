@@ -76,9 +76,7 @@ public class MyPageDAOImpl implements MyPageDAO{
 	@Override
 	public List<MessageDTO> selectReceiverMessage(String receiver) {
 		System.out.println("recevier : "+receiver);
-		List<MessageDTO>  list =sqlSession.selectList("sendMessageMapper.senedMessageReceiverSelect",receiver);
-		System.out.println("list : "+list.get(0).getMessageNo()+"  "+list.get(0).getSendingDate());
-		return list;
+		return sqlSession.selectList("sendMessageMapper.senedMessageReceiverSelect",receiver);
 	}
 	
 }

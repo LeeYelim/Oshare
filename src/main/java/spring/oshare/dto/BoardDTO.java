@@ -8,7 +8,7 @@ public class BoardDTO {
 	private int boardNo; // 게시물 번호
 	private String productName; // 물품명
 	private String category; // 카테고리
-	private int price; // 1일당 대여가격
+	private int price; // 1일당 대여가격			
 	private String condition; // 물품 상태
 	private String boardType; // 게시물 유형(쉐어링 or 렌탈)
 	private String dealingType; // 거래 종류(택배 or 직거래)

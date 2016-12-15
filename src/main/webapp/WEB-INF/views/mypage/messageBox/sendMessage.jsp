@@ -23,7 +23,7 @@
 						onsubmit="return sendMessageValidityCheck()">
 						<input type="text" value="${sessionScope.loginMemberId}"
 							name="sender" hidden>
-						<div class="receiver">
+						<div class="sender">
 							<span>송신자 ${sessionScope.loginMemberId}</span>
 						</div>
 						<div class="recipient">

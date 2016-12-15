@@ -2270,12 +2270,17 @@ footer h1 {
 	margin-top: 30px;
 	padding-bottom: 58px;
 }
-
-.sendMessageForm  #writeNote .sendMessageTabForm .receiver {
+.sendMessageForm  #writeNote .sendMessageTabForm .sender{
 	width: 100%;
 	float: left;
 	margin-top: 30px;
 	margin-left: 15px;
+}
+.sendMessageForm  #writeNote .sendMessageTabForm .receiver {
+	width: 100%;
+	float: left;
+	margin-top: 30px;
+	
 }
 
 .sendMessageForm  #writeNote .sendMessageTabForm .receiver span {
@@ -2287,12 +2292,12 @@ footer h1 {
 	width: 100%;
 	float: left;
 	margin-top: 30px;
+	margin-left: 15px;
 }
 
 .sendMessageForm  #writeNote .sendMessageTabForm .recipient span {
 	width: 10%;
 	float: left;
-	text-align: center;
 }
 
 .sendMessageForm  #writeNote .sendMessageTabForm .noteContent {

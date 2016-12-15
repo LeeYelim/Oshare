@@ -104,8 +104,7 @@ public class MyPageController {
 	@RequestMapping("sendMessageInsert")
 	public String insertMessage(MessageDTO message , HttpServletRequest request){
 		
-		int result = myPageService.insertMessage(message);
-		if(result <=0){
+		if(myPageService.insertMessage(message) <= 0){
 			request.setAttribute("errorMsg", "수신자가 존재하지 않습니다 다시 확인해주세요.");
 		}
 		return "mypage/messageBox/sendMessage";
