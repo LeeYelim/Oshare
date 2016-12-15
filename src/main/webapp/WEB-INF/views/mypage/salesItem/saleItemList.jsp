@@ -18,6 +18,8 @@
 				<td>제품명</td>
 				<td>대여자 ID</td>
 				<td>대여자 연락처</td>
+				<td>대여일</td>
+				<td>반납일</td>
 				<td>거래상태</td>
 			</tr>
 			<c:forEach items="${requestScope.saleslist}" var="board">

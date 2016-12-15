@@ -501,7 +501,7 @@ $(function(){
 			});
 	    }
 	    
-	    $(document).on("click",".sendMessageForm .receiverMessage",function(){
+	    $(document).on("click",".sendMessageForm .senderMessage",function(){
 	    	sendOutMessage();
 	    }); //보낸 쪽지함 Event end
 	    
