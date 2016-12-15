@@ -92,6 +92,8 @@ function rentalItemValidityCheck(){
 }
 
 //쪽지보내기 message
+var receiverBoolean = true;
+
 function sendMessageValidityCheck(){
 	if($(".recipient input[type=text]").val() == ""){
 		alert("받는이를 입력해주세요");
@@ -105,27 +107,36 @@ function sendMessageValidityCheck(){
 		return false;
 	}
 	
-	$.ajax({
-		url: "/controller/mypage/receiverSelect" , //서버요청이름
-		type : "post" , //method방식 (get , post) 
-		dataType : "text" , //요청결과타입 (text ,xml , html , json)
-		data : "receiver="+$("").val(),
-		success : function(result){
-			if(result <=0){
-				alert("사용자가 존재하지 않습니다.")
-				return false;
-			}else{
-				return true;
-			}
-			
-		} , //성공
-		error : function(err){
-			alert("err :"+err)
-		} , //실패
-	});
+	if(!receiverBoolean){
+		alert("수신자가 존재하지않습니다 다시 입력해주십시오");
+		$(".recipient input[name=receiver]").val("");
+		$(".recipient input[name=receiver]").focus();	
+		return false;
+	}
 	
 	return true;
 }
+
+//쪽지 수신자 유효성 검사
+$(document).on("keyup",".recipient input[name=receiver]",function(){
+	$.ajax({
+		url: "/controller/member/receiverSelect" , //서버요청이름
+		type : "post" , //method방식 (get , post) 
+		dataType : "text" , //요청결과타입 (text ,xml , html , json)
+		data : "receiver="+$(".recipient input[name=receiver]").val(),
+		success : function(result){
+			if(result <=0){
+				receiverBoolean = false;
+			}else{
+				receiverBoolean = true;
+			}
+		} , //성공
+		error : function(err){
+			alert("err :"+err)
+			receiverBoolean = false;
+		} , //실패
+	});
+});
 
 //회원관리 userManagement
 function userManagementValidityCheck(){

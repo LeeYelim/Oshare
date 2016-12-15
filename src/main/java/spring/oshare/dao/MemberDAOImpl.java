@@ -59,5 +59,14 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberDTO loginCheck(MemberDTO memberDTO) {
 		return sqlSession.selectOne("memberMapper.loginCheck", memberDTO);
 	}
+	
+	/**
+	 * 쪽지 수신자 유효성 검사
+	 * */
+	@Override
+	public MemberDTO receiverValidation(String receiver) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("memberMapper.receiverValidation", receiver);
+	}
 
 }

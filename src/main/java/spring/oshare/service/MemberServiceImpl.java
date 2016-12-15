@@ -66,5 +66,14 @@ public class MemberServiceImpl implements MemberService {
 	public MemberDTO loginCheck(MemberDTO dto) {
 		return memberDao.loginCheck(dto);
 	}
+	
+	/**
+	 * 쪽지수신자 유효성검사 
+	 * */
+	@Override
+	public MemberDTO receiverValidation(String receiver) {
+		// TODO Auto-generated method stub
+		return memberDao.receiverValidation(receiver);
+	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.oshare.dto.MemberDTO;
 import spring.oshare.service.MemberService;
@@ -104,20 +105,7 @@ public class MemberController {
 		return "main/index";	//회원가입 후 메인페이지로 이동
 //		return "login/loginForm"; // 회원가입 후 로그인 페이지로 이동
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	/**
 	 *  로그인 Form 화면
 	 */
@@ -157,6 +145,18 @@ public class MemberController {
 	public String logout(HttpSession session, HttpServletResponse response) {
 		session.invalidate();
 		return "redirect:/";
+	}
+	
+	/**
+	 * 쪽지 수신자 유효성검사
+	 * */
+	@RequestMapping("receiverSelect")
+	@ResponseBody
+	public int receiverValidation(String receiver){
+		MemberDTO memberDTO = memberService.receiverValidation(receiver);
+		int receiverResult = 0;
+		if(memberDTO != null)receiverResult=1;
+		return receiverResult;
 	}
 	
 

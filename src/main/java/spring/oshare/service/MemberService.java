@@ -39,5 +39,9 @@ public interface MemberService {
 	 * */
 	int deleteUser(MemberDTO user);
 	
+	/**
+	 * 수신자 유효성검사
+	 * */
+	MemberDTO receiverValidation(String receiver);
 	
 }

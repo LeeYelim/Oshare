@@ -217,6 +217,7 @@ select message_no , sender , receiver , message_content , sending_date from mess
 
 select message_no , sender , receiver , message_content , sending_date from message where sender = 'qwe'
 
+select * from message;
 
 
 

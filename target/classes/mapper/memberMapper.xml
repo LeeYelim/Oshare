@@ -49,4 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원 정보 수정 -->
 
 	<!-- 회원 탈퇴 -->
+	
+	<!-- 수신자 유효성 검사 -->
+	<select id="receiverValidation" resultMap="memberMap" parameterType="String">
+		select member_id from member where member_id = #{value}
+	</select>
+	
 </mapper>
