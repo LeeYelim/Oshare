@@ -1,5 +1,9 @@
 package spring.oshare.dao;
 
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,8 +19,9 @@ public class BoardDAOImpl implements BoardDAO {
 	private SqlSession sqlSession;
 	
 	@Override
-	public void insertBoard(BoardDTO board) {
-		sqlSession.insert("boardMapper.insertBoard", board);
+	public int insertBoard(BoardDTO board) {
+		System.out.println("===="+board.toString());
+		return sqlSession.insert("boardMapper.insertBoard", board);
 	}
 
 	@Override
@@ -24,6 +29,36 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("boardMapper.selectBoardSeqNo");
 	}
 
+	@Override
+	public void updateViewCount(int boardNo) {
+		sqlSession.update("boardMapper.updateViewCount", boardNo);
+	}
+	
+	@Override
+	public BoardDTO selectByBoardNo(int boardNo) {
+		return sqlSession.selectOne("boardMapper.selectByBoardNo", boardNo);
+	}
+	
+	@Override
+	public List<BoardDTO> pageList(Map<String, Object> map) {
+		return sqlSession.selectList("boardMapper.selectList", null, new RowBounds((Integer)map.get("start"), 12));
+	}
+
+	@Override
+	public int getBoardCount(Map<String, Object> map) {
+		return sqlSession.selectOne("boardMapper.selectCount");
+	}
+	
+	@Override
+	public BoardDTO detailBoard(int boardNo) {
+		return sqlSession.selectOne("boardMapper.boardDetail", boardNo);
+	}
+	
+	@Override
+	public void selectAll(String boardType) {
+		
+	}
+	
 	@Override
 	public int updateBoard(BoardDTO board) {
 		// TODO Auto-generated method stub
@@ -34,12 +69,6 @@ public class BoardDAOImpl implements BoardDAO {
 	public int deleteBoard(int boardNo) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public void selectAll(String boardType) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -54,11 +83,6 @@ public class BoardDAOImpl implements BoardDAO {
 		
 	}
 
-	@Override
-	public void detailBoard(String boardNo) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public int insertComment(CommentDTO comment) {
@@ -120,6 +144,5 @@ public class BoardDAOImpl implements BoardDAO {
 		return 0;
 	}
 
-	
 
 }

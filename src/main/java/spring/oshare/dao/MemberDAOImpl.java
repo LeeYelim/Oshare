@@ -49,17 +49,19 @@ public class MemberDAOImpl implements MemberDAO {
 		return 0;
 	}
 
+	/**
+	 * 회원 정보 조회
+	 * */
 	@Override
-	public void selectUserInfo(String userId) {
-		// TODO Auto-generated method stub
-		
+	public MemberDTO selectUserInfo(String userId) {
+		return sqlSession.selectOne("memberMapper.selectUserInfo", userId);
 	}
 
 	@Override
 	public MemberDTO loginCheck(MemberDTO memberDTO) {
 		return sqlSession.selectOne("memberMapper.loginCheck", memberDTO);
 	}
-	
+
 	/**
 	 * 쪽지 수신자 유효성 검사
 	 * */

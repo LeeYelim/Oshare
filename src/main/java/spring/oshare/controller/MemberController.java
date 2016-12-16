@@ -59,41 +59,41 @@ public class MemberController {
 		
 		String memberId = dto.getMemberId(); //아이디
 			
-			String memberPwd1 = dto.getMemberPwd1(); //비밀번호1
-			String memberPwd2 = dto.getMemberPwd2(); //비밀번호 확인2
+		String memberPwd1 = dto.getMemberPwd1(); //비밀번호1
+		String memberPwd2 = dto.getMemberPwd2(); //비밀번호 확인2
 		String memberPwd = memberPwd1; // sql에 저장될 비밀번호
 			
 		String memberName = dto.getMemberName(); //이름
 			
-			String memberBirth1 = dto.getMemberBirth1(); //생년
-			String memberBirth2 = dto.getMemberBirth2(); //월
-			String memberBirth3 = dto.getMemberBirth3(); //일
+		String memberBirth1 = dto.getMemberBirth1(); //생년
+		String memberBirth2 = dto.getMemberBirth2(); //월
+		String memberBirth3 = dto.getMemberBirth3(); //일
 		String memberBirth = memberBirth1 + memberBirth2 + memberBirth3; // sql에 저장될 생년월일(Birth) 생년 + 월 + 일
 			
-			String memberAddr1 = dto.getMemberAddr1(); //우편번호
-			String memberAddr2 = dto.getMemberAddr2(); //주소
-			String memberAddr3 = dto.getMemberAddr3(); //상세주소
+		String memberAddr1 = dto.getMemberAddr1(); //우편번호
+		String memberAddr2 = dto.getMemberAddr2(); //주소
+		String memberAddr3 = dto.getMemberAddr3(); //상세주소
 		String memberAddr = 														  // sql에 저장될 주소
 				"우편번호 : (" + memberAddr1+") _" + memberAddr2 + "_" + memberAddr3; //우편번호 + 주소 + 상세주소
 
 		String memberBank = dto.getMemberBank(); //카드선택
 
-			String memberAccount1 = dto.getMemberAccount1();		//카드번호16자리 중 첫번째
-			String memberAccount2 = dto.getMemberAccount2(); 		//카드번호16자리 중 두번째
-			String memberAccount3 = dto.getMemberAccount3(); 		//카드번호16자리 중 세번째
-			String memberAccount4 = dto.getMemberAccount4(); 		//카드번호16자리 중 네번째
+		String memberAccount1 = dto.getMemberAccount1();		//카드번호16자리 중 첫번째
+		String memberAccount2 = dto.getMemberAccount2(); 		//카드번호16자리 중 두번째
+		String memberAccount3 = dto.getMemberAccount3(); 		//카드번호16자리 중 세번째
+		String memberAccount4 = dto.getMemberAccount4(); 		//카드번호16자리 중 네번째
 		String memberAccount = 														// sql에 저장될 카드번호 16자리
 				memberAccount1 + memberAccount2 + memberAccount3 + memberAccount4;  //카드번호16자리 = 첫번째 + 두번째 + 세번째 + 네번째
 			
 		int memberValidMonth = dto.getMemberValidMonth(); // 유효기간 월
 		int memberValidYear = dto.getMemberValidYear(); // 유효기간 연
 		int memberSharingCount = dto.getMemberSharingCount(); // 공유회차
-			
-			String memberPhone1 = dto.getMemberPhone1(); //지역번호
-			String memberPhone2 = dto.getMemberPhone2(); //입력번호 앞자리 4개
-			String memberPhone3 = dto.getMemberPhone3(); //입력번호 뒷자리 4개
+		
+		String memberPhone1 = dto.getMemberPhone1(); //지역번호
+		String memberPhone2 = dto.getMemberPhone2(); //입력번호 앞자리 4개
+		String memberPhone3 = dto.getMemberPhone3(); //입력번호 뒷자리 4개
 		String memberPhone = 													//sql에 저장될 전화번호
-				memberPhone1 + memberPhone2 + memberPhone3; //전화번호 = 지역번호(010) + 앞자리4개 + 뒷자리4개
+			memberPhone1 + memberPhone2 + memberPhone3; //전화번호 = 지역번호(010) + 앞자리4개 + 뒷자리4개
 		
 		MemberDTO member = new MemberDTO(
 										memberNo, memberId, memberPwd, memberName, memberBirth,memberAddr,memberBank, memberAccount, 
@@ -105,7 +105,7 @@ public class MemberController {
 		return "main/index";	//회원가입 후 메인페이지로 이동
 //		return "login/loginForm"; // 회원가입 후 로그인 페이지로 이동
 	}
-		
+	
 	/**
 	 *  로그인 Form 화면
 	 */
@@ -126,11 +126,14 @@ public class MemberController {
 	public String loginCheck(MemberDTO memberDTO, HttpSession session, HttpServletRequest request) {
 		// 아이디 + 비번을 통하여 db에 계정조회
 		MemberDTO dbMemberDTO = memberService.loginCheck(memberDTO);
-
+		
+		System.out.println("이름=" + dbMemberDTO.getMemberName());
+		System.out.println("아이디=" + dbMemberDTO.getMemberId());
+		
 		if(dbMemberDTO == null) {
 			request.setAttribute("errorMsg", "계정정보를 다시 확인해주세요.");
 		}
-		System.out.println("asdasdasd: "+dbMemberDTO.getMemberName());
+		
 		// 세션에 계정정보 저장
 		session.setAttribute("loginMemberName", dbMemberDTO.getMemberName());
 		session.setAttribute("loginMemberId", dbMemberDTO.getMemberId());

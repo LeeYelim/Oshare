@@ -10,7 +10,9 @@
 <body>
 
 	<div class="wishListForm">
-		<span>WishList</span>
+		<div class="wishListTitle">
+			<span>WishList</span>
+		</div>
 		<table>
 			<tr>
 				<td>제품</td>

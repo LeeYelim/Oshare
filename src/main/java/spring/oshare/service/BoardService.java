@@ -1,5 +1,8 @@
 package spring.oshare.service;
 
+import java.util.List;
+import java.util.Map;
+
 import spring.oshare.dto.BoardDTO;
 
 public interface BoardService {
@@ -7,7 +10,7 @@ public interface BoardService {
 	/**
 	 * 물품 등록
 	 * */
-	void insertBoard(BoardDTO board);
+	int insertBoard(BoardDTO board);
 
 	/**
 	 * 물품 수정
@@ -36,6 +39,24 @@ public interface BoardService {
 	
 	/**
 	 * 물품 상세 정보(게시물 번호로 조회)
+	 * boolean flag : true = 조회수 증가
+	 * 				  false = 조회수 그대로
 	 * */
-	void detailBoard(String boardNo);
+	BoardDTO selectByBoardNo(int boardNo, boolean flag);
+
+	/**
+	 *  리스트
+	 */
+	List<BoardDTO> pageList(Map<String, Object> map);
+	
+	/**
+	 *  게시글 갯수
+	 */
+	int getBoardCount(Map<String, Object> map);
+	
+	/**
+	 * 물품 상세 정보(게시물 번호로 조회)
+	 * */
+	BoardDTO detailBoard(int boardNo);
+	
 }

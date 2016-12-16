@@ -27,7 +27,7 @@ public interface MemberService {
 	/**
 	 * 회원 정보 조회
 	 * */
-	void selectUserInfo(String userId);
+	MemberDTO selectUserInfo(String userId);
 	
 	/**
 	 * 회원정보 수정
@@ -43,5 +43,7 @@ public interface MemberService {
 	 * 수신자 유효성검사
 	 * */
 	MemberDTO receiverValidation(String receiver);
+	
+	
 	
 }

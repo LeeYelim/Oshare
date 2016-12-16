@@ -1,6 +1,9 @@
 package spring.oshare.dao;
 
+import spring.oshare.dto.GradeDTO;
+import spring.oshare.dto.LocationDTO;
 import spring.oshare.dto.MemberDTO;
+import spring.oshare.dto.MessageDTO;
 
 public interface MemberDAO {
 	
@@ -27,7 +30,7 @@ public interface MemberDAO {
 	/**
 	 * 회원 정보 조회
 	 * */
-	void selectUserInfo(String userId);
+	MemberDTO selectUserInfo(String userId);
 	
 	/**
 	 * 회원정보 수정
@@ -38,10 +41,13 @@ public interface MemberDAO {
 	 * 회원 탈퇴
 	 * */
 	int deleteUser(MemberDTO user);
+	
 
 	/**
 	 * 수신자 유효성검사
 	 * */
 	MemberDTO receiverValidation(String receiver);
+
+	
 	
 }

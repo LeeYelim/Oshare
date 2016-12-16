@@ -54,8 +54,7 @@
 
 			<div class="col-xs-6">
 				<div class="goodsImg">
-					<img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-						alt="goodsDetailMainImg">
+					<img src="<c:url value='/'/>${boardDTO.filePath}" alt="goodsDetailMainImg">
 					<ul>
 						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
 							alt="goodsDetailMainImg"></li>
@@ -71,13 +70,13 @@
 				</div>
 				<div class="sellerInformation">
 					<ul>
-						<li>판매자 정보 : <span class="sellerName">박신혜</span></li>
-						<li>판매자 아이디 : <span class="sellerId">google1234</span></li>
+					<li>판매자 정보 : <span class="sellerName">${boardDTO.memberDTO.memberName}</span></li>
+						<li>판매자 아이디 : <span class="sellerId">	</span></li>
 						<li><div class="rentalPointForm">
-								대여 횟수 <span class="rentalPoint">10</span>
+								대여 횟수 <span class="rentalPoint">${boardDTO.memberDTO.memberSharingCount}</span>
 							</div>
 							<div class="starGrade">
-								<span>★</span> <span>★</span> <span>★</span> <span>★</span> <span>★</span>
+								
 							</div>
 							<div class="declaration">
 								<img src="<c:url value='/resources/image/siren.png'/>"
@@ -100,9 +99,9 @@
 				</div>
 				<div class="goodsDetailInformation">
 					<ul>
-						<li>제품이름 : <span class="goodsName">iPhone</span></li>
-						<li>대여비 : <span class="goodsPrice">10,000원/ 10일</span></li>
-						<li>상품상태 : <span class="goodsCondition">상</span></li>
+						<li>제품이름 : <span class="goodsName">${boardDTO.productName}</span></li>
+						<li>대여비 : <span class="goodsPrice">${boardDTO.price}원/일</span></li>
+						<li>상품상태 : <span class="goodsCondition">${boardDTO.condition}</span></li>
 						<li>예약 <span>00월00일 ~ 00월00일</span><span
 							class="glyphicon glyphicon-calendar"></span></li>
 					</ul>
@@ -126,7 +125,7 @@
 
 				<div class="tab-content">
 					<div id="goodsInformation" class="tab-pane fade in active">
-						<h3>상품정보</h3>
+					${boardDTO.detail}
 					</div>
 					<div id="goodsReview" class="tab-pane fade">
 						<div class="goodsReviewFrame">
@@ -320,7 +319,7 @@
 				alt="프로필이미지">
 		</div>
 		<div class="saleProfileImformation">
-			아이디 : <span>qsdxc123</span>
+			아이디 : <span>${boardDTO.memberDTO.memberId}</span>
 		</div>
 		<span></span>
 		<div class="saleReview">

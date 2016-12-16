@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.LocationDTO;
-import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
 import spring.oshare.dto.SharingDTO;
 

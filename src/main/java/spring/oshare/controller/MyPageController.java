@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
-import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
-import spring.oshare.dto.SharingDTO;
 import spring.oshare.service.MyPageService;
 
 /**
@@ -101,6 +99,7 @@ public class MyPageController {
 	/**
 	 * 쪽지 보내기
 	 * */
+	/*
 	@RequestMapping("sendMessageInsert")
 	public String insertMessage(MessageDTO message , HttpServletRequest request){
 		
@@ -109,6 +108,7 @@ public class MyPageController {
 		}
 		return "mypage/messageBox/sendMessage";
 	}
+	*/
 	
 	/**
 	 * 수신 송신
@@ -117,7 +117,6 @@ public class MyPageController {
 	@ResponseBody
 	public List<MessageDTO>  selectMessage(String posts , String division){
 		 List<MessageDTO> list = myPageService.selectMessage(posts, division);
-		 
 		 return list;
 		
 	}
@@ -129,14 +128,6 @@ public class MyPageController {
 	@ResponseBody
 	public int deleteMessage(String[] messageNo){
 		return myPageService.deleteMessage(messageNo);
-	}
-	
-	/**
-	 * 결제 관리 목록
-	 */
-	@RequestMapping("billingManagement")
-	public String billingManagement() {
-		return "mypage/billingManagement/billingManagement";
 	}
 	
 	/**

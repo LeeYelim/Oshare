@@ -5,49 +5,51 @@ import org.springframework.stereotype.Component;
 public class MemberDTO {
 
 	private int memberNo; // 회원가입 순서?
-	
-	private String memberId; //아이디
-	
-		private String memberPwd1; //비밀번호
-		private String memberPwd2; //비밀번호 확인
-	private String memberPwd; //비밀번호 + 비밀번호확인
 
-	private String memberName; //이름
-	
-		private String memberBirth1; //생년
-		private String memberBirth2; // 월
-		private String memberBirth3; // 일
+	private String memberId; // 아이디
+
+	private String memberPwd1; // 비밀번호
+	private String memberPwd2; // 비밀번호 확인
+	private String memberPwd; // 비밀번호 + 비밀번호확인
+
+	private String memberName; // 이름
+
+	private String memberBirth1; // 생년
+	private String memberBirth2; // 월
+	private String memberBirth3; // 일
 	private String memberBirth; // 생년 + 월 + 일
-	
-		private String memberAddr1; // 우편번호
-		private String memberAddr2; // 주소
-		private String memberAddr3; // 상세주소
-	private String memberAddr; //우편번호 + 주소 + 상세주소
-	
+
+	private String memberAddr1; // 우편번호
+	private String memberAddr2; // 주소
+	private String memberAddr3; // 상세주소
+	private String memberAddr; // 우편번호 + 주소 + 상세주소
+
 	private String memberBank; // 카드선택
-	
-		private String memberAccount1; //카드번호1
-		private String memberAccount2; //카드번호2
-		private String memberAccount3; //카드번호3
-		private String memberAccount4; //카드번호4
-	private String memberAccount; //카드번호 1 + 2 + 3 + 4
-	
-	private int memberValidMonth; //유효기간 월
-	
-	private int memberValidYear; //유효기간 연
-	
+
+	private String memberAccount1; // 카드번호1
+	private String memberAccount2; // 카드번호2
+	private String memberAccount3; // 카드번호3
+	private String memberAccount4; // 카드번호4
+	private String memberAccount; // 카드번호 1 + 2 + 3 + 4
+
+	private int memberValidMonth; // 유효기간 월
+
+	private int memberValidYear; // 유효기간 연
+
 	private int memberSharingCount; // 공유 횟수
-	
-		private String memberPhone1; // 지역번호
-		private String memberPhone2; // 전화번호1
-		private String memberPhone3; // 전화번호2
-	private String memberPhone; //지역번호 + 전화번호1 + 전화번호2
-	
-	//Constructor
-	public MemberDTO() {	}	
-	public MemberDTO(int memberNo, String memberId, String memberPwd, String memberName, String memberBirth, 
-					 String memberAddr, String memberBank, String memberAccount, int memberValidMonth, int memberValidYear,
-					 int memberSharingCount, String memberPhone){
+
+	private String memberPhone1; // 지역번호
+	private String memberPhone2; // 전화번호1
+	private String memberPhone3; // 전화번호2
+	private String memberPhone; // 지역번호 + 전화번호1 + 전화번호2
+
+	// Constructor
+	public MemberDTO() {
+	}
+
+	public MemberDTO(int memberNo, String memberId, String memberPwd, String memberName, String memberBirth,
+			String memberAddr, String memberBank, String memberAccount, int memberValidMonth, int memberValidYear,
+			int memberSharingCount, String memberPhone) {
 		this.memberNo = memberNo;
 		this.memberId = memberId;
 		this.memberPwd = memberPwd;
@@ -61,8 +63,8 @@ public class MemberDTO {
 		this.memberSharingCount = memberSharingCount;
 		this.memberPhone = memberPhone;
 	}
-	
-	//getter/setter
+
+	// getter/setter
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -281,20 +283,13 @@ public class MemberDTO {
 
 	@Override
 	public String toString() {
-		return "MemberDTO ["
-				+ "memberNo=" + memberNo 
-				+ ", memberId=" + memberId 
-				+ ", memberPwd=" + memberPwd1
-				+ ", memberName=" + memberName 
-				+ ", memberBirth=" + memberBirth1 + memberBirth2 + memberBirth3 
-				+ ", memberAddr=" + memberAddr1 + memberAddr2 + memberAddr3
-				+ ", memberBank=" + memberBank 
+		return "MemberDTO [" + "memberNo=" + memberNo + ", memberId=" + memberId + ", memberPwd=" + memberPwd1
+				+ ", memberName=" + memberName + ", memberBirth=" + memberBirth1 + memberBirth2 + memberBirth3
+				+ ", memberAddr=" + memberAddr1 + memberAddr2 + memberAddr3 + ", memberBank=" + memberBank
 				+ ", memberAccount=" + memberAccount1 + memberAccount2 + memberAccount3 + memberAccount4
-				+ ", memberValidMonth=" + memberValidMonth 
-				+ ", memberValidYear=" + memberValidYear 
-				+ ", memberSharingCount=" + memberSharingCount 
-				+ ", memberPhone=" + memberPhone1 + memberPhone2 + memberPhone3
-				+ "]";
+				+ ", memberValidMonth=" + memberValidMonth + ", memberValidYear=" + memberValidYear
+				+ ", memberSharingCount=" + memberSharingCount + ", memberPhone=" + memberPhone1 + memberPhone2
+				+ memberPhone3 + "]";
 	}
 
 }

@@ -9,7 +9,9 @@
 </head>
 <body>
 	<div class="rentalItemListForm">
+		<div class="rentalItemListTitle">
 		<span>대여물품목록</span>
+		</div>
 		<table>
 			<tr>
 				<td>사진</td>

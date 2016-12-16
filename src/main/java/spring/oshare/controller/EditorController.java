@@ -50,26 +50,32 @@ public class EditorController {
 		 */
 		
 		// 저장
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/thumbnail/");
+		String defaultPath = request.getSession().getServletContext().getRealPath("/");
+		//파일 기본경로 _ 상세경로
+        String path = defaultPath + "resources" + File.separator + "thumbnail" + File.separator;    
+        
+        
 		
 		// 파일정보
 		String fileName = file.getOriginalFilename();
 		String fileName2 = file.getName();
 		long size = file.getSize();
 		
+		String thumbnailResult = "/resources/thumbnail/"+fileName;
+		
 		try {
-			file.transferTo(new File(saveDir+"/"+fileName)); // 실제로 복사해주는 역할
+			file.transferTo(new File(path+"/"+fileName)); // 실제로 복사해주는 역할
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 	
 		
 		BoardDTO boardDTO = new BoardDTO(request.getParameter("title"), request.getParameter("selectCategory"), 
-				Integer.parseInt(request.getParameter("sharingPrice")), request.getParameter("productState"),
-				request.getParameter("boardType"), request.getParameter("editor"), saveDir+"/"+fileName);
+				request.getParameter("memberId"),Integer.parseInt(request.getParameter("sharingPrice")), request.getParameter("productState"),
+				request.getParameter("boardType"), request.getParameter("editor"), thumbnailResult);
 		
-		boardService.insertBoard(boardDTO);
+		int boardNo = boardService.insertBoard(boardDTO);
 		
-		return "redirect:board/goodsDetail?boardNo=";
+		return "redirect:/board/goodsDetail?boardNo="+boardNo;
 	}
 	
 	//단일파일업로드

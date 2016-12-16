@@ -1,8 +1,13 @@
+/* @font-face{
+	font-family: myPageTilteFont;
+	src : url(/controller/resources/fonts/andarascript-demo.ttf);
+} */
+
 * {
 	padding: 0;
 	margin: 0 auto;
 	list-style: none;
-	font-family: "³ª´®°íµñ";
+	font-family: "³ª´®°íµñ"; 
 	outline: none;
 }
 
@@ -116,34 +121,6 @@ footer h1 {
 	padding-right: 25px;
 }
 
-.headerNavactionUser ul li .myPageList {
-	width: 150px;
-	flaot: left;
-	position: relative;
-}
-
-.headerNavactionUser ul li:nth-child(1):hover .myPageList ul {
-	display: block;
-}
-
-.headerNavactionUser ul li .myPageList>ul>li:hover {
-	background: #e8e8e8;
-}
-
-.headerNavactionUser ul li .myPageList>ul {
-	position: absolute;
-	text-align: center;
-	z-index: 1;
-	background: #fff;
-	display: none;
-}
-
-.headerNavactionUser ul li .myPageList>ul>li {
-	float: none;
-	cursor: pointer;
-	transition: 0.4s;
-}
-
 .headerNavactionUser>ul>li:nth-child(2) {
 	padding-left: 0;
 }
@@ -160,7 +137,6 @@ footer h1 {
 	margin-right: -15px;
 	background: #fff;
 	transition: 0.2s;
-	overflow: hidden;
 	position: relative;
 }
 
@@ -168,7 +144,7 @@ footer h1 {
 	float: right
 }
 
-.headerNavaction ul li {
+.headerNavaction>ul li {
 	float: left;
 	padding: 10px 25px;
 	transition: 0.4s;
@@ -184,7 +160,9 @@ footer h1 {
 }
 
 .headerNavaction .headerIconNavaction li {
-	padding: 15px 10px;
+	padding: 0 10px;
+	padding-top:15px;
+	padding-bottom: 5px;
 }
 
 .headerNavaction .headerIconNavaction li:nth-last-child(1) {
@@ -194,6 +172,46 @@ footer h1 {
 .headerNavaction .headerIcon {
 	float: left;
 	padding: 10px 25px;
+}
+
+.headerNavaction ul li .myPageList {
+	width:140px;
+	flaot: left;
+	padding:10px 0;
+	text-align:center;
+	position: relative;
+}
+
+
+.headerNavaction .navactiponUl>li:nth-child(1):hover .myPageList ul {
+	top:100%;
+	display: block;
+}
+
+.headerNavaction ul li .myPageList>ul>li:hover {
+	background: #e8e8e8;
+}
+
+.headerNavaction ul li .myPageList>ul {
+	width:140px;
+	position: absolute;
+	top:130%;
+	text-align: center;
+	background: #fff;
+	display:none;	
+	z-index:15;
+	transition:0.4s;
+	
+
+}
+
+.headerNavaction ul li .myPageList ul>li {
+	padding:0;
+	float: none;
+	cursor: pointer;
+	height:65px;
+	line-height:65px;
+	transition: 0.4s;
 }
 
 .HeaderSearchForm {
@@ -1784,8 +1802,17 @@ footer h1 {
 	margin-top: 45px;
 }
 
-.wishListForm span {
-	margin-bottom: 20px;
+.wishListForm .wishListTitle{width:100%; height:300px; float:left; background-image:url("/controller/resources/image/myPageTitleImg.jpeg");  background-position:top center ;position: relative;}
+.wishListForm .wishListTitle::before{content:""; width:100%; height: 100%; float:left; background: #000; opacity:0.7; position: absolute; top:0; left:0; }
+
+.wishListForm .wishListTitle span {
+	font-size:60px;
+	font-weight:bold;
+	color:#fff;
+	position: absolute;
+	top:50%;
+	left:50%; 
+	transform:translate(-50%,-50%);
 }
 
 .wishListForm table {
@@ -1848,8 +1875,17 @@ footer h1 {
 	margin-top: 45px;
 }
 
-.saleItemListForm span {
-	margin-bottom: 20px;
+.saleItemListForm .saleItemListTitle{width:100%; height:300px; float:left; background-image:url("/controller/resources/image/myPageTitleImg.jpeg");  background-position:top center ;position: relative;}
+.saleItemListForm .saleItemListTitle::before{content:""; width:100%; height: 100%; float:left; background: #000; opacity:0.7; position: absolute; top:0; left:0; }
+
+.saleItemListForm .saleItemListTitle span{
+	font-size:60px;
+	font-weight:bold;
+	color:#fff;
+	position: absolute;
+	top:50%;
+	left:50%; 
+	transform:translate(-50%,-50%);
 }
 
 .saleItemListForm table {
@@ -2077,9 +2113,17 @@ footer h1 {
 	margin-left: 20px;
 	margin-top: 45px;
 }
+.rentalItemListForm .rentalItemListTitle{width:100%; height:300px; float:left; background-image:url("/controller/resources/image/myPageTitleImg.jpeg");  background-position:top center ;position: relative;}
+.rentalItemListForm .rentalItemListTitle::before{content:""; width:100%; height: 100%; float:left; background: #000; opacity:0.7; position: absolute; top:0; left:0; }
 
-.rentalItemListForm span {
-	margin-bottom: 20px;
+.rentalItemListForm .rentalItemListTitle span{
+	font-size:60px;
+	font-weight:bold;
+	color:#fff;
+	position: absolute;
+	top:50%;
+	left:50%; 
+	transform:translate(-50%,-50%);
 }
 
 .rentalItemListForm table {

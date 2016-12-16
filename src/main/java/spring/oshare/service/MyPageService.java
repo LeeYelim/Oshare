@@ -4,7 +4,6 @@ import java.util.List;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.MessageDTO;
-import spring.oshare.dto.SharingDTO;
 
 public interface MyPageService {
 
@@ -43,8 +42,6 @@ public interface MyPageService {
 	 * 皋技瘤 焊包窃 格废
 	 *//*
 	public void messageBox();
-	
-
 	
 	*//**
 	 * 搬力 包府 格废

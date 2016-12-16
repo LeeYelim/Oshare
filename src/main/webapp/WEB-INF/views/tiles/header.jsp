@@ -19,17 +19,7 @@
 					</c:when>
 					<c:otherwise>
 						<li>
-							<div class="myPageList">
-								<a href="#">My Page</a>
-								<ul>
-									<li><a href="<c:url value='/mypage/wishList'/>">WishList</a></li>
-									<li><a href="<c:url value='/mypage/salesItem'/>">판매물품목록</a></li>
-									<li><a href="<c:url value='/mypage/rentalItem'/>">대여물품목록</a></li>
-									<li><a href="<c:url value='/mypage/message'/>">쪽지함</a></li>
-									<li><a href="#">회원정보수정</a></li>
-									<li><a href="<c:url value='/member/logout'/>">로그아웃</a></li>
-								</ul>
-							</div>
+							
 						</li>
 					</c:otherwise>
 				</c:choose>
@@ -39,7 +29,22 @@
 			<div class="headerIcon">
 				<a href="<c:url value='/'/>">Logo</a>
 			</div>
-			<ul>
+			<ul class="navactiponUl">
+			<c:if test="${!empty sessionScope.loginMemberId}">
+				<li style="padding:0">					
+					<div class="myPageList">
+								<a href="<c:url value='/mypage/wishList'/>">My Page</a>
+								<ul>
+									<li><a href="<c:url value='/mypage/wishList'/>">WishList</a></li>
+									<li><a href="<c:url value='/mypage/salesItem'/>">판매물품목록</a></li>
+									<li><a href="<c:url value='/mypage/rentalItem'/>">대여물품목록</a></li>
+									<li><a href="<c:url value='/mypage/message'/>">쪽지함</a></li>
+									<li><a href="<c:url value='/member/signupForm'/>">회원정보수정</a></li>
+									<li><a href="<c:url value='/member/logout'/>">로그아웃</a></li>
+								</ul>
+						</div>				
+				</li>	
+				</c:if>		
 				<li><a href="<c:url value='/'/>">Home</a></li>
 				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
 				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
@@ -97,12 +102,11 @@
 						</div>
 					</li>
 					<c:choose>
-						<c:when test="${!empty sessionScope.loginMemberName}">
+						<c:when test="${!empty sessionScope.loginMemberId}">
 							<li><a href="<c:url value='/mypage/wishList'/>">My Page</a></li>
 							<li><a href="<c:url value='/'/>">Home</a></li>
 							<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
-							<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
-							<li><a href="<c:url value='/member/loginForm'/>">Login</a></li>
+							<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>	
 							<li><a href="<c:url value='/member/logout'/>">logout</a></li>
 						</c:when>
 						<c:otherwise>

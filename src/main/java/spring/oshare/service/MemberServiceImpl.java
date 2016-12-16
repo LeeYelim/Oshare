@@ -20,13 +20,13 @@ public class MemberServiceImpl implements MemberService {
 
 		MemberDTO memberDTO = memberDao.idCheck(memberId);
 		
-	//존재여부 확인
+		//존재여부 확인
 		boolean result = false;
 				
-	//ID중복
+		//ID중복
 		if(memberDTO!=null) return true;
 		
-	//ID사용가능
+		//ID사용가능
 		return result;
 	}
 	
@@ -57,16 +57,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void selectUserInfo(String userId) {
-		// TODO Auto-generated method stub
-		
+	public MemberDTO selectUserInfo(String userId) {
+		return memberDao.selectUserInfo(userId);
 	}
 
 	@Override
 	public MemberDTO loginCheck(MemberDTO dto) {
 		return memberDao.loginCheck(dto);
 	}
-	
+
 	/**
 	 * 쪽지수신자 유효성검사 
 	 * */

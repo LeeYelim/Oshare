@@ -11,7 +11,9 @@
 <body>
 
 	<div class="saleItemListForm">
+		<div class="saleItemListTitle">
 		<span>판매물품목록</span>
+		</div>
 		<table>
 			<tr>
 				<td>사진</td>

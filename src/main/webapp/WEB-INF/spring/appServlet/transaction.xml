@@ -16,21 +16,23 @@
 
 
 	<!-- 외부설정문서(properties파일) 가져오기 -->
-	<beans:bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<beans:property name="locations"><!-- setLocations()호출 -->
-			<beans:value>/WEB-INF/spring/appServlet/dbInfo.properties
-			</beans:value>
+			<beans:value>/WEB-INF/spring/appServlet/dbInfo.properties</beans:value>
 		</beans:property>
 	</beans:bean>
 
 	<!-- oracle 연결!!!!! -->
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="${driverName}" p:url="${url}" p:username="${userName}"
+		p:driverClassName="${driverName}" 
+		p:url="${url}" 
+		p:username="${userName}"
 		p:password="${userPass}" p:maxActive="10" />
 
-	<!-- <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
-		p:dataSource-ref="dataSource" p:configLocation="classpath:kdb/spring/conf/SqlMapConfig.xml"/> -->
+	<!-- 
+		<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
+		p:dataSource-ref="dataSource" p:configLocation="classpath:kdb/spring/conf/SqlMapConfig.xml"/>
+	 -->
 
 
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

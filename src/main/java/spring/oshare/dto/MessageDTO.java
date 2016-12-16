@@ -8,7 +8,7 @@ public class MessageDTO {
 	private String sendingDate; // 보낸 날짜
 	
 	
-	public MessageDTO() {}
+	public MessageDTO() {	}
 	public MessageDTO(int messageNo, String sender, String receiver, String content, String sendingDate) {
 		super();
 		this.messageNo = messageNo;

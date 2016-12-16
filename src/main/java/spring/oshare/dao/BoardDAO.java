@@ -1,5 +1,8 @@
 package spring.oshare.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.ReviewDTO;
@@ -9,12 +12,32 @@ public interface BoardDAO {
 	/**
 	 * 물품 등록
 	 * */
-	void insertBoard(BoardDTO board);
+	int insertBoard(BoardDTO board);
 	
 	/**
 	 * 물품 등록 후, viewdetail에 반환하기 위해 sequence no 반환
 	 */
 	int selectBoardSeqNo();
+	
+	/**
+	 *  조회수 증가
+	 */
+	void updateViewCount(int boardNo);
+	
+	/**
+	 * 물품 상세 정보(게시물 번호로 조회)
+	 * */
+	BoardDTO selectByBoardNo(int boardNo);
+	
+	/**
+	 *  리스트
+	 */
+	List<BoardDTO> pageList(Map<String, Object> map);
+	
+	/**
+	 *  게시글 갯수
+	 */
+	int getBoardCount(Map<String, Object> map);
 	
 	/**
 	 * 물품 수정
@@ -44,7 +67,7 @@ public interface BoardDAO {
 	/**
 	 * 물품 상세 정보(게시물 번호로 조회)
 	 * */
-	void detailBoard(String boardNo);
+	BoardDTO detailBoard(int boardNo);
 	
 	/**
 	 * 댓글 추가

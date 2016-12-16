@@ -48,143 +48,27 @@
 				</div>
 			</div>
 			<div id="goodsListItemForm">
+			<c:forEach items="${list}" var="sharingItem">
 				<div class="goodsListItem">
 					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"><a href="<c:url value='/board/goodsDetail'/>"><span
-								class="material-icons goodsDetailViewSee">&#xE8F4;</span></a></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
+						<li><img src="<c:url value='${sharingItem.filePath}'/>" alt="book">
+						<a href="<c:url value='/board/goodsDetail?boardNo=${sharingItem.boardNo}'/>">
+						<span class="material-icons goodsDetailViewSee">&#xE8F4;</span>
+						</a></li>
+						<li>제품명 : ${sharingItem.productName}</li>
+						<li>가격 : ${sharingItem.price}원 / 일</li>
 						<li><span class="material-icons heartWish">&#xE87D;</span></li>
 					</ul>
 				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-
-				<div class="goodsListItem">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
+				</c:forEach>
 				<div class="goodsListInsertBtn">
-
-					<span class="glyphicon glyphicon-pencil"><a
-						href="<c:url value='/editor/insertProduct'/>?boardType=sharing">제품등록</a></span>
+				
+				<a href="<c:url value='/editor/insertProduct'/>?boardType=sharing"><span class="glyphicon glyphicon-pencil">제품등록</span></a>
 				</div>
+				
 				<div class="goodsListNavaction">
-					<ul class="pagination">
-						<li><a href="#">«</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">6</a></li>
-						<li><a href="#">»</a></li>
-					</ul>
-				</div>
+					<c:if test="${count>0}">${pagingHtml}</c:if>
+				</div>		
 			</div>
 		</div>
 	</div>

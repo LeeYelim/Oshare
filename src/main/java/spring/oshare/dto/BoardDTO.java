@@ -7,15 +7,19 @@ import java.util.List;
 public class BoardDTO {
 	private int boardNo; // 게시물 번호
 	private String productName; // 물품명
+	private String memberId;	// 등록한 계정ID
 	private String category; // 카테고리
-	private int price; // 1일당 대여가격			
+	private int price; // 1일당 대여가격
 	private String condition; // 물품 상태
 	private String boardType; // 게시물 유형(쉐어링 or 렌탈)
 	private String dealingType; // 거래 종류(택배 or 직거래)
 	private String detail; // 상품 상세
 	private String regDate; // 글 등록 날짜
 	private int viewCount; // 조회수
-	private List<SharingDTO> sharing;	
+	private List<SharingDTO> sharing;
+	
+	// board - member join 1:1 association
+	private MemberDTO memberDTO;
 	
 	private MultipartFile file; // 썸네일 대표 이미지
 	private String filePath;
@@ -23,9 +27,10 @@ public class BoardDTO {
 	// Default Constructor
 	public BoardDTO() {}
 	// Constructor for inserting Product
-	public BoardDTO(String productName, String category, int price, String condition, String boardType, String detail, String filePath) {
+	public BoardDTO(String productName, String category, String memberId, int price, String condition, String boardType, String detail, String filePath) {
 		this.productName = productName;
 		this.category = category;
+		this.memberId = memberId;
 		this.price = price;
 		this.condition = condition;
 		this.boardType = boardType;
@@ -34,6 +39,7 @@ public class BoardDTO {
 		this.regDate = regDate;
 		this.viewCount = viewCount;
 	}
+	
 	
 	public int getBoardNo() {
 		return boardNo;
@@ -46,6 +52,12 @@ public class BoardDTO {
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 	public String getCategory() {
 		return category;
@@ -101,6 +113,12 @@ public class BoardDTO {
 	public void setSharing(List<SharingDTO> sharing) {
 		this.sharing = sharing;
 	}
+	public MemberDTO getMemberDTO() {
+		return memberDTO;
+	}
+	public void setMemberDTO(MemberDTO memberDTO) {
+		this.memberDTO = memberDTO;
+	}
 	public MultipartFile getFile() {
 		return file;
 	}
@@ -114,12 +132,15 @@ public class BoardDTO {
 		this.filePath = filePath;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "BoardDTO [boardNo=" + boardNo + ", productName=" + productName + ", category=" + category + ", price="
-				+ price + ", condition=" + condition + ", boardType=" + boardType + ", dealingType=" + dealingType
-				+ ", detail=" + detail + ", regDate=" + regDate + ", viewCount=" + viewCount + ", file=" + file
+		return "BoardDTO [boardNo=" + boardNo + ", productName=" + productName + ", memberId=" + memberId
+				+ ", category=" + category + ", price=" + price + ", condition=" + condition + ", boardType="
+				+ boardType + ", dealingType=" + dealingType + ", detail=" + detail + ", regDate=" + regDate
+				+ ", viewCount=" + viewCount + ", sharing=" + sharing + ", memberDTO=" + memberDTO + ", file=" + file
 				+ ", filePath=" + filePath + "]";
 	}
-
+		
+	
 }
