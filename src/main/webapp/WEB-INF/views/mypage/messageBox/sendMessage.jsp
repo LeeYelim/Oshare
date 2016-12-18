@@ -42,65 +42,46 @@
 			</div>
 			<div id="inbox" class="tab-pane fade">
 				<div class="inMessage">
-					<span>받은쪽지</span>
-					<form action="" method="">
-						<table>
-							<tr>
-								<td><input type="checkbox" class="allCheck"></td>
-								<td>내용</td>
-								<td>보낸사람</td>
-								<td>시간</td>
-							</tr>
-						
+					
+						<table id="inMessageTable" class="display" cellspacing="0" width="100%">
+						<thead>
+						<tr>
+					 	<th><input type="checkbox" class="allCheck"></th>
+								<th>내용</th>
+								<th>보낸사람</th>
+								<th>시간</th> 
+						</tr>
+							</thead>
 						</table>
-					</form>
+					
 				</div>
-				<div class="inSendMessagePaging">
-					<ul class="pagination">
-						<li><a href="#">«</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">6</a></li>
-						<li><a href="#">»</a></li>
-					</ul>
+			
 					<div class="inSendMessageBtn">
 						<input type="button" value="삭제">
 					</div>
-				</div>
+				
 			</div>
 			<div id="sent" class="tab-pane fade">
-				<div class="outMessage">
-					<span>보낸쪽지</span>
-					<form action="" method="">
-						<table>
+				<div class="outMessage" >
+				
+						<table id="outMessageTable" class="display" cellspacing="0" width="100%">
+						<thead>
 							<tr>
-								<td><input type="checkbox" class="allCheck"></td>
-								<td>내용</td>
-								<td>받는사람</td>
-								<td>시간</td>
+								<th><input type="checkbox" class="allCheck"></th>
+								<th>내용</th>
+								<th>받는사람</th>
+								<th>시간</th>
 							</tr>
+						</thead>
 							
 						</table>
-					</form>
+				
 				</div>
-				<div class="outSendMessagePaging">
-					<ul class="pagination">
-						<li><a href="#">«</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">6</a></li>
-						<li><a href="#">»</a></li>
-					</ul>
+			
 					<div class="outSendMessageBtn">
 						<input type="button" value="삭제">
 					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

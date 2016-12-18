@@ -9,20 +9,15 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/bootstrap.min.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/style.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/owl.carousel.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='/resources/css/jquery.rateyo.css'/>">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<link href="<c:url value='/resources/css/fullcalendar.css'/>"
-	rel="stylesheet" />
-<link href="<c:url value='/resources/css/fullcalendar.print.css'/>"
-	rel='stylesheet' media='print' />
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/bootstrap.min.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/owl.carousel.css'/>">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/jquery.rateyo.css'/>">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="<c:url value='/resources/css/fullcalendar.css'/>" rel="stylesheet" />
+<link href="<c:url value='/resources/css/fullcalendar.print.css'/>" rel='stylesheet' media='print' />
+<link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>">
 <title>Oshare</title>
 <style>
 #calendar {
@@ -51,20 +46,16 @@
 	<div class="dialogBlack"></div>
 
 
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/owl.carousel.min.js'/>"></script>
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/jquery.rateyo.min.js'/>"></script>
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/index_js.js'/>"></script>
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/validityCheck.js'/>"></script>
-	<script type="text/javascript"
-		src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/owl.carousel.min.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/bootstrap.min.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery.rateyo.min.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/index_js.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/validityCheck.js'/>"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js"></script>
+	<script type="text/javascript" src="<c:url value='/resources/js/dataTable.js'/>"></script>
 	<script src="<c:url value='/resources/js/moment.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/fullcalendar.min.js'/>"></script>
 

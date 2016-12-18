@@ -13,32 +13,24 @@
 		<div class="wishListTitle">
 			<span>WishList</span>
 		</div>
-		<table>
+		<table id="wishListTable" class="display" cellspacing="0" width="100%"/>
+		<thead>
 			<tr>
-				<td>제품</td>
-				<td>제품명</td>
+				<th>제품</th>
+				<th>제품명</th>
 			</tr>
-			<tr>
-				<td><img src="<c:url value='/resources/image/book.jpg'/>"
-					alt="asd"></td>
+		</thead>
+		<tbody>
+		 <tr>
+				<td><img src="<c:url value='/resources/image/book.jpg'/>"alt="asd"></td>
 				<td><span class="material-icons close wishListClose ">&#xE5CD;</span>
 					<h3>컴퓨터 I-7 5세대 RAM 8G</td>
-			</tr>
-
+	    </tr>
+    </tbody>
 		</table>
+		
 	</div>
-	<div class="wishListPaging">
-		<ul class="pagination">
-			<li><a href="#">«</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">6</a></li>
-			<li><a href="#">»</a></li>
-		</ul>
-	</div>
+	
 
 </body>
 </html>

@@ -7,7 +7,7 @@
 	padding: 0;
 	margin: 0 auto;
 	list-style: none;
-	font-family: "³ª´®°íµñ"; 
+	font-family: "ë§‘ì€ê³ ë”•"; 
 	outline: none;
 }
 
@@ -99,6 +99,11 @@ footer h1 {
 	transition: 0.4s;
 }
 
+/* bootstrap dataTable */
+.dataTables_empty{display: none;}
+
+table.dataTable.no-footer{border-bottom: none;}
+
 /* header */
 .headerNavactionUser {
 	width: 100%;
@@ -188,10 +193,6 @@ footer h1 {
 	display: block;
 }
 
-.headerNavaction ul li .myPageList>ul>li:hover {
-	background: #e8e8e8;
-}
-
 .headerNavaction ul li .myPageList>ul {
 	width:140px;
 	position: absolute;
@@ -211,7 +212,27 @@ footer h1 {
 	cursor: pointer;
 	height:65px;
 	line-height:65px;
+	overflow:hidden;
 	transition: 0.4s;
+	position: relative;
+}
+
+.headerNavaction ul li .myPageList ul>li::before{
+	content:"";
+	width:5px;
+	height: 100%;
+	float:left;
+	background: red;
+	position: absolute;
+	top:-100%;
+	left:0;
+	transition: 0.4s;	
+}
+
+.headerNavaction ul li .myPageList>ul>li:hover{background: #fff;}
+
+.headerNavaction ul li .myPageList>ul>li:hover::before  {
+	top:0;
 }
 
 .HeaderSearchForm {
@@ -1814,58 +1835,10 @@ footer h1 {
 	left:50%; 
 	transform:translate(-50%,-50%);
 }
-
-.wishListForm table {
-	width: 100%;
-	margin-top: 20px;
-}
-
-.wishListForm table tr {
-	border: 1px solid #e8e8e8;
-}
-
-.wishListForm table tr td {
-	height: 150px;
-}
-
-.wishListForm table tr:nth-child(1) {
-	background: #2196F3;
-	color: #fff;
-	border: 1px solid #1E88E5;
-}
-
-.wishListForm table tr:nth-child(1) td {
-	height: 40px;
-	line-height: 40px;
-	text-align: center;
-}
-
-.wishListForm table tr td h3 {
-	text-align: center;
-	line-height: 100px;
-}
-
-.wishListForm table tr td img {
-	width: 100%;
-	height: 100%;
-	float: left;
-}
-
-.wishListForm table tr td:nth-child(1) {
-	width: 25%;
-	float: left;
-}
-
-.wishListForm table tr td:nth-child(2) {
-	width: 75%;
-	float: left;
-}
-
-.wishListPaging {
-	width: 100%;
-	float: left;
-	text-align: center;
-}
+.wishListForm table tr td{padding:0; position:relative;}
+.wishListForm table tr td h3{text-align: center;}
+.wishListForm table tr td span{position:absolute; top:0; right:0; padding:15px;}
+.wishListForm table tr td img{width:100%; float:left;}
 
 /* salesItemList */
 .saleItemListForm {
@@ -1888,48 +1861,10 @@ footer h1 {
 	transform:translate(-50%,-50%);
 }
 
-.saleItemListForm table {
-	width: 100%;
-	margin-top: 20px;
-	text-align: center;
-}
-
-.saleItemListForm table tr {
-	height: 75px;
-	line-height: 75px;
-	border: 1px solid #e8e8e8;
-}
-
-.saleItemListForm table tr:nth-child(1) {
-	height: 40px;
-	line-height: 40px;
-	background: #2196F3;
-	color: #fff;
-	border: 1px solid #1E88E5;
-}
-
-.saleItemListForm table tr td {
-	width: 13.3%;
-	float: left;
-}
-
-.saleItemListForm table tr td:nth-child(2) {
-	width: 20%;
-}
-
-.saleItemListForm table tr td:nth-last-child(1) {
-	border-right: 0;
-}
-
-.saleItemListForm table tr td input {
-	width: 100%;
-	height: 100%;
-	float: left;
-}
-
+.saleItemListForm table tr td,th{text-align: center;}
+.saleItemListForm table tr td{padding:0;}
 .saleItemListForm table tr td img {
 	width: 100%;
-	height: 100%;
 	float: left;
 }
 
@@ -1952,12 +1887,6 @@ footer h1 {
 	height: 37px;
 	line-height: 37px;
 	float: left;
-}
-
-.saleItemListPaging {
-	width: 100%;
-	float: left;
-	text-align: center;
 }
 
 .saleItemListDialog {
@@ -2126,41 +2055,8 @@ footer h1 {
 	transform:translate(-50%,-50%);
 }
 
-.rentalItemListForm table {
-	width: 100%;
-	margin-top: 20px;
-	text-align: center;
-}
-
-.rentalItemListForm table tr {
-	border: 1px solid #e8e8e8;
-}
-
-.rentalItemListForm table tr:nth-child(1) {
-	background: #2196F3;
-	color: #fff;
-	border: 1px solid #1E88E5;
-}
-
-.rentalItemListForm table tr td {
-	width: 13.3%;
-	height: 60px;
-	line-height: 60px;
-	float: left;
-}
-
-.rentalItemListForm table tr:nth-child(1) td {
-	height: 40px;
-	line-height: 40px;
-}
-
-.rentalItemListForm table tr td:nth-last-child(1) {
-	border-right: 0;
-}
-
-.rentalItemListForm table tr td:nth-child(2) {
-	width: 20%;
-}
+.rentalItemListForm table tr td,th{text-align: center;}
+.rentalItemListForm table tr td{padding:0;}
 
 .rentalItemListForm table tr td input {
 	width: 100%;
@@ -2170,7 +2066,6 @@ footer h1 {
 
 .rentalItemListForm table tr td img {
 	width: 100%;
-	height: 100%;
 	float: left;
 }
 
@@ -2195,11 +2090,6 @@ footer h1 {
 	float: left;
 }
 
-.rentalItemListPaging {
-	width: 100%;
-	float: left;
-	text-align: center;
-}
 
 .rentalItemListDialog {
 	width: 700px;
@@ -2376,53 +2266,18 @@ footer h1 {
 }
 
 .sendMessageForm #inbox .inMessage {
-	width: 100%;
-	float: left;
+	width: 95%;
+	margin-top:30px;
 }
-
-.sendMessageForm #inbox .inMessage span {
-	width: 100%;
-	float: left;
-	padding: 15px;
-	padding-left: 38px;
-}
-
-.sendMessageForm #inbox .inMessage table {
-	width: 90%;
-	float: left;
-	text-align: center;
-	margin-left: 38px;
-}
-
-.sendMessageForm #inbox .inMessage table tr:nth-child(1) {
-	background: #2196F3;
-	color: #fff;
-}
-
-.sendMessageForm #inbox .inMessage table tr td {
-	width: 25%;
-	line-height: 30px;
-	float: left;
-}
-
-.sendMessageForm #inbox .inSendMessagePaging {
-	width: 100%;
-	float: left;
-	text-align: center;
-	position: relative;
-}
-
-.sendMessageForm #inbox .inSendMessagePaging .inSendMessageBtn {
+.sendMessageForm #inbox .inSendMessageBtn {
 	width: 140px;
 	height: 40px;
-	position: absolute;
-	top: 0;
-	right: 0;
+	float:right;
 	margin-top: 22px;
 	margin-right: 52px;
 }
 
-.sendMessageForm #inbox .inSendMessagePaging .inSendMessageBtn input[type=button]
+.sendMessageForm #inbox .inSendMessageBtn input[type=button]
 	{
 	width: 100%;
 	height: 100%;
@@ -2430,53 +2285,19 @@ footer h1 {
 }
 
 .sendMessageForm #sent .outMessage {
-	width: 100%;
-	float: left;
+	width: 95%;
+	margin-top:30px;
 }
 
-.sendMessageForm #sent .outMessage span {
-	width: 100%;
-	float: left;
-	padding: 15px;
-	padding-left: 38px;
-}
-
-.sendMessageForm #sent .outMessage table {
-	width: 90%;
-	float: left;
-	text-align: center;
-	margin-left: 38px;
-}
-
-.sendMessageForm #sent .outMessage table tr:nth-child(1) {
-	background: #2196F3;
-	color: #fff;
-}
-
-.sendMessageForm #sent .outMessage table tr td {
-	width: 25%;
-	line-height: 30px;
-	float: left;
-}
-
-.sendMessageForm #sent .outSendMessagePaging {
-	width: 100%;
-	float: left;
-	text-align: center;
-	position: relative;
-}
-
-.sendMessageForm #sent .outSendMessagePaging .outSendMessageBtn {
+.sendMessageForm #sent .outSendMessageBtn {
 	width: 140px;
 	height: 40px;
-	position: absolute;
-	top: 0;
-	right: 0;
+	float:right;
 	margin-top: 22px;
 	margin-right: 52px;
 }
 
-.sendMessageForm #sent .outSendMessagePaging .outSendMessageBtn input[type=button]
+.sendMessageForm #sent .outSendMessageBtn input[type=button]
 	{
 	width: 100%;
 	height: 100%;
@@ -2706,28 +2527,6 @@ footer h1 {
 	margin-top: 45px;
 }
 
-#userManagement table {
-	width: 100%;
-	float;
-	left;
-}
-
-#userManagement table tr {
-	border: 1px solid #e8e8e8;
-	text-align: center;
-	height: 40px;
-	line-height: 40px;
-}
-
-#userManagement table tr:nth-child(1) {
-	background: #2196F3;
-	color: #fff;
-	border: 1px solid #1E88E5;
-}
-
-#userManagement table tr td {
-	
-}
 
 .userManagementBtn {
 	float: right;
@@ -2834,6 +2633,9 @@ footer h1 {
 		font-size: 20px;
 		line-height: 150px;
 		font-weight: bold;
+	}
+	.sendMessageForm{
+		margin-left:0;
 	}
 }
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -99,23 +100,23 @@ public class MyPageController {
 	/**
 	 * 쪽지 보내기
 	 * */
-	/*
+	
 	@RequestMapping("sendMessageInsert")
 	public String insertMessage(MessageDTO message , HttpServletRequest request){
 		
-		if(myPageService.insertMessage(message) <= 0){
-			request.setAttribute("errorMsg", "수신자가 존재하지 않습니다 다시 확인해주세요.");
-		}
-		return "mypage/messageBox/sendMessage";
+		myPageService.insertMessage(message);
+	
+		
+		return "redirect:message";
 	}
-	*/
+	
 	
 	/**
 	 * 수신 송신
 	 * */
 	@RequestMapping("sendMessageSelect")
 	@ResponseBody
-	public List<MessageDTO>  selectMessage(String posts , String division){
+	public List<MessageDTO>  selectMessage(HttpServletRequest request,String posts , String division){
 		 List<MessageDTO> list = myPageService.selectMessage(posts, division);
 		 return list;
 		

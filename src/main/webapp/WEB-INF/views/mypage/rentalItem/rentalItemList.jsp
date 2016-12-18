@@ -12,21 +12,23 @@
 		<div class="rentalItemListTitle">
 		<span>대여물품목록</span>
 		</div>
-		<table>
+		<table id="rentalItemTable" class="display" cellspacing="0" width="100%" >
+		<thead>
 			<tr>
-				<td>사진</td>
-				<td>제품명</td>
-				<td>대여자 ID</td>
-				<td>대여자 연락처</td>
-				<td>대여일</td>
-				<td>반납일</td>
-				<td>거래상태</td>
+				<th>사진</th>
+				<th>제품명</th>
+				<th>대여자 ID</th>
+				<th>대여자 연락처</th>
+				<th>대여일</th>
+				<th>반납일</th>
+				<th>거래상태</th>
 			</tr>
+		</thead>
+		<tbody>
 			<c:forEach items="${requestScope.rentallist}" var="board">
 				<c:forEach items="${board.sharing}" var="sharing">
 					<tr>
-						<td><img src="<c:url value='/resources/image/book.jpg'/>"
-							alt="asd"></td>
+						<td><img src="<c:url value='/resources/image/book.jpg'/>"alt="asd"></td>
 						<td>${board.productName}</td>
 						<td>${sharing.buyerId}</td>
 						<td>${sharing.member.memberPhone}</td>
@@ -35,11 +37,13 @@
 					</tr>
 				</c:forEach>
 			</c:forEach>
+		
 			<tr>
-				<td>1</td>
+				<td><img src="<c:url value='/resources/image/book.jpg'/>"alt="asd"></td>
 				<td>2</td>
 				<td>3</td>
 				<td>4</td>
+				<td>123</td>
 				<td>5</td>
 				<td>
 					<div class="rentalItemListTransactionStatus">
@@ -47,19 +51,9 @@
 					</div>
 				</td>
 			</tr>
+			</tbody>
+		
 		</table>
-	</div>
-	<div class="rentalItemListPaging">
-		<ul class="pagination">
-			<li><a href="#">«</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">6</a></li>
-			<li><a href="#">»</a></li>
-		</ul>
 	</div>
 	<div class="rentalItemListDialog">
 		<form action="" method="" onsubmit="return rentalItemValidityCheck()">

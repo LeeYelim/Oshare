@@ -428,22 +428,40 @@ $(function(){
 				data : "posts=receiver&division="+user,
 				success : function(result){
 					if(result.length <=0){
-						$(".inMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%'>쪽지가 존재하지 않습니다</td></tr>");
-					}else{					
-					var table="";
-					$.each(result,function(index,item){
-						console.log(item)
-						table+="<tr><td><input type='checkbox' name='inMessageCheckbox' value='"+item.messageNo+"'></td><td>"+item.content+"</td><td>"+item.sender+"</td><td>"+item.sendingDate+"</td></tr>"
-					});
-					$(".inMessage table tr:nth-child(1)").parent().append(table);
-					}
-				} , //성공
+						$(".inMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>쪽지가 존재하지 않습니다</td></tr>");
+					}	
+				}, //성공
 				error : function(err){
 					alert("err :"+err);
 				} , //실패
 			});
+	    	 $("#inMessageTable").DataTable({
+	    		  destroy: true,
+		 	    	'ajax': {
+		 	    	    "type"   : "POST",
+		 	    	    "url"    : '/controller/mypage/sendMessageSelect',
+		 	    	    "data"   :{
+		 	    	    	"posts" : "receiver",
+		 	    	    	"division" : user
+		 	    	    },
+		 	    	    "dataSrc": ""
+		 	    	  },
+		 	    	  
+		 	    	  'columns': [
+	    	            {"data" : "messageNo",render: function ( data, type, row ) {
+	                      return '<input type="checkbox" name="inMessageCheckbox" value='+data+'>';
+	    	            }},
+		 	    	    {"data" : "content"},
+		 	    	    {"data" : "sender"},
+		 	    	    {"data" : "sendingDate"}
+		 	    	  ]
+		 	    }); 	
+	    	
+	    	
 	    }
+	   
 	    
+		
 	    $(document).on("click",".sendMessageForm .receiverMessage",function(){
 	    	sendInMessage();
 	    }); //받은 쪽지함 Event end
@@ -463,7 +481,6 @@ $(function(){
 	    	$(".inMessage table tr td input[name=inMessageCheckbox]:checked").each(function(index){
 	    		inSendMessageCheckBoxVal.push($(this).val());
 	    	});
-	    	
 	    	$.ajax({
 				url: "/controller/mypage/sendMessageDelete" , //서버요청이름
 				type : "post" , //method방식 (get , post) 
@@ -493,20 +510,35 @@ $(function(){
 				data : "posts=sender&division="+user,
 				success : function(result){
 					if(result.length <=0 ){
-						$(".outMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%'>쪽지가 존재하지 않습니다</td></tr>");
-					}else{
-					var table="";
-					$.each(result,function(index,item){
-						console.log(item)
-						table+="<tr><td><input type='checkbox' name='outMessageCheckbox' value='"+item.messageNo+"'></td><td>"+item.content+"</td><td>"+item.receiver+"</td><td>"+item.sendingDate+"</td></tr>"
-					});
-					$(".outMessage table tr:nth-child(1)").parent().append(table);
+						$(".outMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>쪽지가 존재하지 않습니다</td></tr>");
 					}
 				} , //성공
 				error : function(err){
 					alert(err)
 				} , //실패
 			});
+	    	
+	    	 $("#outMessageTable").DataTable({
+	    		  destroy: true,
+		 	    	'ajax': {
+		 	    	    "type"   : "POST",
+		 	    	    "url"    : '/controller/mypage/sendMessageSelect',
+		 	    	    "data"   :{
+		 	    	    	"posts" : "sender",
+		 	    	    	"division" : user
+		 	    	    },
+		 	    	    "dataSrc": ""
+		 	    	  },
+		 	    	  
+		 	    	  'columns': [
+	    	            {"data" : "messageNo",render: function ( data, type, row ) {
+	                      return '<input type="checkbox" name="outMessageCheckbox" value='+data+'>';
+	    	            }},
+		 	    	    {"data" : "content"},
+		 	    	    {"data" : "receiver"},
+		 	    	    {"data" : "sendingDate"}
+		 	    	  ]
+		 	    }); 
 	    }
 	    
 	    $(document).on("click",".sendMessageForm .senderMessage",function(){

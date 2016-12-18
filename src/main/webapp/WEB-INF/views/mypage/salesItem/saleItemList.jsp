@@ -10,20 +10,24 @@
 </head>
 <body>
 
-	<div class="saleItemListForm">
+	<div class="saleItemListForm" >
 		<div class="saleItemListTitle">
 		<span>판매물품목록</span>
 		</div>
-		<table>
+		<table id="saleItemTable" class="display" cellspacing="0" width="100%" >
+		<thead>
 			<tr>
-				<td>사진</td>
-				<td>제품명</td>
-				<td>대여자 ID</td>
-				<td>대여자 연락처</td>
-				<td>대여일</td>
-				<td>반납일</td>
-				<td>거래상태</td>
+				<th>사진</th>
+				<th>제품명</th>
+				<th>대여자 ID</th>
+				<th>대여자 연락처</th>
+				<th>대여일</th>
+				<th>반납일</th>
+				<th>거래상태</th>
+
 			</tr>
+		</thead>
+		<tbody>
 			<c:forEach items="${requestScope.saleslist}" var="board">
 				<c:forEach items="${board.sharing}" var="sharing">
 					<tr>
@@ -38,32 +42,21 @@
 				</c:forEach>
 			</c:forEach>
 			<tr>
-				<td><img src="<c:url value='/resources/image/book.jpg'/>"
-					alt="asd"></td>
+				<td> <img src="<c:url value='/resources/image/book.jpg'/>" alt="asd"></td>
 				<td>Apple</td>
 				<td>abc1234</td>
 				<td>123456</td>
+				<td>123</td>
+				<td>12334</td>
 				<td>
 					<div class="saleItemListTransactionStatus">
 						<span>대여중</span> <input type="button" value="비용청구">
 					</div>
 				</td>
 			</tr>
-
+		</tbody>
+	
 		</table>
-	</div>
-	<div class="saleItemListPaging">
-		<ul class="pagination">
-			<li><a href="#">«</a></li>
-			<li><a href="#">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">4</a></li>
-			<li><a href="#">5</a></li>
-			<li><a href="#">6</a></li>
-			<li><a href="#">»</a></li>
-		</ul>
-	</div>
 	</div>
 	<div class="saleItemListDialog">
 		<div class="saleItemListDialogTitle">
@@ -108,5 +101,6 @@
 					value="취소">
 			</div>
 		</form>
+	</div>
 </body>
 </html>
