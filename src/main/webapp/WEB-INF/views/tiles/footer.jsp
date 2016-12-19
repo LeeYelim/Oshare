@@ -8,6 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Footer</h1>
+	<div class="footerIconForm">
+		<img src="" alt="footerIcon">
+	</div>
 </body>
 </html>

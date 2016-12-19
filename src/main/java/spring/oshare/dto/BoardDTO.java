@@ -21,7 +21,7 @@ public class BoardDTO {
 	// board - member join 1:1 association
 	private MemberDTO memberDTO;
 	
-	private ReviewDTO reviewDTO;
+
 	
 	private MultipartFile file; // 썸네일 대표 이미지
 	private String filePath;
@@ -134,12 +134,7 @@ public class BoardDTO {
 		this.filePath = filePath;
 	}
 	
-	public ReviewDTO getReviewDTO() {
-		return reviewDTO;
-	}
-	public void setReviewDTO(ReviewDTO reviewDTO) {
-		this.reviewDTO = reviewDTO;
-	}
+
 	@Override
 	public String toString() {
 		return "BoardDTO [boardNo=" + boardNo + ", productName=" + productName + ", memberId=" + memberId

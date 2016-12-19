@@ -301,12 +301,7 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr>
-					<td>1</td>
-					<td>Oshare so good</td>
-					<td>2016.12.12</td>
-					<td>박신혜</td>
-				</tr>
+		
 				</tbody>
 			</table>
 		</div>

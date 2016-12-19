@@ -5,39 +5,6 @@
 	<title>Home</title>
 <!-- 	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
 <!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
-	<script type="text/javascript" src="<c:url value='/resources/editor/js/HuskyEZCreator.js'/>" charset="utf-8"></script>
-	<script type="text/javascript">
-		$(function(){
-			
-		    //전역변수
-		    var obj = [];    
-		    
-		    //스마트에디터 프레임생성
-		    nhn.husky.EZCreator.createInIFrame({
-		        oAppRef: obj,
-		        elPlaceHolder: "editor",
-		        sSkinURI: "<c:url value='/resources/editor/SmartEditor2Skin.html'/>", 
-		        htParams : {
-		            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-		            bUseToolbar : true,             
-		            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-		            bUseVerticalResizer : true,     
-		            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-		            bUseModeChanger : true, 
-		        }
-		    });
-		    
-		    //전송버튼
-		    $("#savebutton").click(function(){
-		        //id가 smarteditor인 textarea에 에디터에서 대입
-		        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
-		        //폼 submit
-		        $("#frm").submit();
-		    })
-		});
-	</script>
 </head>
 <body>
 
@@ -118,7 +85,38 @@
 		</fieldset>		
 	</form>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="<c:url value='/resources/editor/js/HuskyEZCreator.js'/>" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+		    //전역변수
+		    var obj = [];    
+		    
+		    //스마트에디터 프레임생성
+		    nhn.husky.EZCreator.createInIFrame({
+		        oAppRef: obj,
+		        elPlaceHolder: "editor",
+		        sSkinURI: "<c:url value='/resources/editor/SmartEditor2Skin.html'/>", 
+		        htParams : {
+		            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+		            bUseToolbar : true,             
+		            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+		            bUseVerticalResizer : true,     
+		            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+		            bUseModeChanger : true, 
+		        }
+		    });
+		    
+		    //전송버튼
+		    $("#savebutton").click(function(){
+		        //id가 smarteditor인 textarea에 에디터에서 대입
+		        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
+		        //폼 submit
+		        $("#frm").submit();
+		    })
+		});
+	</script>
 </body>
 </html>
 

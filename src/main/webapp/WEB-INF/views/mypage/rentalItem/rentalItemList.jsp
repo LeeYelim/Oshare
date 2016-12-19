@@ -11,7 +11,9 @@
 </head>
 <body>
 	<div class="rentalItemListForm">
-	<span>대여물품목록</span>
+	<div class="rentalItemListTitle">		  		
+  		<span>대여물품목록</span>		  		
+  		</div>
 		<table id="rentalItemTable" class="display"  width="100%" >
 				<thead><tr>
 					<th>사진</th>

@@ -219,6 +219,7 @@ $(function(){
 			  $(".saleProfile").css({"left":"60%"});
 			  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
 			  $(".saleProfile").animate({"opacity":"1","left":"50%"},500).show(); 
+			  goodsDetailSaleReview();
 		  });// goodsDetail Profile open Event End
 		  
 		  $(document).on("click",".saleProfile .saleProfileTitle .saleProfileClose",function(){
@@ -230,7 +231,7 @@ $(function(){
 		  //goodsDetail profile saleReview dataTable + ajax
 		  function goodsDetailSaleReview(){
 			  var boardNo = $(".sellerInformation ul input[name=goodsDetailBoardNo]").val()
-			  
+			  alert(boardNo)
 			  $.ajax({
 				url: "/controller/board/boardSaleReview" , //서버요청이름
 				type : "post" , //method방식 (get , post) 
@@ -238,7 +239,7 @@ $(function(){
 				data : "boardNo="+boardNo,
 				success : function(result){
 					if(result.length <=0 ){
-						$(".outMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>쪽지가 존재하지 않습니다</td></tr>");
+						$(".saleReview table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>쪽지가 존재하지 않습니다</td></tr>");
 					}
 				} , //성공
 				error : function(err){
@@ -258,10 +259,10 @@ $(function(){
 		 	    	  },
 		 	    	  
 		 	    	  'columns': [
-	    	            /*{"data" : ""}*/
-		 	    	    {"data" : "content"},
-		 	    	    {"data" : "receiver"},
-		 	    	    {"data" : "sendingDate"}
+		 	    	    {"data" : "boardDTO.boardNo"},
+		 	    	    {"data" : "boardDTO.boardNo"},
+		 	    	    {"data" : "boardDTO.boardNo"},
+		 	    	    {"data" : "boardDTO.boardNo"}
 		 	    	  ]
 			  });
 		  }//goodsDetail profile saleReview dataTable + ajax End
@@ -367,7 +368,7 @@ $(function(){
 				  },
 				  
 				  error:function(err){
-					  alert(err);
+					  alert("err : "+err);
 				  }
 			});
 			  
@@ -387,10 +388,10 @@ $(function(){
 		             		if(item.parentNo==0){
 		             			str ='<div class="goodsReviewForm"><div class="goodsReviewTitle">'
 		             			+"<input type='hidden' values="+item.reviewNo+">"
-		    					+'<span>'+item.subject+''+item.memberId+''+item.regDate+'</span></div>'
+		    					+'<span><ul><li>'+item.subject+'</li><li>'+item.regDate+'</li><li>'+item.memberId+'</li></ul></span></div>'
 		    					+'<div class="goodsReviewContent">'
 		    					+'<span id="Review'+item.reviewNo+'"><div class="goodsProductReviewsForm"><div class="goodsProductReviews">'+item.contents+'</div>'
-		    					+'<span class="goodsReviewAdd" name="insertReview" id="' + item.reviewNo + '">댓글달기 | <input type="button" id= "insertReviewDelete" name="'+item.reviewNo+'" value="삭제" ></span></div></span></div></div>'
+		    					+'<div class="goodsReviewAdd" name="insertReview" id="' + item.reviewNo + '">댓글달기 | <input type="button" id= "insertReviewDelete" name="'+item.reviewNo+'" value="삭제" ></div></div></span></div></div>'
 		    					
 		    					$(".goodsReviewFrame").append(str);
 		             		}
@@ -399,15 +400,16 @@ $(function(){
 	             		$.each(re, function(index,item) {
 	             			if(item.parentNo!=0){
 	             				str =''
-		    					+'<span id="Review'+item.reviewNo+'"><div class="goodsProductReviewsForm"><div class="goodsProductReviews">'+item.memberId+''+item.regDate+'<p>'+item.contents+'</div>'
-		    					+'<span class="goodsReviewAdd" name="insertReview" id="' + item.reviewNo + '"><input type="button" id= "insertReviewDelete" name="'+item.reviewNo+'" value="삭제" ></span></div></span></div></div>'
+		    					+'<span id="Review'+item.reviewNo+'"><div class="goodsProductReviewsForm"><div class="goodsProductReviews"><span><ul><li>'+item.memberId+'</li><li>'+item.regDate+'</li></ul></span>'+item.contents+'</div>'
+		    					+'<div class="goodsReviewAdd" name="insertReview" id="' + item.reviewNo + '"><input type="button" id= "insertReviewDelete" name="'+item.reviewNo+'" value="삭제" ></div></div></span></div></div>'
  
 		    					$("span[id=Review"+item.parentNo+"]").append(str);
 	             			}
 	             		})
 	             	},
 	             	error:function(err){
-	             		alert(err);
+	             		alert("err : "+err);
+	             		
 	             	}
 				})
 			  }
@@ -525,10 +527,10 @@ $(function(){
 		             		if(item.parentCommentNo==0){
 		             			str ='<div class="goodsQuestionForm"><div class="goodsQuestionTitle">'
 		             			+"<input type='hidden' values="+item.commentNo+">"
-		    					+'<span>'+item.subject+''+item.memberId+''+item.regDate+'</span></div>'
+		    					+'<span><ul><li>'+item.subject+'</li><li>'+item.regDate+'</li><li>'+item.memberId+'</li></ul></span></div>'
 		    					+'<div class="goodsQuestionContent">'
 		    					+'<span id="comment'+item.commentNo+'"><div class="goodsQuestionCommentsForm"><div class="goodsQuestionComments">'+item.contents+'</div>'
-		    					+'<span class="goodsQuestionAdd" name="insertComm" id="' + item.commentNo + '">댓글달기 | <input type="button" id= "insertQuestionCommentsDelete" name="'+item.commentNo+'" value="삭제" ></span></div></span></div></div>'
+		    					+'<div class="goodsQuestionAdd" name="insertComm" id="' + item.commentNo + '">댓글달기 | <input type="button" id= "insertQuestionCommentsDelete" name="'+item.commentNo+'" value="삭제" ></div></div></span></div></div>'
 		    					
 		    					$(".goodsQuestionFrame").append(str);
 		             			
@@ -538,8 +540,8 @@ $(function(){
 	             		$.each(re, function(index,item) {
 	             			if(item.parentCommentNo!=0){
 	             				str ='<div class="goodsQuestionReContent">'
-		    					+'<span id="comment'+item.commentNo+'"><div class="goodsQuestionCommentsForm"><div class="goodsQuestionComments"><span>'+item.memberId+'</span>&nbsp&nbsp&nbsp&nbsp'+item.regDate+'<p>'+item.memberPId+'님에게<p>'+item.contents+'</div>'
-		    					+'<span class="goodsQuestionAdd" name="insertComm" id="' + item.commentNo + '">댓글달기 | <input type="button" id= "insertQuestionCommentsDelete" name="'+item.commentNo+'" value="삭제" ></span></div></span></div></div>'
+		    					+'<span id="comment'+item.commentNo+'"><div class="goodsQuestionCommentsForm"><div class="goodsQuestionComments"><span><ul><li>'+item.memberId+'</li><li>'+item.regDate+'</li></ul></span>'+item.memberPId+'님에게<p>'+item.contents+'</div>'
+		    					+'<div class="goodsQuestionAdd" name="insertComm" id="' + item.commentNo + '">댓글달기 | <input type="button" id= "insertQuestionCommentsDelete" name="'+item.commentNo+'" value="삭제" ></div></div></span></div></div>'
 
 		    					$("span[id=comment"+item.parentCommentNo+"]").append(str);
 
@@ -590,10 +592,10 @@ $(function(){
 			  // 댓글달기 클릭
 			  $(document).on("click",".goodsQuestionContent .goodsQuestionAdd",function(){
 				  $(".goodsChattingForm").remove();
-				  alert($(this).parent().children(".goodsQuestionComments").children("span").text());
+	
 				  $(this).parent().append("<div class='goodsChattingForm'>" +
-						  "<form action=''id='f' method='post'>" +
-						  "'"+$(this).parent().children(".goodsQuestionComments").children("span").text()+"'에게 댓글 쓰기<p>"+
+						  "<form action=''id='f' method='post'><span>" +
+						  "'"+$(this).parent().children(".goodsQuestionComments").children("span").children("ul").children("li:nth-child(1)").text()+"'에게 댓글 쓰기</span>"+
 						  "<textarea  name='goodsChatting' id='goodsChatting'></textarea>" +
 						  "<input type='button' id='"+ $(this).attr('id') +"' name='comm' value='입력'>" +
 				  "</form><p>200자내외</p></div>");

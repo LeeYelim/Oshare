@@ -193,15 +193,9 @@ CREATE TABLE PRODUCT_REVIEW (
 	REVIEW_PARENT_NO				number,
 	review_subject					varchar2(30)		
 );
-insert into PRODUCT_REVIEW values(SEQ_REVIEW_NO.nextval,'eee','참 좋네요',sysdate,2)
 
-select * from product_review;	
-
-	SELECT
-    P.REVIEW_NO , M.MEMBER_ID , P.PRODUCT_REVIEW_CONTENTS ,	P.REG_DATE   
-		FROM BOARD B JOIN MEMBER M
-		ON B.BOARD_NO='2' JOIN product_review P ON B.BOARD_NO = P.BOARD_NO; 
-
+select * from product_review;
+		
 select * from MEMBER_GRADE;
 --판매자등급
 DROP TABLE MEMBER_GRADE CASCADE CONSTRAINTS;
@@ -231,4 +225,6 @@ VALUES(1,'qwe','123','테스트',sysdate,'경기도성남시판교동','국민은행','000000001
 
 select * from COMMENTS;
 select * from PRODUCT_REVIEW;
+
+
 

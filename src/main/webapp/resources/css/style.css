@@ -1207,6 +1207,8 @@ table.dataTable.no-footer{border-bottom: none;}
 }
 
 #goodsReview .goodsReviewPlus span {
+	margin-top:15px;
+	float:left;
 	cursor: pointer;
 }
 
@@ -1214,44 +1216,66 @@ table.dataTable.no-footer{border-bottom: none;}
 	width: 100%;
 	float: left;
 	position: relative;
-	s
 }
 
 #goodsReview .goodsReviewForm .goodsReviewTitle {
 	width: 100%;
 	height: 40px;
 	float: left;
-	background: #B2EBF2;
+	background: #2196F3;
 	border-radius: 5px;
 	cursor: pointer;
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.7);
 }
 
 #goodsReview .goodsReviewForm .goodsReviewTitle span {
+	width:100%;
+	float:left;
 	font-weight: bold;
 	line-height: 40px;
 	margin-left: 15px;
+	color: #fff;
 }
 
+#goodsReview .goodsReviewForm .goodsReviewTitle ul{width:100%; float:left; padding-right: 40px;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li{float:right;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li:nth-child(1){float:left;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li:nth-child(3){padding-right: 15px;}
 #goodsReview .goodsReviewForm .goodsReviewContent {
-	width: 100%;
+	width: 95%;
 	float: left;
 	display: none;
+	background-color: #fff;
+	border: 1px solid #e8e8e8;
+	margin-left: 3%;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+#goodsReview .goodsReviewForm .goodsReviewContent>span{padding: 15px;}
+
+#goodsReview .goodsReviewForm .goodsReviewContent span {
+	width:100%;
+	float: left;
 }
 
-#goodsReview .goodsReviewForm .goodsReviewContent>span {
-	float: right;
-}
 
-#goodsReview .goodsReviewForm .goodsReviewContent .goodsReviewAdd {
+#goodsReview .goodsReviewForm .goodsReviewContent .goodsReviewAdd
+	{
 	float: right;
 	cursor: pointer;
 }
+
+#goodsReview .goodsReviewForm .goodsChattingForm{width:100%; float:left;}
+#goodsReview .goodsReviewForm .goodsChattingForm span{width:100%; float:left; padding:0; padding-bottom: 15px;}
+#goodsReview .goodsReviewForm .goodsChattingForm form textarea{width:84%;float:left}
+#goodsReview .goodsReviewForm .goodsChattingForm form input[type=button]{width:15%; height:40px; float:left;}
+#goodsReview .goodsReviewForm .goodsChattingForm p{width:100%; float:left;}
 
 #goodsReview .goodsReviewPlusForm {
 	width: 100%;
 	float: left;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding:15px;
 	border: 1px solid #e8e8e8;
 }
 
@@ -1265,30 +1289,278 @@ table.dataTable.no-footer{border-bottom: none;}
 	float: left;
 }
 
-#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle input {
-	width: 55%;
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle input
+	{
+	width: 90%;
 	float: left;
 }
 
 #goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent {
-	width: 90%;
+	width: 100%;
 	float: left;
-	text-align: center;
 	margin-top: 15px;
 }
 
-#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent span {
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent span
+	{
 	width: 10%;
 	height: 70px;
 	line-height: 70px;
 	float: left;
 }
 
-#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent textarea {
-	width: 55%;
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent textarea
+	{
+	width: 90%;
 	height: 70px;
 	float: left;
 }
+#goodsReview .goodsReviewPlusForm input[value=전송]{margin-top:15px; float:right;}#goodsReview .goodsReviewPaing {
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+
+#goodsReview .goodsReviewPlus {
+	width: 100%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlus span {
+	margin-top:15px;
+	float:left;
+	cursor: pointer;
+}
+
+#goodsReview .goodsReviewForm {
+	width: 100%;
+	float: left;
+	position: relative;
+}
+
+#goodsReview .goodsReviewForm .goodsReviewTitle {
+	width: 100%;
+	height: 40px;
+	float: left;
+	background: #2196F3;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+#goodsReview .goodsReviewForm .goodsReviewTitle span {
+	width:100%;
+	float:left;
+	font-weight: bold;
+	line-height: 40px;
+	margin-left: 15px;
+	color: #fff;
+}
+
+#goodsReview .goodsReviewForm .goodsReviewTitle ul{width:100%; float:left; padding-right: 40px;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li{float:right;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li:nth-child(1){float:left;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li:nth-child(3){padding-right: 15px;}
+#goodsReview .goodsReviewForm .goodsReviewContent {
+	width: 95%;
+	float: left;
+	display: none;
+	background-color: #fff;
+	border: 1px solid #e8e8e8;
+	margin-left: 3%;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+#goodsReview .goodsReviewForm .goodsReviewContent>span{padding: 15px;}
+
+#goodsReview .goodsReviewForm .goodsReviewContent span {
+	width:100%;
+	float: left;
+}
+
+
+#goodsReview .goodsReviewForm .goodsReviewContent .goodsReviewAdd
+	{
+	float: right;
+	cursor: pointer;
+}
+
+#goodsReview .goodsReviewForm .goodsChattingForm{width:100%; float:left;}
+#goodsReview .goodsReviewForm .goodsChattingForm span{width:100%; float:left; padding:0; padding-bottom: 15px;}
+#goodsReview .goodsReviewForm .goodsChattingForm form textarea{width:84%;float:left}
+#goodsReview .goodsReviewForm .goodsChattingForm form input[type=button]{width:15%; height:40px; float:left;}
+#goodsReview .goodsReviewForm .goodsChattingForm p{width:100%; float:left;}
+
+#goodsReview .goodsReviewPlusForm {
+	width: 100%;
+	float: left;
+	padding:15px;
+	border: 1px solid #e8e8e8;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle {
+	width: 100%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle span {
+	width: 10%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle input
+	{
+	width: 90%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent span
+	{
+	width: 10%;
+	height: 70px;
+	line-height: 70px;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent textarea
+	{
+	width: 90%;
+	height: 70px;
+	float: left;
+}
+#goodsReview .goodsReviewPlusForm input[value=전송]{margin-top:15px; float:right;}#goodsReview .goodsReviewPaing {
+	width: 100%;
+	float: left;
+	text-align: center;
+}
+
+#goodsReview .goodsReviewPlus {
+	width: 100%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlus span {
+	margin-top:15px;
+	float:left;
+	cursor: pointer;
+}
+
+#goodsReview .goodsReviewForm {
+	width: 100%;
+	float: left;
+	position: relative;
+}
+
+#goodsReview .goodsReviewForm .goodsReviewTitle {
+	width: 100%;
+	height: 40px;
+	float: left;
+	background: #2196F3;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.7);
+}
+
+#goodsReview .goodsReviewForm .goodsReviewTitle span {
+	width:100%;
+	float:left;
+	font-weight: bold;
+	line-height: 40px;
+	margin-left: 15px;
+	color: #fff;
+}
+
+#goodsReview .goodsReviewForm .goodsReviewTitle ul{width:100%; float:left; padding-right: 40px;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li{float:right;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li:nth-child(1){float:left;}
+#goodsReview .goodsReviewForm .goodsReviewTitle ul li:nth-child(3){padding-right: 15px;}
+#goodsReview .goodsReviewForm .goodsReviewContent {
+	width: 95%;
+	float: left;
+	display: none;
+	background-color: #fff;
+	border: 1px solid #e8e8e8;
+	margin-left: 3%;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+#goodsReview .goodsReviewForm .goodsReviewContent>span{padding: 15px;}
+
+#goodsReview .goodsReviewForm .goodsReviewContent span {
+	width:100%;
+	float: left;
+}
+
+#goodsReview .goodsReviewForm .goodsReviewContent .goodsProductReviewsForm .goodsProductReviews span{border-top:1px solid #000; border-bottom:1px solid #000; margin-bottom: 15px;}
+#goodsReview .goodsReviewForm .goodsReviewContent .goodsProductReviewsForm .goodsProductReviews span ul{width:100%; float:left; margin-top:10px;}
+#goodsReview .goodsReviewForm .goodsReviewContent .goodsProductReviewsForm .goodsProductReviews span ul li{float:left}
+#goodsReview .goodsReviewForm .goodsReviewContent .goodsProductReviewsForm .goodsProductReviews span ul li:nth-child(2){float:right}
+
+#goodsReview .goodsReviewForm .goodsReviewContent .goodsReviewAdd
+	{
+	float: right;
+	cursor: pointer;
+	margin-bottom:15px;
+}	
+
+#goodsReview .goodsReviewForm .goodsReviewChattingForm{width:100%; float:left; margin-to}
+#goodsReview .goodsReviewForm .goodsReviewChattingForm span{width:100%; float:left; padding:0; padding-bottom: 15px;}
+#goodsReview .goodsReviewForm .goodsReviewChattingForm form textarea{width:84%;float:left}
+#goodsReview .goodsReviewForm .goodsReviewChattingForm form input[type=button]{width:15%; height:40px; float:left;}
+#goodsReview .goodsReviewForm .goodsReviewChattingForm p{width:100%; float:left;}
+
+#goodsReview .goodsReviewPlusForm {
+	width: 100%;
+	float: left;
+	padding:15px;
+	border: 1px solid #e8e8e8;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle {
+	width: 100%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle span {
+	width: 10%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormTitle input
+	{
+	width: 90%;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent {
+	width: 100%;
+	float: left;
+	margin-top: 15px;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent span
+	{
+	width: 10%;
+	height: 70px;
+	line-height: 70px;
+	float: left;
+}
+
+#goodsReview .goodsReviewPlusForm .goodsReviewPlusFormContent textarea
+	{
+	width: 90%;
+	height: 70px;
+	float: left;
+}
+#goodsReview .goodsReviewPlusForm input[value=전송]{margin-top:15px; float:right;}
 
 #goodsQuestion .goodsQuestionPaing {
 	width: 100%;
@@ -1302,6 +1574,8 @@ table.dataTable.no-footer{border-bottom: none;}
 }
 
 #goodsQuestion .goodsQuestionPlus span {
+	margin-top:15px;
+	float:left;
 	cursor: pointer;
 }
 
@@ -1322,12 +1596,18 @@ table.dataTable.no-footer{border-bottom: none;}
 }
 
 #goodsQuestion .goodsQuestionForm .goodsQuestionTitle span {
+	width:100%;
+	float:left;
 	font-weight: bold;
 	line-height: 40px;
 	margin-left: 15px;
 	color: #fff;
 }
 
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle ul{width:100%; float:left; padding-right: 40px;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle ul li{float:right;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle ul li:nth-child(1){float:left;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionTitle ul li:nth-child(3){padding-right: 15px;}
 #goodsQuestion .goodsQuestionForm .goodsQuestionContent {
 	width: 95%;
 	float: left;
@@ -1339,23 +1619,35 @@ table.dataTable.no-footer{border-bottom: none;}
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent>span{padding: 15px;}
 
 #goodsQuestion .goodsQuestionForm .goodsQuestionContent span {
-	padding: 15px;
+	width:100%;
 	float: left;
 }
 
-#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionAdd
-	{
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionCommentsForm .goodsQuestionComments span{border-top:1px solid #000; border-bottom:1px solid #000; margin-bottom: 15px;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionCommentsForm .goodsQuestionComments span ul{width:100%; float:left; margin-top:10px;}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionCommentsForm .goodsQuestionComments span ul li{float:left}
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionCommentsForm .goodsQuestionComments span ul li:nth-child(2){float:right}
+
+
+#goodsQuestion .goodsQuestionForm .goodsQuestionContent .goodsQuestionAdd{
 	float: right;
 	cursor: pointer;
+	margin-bottom: 15px;
 }
+
+#goodsQuestion .goodsQuestionForm .goodsChattingForm{width:100%; float:left; margin-top:15px;}
+#goodsQuestion .goodsQuestionForm .goodsChattingForm span{width:100%; float:left; padding:0; padding-bottom: 15px;}
+#goodsQuestion .goodsQuestionForm .goodsChattingForm form textarea{width:84%;float:left}
+#goodsQuestion .goodsQuestionForm .goodsChattingForm form input[type=button]{width:15%; height:40px; float:left;}
+#goodsQuestion .goodsQuestionForm .goodsChattingForm p{width:100%; float:left;}
 
 #goodsQuestion .goodsQuestionPlusForm {
 	width: 100%;
 	float: left;
-	padding-top: 15px;
-	padding-bottom: 15px;
+	padding:15px;
 	border: 1px solid #e8e8e8;
 }
 
@@ -1371,7 +1663,7 @@ table.dataTable.no-footer{border-bottom: none;}
 
 #goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormTitle input
 	{
-	width: 55%;
+	width: 90%;
 	float: left;
 }
 
@@ -1391,10 +1683,11 @@ table.dataTable.no-footer{border-bottom: none;}
 
 #goodsQuestion .goodsQuestionPlusForm .goodsQuestionPlusFormContent textarea
 	{
-	width: 55%;
+	width: 90%;
 	height: 70px;
 	float: left;
 }
+#goodsQuestion .goodsQuestionPlusForm input[value=전송]{margin-top:15px; float:right;}
 
 .saleProfile {
 	width: 900px;
