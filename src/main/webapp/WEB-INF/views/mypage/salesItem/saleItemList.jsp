@@ -12,7 +12,7 @@
 
 	<div class="saleItemListForm">
 		<span>판매물품목록</span>
-		<table id="saleItemTable">
+		<table id="saleItemTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th>사진</th>
