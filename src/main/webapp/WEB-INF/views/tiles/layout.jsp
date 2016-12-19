@@ -15,8 +15,8 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="<c:url value='/resources/css/fullcalendar.css'/>" rel="stylesheet" />
 <link href="<c:url value='/resources/css/fullcalendar.print.css'/>" rel='stylesheet' media='print' />
-<link href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>">
 <title>Oshare</title>
 <style>
@@ -54,10 +54,11 @@
 	<script type="text/javascript" src="<c:url value='/resources/js/validityCheck.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/SmoothScroll.js'/>"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.jqueryui.min.js"></script>
 	<script type="text/javascript" src="<c:url value='/resources/js/dataTable.js'/>"></script>
 	<script src="<c:url value='/resources/js/moment.min.js'/>"></script>
 	<script src="<c:url value='/resources/js/fullcalendar.min.js'/>"></script>
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.2.js"></script>
 
 	<script>
 	/* 
@@ -65,7 +66,7 @@
 		2. 일정에 추가-insert
 	*/
 	$(document).ready(function() {
-		
+		var boardNo = ${boardDTO.boardNo};
 		var today = new Date(); // 오늘 날짜
 		var calendar = $('#calendar').fullCalendar({
 			header: {
@@ -132,7 +133,7 @@
 					url:"/controller/reservation/selectByBoardNo",
 					type:"post",
 					dataType:"json",
-					data:"boardNo="+1, // 임의로 값 넣음!!!
+					data:"boardNo="+boardNo, //임의로 값 넣음!!!
 					allDay:true,
 					success : function(result) { // List<ReservationDTO>
 					var reservations = $('#calendar').fullCalendar('clientEvents'); // 달력에 있는 모든 이벤트(예약)
@@ -158,7 +159,6 @@
 						})  
 					},
 					error : function(err) {
-						alert("error : " + err);
 					}
 				})
 			}
@@ -196,17 +196,17 @@
 	        	var eventArray = $('#calendar').fullCalendar('clientEvents');
 	        	for (var i = 0; eventArray.length !== 0 && i < eventArray.length; i++) {
 	        		if(eventArray[i].id=="myReservation") { // 내가 선택한 예약이라면
-	        			var start = eventArray[i].start.format('YYYYMMDD000000');
-	    	        	var end = moment(eventArray[i].end-(1000*60*60*24)).format('YYYYMMDD000000');
-	    	        	var productid = 3; // 나중에 값 변경필요
+	        			var start = eventArray[i].start.format('YYYYMMDD');
+	    	        	var end = moment(eventArray[i].end-(1000*60*60*24)).format('YYYYMMDD');
+	    	        	var boardNum = boardNo; // 나중에 값 변경필요
 	    	        	//alert("end : " + moment(eventArray[i].end-(1000*60*60*24)).format('YYYYMMDD000000'));
 	    	        	var form = $('<form></form>');
-	    	        	    form.attr('action', "/controller/reservation/apply");
+	    	        	    form.attr('action', "/controller/payment/goodsPayment");
 	    	        	    form.attr('method', 'post');
 	    	        	    form.appendTo('body');
-	    	        	    var st = $("<input type='hidden' value="+start+" name='start'>");
-	    	        	    var e = $("<input type='hidden' value="+end+" name='end'>");
-	    	        	    var mId = $("<input type='hidden' value="+productid+" name='productid'>");
+	    	        	    var st = $("<input type='hidden' value="+start+" name='startDate'>");
+	    	        	    var e = $("<input type='hidden' value="+end+" name='endDate'>");
+	    	        	    var mId = $("<input type='hidden' value="+boardNum+" name='boardNo'>");
 	    	        	    form.append(st);
 	    	        	    form.append(e);
 	    	        	    form.append(mId);

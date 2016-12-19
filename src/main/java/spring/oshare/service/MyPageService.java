@@ -23,6 +23,7 @@ public interface MyPageService {
 	 */
 	public List<BoardDTO> rentalItemList(String memeberId);
 	
+	
 	/**
 	 * 쪽지 보내기
 	 * */

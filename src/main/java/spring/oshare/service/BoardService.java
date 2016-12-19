@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CommentDTO;
+import spring.oshare.dto.ReviewDTO;
 
 public interface BoardService {
 	
@@ -58,5 +60,40 @@ public interface BoardService {
 	 * 물품 상세 정보(게시물 번호로 조회)
 	 * */
 	BoardDTO detailBoard(int boardNo);
+	
+	/**
+	 * 프로필 상품후기 select
+	 * */
+	List<BoardDTO> boardDetailSaleReview (int boardNo);
+
+	/**
+	 * 댓글추가
+	 */
+	int insertComment(CommentDTO comment);
+	
+	/**
+	 * 댓글제거
+	 */
+	int deleteComment(CommentDTO commentDTO);
+
+	/**
+	 * 댓글리스트
+	 */
+	List<CommentDTO> selectAllComments(int boardNo);
+
+	/**
+	 * 후기추가
+	 */
+	int insertReview(ReviewDTO review);
+
+	/**
+	 * 후기삭제
+	 */
+	int deleteReview(ReviewDTO reviewDTO);
+
+	/**
+	 * 후기리스트
+	 */
+	List<ReviewDTO> selectAllReview(int boardNo);
 	
 }

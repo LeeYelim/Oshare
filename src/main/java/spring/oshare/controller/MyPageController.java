@@ -6,14 +6,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
+import spring.oshare.service.MemberService;
 import spring.oshare.service.MyPageService;
 
 /**
@@ -33,6 +34,9 @@ public class MyPageController {
 	
 	@Autowired
 	private MyPageService myPageService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	/**
 	 *  위시리스트 이동
@@ -110,6 +114,16 @@ public class MyPageController {
 		return "redirect:message";
 	}
 	
+	/**
+	 * 상세보기 쪽지 보내기
+	 * */
+	@RequestMapping("DetailSendMessageInsert")
+	@ResponseBody
+	public int DetailInsertMessage(MessageDTO message , HttpServletRequest request){
+		System.out.println("detail message : "+message.getReceiver()+ message.getSender() + message.getContent());
+		return myPageService.insertMessage(message);
+	}
+	
 	
 	/**
 	 * 수신 송신
@@ -147,6 +161,44 @@ public class MyPageController {
 		return "mypage/admin/userManagement";
 		
 	}
+	
+	/**
+	    * 회원정보 수정폼 이동
+	    */
+	   @RequestMapping("updateMemberForm")
+	   public ModelAndView updateMemberForm(HttpServletRequest request){
+	      
+	      // @RequestMapping("loginCheck") 에 저장된 session (memberId) 값을 받아서 
+	      // 받은 데이터를 가지고 수정페이지로 이동
+	      
+	      //session
+	      HttpSession session = request.getSession();
+	      String memberId = (String) session.getAttribute("loginMemberId");
+	      
+	      // call
+	      MemberDTO dbMemberDTO = memberService.selectByMember(memberId);
+
+	      //'회원수정' 클릭시 나타나는 목록
+	      String dbmemberId = dbMemberDTO.getMemberId();
+	      String dbmemberName = dbMemberDTO.getMemberName();
+	      String dbmemberAddr = dbMemberDTO.getMemberAddr();
+	      String dbmemberPhone = dbMemberDTO.getMemberPhone();
+	      String dbmemberAccount = dbMemberDTO.getMemberAccount();
+	      int dbmemberValidYear = dbMemberDTO.getMemberValidYear();
+	      
+	      // 목록들을 문자열로 저장
+	      String dbmember = dbmemberId + "_" + dbmemberName + "_" + dbmemberAddr + "_"
+	                     + dbmemberPhone + "_" + dbmemberAccount + "_" + dbmemberValidYear;
+	      
+	      // 문자열을 '_' 기준으로 배열로 저장
+	      String[] splitMemberDTO = dbmember.split("_");
+	      
+	      // updateMember.jsp 에 value를 배열로 바로 입력
+	      request.setAttribute("splitMemberDTO", splitMemberDTO);
+
+	      return new ModelAndView("mypage/updateMember/updateMemberForm");
+	      
+	   }
 	
 	
 }

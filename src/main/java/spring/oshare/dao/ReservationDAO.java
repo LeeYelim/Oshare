@@ -10,12 +10,7 @@ public interface ReservationDAO {
 	/**
 	 * 예약 신청
 	 * */
-	int insertReservation(ReservationDTO reservation);
-	
-	/**
-	 * <꼭 수정필요!!> 대여 상황 업데이트(반납 신청시, 대여 일수 증가, 연체)
-	 * */
-	int updateReservation(SharingDTO sharing);
+	int insertReservation(ReservationDTO reservation, SharingDTO sharing);
 	
 	/**
 	 * 예약 취소
@@ -32,5 +27,25 @@ public interface ReservationDAO {
 	 * */
 	List<ReservationDTO> selectReservationByBoardNo(int boardNo);
 	
-
+	/**
+	 * sharing 상태 변경
+	 * ("오늘 날짜보다 sharing_start가 작고, 현재 상태가 대여 대기라면 sharing_state 대여중으로 변경")
+	 * */
+	int updateSharingState();
+	
+	/**
+	 * 반납 신청(상태 : 반납, 파손, 분실)
+	 * 반납 : reservation_end 오늘 날짜로 & 반납 신청으로 업데이트
+	 * 파손 : reservation_end 오늘 날짜로 & 파손 업데이트
+	 * 분실 : reservation_end 오늘 날짜로 & 분실 업데이트
+	 * */
+	int applyReturn(int sharingNo, String returnState); 
+	
+	 /**
+	   * 판매자)
+	   * 완료 : 거래 완료로 업데이트
+	   * 
+	   * */
+	int responseReturn(int sharingNo, String responseState);
+	
 }

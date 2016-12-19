@@ -11,9 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CommentDTO;
+import spring.oshare.dto.ReviewDTO;
 import spring.oshare.service.BoardService;
 import spring.oshare.util.PagingUtil;
 
@@ -94,5 +97,97 @@ public class BoardController {
 		mv.setViewName("detail/goodsDetail");
 
 		return mv;
+	}
+	
+	/**
+	 * 프로필 상품후기
+	 * */
+	@RequestMapping("boardSaleReview")
+	@ResponseBody
+	public List<BoardDTO> boardDetailSaleReview(int boardNo){
+		return boardService.boardDetailSaleReview(boardNo);
+	}
+	
+	/**
+	 * 댓글 창
+	 * 
+	 * 댓글 전체 리스트
+	 */
+	@RequestMapping("select")
+	@ResponseBody
+	public List<CommentDTO> selectAllComments(int boardNo){
+		List<CommentDTO> list = boardService.selectAllComments(boardNo);
+		
+		return list;
+	}
+	
+	/**
+	 * 댓글추가
+	 */
+	@RequestMapping("insert")
+	@ResponseBody
+	public int insert(HttpSession session, HttpServletRequest request, String subject, int boardNo, String contents, String parentCommentNo){
+		CommentDTO dto = new CommentDTO();
+		String mId = (String)session.getAttribute("loginMemberId");
+		
+		dto.setMemberId(mId);
+		dto.setBoardNo(boardNo);
+		dto.setContents(contents);
+		if(subject != null) dto.setSubject(subject);
+		
+		if(parentCommentNo!=null) dto.setParentCommentNo(Integer.parseInt(parentCommentNo));
+		
+		int re = boardService.insertComment(dto);
+		return re;
+	}
+	
+	/**
+	 * 댓글삭제
+	 */
+	@RequestMapping("delete")
+	@ResponseBody
+	public int delete(CommentDTO commentDTO){
+		return boardService.deleteComment(commentDTO);
+	}
+	
+	/**
+	 * 상품후기 전체리스트
+	 */
+	@RequestMapping("rselect")
+	@ResponseBody
+	public List<ReviewDTO> reviewAllSelect(int boardNo){
+		List<ReviewDTO> list = boardService.selectAllReview(boardNo);
+		return list;
+	}
+	
+	/**
+	 * 상품후기 추가
+	 */
+	@RequestMapping("rinsert")
+	@ResponseBody
+	public int reviewInsert(HttpSession session, HttpServletRequest request, String subject, int boardNo, String contents, String parentNo){
+		ReviewDTO dto = new ReviewDTO();
+		String mId = (String)session.getAttribute("loginMemberId");
+		
+		dto.setMemberId(mId);
+		dto.setBoardNo(boardNo);
+		dto.setContents(contents);
+		if(subject!=null) dto.setSubject(subject);
+		if(parentNo!=null) dto.setParentNo(Integer.parseInt(parentNo));
+		
+		int re = boardService.insertReview(dto);
+		
+		return re;
+		
+	}
+	
+	/**
+	 * 상품후기 삭제
+	 */
+	@RequestMapping("rdelete")
+	@ResponseBody
+	public int reviewDelete(ReviewDTO reviewDTO){
+		
+		return boardService.deleteReview(reviewDTO);
 	}
 }

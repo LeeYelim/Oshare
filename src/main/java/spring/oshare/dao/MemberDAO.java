@@ -8,34 +8,35 @@ import spring.oshare.dto.MessageDTO;
 public interface MemberDAO {
 	
 	/**
-	 * 회원가입
-	 * */
-	void signUp(MemberDTO member);
-	
-	/**
 	 * ID중복체크
 	 * */
 	MemberDTO idCheck(String memberId);
 	
 	/**
-	 * 로그인 체크(아이디/비밀번호 확인)
-	 */
-	MemberDTO loginCheck(MemberDTO memberDto);
+	 * 회원가입
+	 * */
+	void signUp(MemberDTO member);
 	
 	/**
 	 * 로그인
 	 * */
-	int login(MemberDTO user);
+	int login(MemberDTO member);
+	
+	/**
+	 * 로그인 체크(아이디/비밀번호 확인)
+	 */
+	MemberDTO loginCheck(MemberDTO member);
+	
 	
 	/**
 	 * 회원 정보 조회
 	 * */
-	MemberDTO selectUserInfo(String userId);
+	MemberDTO selectByMemberId(String memberId);
 	
 	/**
 	 * 회원정보 수정
 	 * */
-	int updateUser(MemberDTO user);
+	int updateMember(MemberDTO member);
 	
 	/**
 	 * 회원 탈퇴

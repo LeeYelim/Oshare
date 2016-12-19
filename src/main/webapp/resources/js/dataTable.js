@@ -1,5 +1,6 @@
 $(function(){
 	$("#wishListTable").DataTable({
+		"autoWidth": false,
 		"columns" : [
      {"targets":"0","width":"50%"},
      {"targets":"1","width":"50%"}
@@ -7,8 +8,9 @@ $(function(){
 	});
 	
 	$("#saleItemTable").DataTable({
+		"autoWidth": false,
 		"columns" : [
-         {"targets":"0","width":"15%"},
+         {"targets":"0","width":"17%"},
          {"targets":"1","width":"10%"},
          {"targets":"2","width":"10%"},
          {"targets":"3","width":"15%"},
@@ -19,6 +21,7 @@ $(function(){
 	});
 	
 	$("#rentalItemTable").DataTable({
+		"autoWidth": false,
 		"columns" : [
 		             {"targets":"0","width":"15%"},
 		             {"targets":"1","width":"10%"},
@@ -31,6 +34,7 @@ $(function(){
 	});
 	
 	$("#userManagementTable").DataTable({
+		"autoWidth": false,
 		"columns" : [
 		             {"targets":"0","width":"1%"},
 		             {"targets":"1","width":"10%"},
@@ -48,6 +52,7 @@ $(function(){
 	});
 	
 	$("#userManagementDeclarationTable").DataTable({
+		"autoWidth": false,
 		"columns" : [
 		             {"targets":"0","width":"1%"},
 		             {"targets":"1","width":"10%"},
@@ -65,6 +70,7 @@ $(function(){
 	});
 	
 	$("#userManagementStopTable").DataTable({
+		"autoWidth": false,
 		"columns" : [
 		             {"targets":"0","width":"1%"},
 		             {"targets":"1","width":"10%"},
@@ -79,6 +85,18 @@ $(function(){
 		             {"targets":"10","width":"10%"},
 		             {"targets":"11","width":"10%"},
 		             ]
+	});
+	
+	
+	
+	$("#saleProductTable").DataTable({
+		"autoWidth": false,
+		"columns" : [
+             {"width":"25%"},
+             {"width":"50%"},
+             {"width":"25%"}
+		]
+		     		
 	});
 	
 	

@@ -50,9 +50,9 @@ public class PaymentController {
 		    } catch (ParseException e) {
 		        e.printStackTrace();
 		    }
-		BoardDTO board = boardService.detailBoard(reservation.getBoardNo());
+		BoardDTO board = boardService.selectByBoardNo(reservation.getBoardNo(), false);
 		String memberId = (String)session.getAttribute("loginMemberId");
-		MemberDTO member = memberService.selectUserInfo(memberId);
+		MemberDTO member = memberService.selectByMember(memberId);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("board", board);
 		mv.addObject("reservation", reservation);

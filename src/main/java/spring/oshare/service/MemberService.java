@@ -22,22 +22,22 @@ public interface MemberService {
 	/**
 	 * 로그인 체크(아이디/비밀번호 타당성 확인) 
 	 */
-	MemberDTO loginCheck(MemberDTO dto);
+	MemberDTO loginCheck(MemberDTO member);
 	
 	/**
 	 * 회원 정보 조회
 	 * */
-	MemberDTO selectUserInfo(String userId);
+	MemberDTO selectByMember(String memberId);
 	
 	/**
 	 * 회원정보 수정
 	 * */
-	int updateUser(MemberDTO user);
+	int updateMember(MemberDTO member);
 	
 	/**
 	 * 회원 탈퇴
 	 * */
-	int deleteUser(MemberDTO user);
+	int deleteMember(MemberDTO member);
 	
 	/**
 	 * 수신자 유효성검사

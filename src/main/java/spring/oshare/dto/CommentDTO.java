@@ -8,10 +8,13 @@ public class CommentDTO {
 	private String regDate; // ´ñ±Û µî·ÏÀÏ
 	private String contents; // ´ñ±Û ³»¿ë
 	private int parentCommentNo; // ºÎ¸ð ´ñ±Û¹øÈ£
-	
+	private String subject; // ´ñ±Û Á¦¸ñ
+	private String memberPId; // ºÎ¸ð¾ÆÀÌµð
 	
 	public CommentDTO() {	}
-	public CommentDTO(int commentNo, String memberId, int boardNo, String regDate, String contents, int parentCommentNo) {
+	
+	public CommentDTO(int commentNo, String memberId, int boardNo, String regDate, String contents, int parentCommentNo,
+			String subject, String memberPId) {
 		super();
 		this.commentNo = commentNo;
 		this.memberId = memberId;
@@ -19,9 +22,10 @@ public class CommentDTO {
 		this.regDate = regDate;
 		this.contents = contents;
 		this.parentCommentNo = parentCommentNo;
+		this.subject = subject;
+		this.memberPId = memberPId;
 	}
-	
-	
+
 	public int getCommentNo() {
 		return commentNo;
 	}
@@ -58,6 +62,22 @@ public class CommentDTO {
 	public void setParentCommentNo(int parentCommentNo) {
 		this.parentCommentNo = parentCommentNo;
 	}
-	
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public String getMemberPId() {
+		return memberPId;
+	}
+
+	public void setMemberPId(String memberPId) {
+		this.memberPId = memberPId;
+	}
+
 	
 }

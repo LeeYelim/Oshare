@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spring.oshare.dto.ReservationDTO;
+import spring.oshare.dto.SharingDTO;
 import spring.oshare.service.ReservationService;
 
 @Controller
@@ -20,9 +21,6 @@ public class ReservationController {
 	@RequestMapping("selectByBoardNo")
 	@ResponseBody
 	public List<ReservationDTO> selectReservationByBoardNo(int boardNo) {
-		List<ReservationDTO> list = reservationService.selectReservationByBoardNo(boardNo);
-		System.out.println("=============================time " + list.get(0).getStartDate() + list.get(0).getEndDate());
-		
 		return reservationService.selectReservationByBoardNo(boardNo);
 	}
 	
@@ -30,23 +28,67 @@ public class ReservationController {
 	   *  일정 등록하기
 	   * */
 	  @RequestMapping("apply")
-	  public String write(String productid, String start, String end){
-		  System.out.println("========productId : "+productid +"======== s : "+start + "======== e : " + end); // 시작날이랑 끝나는 날 동일하면 end가 null이 되버림
-			if(reservationService.insertReservation(new ReservationDTO(1, start, end))>0) { // 1을 게시물 번호로 바꿔야함
-				return "detail/goodsDetail";
-			} 
-			return "error/errorMessage";
+	  public String write(int boardNo, String start, String end, SharingDTO sharing){
+		  System.out.println("========boardNo : "+boardNo +"======== s : "+start + "======== e : " + end); // 시작날이랑 끝나는 날 동일하면 end가 null이 되버림
+		  System.out.println("===========boardNo : " + sharing.getBoardNo());
+		  System.out.println("===========buyerId : " + sharing.getBuyerId());
+		  System.out.println("===========sellerId : " + sharing.getSellerId());
+		  System.out.println("===========productCount : " + sharing.getProductCount());
+		  System.out.println("===========totalPrice : " + sharing.getTotalPrice());  
+		  
+		  sharing.setBoardNo(boardNo);
+		  sharing.setSharingStart(start);
+		  sharing.setSharingEnd(end);
+		  
+		  if(reservationService.insertReservation(new ReservationDTO(boardNo, start, end), sharing)>1) { 
+			  return "redirect:/mypage/rentalItem";
+		  } 
+		  return "error/errorMessage";
+	  }
+	  
+	  
+	  /**
+	   * 예약 취소하기 
+	   * */
+	  @RequestMapping("deleteReservation")
+	  public String deleteReservation(int reservationNo) {
+		  System.out.println("==============================reservationNo : " + reservationNo);
+		  if(reservationService.deleteReservation(reservationNo)>1) {
+			  return "redirect:/mypage/rentalItem";
+		  } 
+		  return "error/errorMessage";
 	  }
 	
-	 /*@RequestMapping("selectByBoardNo")
-	//@ResponseBody
-	public ModelAndView selectReservationByBoardNo(int boardNo) {
-		System.out.println("=================="+boardNo+"========================");
-		List<ReservationDTO> list = service.selectReservationByBoardNo(boardNo);
-		System.out.println("listdddd = " + list.size());
-		List<String> aa = new ArrayList<>();
-		aa.add("test");
-		return new ModelAndView("jsonView", "list", list);
-	}
-*/	 
+	  /**
+	   * 대여자)
+	   * * 반납 신청(상태 : 반납, 파손, 분실)
+	   * * 반납 : reservation_end 오늘 날짜로 & 반납 신청으로 업데이트
+	   * * 파손 : reservation_end 오늘 날짜로 & 파손 업데이트
+	   * * 분실 : reservation_end 오늘 날짜로 & 분실 업데이트
+	   * * */
+	  @RequestMapping("applyReturn")
+	  public String applyReturn(int sharingNo, String returnState) {
+		  System.out.println("=========sharingNo" + sharingNo + "===================rentalItemList" + returnState);
+		  if(reservationService.applyReturn(sharingNo, returnState) > 0) {
+			  return "redirect:/mypage/rentalItem";
+		  }
+		  return "error/errorMessage";
+	  }
+	  
+	  /**
+	   * 판매자)
+	   * 완료 : 거래 완료로 업데이트
+	   * 
+	   * */
+	  @RequestMapping("responseReturn")
+	  public String responseReturn(int sharingNum, String responseState) {
+		System.out.println("============================sharingNum : " + sharingNum);
+		System.out.println("============================responseState : " + responseState);
+		if(reservationService.responseReturn(sharingNum, responseState)>0) {
+			return "redirect:/mypage/salesItem";
+		}
+		return "error/errorMessage";
+	  }
+	  
+	  
 }

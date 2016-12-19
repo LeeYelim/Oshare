@@ -44,13 +44,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where member_id=#{memberId} and member_pwd=#{memberPwd}
 	</select>
 	
-	<!-- 회원 정보 조회 -->
-	<select id="selectUserInfo" parameterType="string" resultMap="memberMap">
-		select member_id, member_name, member_addr, member_bank, member_account, member_valid_month, member_valid_year, member_phone
-		from member where member_id=#{value}
-	</select>
+<!-- ID에 해당하는 회원정보검색 -->
+   <select id="selectByMemberId" parameterType="string" resultType="memberDTO">
+      select 
+         member_id as memberId, member_name as memberName, member_birth as memberBirth, member_addr as memberAddr, 
+         member_account as memberAccount, member_valid_year as memberValidYear,  member_phone as memberPhone
+      from member
+      where member_id=#{memberId}
+   </select>
 	
-	<!-- 회원 정보 수정 -->
+	
+	
+<!-- 회원정보 수정 -->
+   <update id="updateMember" parameterType="memberDTO">
+      update member
+      set 
+         member_pwd=#{memberPwd1}, member_name=#{memberName}, member_addr=#{memberAddr},
+         member_bank=#{memberBank}, member_account=#{memberAccount}, 
+         member_valid_month=#{memberValidMonth}, member_valid_year=#{memberValidYear},
+         member_phone=#{memberPhone}
+      where member_id=#{memberId}
+   </update>
 	
 	<!-- 회원 탈퇴 -->
 	

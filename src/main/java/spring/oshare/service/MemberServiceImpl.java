@@ -38,33 +38,54 @@ public class MemberServiceImpl implements MemberService {
 		memberDao.signUp(member);
 	}
 
+	   /**
+	    * 로그인
+	    * */
+	   @Override
+	   public int login(MemberDTO member) {
+	      // TODO Auto-generated method stub
+	      return 0;
+	   }
+
+	   /**
+	    * 로그인 체크(아이디/비밀번호 타당성 확인) 
+	    */
+	   @Override
+	   public MemberDTO loginCheck(MemberDTO member) {
+	      return memberDao.loginCheck(member);
+	   }
+	   
+	   /**
+	    * 회원 정보 조회
+	    * */
+	   @Override
+	   public MemberDTO selectByMember(String memberId) {
+	      
+	      return memberDao.selectByMemberId(memberId);
+	   }
+	   
+	   /**
+	    * 회원정보 수정
+	    */
+	   @Override
+	   public int updateMember(MemberDTO member) {
+	      
+	      int result = memberDao.updateMember(member);
+	      
+	      return result;
+	   }
+
+	   /**
+	    * 탈퇴
+	    */
 	@Override
-	public int login(MemberDTO user) {
+	public int deleteMember(MemberDTO member) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	@Override
-	public int updateUser(MemberDTO user) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	@Override
-	public int deleteUser(MemberDTO user) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	@Override
-	public MemberDTO selectUserInfo(String userId) {
-		return memberDao.selectUserInfo(userId);
-	}
-
-	@Override
-	public MemberDTO loginCheck(MemberDTO dto) {
-		return memberDao.loginCheck(dto);
-	}
 
 	/**
 	 * 쪽지수신자 유효성검사 

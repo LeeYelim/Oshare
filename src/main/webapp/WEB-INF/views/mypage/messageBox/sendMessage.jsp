@@ -21,8 +21,7 @@
 				<div class="sendMessageTabForm">
 					<form action="<c:url value='/mypage/sendMessageInsert'/>" metohd=""
 						onsubmit="return sendMessageValidityCheck()">
-						<input type="text" value="${sessionScope.loginMemberId}"
-							name="sender" hidden>
+						<input type="text" value="${sessionScope.loginMemberId}"b name="sender" hidden>
 						<div class="sender">
 							<span>송신자 ${sessionScope.loginMemberId}</span>
 						</div>

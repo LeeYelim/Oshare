@@ -1,6 +1,8 @@
 package spring.oshare.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +18,17 @@ public class ReservationDAOImpl implements ReservationDAO{
 	private SqlSession sqlSession;
 	
 	@Override
-	public int insertReservation(ReservationDTO reservation) {
-		return sqlSession.insert("reservationMapper.insertReservation", reservation);
-	}
-
-	@Override
-	public int updateReservation(SharingDTO sharing) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertReservation(ReservationDTO reservation, SharingDTO sharing) {
+		int resultReservation = sqlSession.insert("reservationMapper.insertReservation", reservation);
+		int resultSharing = sqlSession.insert("reservationMapper.insertSharing", sharing);
+		return resultReservation + resultSharing;
 	}
 
 	@Override
 	public int deleteReservation(int reservationNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		int deleteRev = sqlSession.delete("reservationMapper.deleteReservation", reservationNo);
+		int deleteSharing = sqlSession.delete("reservationMapper.deleteSharing", reservationNo);
+		return deleteRev + deleteSharing;
 	}
 
 	@Override
@@ -43,5 +42,24 @@ public class ReservationDAOImpl implements ReservationDAO{
 		return sqlSession.selectList("reservationMapper.selectReservationByBoardNo", boardNo);
 	}
 
-	
+	@Override
+	public int updateSharingState() {
+		return sqlSession.update("myPageMapper.updateSharingState");
+	}
+
+	@Override
+	public int applyReturn(int sharingNo, String returnState) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sharingNo", sharingNo);
+		map.put("returnState", returnState.trim());
+		return sqlSession.update("reservationMapper.applyReturn", map);
+	}
+
+	@Override
+	public int responseReturn(int sharingNo, String responseState) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sharingNo", sharingNo);
+		map.put("responseState", responseState.trim());
+		return sqlSession.update("reservationMapper.responseReturn", map);
+	}	
 }

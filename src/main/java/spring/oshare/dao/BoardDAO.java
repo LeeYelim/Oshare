@@ -70,46 +70,6 @@ public interface BoardDAO {
 	BoardDTO detailBoard(int boardNo);
 	
 	/**
-	 * 댓글 추가
-	 * */
-	int insertComment(CommentDTO comment);
-	
-	/**
-	 * 댓글 삭제
-	 * */
-	int deleteComment(int commentNo);
-	
-	/**
-	 * 댓글 수정
-	 * */
-	int updateComment(CommentDTO comment);
-	
-	/**
-	 * 게시물에 해당하는 댓글 조회
-	 * */
-	void selectAllComments(String boardNo);
-	
-	/**
-	 * 후기 추가
-	 * */
-	int insertReview(ReviewDTO review);
-	
-	/**
-	 * 후기 수정
-	 * */
-	int updateReview(ReviewDTO review);
-	
-	/**
-	 * 후기 삭제
-	 * */
-	int deleteReview(int reviewNo);
-	
-	/**
-	 * 게시물에 해당하는 후기 조회
-	 * */
-	void selectAllReviews(String boardNo);
-	
-	/**
 	 * 위시리스트 추가
 	 * */
 	int insertWishList(String boardNo, String userId);
@@ -118,4 +78,40 @@ public interface BoardDAO {
 	 * 장바구니 추가
 	 * */
 	int insertCart(String boardNo, String userId);
+	
+	/**
+	 * 프로필 상품후기 select
+	 * */
+	List<BoardDTO> boardDetailSaleReview (int boardNo);
+
+	/**
+	 * 댓글추가
+	 */
+	int insertComment(CommentDTO comment);
+
+	/**
+	 * 댓글삭제
+	 */
+	int deleteComment(CommentDTO commentDTO);
+
+	/**
+	 * 댓글리스트
+	 */
+	List<CommentDTO> selectAllComments(int boardNo);
+
+	/**
+	 * 후기추가
+	 */
+	int insertReview(ReviewDTO review);
+
+	/**
+	 * 후기삭제
+	 */
+	int deleteReview(ReviewDTO reviewDTO);
+
+	/**
+	 * 후기리스트
+	 */
+	List<ReviewDTO> selectAllReviews(int boardNo);
+	
 }

@@ -7,28 +7,22 @@ import org.springframework.stereotype.Service;
 
 import spring.oshare.dao.ReservationDAO;
 import spring.oshare.dto.ReservationDTO;
+import spring.oshare.dto.SharingDTO;
 
 @Service
-public class ReservationServiceImpl implements ReservationService {
+public class ReservationServiceImpl implements ReservationService, Runnable{
 	
 	@Autowired
 	private ReservationDAO dao;
 	
 	@Override
-	public int insertReservation(ReservationDTO reservation) {
-		return dao.insertReservation(reservation);
-	}
-
-	@Override
-	public int updateReservation(ReservationDTO reservation) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertReservation(ReservationDTO reservation, SharingDTO sharing) {
+		return dao.insertReservation(reservation, sharing);
 	}
 
 	@Override
 	public int deleteReservation(int reservationNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.deleteReservation(reservationNo);
 	}
 
 	@Override
@@ -36,4 +30,30 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.selectReservationByBoardNo(boardNo);
 	}
 
+	@Override
+	public int updateSharingState() {
+		return dao.updateSharingState();
+	}
+
+	@Override
+	public void run() {
+		while(true) {
+			updateSharingState();
+			try {
+				Thread.sleep(10000000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public int applyReturn(int sharingNo, String returnState) {
+		return dao.applyReturn(sharingNo, returnState);
+	}
+
+	@Override
+	public int responseReturn(int sharingNo, String responseState) {
+		return dao.responseReturn(sharingNo, responseState);
+	}
 }

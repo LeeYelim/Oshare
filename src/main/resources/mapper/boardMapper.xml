@@ -53,6 +53,42 @@
 			<result column="MEMBER_PHONE" property="memberPhone" />
 		</association>
 	</resultMap>
+	
+	<resultMap type="boardDTO" id="boardMemberDoubleJoinMap">
+		<id column="BOARD_NO" property="boardNo" />
+		<result column="MEMBER_ID" property="memberId" />
+		<result column="PRODUCT_NAME" property="productName" />
+		<result column="PRODUCT_CATEGORY" property="category" />
+		<result column="BOARD_TYPE" property="boardType" />
+		<result column="PRODUCT_PRICE_PER_DAY" property="price" />
+		<result column="PRODUCT_CONDITION" property="condition" />
+		<result column="DEALING_TYPE" property="dealingType" />
+		<result column="PRODUCT_DETAIL" property="detail" />
+		<result column="REG_DATE" property="regDate" />
+		<result column="THUMBNAIL" property="filePath" />
+		<result column="VIEWCOUNT" property="viewCount" />
+		<association javaType="memberDTO" property="memberDTO">
+			<id column="MEMBER_ID" property="memberId" />
+			<result column="MEMBER_NO" property="memberNo" />
+			<result column="MEMBER_PWD" property="memberPwd" />
+			<result column="MEMBER_NAME" property="memberName" />
+			<result column="MEMBER_BIRTH" property="memberBirth" />
+			<result column="MEMBER_ADDR" property="memberAddr" />
+			<result column="MEMBER_BANK" property="memberBank" />
+			<result column="MEMBER_ACCOUNT" property="memberAccount" />
+			<result column="MEMBER_VALID_MONTH" property="memberValidMonth" />
+			<result column="MEMBER_VALID_YEAR" property="memberValidYear" />
+			<result column="MEMBER_SHARING_COUNT" property="memberSharingCount" />
+			<result column="MEMBER_PHONE" property="memberPhone" />
+		</association>
+		<association javaType="reviewDTO" property="reviewDTO">
+			<id column="REVIEW_NO" property="reviewNo"/>
+			<result column="BOARD_NO" property="boardNo"/>
+			<result column="MEMBER_ID" property="memberId"/>
+			<result column="PRODUCT_REVIEW_CONTENTS" property="contents"/>
+			<result column="REG_DATE" property="regDate"/>
+		</association>
+	</resultMap>
 
 	<!-- 전체 제품 레코드 출력 -->
 	<!-- <select id="selectAllList" resultMap="">
@@ -111,6 +147,14 @@
 	<!-- selectBoardDetail -->
 	<select id="boardDetail" parameterType="int" resultMap="board">
 		select product_name, product_price_per_day from board where board_no=#{value}
+	</select>
+	
+	<!-- select  : 상품후기  -->
+	<select id="boardDetailSaleReview" parameterType="int" resultMap="boardMemberDoubleJoinMap">
+		SELECT
+   		P.REVIEW_NO , M.MEMBER_ID , P.PRODUCT_REVIEW_CONTENTS ,	P.REG_DATE   
+		FROM BOARD B JOIN MEMBER M
+		ON B.BOARD_NO=#{value} JOIN product_review P ON B.BOARD_NO = P.BOARD_NO; 
 	</select>
 
 </mapper>

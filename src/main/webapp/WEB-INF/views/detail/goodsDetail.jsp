@@ -70,13 +70,15 @@
 				</div>
 				<div class="sellerInformation">
 					<ul>
+					<input type="text" name='goodsDetailBoardNo' value="${boardDTO.boardNo}" hidden> 
+					<input type="text" name='user' value="${sessionScope.loginMemberId}" hidden disabled>
 					<li>판매자 정보 : <span class="sellerName">${boardDTO.memberDTO.memberName}</span></li>
-						<li>판매자 아이디 : <span class="sellerId">	</span></li>
+						<li>판매자 아이디 : <span class="sellerId">${boardDTO.memberDTO.memberId}</span></li>
 						<li><div class="rentalPointForm">
 								대여 횟수 <span class="rentalPoint">${boardDTO.memberDTO.memberSharingCount}</span>
 							</div>
 							<div class="starGrade">
-								
+								<span class="sellerStar"></span>
 							</div>
 							<div class="declaration">
 								<img src="<c:url value='/resources/image/siren.png'/>"
@@ -118,8 +120,8 @@
 				<ul class="nav nav-tabs goodsDetailNavaction">
 					<li class="active"><a data-toggle="tab"
 						href="#goodsInformation">상품정보</a></li>
-					<li><a data-toggle="tab" href="#goodsReview">상품후기</a></li>
-					<li><a data-toggle="tab" href="#goodsQuestion">Q &amp; A</a></li>
+					<li><a data-toggle="tab" id="ww" href="#goodsReview">상품후기</a></li>
+					<li><a data-toggle="tab" id="qq" href="#goodsQuestion">Q &amp; A</a></li>
 					<li><a data-toggle="tab" href="#instructionsResume">안내사항</a></li>
 				</ul>
 
@@ -129,31 +131,7 @@
 					</div>
 					<div id="goodsReview" class="tab-pane fade">
 						<div class="goodsReviewFrame">
-							<div class="goodsReviewForm">
-								<div class="goodsReviewTitle">
-									<span>Test</span>
-								</div>
-								<div class="goodsReviewContent">
-									<span>Lorem ipsum dolor sit amet, consectetur
-										adipisicing elit, sed do eiusmod tempor incididunt ut labore
-										et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-										exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat.</span> <span class="goodsReviewAdd">댓글달기</span>
-								</div>
-							</div>
 
-							<div class="goodsReviewForm">
-								<div class="goodsReviewTitle">
-									<span>Test</span>
-								</div>
-								<div class="goodsReviewContent">
-									<span>Lorem ipsum dolor sit amet, consectetur
-										adipisicing elit, sed do eiusmod tempor incididunt ut labore
-										et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-										exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat.</span> <span class="goodsReviewAdd">댓글달기</span>
-								</div>
-							</div>
 						</div>
 
 						<div class="goodsReviewPlus">
@@ -175,18 +153,7 @@
 					</div>
 					<div id="goodsQuestion" class="tab-pane fade">
 						<div class="goodsQuestionFrame">
-							<div class="goodsQuestionForm">
-								<div class="goodsQuestionTitle">
-									<span>Test</span>
-								</div>
-								<div class="goodsQuestionContent">
-									<span>Lorem ipsum dolor sit amet, consectetur
-										adipisicing elit, sed do eiusmod tempor incididunt ut labore
-										et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-										exercitation ullamco laboris nisi ut aliquip ex ea commodo
-										consequat.</span> <span class="goodsQuestionAdd">댓글달기</span>
-								</div>
-							</div>
+						
 						</div>
 						<div class="goodsQuestionPlus">
 							<span>질문하기</span>
@@ -324,76 +291,61 @@
 		<span></span>
 		<div class="saleReview">
 			<span>판매자 후기</span>
-			<table>
+			<table id="saleReviewTable" class="display" cellspacing="0" width="100%">
+			  <thead>
 				<tr>
-					<td>글번호</td>
-					<td>내용</td>
-					<td>작성일</td>
-					<td>작성자</td>
+					<th>글번호</th>
+					<th>내용</th>
+					<th>작성일</th>
+					<th>작성자</th>
 				</tr>
+				</thead>
+				<tbody>
 				<tr>
 					<td>1</td>
 					<td>Oshare so good</td>
 					<td>2016.12.12</td>
 					<td>박신혜</td>
 				</tr>
+				</tbody>
 			</table>
-			<div class="saleReviewPaging">
-				<ul class="pagination">
-					<li><a href="#">«</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">6</a></li>
-					<li><a href="#">»</a></li>
-				</ul>
-			</div>
 		</div>
 		<div class="saleProduct">
 			<span>판매중인 제품</span>
-			<table>
+			<table id="saleProductTable" class="display" cellspacing="0" width="100%">
+			<thead>
 				<tr>
-					<td>글번호</td>
-					<td>제품</td>
-					<td>제품명</td>
+					<th>글번호</th>
+					<th>제품</th>
+					<th>제품명</th>
 				</tr>
+			</thead>
+			<tbody>
 				<tr>
 					<td>1</td>
-					<td><img src="<c:url value='/resources/image/book.jpg'/>"
-						alt="이미지"></td>
+					<td><img src="<c:url value='/resources/image/book.jpg'/>" alt="이미지"></td>
 					<td>노트북</td>
 				</tr>
+			</tbody>
 			</table>
-			<div class="saleProductPaging">
-				<ul class="pagination">
-					<li><a href="#">«</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#">6</a></li>
-					<li><a href="#">»</a></li>
-				</ul>
-			</div>
+			
 		</div>
 	</div>
 	<div class="saleMessage">
 		<div class="saleMessageTitle">
 			<span>쪽지쓰기</span> <span class="material-icons saleMessageClose">&#xE5CD;</span>
 		</div>
-		<form action="" method="">
+		<form>
+		<input type="text" value="${sessionScope.loginMemberId}" name="sender" hidden>
 			<div class="saleMessageRecipient">
-				<span>받는이 </span><input type="text">
+				<span>받는이 </span> <input type="text" name="receiver">
 			</div>
 			<div class="saleMessageContent">
 				<span>쪽지내용</span>
-				<textarea></textarea>
+				<textarea name="content"></textarea>
 			</div>
 			<div class="saleMessageBtn">
-				<input type="submit" value="쪽지보내기">
+				<input type="button" value="쪽지보내기">
 			</div>
 		</form>
 	</div>

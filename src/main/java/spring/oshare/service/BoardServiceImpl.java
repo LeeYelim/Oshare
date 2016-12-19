@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import spring.oshare.dao.BoardDAO;
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CommentDTO;
+import spring.oshare.dto.ReviewDTO;
 
 @Service
 @Transactional
@@ -75,6 +77,64 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardDTO detailBoard(int boardNo) {
 		return boardDao.detailBoard(boardNo);
+	}
+
+	@Override
+	public List<BoardDTO> boardDetailSaleReview(int boardNo) {
+		// TODO Auto-generated method stub
+		return boardDao.boardDetailSaleReview(boardNo);
+	}
+	
+	/**
+	 * 댓글추가
+	 */
+	@Override
+	public int insertComment(CommentDTO comment) {
+		
+		return boardDao.insertComment(comment);
+	}
+
+	/**
+	 * 댓글삭제
+	 */
+	@Override
+	public int deleteComment(CommentDTO commentDTO) {
+
+		return boardDao.deleteComment(commentDTO);
+	}
+
+	/**
+	 * 댓글 전체리스트
+	 */
+	@Override
+	public List<CommentDTO> selectAllComments(int boardNo) {
+		List<CommentDTO> list = boardDao.selectAllComments(boardNo);
+		return list;
+	}
+
+	/**
+	 * 후기추가
+	 */
+	@Override
+	public int insertReview(ReviewDTO review) {
+		return boardDao.insertReview(review);
+	}
+
+	/**
+	 * 후기삭제
+	 */
+	@Override
+	public int deleteReview(ReviewDTO reviewDTO) {
+		return boardDao.deleteReview(reviewDTO);
+	}
+
+	/**
+	 * 후기 전체리스트
+	 */
+	@Override
+	public List<ReviewDTO> selectAllReview(int boardNo) {
+		List<ReviewDTO> list = boardDao.selectAllReviews(boardNo);
+		return list;
 	}
 
 }

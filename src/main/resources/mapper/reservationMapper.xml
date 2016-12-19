@@ -23,4 +23,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into RESERVATION 
 		values (SEQ_RESERV_NO.NEXTVAL, #{boardNo}, to_date(#{startDate},'yyyymmddhh24miss'), to_date(#{endDate},'yyyymmddhh24miss'), sysdate)
 	</insert>
+	
+	<!-- sharing 삽입 -->
+	<insert id="insertSharing" parameterType="sharingDTO">
+		insert into sharing 
+		values(SEQ_SHARING_NO.nextval, #{boardNo}, #{sellerId}, #{buyerId}, to_date(#{sharingStart},'yyyymmddhh24miss'), to_date(#{sharingEnd},'yyyymmddhh24miss'), '대여대기', #{totalPrice}, #{productCount})
+	</insert>
+	
+	<!-- sharing 삭제 -->
+	<delete id="deleteSharing" parameterType="int">
+		delete from sharing where sharing_no=#{value}
+	</delete>
+	
+	<!-- reservation 삭제 -->
+	<delete id="deleteReservation" parameterType="int">
+		delete from reservation where reserv_no=#{value}
+	</delete>
+	
+	<update id="applyReturn" parameterType="map">
+      update sharing 
+      <set>
+         <if test='returnState eq "반납".toString()'>
+            transaction_state=#{returnState},
+         </if> 
+         sharing_end=sysdate
+      </set>
+      where sharing_no=#{sharingNo}
+   </update>
+		
+	<update id="responseReturn" parameterType="map">
+		update sharing
+		<set>
+			<if test='responseState eq "확인".toString()'>
+				transaction_state='거래완료'
+			</if>
+		</set>
+		where sharing_no=#{sharingNo}
+	</update>	
+	
 </mapper>
