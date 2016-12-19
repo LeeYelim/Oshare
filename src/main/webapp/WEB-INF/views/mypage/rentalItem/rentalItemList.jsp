@@ -12,7 +12,7 @@
 <body>
 	<div class="rentalItemListForm">
 	<span>대여물품목록</span>
-		<table id="rentalItemTable">
+		<table id="rentalItemTable" class="display" cellspacing="0" width="100%" >
 				<thead><tr>
 					<th>사진</th>
 					<th>제품명</th>

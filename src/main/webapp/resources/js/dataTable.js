@@ -15,8 +15,7 @@ $(function(){
          {"targets":"2","width":"10%"},
          {"targets":"3","width":"15%"},
          {"targets":"4","width":"10%"},
-         {"targets":"5","width":"10%"},
-         {"targets":"6","width":"10%"}
+         {"targets":"5","width":"10%"}
          ]
 	});
 	
@@ -28,8 +27,7 @@ $(function(){
 		             {"targets":"2","width":"10%"},
 		             {"targets":"3","width":"15%"},
 		             {"targets":"4","width":"10%"},
-		             {"targets":"5","width":"10%"},
-		             {"targets":"6","width":"10%"}
+		             {"targets":"5","width":"10%"}  
 		             ]
 	});
 	
