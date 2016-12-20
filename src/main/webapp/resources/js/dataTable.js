@@ -10,6 +10,8 @@ $(function(){
 	$("#saleItemTable").DataTable({
 		"autoWidth": false,
 		"order": [[ 4, "desc" ]],
+		'bFilter': true,
+		
 		"columns" : [
          {"targets":"0","width":"17%"},
          {"targets":"1","width":"10%"},

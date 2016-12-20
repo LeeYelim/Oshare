@@ -11,7 +11,7 @@
 	outline: none;
 }
 
-html, body {
+html,body {
 	height: 100%
 }
 
@@ -44,9 +44,12 @@ a:focus {
 /* layout */
 #main {
 	width: 100%;
+	min-height:100%;
 	float: left;
 	position: relative;
 }
+
+
 
 #mypageContentTiles {
 	width: 80%;
@@ -58,14 +61,15 @@ a:focus {
 footer {
 	width: 100%;
 	float: left;
-	background:red;
 	text-align: center;
-	position: relative;
+	position:relative;
 	background: #232323;
+	padding-top:100px;
+	padding-bottom:100px;
 }
 footer .footerIconForm{width:100%; float:left; position: relative;}
 footer .footerIconForm h1{color:#fff; padding-bottom: 15px; padding-top:15px;} 
-footer .footerIconForm p{color:#FFF176; margin-top:15px;}
+footer .footerIconForm p{color:#FFF176; margin-top:35px; font-size:16px;}
  
 /* content */
 #contentTiles {
@@ -2054,7 +2058,7 @@ table.dataTable.no-footer{border-bottom: none;}
 }
 
 .mobileMypageMenu ul li {
-	width: 30%;
+	width: 33%;
 	height: 30px;
 	line-height: 30px;
 	float: left;

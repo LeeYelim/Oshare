@@ -24,21 +24,20 @@
 		<header>
 			<tiles:insertAttribute name="header" />
 		</header>
-
 		<div class="container">
-
-			<div id="mypageLeftMenuTiles">
-				<tiles:insertAttribute name="mypageMenu" />
-			</div>
-			<div id="mypageContentTiles">
-				<tiles:insertAttribute name="mypageContent" />
-
-			</div>
+	
+				<div id="mypageLeftMenuTiles">
+					<tiles:insertAttribute name="mypageMenu" />
+				</div>
+				<div id="mypageContentTiles">
+					<tiles:insertAttribute name="mypageContent" />
+				</div>
+	
 		</div>
+	</div>
 		<footer>
 			<tiles:insertAttribute name="footer" />
 		</footer>
-	</div>
 	<div class="dialogBlack"></div>
 
 

@@ -10,7 +10,7 @@ $(function(){
 	 saleItemListText();
 	 
 	/* header + index */
-	$(document).on("scroll",function(){
+/*	$(document).on("scroll",function(){
 		
 		if($(document).scrollTop() > 65){	
 			$(".headerNavaction").addClass("headerNavactionAdvice");
@@ -19,7 +19,7 @@ $(function(){
 		}
 		
 		//$(window).scrollTop()
-	});
+	});*/
 	
 	$(document).on("click",".headerIconNavaction .headerSearchIcon",function(){
 		if($(".HeaderSearchForm").is(":animated"))return;
@@ -238,11 +238,12 @@ $(function(){
 					}
 				} , //성공
 				error : function(err){
-					alert(err)
+					alert("err"+err)
 				} , //실패
 			});
 			  $("#saleReviewTable").DataTable({
 				  destroy: true,
+				  
 		 	    	'ajax': {
 		 	    	    "type"   : "POST",
 		 	    	    "url"    : '/controller/board/boardSaleReview',
@@ -1041,6 +1042,13 @@ $(function(){
 	    	
 	    	 $("#outMessageTable").DataTable({
 	    		  destroy: true,
+	    		  "oLanguage": {
+	    			  "sZeroRecords": "Please wait - loading data from server"
+	    			  },
+	    			"fnInitComplete": function ( oSettings ) {
+	    				
+	    				oSettings.oLanguage.sZeroRecords = "No matching records found"
+	    				},
 		 	    	'ajax': {
 		 	    	    "type"   : "POST",
 		 	    	    "url"    : '/controller/mypage/sendMessageSelect',

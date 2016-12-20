@@ -193,15 +193,9 @@ CREATE TABLE PRODUCT_REVIEW (
 	REVIEW_PARENT_NO				number,
 	review_subject					varchar2(30)		
 );
-insert into PRODUCT_REVIEW values(SEQ_REVIEW_NO.nextval,'eee','참 좋네요',sysdate,2)
 
-select * from product_review;	
-
-	SELECT
-    P.REVIEW_NO , M.MEMBER_ID , P.PRODUCT_REVIEW_CONTENTS ,	P.REG_DATE   
-		FROM BOARD B JOIN MEMBER M
-		ON B.BOARD_NO='2' JOIN product_review P ON B.BOARD_NO = P.BOARD_NO; 
-
+select * from product_review;
+		
 select * from MEMBER_GRADE;
 --판매자등급
 DROP TABLE MEMBER_GRADE CASCADE CONSTRAINTS;
@@ -209,8 +203,14 @@ CREATE TABLE MEMBER_GRADE (
 	GRADE_NO              NUMBER  NOT NULL CONSTRAINT GRADE_NO_PK PRIMARY KEY ,
 	MEMBER_ID             VARCHAR2(30)  NOT NULL ,
 	MEMBER_REVIEW         VARCHAR2(600)  NOT NULL ,
-	MEMBER_POINT          NUMBER  NOT NULL
+	REG_DATE              DATE  NOT NULL ,
+	MEMBER_POINT          NUMBER  NOT NULL,
+	BOARD_NO			  NUMBER  NOT NULL CONSTRAINT MEMBER_GRADE_NO_FK REFERENCES BOARD(BOARD_NO) ON DELETE CASCADE
 );
+
+INSERT INTO MEMBER_GRADE VALUES(SEQ_MEMBER_GRADE_NO.NEXTVAL,'eee','참좋네요',SYSDATE,5,24)
+
+select GRADE_NO , member_id , MEMBER_REVIEW , reg_date ,board_no from MEMBER_GRADE where board_no = 41;
 
 -- 위시리스트
 DROP TABLE WISHLIST CASCADE CONSTRAINTS;
@@ -231,4 +231,8 @@ VALUES(1,'qwe','123','테스트',sysdate,'경기도성남시판교동','국민은행','000000001
 
 select * from COMMENTS;
 select * from PRODUCT_REVIEW;
+
+select * from board
+
+
 

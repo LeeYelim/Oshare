@@ -11,7 +11,9 @@
 <body>
 
 	<div class="saleItemListForm">
+	<div class="saleItemListTitle">
 		<span>판매물품목록</span>
+	</div>
 		<table id="saleItemTable" class="display" cellspacing="0" width="100%";>
 			<thead>
 				<tr>
@@ -24,6 +26,7 @@
 				</tr>
 			</thead>
 			<tbody>
+	
 			<c:forEach items="${requestScope.saleslist}" var="board">
 				<c:forEach items="${board.sharing}" var="sharing">
 					<tr><td>
