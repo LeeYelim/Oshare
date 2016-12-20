@@ -61,10 +61,11 @@
 					</ul>
 				</div>
 				</c:forEach>
+				<c:if test="${!empty sessionScope.loginMemberId}">
 				<div class="goodsListInsertBtn">
-				
 				<a href="<c:url value='/editor/insertProduct'/>?boardType=sharing"><span class="glyphicon glyphicon-pencil">제품등록</span></a>
 				</div>
+				</c:if>
 				
 				<div class="goodsListNavaction">
 					<c:if test="${count>0}">${pagingHtml}</c:if>

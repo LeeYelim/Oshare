@@ -9,6 +9,7 @@ $(function(){
 	
 	$("#saleItemTable").DataTable({
 		"autoWidth": false,
+		"order": [[ 4, "desc" ]],
 		"columns" : [
          {"targets":"0","width":"17%"},
          {"targets":"1","width":"10%"},
@@ -21,6 +22,7 @@ $(function(){
 	
 	$("#rentalItemTable").DataTable({
 		"autoWidth": false,
+		"order": [[ 4, "desc" ]],
 		"columns" : [
 		             {"targets":"0","width":"15%"},
 		             {"targets":"1","width":"10%"},

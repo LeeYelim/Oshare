@@ -27,7 +27,7 @@ public interface MyPageService {
 	/**
 	 * 쪽지 보내기
 	 * */
-	int insertMessage(MessageDTO message);
+	String insertMessage(MessageDTO message);
 	
 	/**
 	 * 쪽지 보관함

@@ -42,4 +42,9 @@ public interface ReservationService{
 	   * 
 	   * */
 	int responseReturn(int sharingNo, String responseState);
+	
+	/**
+	 * Ã»±¸ÇÏ±â Æû
+	 * */
+	SharingDTO demandPayment(int sharingNo);
 }

@@ -61,5 +61,10 @@ public class ReservationDAOImpl implements ReservationDAO{
 		map.put("sharingNo", sharingNo);
 		map.put("responseState", responseState.trim());
 		return sqlSession.update("reservationMapper.responseReturn", map);
-	}	
+	}
+
+	@Override
+	public SharingDTO demandPayment(int sharingNo) {
+		return sqlSession.selectOne("reservationMapper.selectDemandPayment", sharingNo);
+	}
 }

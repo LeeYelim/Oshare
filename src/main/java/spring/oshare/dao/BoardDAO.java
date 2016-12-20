@@ -5,6 +5,7 @@ import java.util.Map;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CommentDTO;
+import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
 
 public interface BoardDAO {
@@ -82,7 +83,12 @@ public interface BoardDAO {
 	/**
 	 * 프로필 상품후기 select
 	 * */
-	List<BoardDTO> boardDetailSaleReview (int boardNo);
+	List<GradeDTO> boardDetailSaleReview (int boardNo);
+	
+	/**
+	 * 프로필 판매제품 select
+	 * */
+	List<BoardDTO> boardDetailSaleList(String memberId);
 
 	/**
 	 * 댓글추가
@@ -114,4 +120,9 @@ public interface BoardDAO {
 	 */
 	List<ReviewDTO> selectAllReviews(int boardNo);
 	
+	/**
+	 *  sharing, rental 상위 8개 항목 불러오기
+	 *  (메인출력)
+	 */
+	List<BoardDTO> selectTopList(String boardType);	
 }

@@ -66,52 +66,18 @@
 				</div>
 			</div>
 			<div class="indexSharingList owl-carousel">
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"><a href="<c:url value='/board/goodsDetail'/>"><span
-								class="material-icons goodsDetailViewSee">&#xE8F4;</span></a></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS2</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS3</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS4</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS5</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
+				<c:forEach items="${sharingTopList}" var="boardDTO">
+					<div class="item">
+						<ul>
+							<li><img src="<c:url value='${boardDTO.filePath}'/>" alt="book">
+							<a href="<c:url value='/board/goodsDetail?boardNo=${boardDTO.boardNo}'/>"><span class="material-icons goodsDetailViewSee">&#xE8F4;</span></a>
+							</li>
+							<li>제품명 : ${boardDTO.productName}</li>
+							<li>가격 : ${boardDTO.price} 원/일</li>
+							<li><span class="material-icons heartWish">&#xE87D;</span></li>
+						</ul>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

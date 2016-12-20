@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/1.10.13/css/dataTables.jqueryui.min.css" rel="stylesheet">
+<link href="<c:url value='/resources/css/font-awesome.min.css'/>" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css'/>">
 
 <title>Oshare</title>

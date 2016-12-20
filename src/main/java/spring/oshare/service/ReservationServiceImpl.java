@@ -56,4 +56,9 @@ public class ReservationServiceImpl implements ReservationService, Runnable{
 	public int responseReturn(int sharingNo, String responseState) {
 		return dao.responseReturn(sharingNo, responseState);
 	}
+
+	@Override
+	public SharingDTO demandPayment(int sharingNo) {
+		return dao.demandPayment(sharingNo);
+	}
 }

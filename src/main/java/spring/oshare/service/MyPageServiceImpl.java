@@ -26,8 +26,11 @@ public class MyPageServiceImpl implements MyPageService{
 	}
 	
 	@Override
-	public int insertMessage(MessageDTO message) {
-		return myPageDAO.insertMessage(message);
+	public String insertMessage(MessageDTO message) {
+		if(myPageDAO.insertMessage(message)>0) {
+			return message.getReceiver();
+		}
+		return "";
 	}
 
 	@Override

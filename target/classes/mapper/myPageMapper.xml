@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by board_no
 	</select>
 	
-	<!-- 대여 물품 조회 -->
+		<!-- 대여 물품 조회 -->
 	<select id="rentalItemList" parameterType="string" resultMap="salesDTO">
 		select DISTINCT b.board_no, b.product_name, s.sharing_no, s.seller_id, s.buyer_id, m.member_phone, s.sharing_start, s.sharing_end, s.transaction_state 
 		from (sharing s join board b on s.buyer_id=#{value} and s.board_no=b.board_no) 
@@ -39,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		on s.buyer_id=s2.buyer_id
 		order by board_no
 	</select>
+	
 	
 	
 	<!-- 오늘 날짜보다 sharing_start가 작고, 현재 상태가 대여 대기라면 sharing_state 대여중으로 변경 -->

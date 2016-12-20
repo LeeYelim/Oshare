@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CommentDTO;
+import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
 import spring.oshare.service.BoardService;
 import spring.oshare.util.PagingUtil;
@@ -104,8 +105,19 @@ public class BoardController {
 	 * */
 	@RequestMapping("boardSaleReview")
 	@ResponseBody
-	public List<BoardDTO> boardDetailSaleReview(int boardNo){
-		return boardService.boardDetailSaleReview(boardNo);
+	public List<GradeDTO> boardDetailSaleReview(int boardNo){
+		List<GradeDTO> list  =boardService.boardDetailSaleReview(boardNo);
+		System.out.println("gradeDTO LIST : "+ list);
+		return list;
+	}
+	
+	/**
+	 * 프로필 판매제품 
+	 * */
+	@RequestMapping("boardSaleList")
+	@ResponseBody
+	public List<BoardDTO> boardDetailSaleList(String memberId){
+		return boardService.boardDetailSaleList(memberId);
 	}
 	
 	/**

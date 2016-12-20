@@ -12,6 +12,11 @@ public class SharingDTO {
 	private String sellerId; // 판매자 id
 	private String buyerId; // 대여자 id
 	private MemberDTO member;
+	private int sharingDays; // 대여기간
+	private int overDue; // 연체 날짜
+	private int overDueFee; // 연체 비용
+	private int totalOverDueFee; // 총 연체료
+	private BoardDTO board;
 	
 	public SharingDTO() { 	}
 	public SharingDTO(String sharingNo, String sharingStart, String sharingEnd, String transactionState, int totalPrice,
@@ -88,4 +93,35 @@ public class SharingDTO {
 	public void setBuyerId(String buyerId) {
 		this.buyerId = buyerId;
 	}
+	public int getSharingDays() {
+		return sharingDays;
+	}
+	public void setSharingDays(int sharingDays) {
+		this.sharingDays = sharingDays;
+	}
+	public int getOverDue() {
+		return overDue;
+	}
+	public void setOverDue(int overDue) {
+		this.overDue = overDue;
+	}
+	public int getOverDueFee() {
+		return overDueFee;
+	}
+	public void setOverDueFee(int overDueFee) {
+		this.overDueFee = overDueFee;
+	}
+	public int getTotalOverDueFee() {
+		return totalOverDueFee;
+	}
+	public void setTotalOverDueFee(int totalOverDueFee) {
+		this.totalOverDueFee = totalOverDueFee;
+	}
+	public BoardDTO getBoard() {
+		return board;
+	}
+	public void setBoard(BoardDTO board) {
+		this.board = board;
+	}
+	
 }

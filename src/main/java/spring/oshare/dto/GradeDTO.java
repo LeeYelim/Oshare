@@ -4,10 +4,12 @@ public class GradeDTO {
 
 	private int gradeNo;
 	private String memberId; // 평가한 사용자 아이디
+	private String regDate; // 날짜    
 	private int memberPoint; // 부여한 점수
 	private String memberReview; // 평가 내용
+	private  String boardNo; //게시물 번호
 	
-	public GradeDTO() { 	}
+	public GradeDTO() {}
 	public GradeDTO(int gradeNo, String memberId, int memberPoint, String memberReview) {
 		super();
 		this.gradeNo = gradeNo;
@@ -40,5 +42,18 @@ public class GradeDTO {
 	public void setMemberReview(String memberReview) {
 		this.memberReview = memberReview;
 	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	public String getBoardNo() {
+		return boardNo;
+	}
+	public void setBoardNo(String boardNo) {
+		this.boardNo = boardNo;
+	}
+	
 	
 }

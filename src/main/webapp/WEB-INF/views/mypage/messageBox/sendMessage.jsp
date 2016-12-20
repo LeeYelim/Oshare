@@ -19,9 +19,9 @@
 
 			<div id="writeNote" class="tab-pane fade in active">
 				<div class="sendMessageTabForm">
-					<form action="<c:url value='/mypage/sendMessageInsert'/>" metohd=""
-						onsubmit="return sendMessageValidityCheck()">
-						<input type="text" value="${sessionScope.loginMemberId}" name="sender" hidden>
+			   <%-- <form action="<c:url value='/mypage/sendMessageInsert'/>" metohd="" onsubmit="return sendMessageValidityCheck()"> --%>
+					<form id="msgForm" name="msgForm" action="" method="post" onsubmit="return sendMessageValidityCheck()">
+						<input type="text" value="${sessionScope.loginMemberId}"b name="sender" hidden>
 						<div class="sender">
 							<span>송신자 ${sessionScope.loginMemberId}</span>
 						</div>
@@ -34,7 +34,7 @@
 						</div>
 
 						<div class="sendMessageBtn">
-							<input type="submit" value="쪽지보내기">
+							<input type="button" id="insertBtn" value="쪽지보내기">
 						</div>
 					</form>
 				</div>

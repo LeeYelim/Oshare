@@ -12,15 +12,10 @@ $(function(){
 	/* header + index */
 	$(document).on("scroll",function(){
 		
-		if($(window).scrollTop() > 65){	
-			
+		if($(document).scrollTop() > 65){	
 			$(".headerNavaction").addClass("headerNavactionAdvice");
-			$(".headerNavaction").css({"height":"65px","line-height":"45px","position":"fixed"})
-		}else{
-			
+		}else{		
 			$(".headerNavaction").removeClass("headerNavactionAdvice");
-			$(".headerNavaction").css({"height":"85px","line-height":"65px","position":"relative"})
-		
 		}
 		
 		//$(window).scrollTop()
@@ -220,6 +215,7 @@ $(function(){
 			  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
 			  $(".saleProfile").animate({"opacity":"1","left":"50%"},500).show(); 
 			  goodsDetailSaleReview();
+			  goodsDetailSaleList();
 		  });// goodsDetail Profile open Event End
 		  
 		  $(document).on("click",".saleProfile .saleProfileTitle .saleProfileClose",function(){
@@ -230,8 +226,7 @@ $(function(){
 		  
 		  //goodsDetail profile saleReview dataTable + ajax
 		  function goodsDetailSaleReview(){
-			  var boardNo = $(".sellerInformation ul input[name=goodsDetailBoardNo]").val()
-			  alert(boardNo)
+			  var boardNo = $(".sellerInformation ul input[name=goodsDetailBoardNo]").val();
 			  $.ajax({
 				url: "/controller/board/boardSaleReview" , //서버요청이름
 				type : "post" , //method방식 (get , post) 
@@ -239,14 +234,13 @@ $(function(){
 				data : "boardNo="+boardNo,
 				success : function(result){
 					if(result.length <=0 ){
-						$(".saleReview table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>쪽지가 존재하지 않습니다</td></tr>");
+						$(".saleReview table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>후기가 존재하지 않습니다</td></tr>");
 					}
 				} , //성공
 				error : function(err){
 					alert(err)
 				} , //실패
 			});
-			  
 			  $("#saleReviewTable").DataTable({
 				  destroy: true,
 		 	    	'ajax': {
@@ -257,15 +251,54 @@ $(function(){
 		 	    	    },
 		 	    	    "dataSrc": ""
 		 	    	  },
-		 	    	  
+		 	    	
 		 	    	  'columns': [
-		 	    	    {"data" : "boardDTO.boardNo"},
-		 	    	    {"data" : "boardDTO.boardNo"},
-		 	    	    {"data" : "boardDTO.boardNo"},
-		 	    	    {"data" : "boardDTO.boardNo"}
+		 	    	    {"targets":"0" , "width" : "10%" , "data" : "gradeNo"},
+		 	    	    {"targets":"1" , "width" : "40%" , "data" : "memberReview"},
+		 	    	   	{"targets":"2" , "width" : "30%" , "data" : "regDate"},
+		 	    	    {"targets":"3" , "width" : "10%" , "data" : "memberId"}    	
 		 	    	  ]
 			  });
 		  }//goodsDetail profile saleReview dataTable + ajax End
+		  
+		
+		//goodsDetail profile saleList dataTable + ajax
+		  function goodsDetailSaleList(){
+			  var memberId = $(".saleProfileImformation span").text();
+			  $.ajax({
+				url: "/controller/board/boardSaleList" , //서버요청이름
+				type : "post" , //method방식 (get , post) 
+				dataType : "json" , //요청결과타입 (text ,xml , html , json)
+				data : "memberId="+memberId,
+				success : function(result){
+					if(result.length <=0 ){
+						$(".saleProduct table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>상품이 존재하지 않습니다</td></tr>");
+					}
+				} , //성공
+				error : function(err){
+					alert(err)
+				} , //실패
+			});
+			  $("#saleProductTable").DataTable({
+				  destroy: true,
+		 	    	'ajax': {
+		 	    	    "type"   : "POST",
+		 	    	    "url"    : '/controller/board/boardSaleList',
+		 	    	    "data"   :{
+		 	    	    	"memberId" : memberId
+		 	    	    },
+		 	    	    "dataSrc": ""
+		 	    	  },
+		 	    	
+		 	    	  'columns': [
+		 	    	    {"targets":"0" , "width" : "30%" , "data" : "boardNo"}, 
+		 	    	    {"targets" : "1", "width" : "30%" ,"data" : "filePath",render: function ( data, type, row ) {
+		                      return '<a href=/controller/board/goodsDetail?boardNo='+row.boardNo+'><img src=/controller'+data+' alt='+data+'>';
+		    	            }},
+		 	    	   	{"targets":"0" , "width" : "30%" , "data" : "productName"},	
+		 	    	  ]
+			  });
+		  }//goodsDetail profile saleList dataTable + ajax End
 		  
 		  
 		  $(document).on("click",".sellerInformation .sellerSub span:nth-child(2)",function(){
@@ -676,11 +709,45 @@ $(function(){
 		  
 		   //saleItemList 
 		  $(document).on("click",".saleItemListForm input[value=비용청구]",function(){
-			 		if($(".saleItemListDialog").is(":animated"))return;
-			  		$(".saleItemListDialog").css({"left":"60%"});
-			  		$(".dialogBlack").animate({"opacity":"0.7"},500).show();
-			  		$(".saleItemListDialog").animate({"opacity":"1","left":"50%"},500).show();
-		  });//saleItemListDialog Event End
+			  if($(".saleItemListDialog").is(":animated"))return;
+			  $(".saleItemListDialog").css({"left":"60%"});
+			  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
+			  $(".saleItemListDialog").animate({"opacity":"1","left":"50%"},500).show();
+			  
+			  var sharingNum = $(this).parent().children().eq(1).val();
+			  
+			  
+			  $.ajax({
+				  url:"/controller/reservation/selectDemandPayment",
+				  type : "post",
+				  dataType : "json",
+				  data : "sharingNum=" + sharingNum, 
+				  success : function(result) {
+					  $("#price").text(result.board.price + "원"); // 하루 대여료
+					  $("#sharingDays").text(result.sharingStart+"~"+result.sharingEnd+" ("+result.sharingDays+"일)"); // 대여 기간
+					  $("#totalPrice").text(result.totalPrice + "원"); // 기본 총 대여료(대여료*기간)
+					  $("#overDue").text(result.overDue + "일"); // 연체기간
+					  $("#overDueFee").text(result.overDueFee + "원"); // 하루연체료
+					  $("#totalOverDueFee").text(result.totalOverDueFee + "원"); // 총 연체료 
+					  $("#paidMoney").text(result.totalPrice); // 이미 지불한 금액
+					  $("#totalMoney").text(result.totalPrice + result.totalOverDueFee); // 기본비용+연체
+				  },
+				  error : function(err) {
+					  alert(err);
+				  }
+			  })		
+		  });// saleItemListDialog Event End
+		  
+		// 청구 비용 이벤트
+		  $(document).on("keyup", ".saleItemAddMoney input[name=demandFee]", function() {
+			 // alert($(this).val());
+			  if($(this).val()=="") {
+				  $("#totalMoney").text(parseInt($("#totalOverDueFee").text())+parseInt($("#totalPrice").text()));
+			  } else {
+				  $("#totalMoney").text(parseInt($(this).val())+parseInt($("#totalPrice").text()) + parseInt($("#totalOverDueFee").text()));
+			  }
+			  $("#totalDemandPayment").text(parseInt($("#totalMoney").text())-parseInt($("#paidMoney").text()));
+		})
 		  
 		  $(document).on("click",".saleItemListDialog .saleItemListClose",function(){
 			  		if($(".saleItemListDialog").is(":animated"))return;
@@ -714,7 +781,15 @@ $(function(){
 					  rentalItemSpan.eq(retalItemNumber).text("반납대기");
 					  rentalItemSpan.eq(retalItemNumber).css({"line-height":"60px"});
 					  rentalItemBtn.eq(retalItemNumber).hide();
-				  }else if(rentalItemSpan.eq(retalItemNumber).text() == "추가금결제"){
+				  }else if(rentalItemSpan.eq(retalItemNumber).text()== "파손" || 
+						  rentalItemSpan.eq(retalItemNumber).text()== "분실") {
+					  var str = "반납대기<br>(" + rentalItemSpan.eq(retalItemNumber).text() +")";
+					  rentalItemSpan.eq(retalItemNumber).html(str);
+					  rentalItemSpan.eq(retalItemNumber).css({"line-height":"30px"});
+					  rentalItemBtn.eq(retalItemNumber).hide();
+				  }
+				  
+				  else if(rentalItemSpan.eq(retalItemNumber).text() == "추가금결제"){
 					  rentalItemSpan.eq(retalItemNumber).css({"line-height":"30px"});
 					  rentalItemBtn.eq(retalItemNumber).show().val("결제하기");
 				  }else if(rentalItemSpan.eq(retalItemNumber).text() == "거래완료"){
@@ -828,6 +903,7 @@ $(function(){
     	  form.append(inputResponseState);
     	  form.submit();		   
 	}) 
+	
 	  
 		  //declaration
 		  $(document).on("click",".declaration img",function(){

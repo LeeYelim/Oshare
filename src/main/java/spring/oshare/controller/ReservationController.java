@@ -41,7 +41,7 @@ public class ReservationController {
 		  sharing.setSharingEnd(end);
 		  
 		  if(reservationService.insertReservation(new ReservationDTO(boardNo, start, end), sharing)>1) { 
-			  return "redirect:/mypage/rentalItem";
+			  return "redirect:/mypage/rentalItem?boardNo="+boardNo;
 		  } 
 		  return "error/errorMessage";
 	  }
@@ -78,7 +78,6 @@ public class ReservationController {
 	  /**
 	   * 판매자)
 	   * 완료 : 거래 완료로 업데이트
-	   * 
 	   * */
 	  @RequestMapping("responseReturn")
 	  public String responseReturn(int sharingNum, String responseState) {
@@ -88,6 +87,26 @@ public class ReservationController {
 			return "redirect:/mypage/salesItem";
 		}
 		return "error/errorMessage";
+	  }
+	  
+	  /**
+	   * 청구하기
+	   * */
+	 @RequestMapping("selectDemandPayment")
+	 @ResponseBody
+	  public SharingDTO demandPayment(int sharingNum) {
+		 System.out.println("============================sharingNo : " + sharingNum);
+		 SharingDTO dto =  reservationService.demandPayment(sharingNum);
+		 System.out.println("getSharingNo : " + dto.getSharingNo());
+		 System.out.println("getSharingStart : " + dto.getSharingStart());
+		 System.out.println("getSharingEnd : " + dto.getSharingEnd());
+		 System.out.println("getSharingDays : " + dto.getSharingDays());
+		 System.out.println("getOverDue : " + dto.getOverDue());
+		 System.out.println("getOverDueFee : " + dto.getOverDueFee());
+		 System.out.println("getTotalPrice : " + dto.getTotalPrice());
+		 System.out.println("getPrice : " + dto.getBoard().getPrice());
+		 return dto;
+		
 	  }
 	  
 	  

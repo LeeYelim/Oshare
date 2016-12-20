@@ -11,10 +11,8 @@
 <body>
 
 	<div class="saleItemListForm">
-		<div class="saleItemListTitle">
-  		<span>판매물품목록</span>		  		
-  		</div>		  		
-		<table id="saleItemTable" class="display" cellspacing="0" width="100%">
+		<span>판매물품목록</span>
+		<table id="saleItemTable" class="display" cellspacing="0" width="100%";>
 			<thead>
 				<tr>
 					<th>사진</th>
@@ -51,7 +49,6 @@
 					</td></tr>
 				</c:forEach>
 			</c:forEach>
-	
 			</tbody>
 			</table>
 		</div>
@@ -65,34 +62,34 @@
 		<div class="rentalFee">
 			<span>대여료</span>
 			<ul>
-			<li>1일 대여비 : <span>500원/일</span></li>
-			<li>대여기간 : <span>2016.12.09 ~ 2016.12.23일</span></li>
-			<li>총 대여료 : <span>5만원</span></li>
+			<li>1일 대여비 : <span id="price"></span></li>
+			<li>대여기간 : <span id="sharingDays"></span></li>
+			<li>총 대여료 : <span id="totalPrice"></span></li>
 			</ul>
 		</div>
 		<div class="annualFee">
-			<span>연채료</span>
+			<span>연체료</span>
 			<ul>
-				<li>연채일 : <span>1일</span></li>
-				<li>연채료(패널티) <span>150%비용원</span></li>
-				<li>총연재료 <span>5000000000원</span></li>
+				<li>연체일 : <span id="overDue"></span></li>
+				<li>연체료(1일 대여료*150%) : <span id="overDueFee"></span></li>
+				<li>총 연체료 : <span id="totalOverDueFee"></span></li>
 			</ul>
 		</div>
 		<div class="saleItemAddMoney">
 			<span>추가비용</span>
 			<ul>
-				<li><span>사유 :</span> <textarea name=""></textarea></li>
-				<li><span>청구 비용 : </span><input type="number" name="">
+				<li><span>사유 : </span><textarea name="demandReason"></textarea></li>
+				<li><span>청구 비용 : </span><input type="text" name="demandFee">
 			</ul>
 		</div>
 		<div class="totalAmount">
 			<ul>
-				<li>총액 : <span>500000원</span></li>
-				<li>결제한 금액 : <span>500000원</span></li>
+				<li>총액 : <span id="totalMoney"></span>원</li>
+				<li>결제한 금액 : <span id="paidMoney"></span>원</li>
 			</ul>
 		</div>
 		<div class="totalCharges">
-			<span>총 청구 금액 : </span> <span>5500000원</span>
+			<span>총 청구 금액 : </span><span id="totalDemandPayment"></span>원
 		</div>
 		<div class="saleItemBtn">
 			<input type="submit" value="신청">

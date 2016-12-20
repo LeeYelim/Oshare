@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CommentDTO;
+import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
 
 @Repository
@@ -161,9 +162,20 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardDTO> boardDetailSaleReview(int boardNo) {
+	public List<GradeDTO> boardDetailSaleReview(int boardNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.boardDetailSaleReview",boardNo);
+	}
+
+	@Override
+	public List<BoardDTO> boardDetailSaleList(String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("boardMapper.boardDetailSaleList",memberId);
+	}
+
+	@Override
+	public List<BoardDTO> selectTopList(String boardType) {
+		return sqlSession.selectList("boardMapper.selectTopList", boardType);
 	}
 
 

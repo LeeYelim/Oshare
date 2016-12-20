@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import spring.oshare.dao.BoardDAO;
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CommentDTO;
+import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
 
 @Service
@@ -80,9 +81,15 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> boardDetailSaleReview(int boardNo) {
+	public List<GradeDTO> boardDetailSaleReview(int boardNo) {
 		// TODO Auto-generated method stub
 		return boardDao.boardDetailSaleReview(boardNo);
+	}
+	
+	@Override
+	public List<BoardDTO> boardDetailSaleList(String memberId) {
+		// TODO Auto-generated method stub
+		return boardDao.boardDetailSaleList(memberId);
 	}
 	
 	/**
@@ -136,5 +143,11 @@ public class BoardServiceImpl implements BoardService {
 		List<ReviewDTO> list = boardDao.selectAllReviews(boardNo);
 		return list;
 	}
+
+	@Override
+	public List<BoardDTO> selectTopList(String boardType) {
+		return boardDao.selectTopList(boardType);
+	}
+
 
 }

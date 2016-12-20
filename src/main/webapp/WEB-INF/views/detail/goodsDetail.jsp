@@ -89,10 +89,12 @@
 							</div></li>
 					</ul>
 				</div>
-
+				<c:set value="${boardDTO.memberDTO.memberId}" var="memberId"/>
+				<c:if test="${sessionScope.loginMemberId == memberId}">
 				<div class="goodsDetailChage">
 					<span>수정하기</span><span>삭제하기</span>
 				</div>
+				</c:if>
 			</div>
 			<div class="col-xs-6">
 				<div class="goodsDetailIcon">
@@ -301,7 +303,12 @@
 				</tr>
 				</thead>
 				<tbody>
-		
+				<tr>
+					<td>1</td>
+					<td>Oshare so good</td>
+					<td>2016.12.12</td>
+					<td>박신혜</td>
+				</tr>
 				</tbody>
 			</table>
 		</div>

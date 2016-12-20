@@ -6,6 +6,88 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+
+</style>
+	<script type="text/javascript" src="<c:url value='/resources/js/jquery-2.2.4.min.js'/>"></script>
+	<script type="text/javascript">
+		
+		// 메세지 도착 알림
+		function notifyMsg() {
+			$.post("<c:url value='/notify/sendMessageInsert'/>", $('#msgForm').serialize());
+		}
+
+		var index=0;
+		var msgAlarmColor = ["red","black"];
+		var payAlarmColor = ["red","black"];
+		var intervalMsgColor;
+		var intervalPayColor;
+		
+		// 메세지 알림 도착, 아이콘 효과
+		function changeMsgColor() {
+			if(index==msgAlarmColor.length) index=0;
+			$('#msgIcon').css('color', msgAlarmColor[index++]);
+		}
+		function startMessageAlarm() {
+			intervalMsgColor = setInterval('changeMsgColor()', 500);
+		}
+		function endMessageAlarm() {
+			clearTimeout(intervalMsgColor);
+			$('#msgIcon').css('color','black');
+		}
+
+		// 결제 알림 도착, 아이콘 효과
+		function changePayColor() {
+			if(index==payAlarmColor.length) index=0;
+			$('#payIcon').css('color', payAlarmColor[index++]);
+		}
+		function startPaymentAlarm() {
+			intervalPayColor = setInterval('changePayColor()', 500);
+		}
+		function endPaymentAlarm() {
+			clearTimeout(intervalPayColor);
+			$('#payIcon').css('color','black');
+		}
+		
+		$(document).ready(function(){
+			
+			$('#insertBtn').click(function(){
+				notifyMsg();
+			});
+			
+			// 메세지 알람끄기
+			$('#msgIcon').click(function(){
+				endMessageAlarm();
+			});
+			$('#payIcon').click(function(){
+				endPaymentAlarm();
+			});
+			
+			var contextpath = '${pageContext.request.contextPath}';
+			
+			// 알람 event source 연결
+			var source = new EventSource(contextpath + "/notify/connect");
+			
+			var loginMemberId = "${sessionScope.loginMemberId}";
+			
+			// 쪽지 알림 감지
+			source.addEventListener('spring', function(event){
+				// 해당 쪽지 알림 감지
+				if(loginMemberId == event.data) {
+					startMessageAlarm();
+				}
+			});
+			
+			// 결제 알림 감지
+			source.addEventListener('payment', function(event){
+				// 해당 결제 알림 감지
+				if(loginMemberId == event.data) {
+					startPaymentAlarm();
+				}
+			});
+	
+		});
+	</script>
 </head>
 <body>
 	<div class="container">
@@ -52,8 +134,8 @@
 					<li><span class="material-icons headerSearchIcon">search</span></li>
 					<li><a href="<c:url value='/mypage/shoppingBasket'/>"><span
 							class="material-icons">shopping_cart</span></a></li>
-					<li><a href="#"><span class="material-icons">notifications_none</span></a></li>
-					<li><a href="#"><span class="material-icons">attach_money</span></a></li>
+					<li><a href="#"><span class="material-icons" id="msgIcon">notifications_none</span></a></li>
+					<li><a href="#"><span class="material-icons" id="payIcon">attach_money</span></a></li>
 				</div>
 			</ul>
 			<div class="HeaderSearchForm">
@@ -121,6 +203,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

@@ -7,14 +7,43 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	
+	<script type="text/javascript">
+		
+		function notifyPayment() {
+			$.post("<c:url value='/notify/alarmPayment?boardNo=${boardNo}'/>");
+		}
+			
+		$(document).ready(function(){
+			
+			 // get방식 parameter 추출
+			 var getParam = function(key){
+			        var _parammap = {};
+			        document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+			            function decode(s) {
+			                return decodeURIComponent(s.split("+").join(" "));
+			            }
+			 
+			            _parammap[decode(arguments[1])] = decode(arguments[2]);
+			        });
+			        return _parammap[key];
+			};
+			
+			//alert("boardNo = " + getParam('boardNo'));
+			var boardNo = parseInt(getParam('boardNo'));
 
+			if(boardNo>0) {
+				// alert('notifyment()호출');
+				notifyPayment();
+			}
+		});
+	</script>
+	
 </head>
 <body>
 	<div class="rentalItemListForm">
-	<div class="rentalItemListTitle">		  		
-  		<span>대여물품목록</span>		  		
-  		</div>
-		<table id="rentalItemTable" class="display"  width="100%" >
+	<span>대여물품목록</span>
+		<table id="rentalItemTable"  class="display" cellspacing="0" width="100%">
 				<thead><tr>
 					<th>사진</th>
 					<th>제품명</th>
@@ -80,6 +109,6 @@
 	    </div>
     </div>
 	   </form>
-	</div>
+	</div>	
 	</body>
 </html>

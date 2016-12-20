@@ -104,22 +104,20 @@ public class MyPageController {
 	/**
 	 * 쪽지 보내기
 	 * */
-	
+	/*
 	@RequestMapping("sendMessageInsert")
-	public String insertMessage(MessageDTO message , HttpServletRequest request){
-		
+	public String insertMessage(MessageDTO message, HttpServletRequest request){
 		myPageService.insertMessage(message);
-	
-		
 		return "redirect:message";
 	}
+	*/
 	
 	/**
 	 * 상세보기 쪽지 보내기
 	 * */
 	@RequestMapping("DetailSendMessageInsert")
 	@ResponseBody
-	public int DetailInsertMessage(MessageDTO message , HttpServletRequest request){
+	public String DetailInsertMessage(MessageDTO message , HttpServletRequest request){
 		System.out.println("detail message : "+message.getReceiver()+ message.getSender() + message.getContent());
 		return myPageService.insertMessage(message);
 	}
