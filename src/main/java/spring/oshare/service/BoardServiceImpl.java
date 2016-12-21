@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import spring.oshare.dao.BoardDAO;
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
@@ -148,6 +149,19 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDTO> selectTopList(String boardType) {
 		return boardDao.selectTopList(boardType);
 	}
-
-
+	
+	/**
+	 * 장바구니 추가
+	 */
+	@Override
+	public int insertCart(CartDTO cartDTO) {
+		return boardDao.insertCart(cartDTO);
+	}
+	
+	@Override
+	public GradeDTO boardDetailSaleGrade(String sellerId) {
+		// TODO Auto-generated method stub
+		return boardDao.boardDetailSaleGrade(sellerId);
+	}
+	
 }

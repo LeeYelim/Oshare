@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
@@ -78,7 +79,7 @@ public interface BoardDAO {
 	/**
 	 * 장바구니 추가
 	 * */
-	int insertCart(String boardNo, String userId);
+	int insertCart(CartDTO cartDTO);
 	
 	/**
 	 * 프로필 상품후기 select
@@ -125,4 +126,10 @@ public interface BoardDAO {
 	 *  (메인출력)
 	 */
 	List<BoardDTO> selectTopList(String boardType);	
+	
+	
+	/**
+	 *  상세보기 평점 
+	 * */
+	GradeDTO boardDetailSaleGrade(String sellerId);
 }

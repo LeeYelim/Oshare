@@ -1,13 +1,12 @@
 package spring.oshare.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import spring.oshare.dto.GradeDTO;
-import spring.oshare.dto.LocationDTO;
 import spring.oshare.dto.MemberDTO;
-import spring.oshare.dto.MessageDTO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -82,5 +81,7 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("memberMapper.receiverValidation", receiver);
 	}
+
+
 
 }

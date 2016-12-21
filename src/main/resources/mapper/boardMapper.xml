@@ -170,4 +170,23 @@
 
 <select id="boardDetailSaleList" parameterType="String" resultMap="boardMap"> select board_no ,product_name , THUMBNAIL from board where member_id = #{value} </select>
 
+
+<!-- select : 평점 -->
+<select id="boardDetailSaleGrade" parameterType="String" resultType="gradeDTO"> SELECT TRUNC(AVG(MEMBER_POINT),1) as memberPoint FROM MEMBER_GRADE WHERE SELLER_ID = #{value}</select>
+
+<!-- cart insert -->
+	<resultMap type="CartDTO" id="cartMapp">
+		<id column="CART_NO" property="cartNo"/>
+		<result column="BOARD_NO" property="boardNo"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="CART_START" property="cartStart"/>
+		<result column="CART_END" property="cartEnd"/>
+		<result column="CART_PRICE" property="cartPrice"/>
+	</resultMap>
+
+
+<!-- cart insert -->
+	<insert id="cartInsert" parameterType="CartDTO">
+		insert into Cart values(SEQ_CART_NO.NEXTVAL , #{boardNo}, #{memberId}, #{cartStart}, #{cartEnd}, #{cartPrice})
+	</insert>
 </mapper>

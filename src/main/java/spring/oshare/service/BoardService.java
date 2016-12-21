@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
@@ -108,4 +109,13 @@ public interface BoardService {
 	 */
 	List<BoardDTO> selectTopList(String boardType);	
 	
+	/**
+	 * 장바구니 추가
+	 */
+	int insertCart(CartDTO cartDTO);
+	
+	/**
+	 *  상세보기 평점 
+	 * */
+	GradeDTO boardDetailSaleGrade(String sellerId);
 }

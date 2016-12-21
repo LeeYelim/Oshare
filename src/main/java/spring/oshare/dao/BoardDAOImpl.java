@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
@@ -156,12 +157,6 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public int insertCart(String boardNo, String userId) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public List<GradeDTO> boardDetailSaleReview(int boardNo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("boardMapper.boardDetailSaleReview",boardNo);
@@ -177,6 +172,19 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardDTO> selectTopList(String boardType) {
 		return sqlSession.selectList("boardMapper.selectTopList", boardType);
 	}
+	
+	/**
+	 * 장바구니 추가
+	 */
+	@Override
+	public int insertCart(CartDTO cartDTO) {
+		return sqlSession.insert("boardMapper.cartInsert", cartDTO);
+	}
+	
 
-
+	@Override
+	public GradeDTO boardDetailSaleGrade(String sellerId) {
+		
+		return sqlSession.selectOne("boardMapper.boardDetailSaleGrade",sellerId);
+	}
 }

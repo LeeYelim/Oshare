@@ -2,13 +2,18 @@ package spring.oshare.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import spring.oshare.dto.GradeDTO;
+import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.ReservationDTO;
 import spring.oshare.dto.SharingDTO;
+import spring.oshare.service.MyPageService;
 import spring.oshare.service.ReservationService;
 
 @Controller
@@ -17,6 +22,9 @@ public class ReservationController {
 
 	@Autowired
 	private ReservationService reservationService;
+	
+	@Autowired
+	private MyPageService mypageService;
 	
 	@RequestMapping("selectByBoardNo")
 	@ResponseBody
@@ -67,9 +75,15 @@ public class ReservationController {
 	   * * 분실 : reservation_end 오늘 날짜로 & 분실 업데이트
 	   * * */
 	  @RequestMapping("applyReturn")
-	  public String applyReturn(int sharingNo, String returnState) {
+	  public String applyReturn(HttpSession session, int sharingNo, String returnState, GradeDTO dto) {
 		  System.out.println("=========sharingNo" + sharingNo + "===================rentalItemList" + returnState);
-		  if(reservationService.applyReturn(sharingNo, returnState) > 0) {
+		  String id = (String)session.getAttribute("loginMemberId");
+		  System.out.println("===========================" + dto.getMemberReview() + dto.getMemberPoint() + id + dto.getSellerId());
+		  int re1 = reservationService.applyReturn(sharingNo, returnState);
+		  dto.setMemberId(id);
+		  int re2 = mypageService.insertMemberGrade(dto);
+		  
+		  if((re1+re2) > 1) {
 			  return "redirect:/mypage/rentalItem";
 		  }
 		  return "error/errorMessage";
@@ -108,6 +122,14 @@ public class ReservationController {
 		 return dto;
 		
 	  }
+	 
+	 @RequestMapping("updateTransactionState")
+	 public String updateTransactionState(int sharingNum, String state) {
+		 if(reservationService.updateTransactionState(sharingNum, state)>0) {
+				return "redirect:/mypage/rentalItem";
+			}
+			return "error/errorMessage";
+	 }
 	  
 	  
 }

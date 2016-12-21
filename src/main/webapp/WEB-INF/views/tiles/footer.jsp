@@ -110,5 +110,8 @@
 		</div>
 		<p>Intense JB © 2016 . Privacy Policy</p>
 	</div>
+	<div class="footerScrollTopUp">
+	<i class="material-icons">&#xE5CE;</i>
+	</div>	
 </body>
 </html>

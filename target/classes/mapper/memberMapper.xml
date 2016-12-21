@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="member_valid_year" property="memberValidYear"/>
 		<result column="member_sharing_count" property="memberSharingCount"/>
 		<result column="member_phone" property="memberPhone"/>
+		<result column="member_grade" property="memberGrade"/>
 	</resultMap>
 	
 	<!-- 회원가입 -->
@@ -27,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	values(
 			seq_member_no.nextval, #{memberId}, #{memberPwd}, #{memberName}, 
 			#{memberBirth}, 
-			#{memberAddr}, #{memberBank}, #{memberAccount}, #{memberValidMonth}, #{memberValidYear}, #{memberSharingCount}, #{memberPhone}
+			#{memberAddr}, #{memberBank}, #{memberAccount}, #{memberValidMonth}, #{memberValidYear}, #{memberSharingCount}, #{memberPhone},0
 		  )
 	</insert>
 	
@@ -72,5 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="receiverValidation" resultMap="memberMap" parameterType="String">
 		select member_id from member where member_id = #{value}
 	</select>
+	
+
 	
 </mapper>

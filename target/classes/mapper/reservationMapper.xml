@@ -75,8 +75,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select s.sharing_no, s.sharing_start, s.sharing_end, CEIL(s.sharing_end-s.sharing_start) as sharingDays, s.total_price, trunc(r.reserv_end-s.sharing_end) as "overDue", trunc(b.product_price_per_day*1.5) as "overDueFee", trunc(b.product_price_per_day*1.5*CEIL(s.sharing_end-s.sharing_start)) as "totalOverDueFee", b.product_price_per_day 
 		from (sharing s join reservation r on s.sharing_no=r.reserv_no and s.sharing_no=#{value}) join (sharing s2 join board b on b.board_no=s2.board_no and s2.sharing_no=#{value}) 
 		on s2.sharing_no=s.sharing_no
-
 	</select>  
 	
+		<!-- 거래 상태 변경 -->
+	<update id="updateTransactionState" parameterType="map">
+      update sharing set transaction_state=#{state} where sharing_no=#{sharingNo}
+   </update>
 	
 </mapper>

@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.LocationDTO;
+import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
-import spring.oshare.dto.SharingDTO;
 
 @Repository
 public class MyPageDAOImpl implements MyPageDAO{
@@ -78,4 +79,30 @@ public class MyPageDAOImpl implements MyPageDAO{
 		return sqlSession.selectList("sendMessageMapper.senedMessageReceiverSelect",receiver);
 	}
 	
+	@Override
+	public int insertMemberGrade(GradeDTO dto) {
+		return sqlSession.insert("myPageMapper.insertMemberGrade", dto);
+	}
+	
+	/**
+	 * 장바구니 리스트
+	 */
+	@Override
+	public List<CartDTO> selectCart(String memberId) {
+		return sqlSession.selectList("myPageMapper.cartSelect",memberId);
+	}
+
+	/**
+	 * 장바구니 삭제
+	 */
+	@Override
+	public int deleteCart(int boardNo) {
+		return sqlSession.delete("myPageMapper.cartDelete", boardNo);
+	}
+	
+	@Override
+	public List<MemberDTO> adminAllUserSelect() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("myPageMapper.adminAllUserSelect");
+	}
 }

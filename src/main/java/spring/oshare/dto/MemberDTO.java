@@ -41,7 +41,9 @@ public class MemberDTO {
 	      private String memberPhone1; // 지역번호
 	      private String memberPhone2; // 전화번호1
 	      private String memberPhone3; // 전화번호2
-	   private String memberPhone; //지역번호 + 전화번호1 + 전화번호2
+	      private String memberPhone; //지역번호 + 전화번호1 + 전화번호2
+	   	
+	      private int memberGrade; //신고 구분 
 	   
 	   private String fileName;
 	   private String fileSize;
@@ -299,8 +301,13 @@ public class MemberDTO {
 
 	   public void setMemberPhone(String memberPhone) {
 	      this.memberPhone = memberPhone;
-	   }
-	   
+	   }   
+		public int getMemberGrade() {
+			return memberGrade;
+		}
+		public void setMemberGrade(int memberGrade) {
+			this.memberGrade = memberGrade;
+		}
 	//////////////////////////////////////////////////////////////////////////////////////////////////   
 	   public String getFileName() {
 	      return fileName;
@@ -320,6 +327,8 @@ public class MemberDTO {
 	   public void setFile(MultipartFile file) {
 	      this.file = file;
 	   }
+	   
+	   
 	///////////////////////////////////////////////////////////////////////////////////////////////////   
 	   
 	   @Override

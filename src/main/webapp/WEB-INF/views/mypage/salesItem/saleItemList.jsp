@@ -26,7 +26,6 @@
 				</tr>
 			</thead>
 			<tbody>
-	
 			<c:forEach items="${requestScope.saleslist}" var="board">
 				<c:forEach items="${board.sharing}" var="sharing">
 					<tr><td>
@@ -61,27 +60,27 @@
 	<span>비용청구</span>
 	<span class="material-icons saleItemListClose ">&#xE5CD;</span>
 	</div>	
-	<form action="" method="" onsubmit="return saleItemAddMoneyValidityCheck()">
+	<form action="<c:url value="/payment/extraCharge"/>" method="post" id="extraChargeForm">
 		<div class="rentalFee">
 			<span>대여료</span>
 			<ul>
-			<li>1일 대여비 : <span id="price"></span></li>
+			<li>1일 대여비 : <span id="price"></span>원</li>
 			<li>대여기간 : <span id="sharingDays"></span></li>
-			<li>총 대여료 : <span id="totalPrice"></span></li>
+			<li>총 대여료 : <span id="totalPrice"></span>원</li>
 			</ul>
 		</div>
 		<div class="annualFee">
 			<span>연체료</span>
 			<ul>
-				<li>연체일 : <span id="overDue"></span></li>
-				<li>연체료(1일 대여료*150%) : <span id="overDueFee"></span></li>
-				<li>총 연체료 : <span id="totalOverDueFee"></span></li>
+				<li>연체일 : <span id="overDue">0</span>일</li>
+				<li>연체료(1일 대여료*150%) : <span id="overDueFee">0</span>원</li>
+				<li>총 연체료 : <span id="totalOverDueFee">0</span>원</li>
 			</ul>
 		</div>
 		<div class="saleItemAddMoney">
 			<span>추가비용</span>
 			<ul>
-				<li><span>사유 : </span><textarea name="demandReason"></textarea></li>
+				<li><span>사유 : </span><textarea name="chargeReason"></textarea></li>
 				<li><span>청구 비용 : </span><input type="text" name="demandFee">
 			</ul>
 		</div>
@@ -92,10 +91,10 @@
 			</ul>
 		</div>
 		<div class="totalCharges">
-			<span>총 청구 금액 : </span><span id="totalDemandPayment"></span>원
+			<span>총 청구 금액 : </span><span id="charge">0</span>원
 		</div>
 		<div class="saleItemBtn">
-			<input type="submit" value="신청">
+			<input type="button" value="신청">
 			<input type="button" value="취소">
 		</div>
 		</form>

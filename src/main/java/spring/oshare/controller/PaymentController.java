@@ -9,13 +9,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.ExtraChargeDTO;
 import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.ReservationDTO;
+import spring.oshare.dto.SharingDTO;
 import spring.oshare.service.BoardService;
 import spring.oshare.service.MemberService;
+import spring.oshare.service.PaymentService;
+import spring.oshare.service.ReservationService;
 
 @Controller
 @RequestMapping("payment")
@@ -25,6 +30,10 @@ public class PaymentController {
 	private BoardService boardService; 
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private PaymentService paymentService;
+	@Autowired
+	private ReservationService reservationService;
 	
 /*	@RequestMapping("goodsPayment")
 	public String paymentForm(){
@@ -65,5 +74,38 @@ public class PaymentController {
 		
 		return mv;
 	}
+	
+	/**
+	 * 추가금 결제 요청
+	 * */
+	@RequestMapping("extraCharge")
+	public String insertExtraCharge(ExtraChargeDTO dto) {
+		/*f(reservationService.insertReservation(new ReservationDTO(boardNo, start, end), sharing)>1) { 
+			  return "redirect:/mypage/rentalItem";
+		  } */
+	
+		System.out.println("===============chargeNo : " + dto.getChargeNo());
+		System.out.println("===============charge : " + dto.getCharge());
+		System.out.println("===============chargeReason : "+ dto.getChargeReason());
+		
+		int re1 = paymentService.insertExtraCharge(dto);
+		int re2 = reservationService.updateTransactionState(dto.getChargeNo(), "비용청구");
+		
+		if(re1+re2>1) {
+			return "redirect:/mypage/salesItem";
+		} else {
+			return "error/errorMessage";
+		}
+	}
+	
+	/**
+	 * 추가금 정보
+	 * */
+	@RequestMapping("selectExtraChargeInfo")
+	@ResponseBody
+	public SharingDTO selectExtraChargeInfo(int sharingNo) {
+		return paymentService.selectExtraChargeInfo(sharingNo);
+	}
+	
 	
 }

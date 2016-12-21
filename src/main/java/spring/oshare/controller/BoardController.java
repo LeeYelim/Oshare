@@ -1,6 +1,8 @@
 package spring.oshare.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
@@ -92,9 +95,10 @@ public class BoardController {
 	@RequestMapping("goodsDetail")
 	public ModelAndView goodsDetailFrom(int boardNo, HttpSession session) {
 		BoardDTO boardDTO = boardService.selectByBoardNo(boardNo, true);
-
+		GradeDTO gradeDTO = boardService.boardDetailSaleGrade(boardDTO.getMemberId());
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("boardDTO", boardDTO);
+		mv.addObject("gradeDTO",gradeDTO);
 		mv.setViewName("detail/goodsDetail");
 
 		return mv;
@@ -202,4 +206,47 @@ public class BoardController {
 		
 		return boardService.deleteReview(reviewDTO);
 	}
+	
+	/** 
+	 * 장바구니 추가
+	 */
+	@RequestMapping("cartinsert")
+	public String insertCart(HttpSession session, CartDTO cartDTO) throws Exception{
+		
+		String mId = (String)session.getAttribute("loginMemberId");
+		cartDTO.setMemberId(mId);
+		
+		long diffDays=0;
+		
+			try{
+				
+		        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		        Date beginDate = formatter.parse(cartDTO.getCartStart());
+		        Date endDate = formatter.parse(cartDTO.getCartEnd());
+		         
+		        // 시간차이를 시간,분,초를 곱한 값으로 나누면 하루 단위가 나옴
+		        long diff = endDate.getTime() - beginDate.getTime();
+		        diffDays = diff / (24 * 60 * 60 * 1000) + 1;
+		        
+			}catch (Exception e) {
+				 e.printStackTrace();
+				 
+			}
+		
+		cartDTO.setCartPrice((int)diffDays*cartDTO.getCartPrice());
+		
+		System.out.println(cartDTO.getCartPrice());
+		
+		int result = boardService.insertCart(cartDTO);
+		
+		if(result == 0){
+			
+			return "error/errorMessage";
+			
+		}else{
+			
+		 return "redirect:/mypage/cartList";
+		}
+	}
+
 }

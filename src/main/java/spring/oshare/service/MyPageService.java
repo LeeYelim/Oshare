@@ -3,6 +3,9 @@ package spring.oshare.service;
 import java.util.List;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
+import spring.oshare.dto.GradeDTO;
+import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
 
 public interface MyPageService {
@@ -49,4 +52,23 @@ public interface MyPageService {
 	 *//*
 	public void billingManagement();
 	*/
+	/**
+	 * 별점(평가) 삽입
+	 * */
+	int insertMemberGrade(GradeDTO dto);
+	
+	/**
+	 * 장바구니 리스트
+	 */
+	List<CartDTO> selectCart(String memberId);
+
+	/**
+	 * 장바구니 삭제
+	 */
+	int deleteCart(int boardNo);
+	
+	/**
+	 * 관리자 회원관리 전체회원
+	 * */
+	List<MemberDTO> adminAllUserSelect();
 }

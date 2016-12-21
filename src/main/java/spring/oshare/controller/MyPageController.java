@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
 import spring.oshare.service.MemberService;
@@ -155,8 +156,12 @@ public class MyPageController {
 	 * 어드민[회원 관리]
 	 * */	
 	@RequestMapping("userManagement")
-	public String userManagementForm(){
-		return "mypage/admin/userManagement";
+	public ModelAndView userManagementForm(){
+		List<MemberDTO> allUserList = myPageService.adminAllUserSelect();
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("allUserMemberDTO", allUserList);
+		mv.setViewName("mypage/admin/userManagement");
+		return mv;
 		
 	}
 	
@@ -198,5 +203,31 @@ public class MyPageController {
 	      
 	   }
 	
-	
+	   /**
+	    * 장바구니 리스트
+	    */
+	   @RequestMapping("cartList")
+	   public ModelAndView selectCart(HttpSession session){
+		   String memberId = (String)session.getAttribute("loginMemberId");
+		   
+		   List<CartDTO> cartList =  myPageService.selectCart(memberId);
+		   
+		   int total=0;
+		   for(CartDTO dto:cartList){
+			   total += dto.getCartPrice();
+		   }
+		   
+		   ModelAndView mv = new ModelAndView("shoppingBasket/shoppingBasket", "cartList", cartList);
+		   mv.addObject("total", total);
+		   
+		   return mv;
+	   }
+	   
+	   /**
+	    * 장바구니 삭제
+	    */
+	   public int deleteCart(int boardNo){
+		   
+		   return myPageService.deleteCart(boardNo);
+	   }
 }

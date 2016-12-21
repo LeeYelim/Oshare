@@ -1,5 +1,7 @@
 package spring.oshare.service;
 
+import java.util.List;
+
 import spring.oshare.dto.MemberDTO;
 
 public interface MemberService {

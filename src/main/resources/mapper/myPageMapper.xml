@@ -22,6 +22,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</collection>	
 	</resultMap>
 	
+		<resultMap type="memberDTO" id="memberMap">
+		<id column="member_id" property="memberId"/>
+		<result column="member_no" property="memberNo"/>
+		<result column="member_pwd" property="memberPwd"/>
+		<result column="member_name" property="memberName"/>
+		<result column="member_birth" property="memberBirth"/>
+		<result column="member_addr" property="memberAddr"/>
+		<result column="member_bank" property="memberBank"/>
+		<result column="member_account" property="memberAccount"/>
+		<result column="member_valid_month" property="memberValidMonth"/>
+		<result column="member_valid_year" property="memberValidYear"/>
+		<result column="member_sharing_count" property="memberSharingCount"/>
+		<result column="member_phone" property="memberPhone"/>
+		<result column="member_grade" property="memberGrade"/>
+	</resultMap>
+	
 	<!-- 판매 물품 조회 -->
 	<select id="salesItemList" parameterType="string" resultMap="salesDTO">
 		select DISTINCT b.board_no, b.product_name, s.sharing_no, s.seller_id, s.buyer_id, m.member_phone, s.sharing_start, s.sharing_end, s.transaction_state 
@@ -46,4 +62,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateSharingState">
 		update sharing set transaction_state='대여중' where sharing_start <![CDATA[ < ]]> sysdate and transaction_state='대여대기'
 	</update>
+	
+		<!-- 별점 및 평가 삽입 -->
+	<insert id="insertMemberGrade" parameterType="gradeDTO">
+		insert into member_grade values (SEQ_MEMBER_GRADE_NO.nextval, #{memberId}, #{sellerId}, #{memberReview}, sysdate, #{memberPoint}, #{boardNo})
+	</insert>
+	
+	<!-- cart select , delete -->
+	<resultMap type="CartDTO" id="cartMapp">
+		<id column="CART_NO" property="cartNo"/>
+		<result column="BOARD_NO" property="boardNo"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="CART_START" property="cartStart"/>
+		<result column="CART_END" property="cartEnd"/>
+		<result column="CART_PRICE" property="cartPrice"/>
+		<result column="CART_PRODUCT_NAME" property="productName"/>
+	</resultMap>
+	
+	<select id="cartSelect" resultMap="cartMapp" parameterType="String">
+		select c.cart_no, c.BOARD_NO, b.PRODUCT_NAME as productName, c.CART_NO, c.MEMBER_ID, c.CART_START, c.CART_END, c.CART_PRICE
+		from cart c full join board b on c.board_no = b.board_no
+   		where c.member_id = #{memberId}
+	</select>
+	
+	<delete id="cartDelete" parameterType="int">
+		delete from cart where board_No=#{boardNo}
+	</delete>
+	
+	<!-- 회원관리 전체회원 Select -->
+	<select id="adminAllUserSelect" resultMap="memberMap">
+		select member_id,member_pwd,member_name,member_birth,member_addr,member_bank,member_account,
+		member_valid_month,member_valid_year,member_sharing_count,member_phone, member_grade from member
+	</select>
+	
 </mapper>

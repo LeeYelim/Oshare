@@ -18,8 +18,24 @@ $(function(){
 			$(".headerNavaction").removeClass("headerNavactionAdvice");
 		}
 		
-		//$(window).scrollTop()
+		
 	});*/
+	 	 
+	 $(document).on("scroll",function(){		
+		if($(document).scrollTop() > 170){	
+			$("footer .footerScrollTopUp").fadeIn();
+		
+		}else{		
+			
+			$("footer .footerScrollTopUp").fadeOut();
+		}
+	});
+	 
+	$(document).on("click","footer .footerScrollTopUp",function(){
+		  $("html, body").stop().animate({ scrollTop: 0 }, 600);
+		
+	});
+	 
 	
 	$(document).on("click",".headerIconNavaction .headerSearchIcon",function(){
 		if($(".HeaderSearchForm").is(":animated"))return;
@@ -190,8 +206,12 @@ $(function(){
 		  });//review slide  
 		  
 		  //별점 
+		  if($(".starGrade input[name=starGrade]").val() == ""){
+			  $(".starGrade input[name=starGrade]").val(0)
+		  }
+		  
 		  $(".sellerStar").rateYo({
-			  rating : 0,
+			  rating : $(".starGrade input[name=starGrade]").val(),
 		   	  readOnly : true
 		  });//goodsDetail rateYo Evnet end
 		  
@@ -227,23 +247,11 @@ $(function(){
 		  //goodsDetail profile saleReview dataTable + ajax
 		  function goodsDetailSaleReview(){
 			  var boardNo = $(".sellerInformation ul input[name=goodsDetailBoardNo]").val();
-			  $.ajax({
-				url: "/controller/board/boardSaleReview" , //서버요청이름
-				type : "post" , //method방식 (get , post) 
-				dataType : "json" , //요청결과타입 (text ,xml , html , json)
-				data : "boardNo="+boardNo,
-				success : function(result){
-					if(result.length <=0 ){
-						$(".saleReview table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>후기가 존재하지 않습니다</td></tr>");
-					}
-				} , //성공
-				error : function(err){
-					alert("err"+err)
-				} , //실패
-			});
 			  $("#saleReviewTable").DataTable({
 				  destroy: true,
-				  
+				  "language": {
+					    "zeroRecords": "후기가 존재하지않습니다."
+					  },	
 		 	    	'ajax': {
 		 	    	    "type"   : "POST",
 		 	    	    "url"    : '/controller/board/boardSaleReview',
@@ -266,22 +274,11 @@ $(function(){
 		//goodsDetail profile saleList dataTable + ajax
 		  function goodsDetailSaleList(){
 			  var memberId = $(".saleProfileImformation span").text();
-			  $.ajax({
-				url: "/controller/board/boardSaleList" , //서버요청이름
-				type : "post" , //method방식 (get , post) 
-				dataType : "json" , //요청결과타입 (text ,xml , html , json)
-				data : "memberId="+memberId,
-				success : function(result){
-					if(result.length <=0 ){
-						$(".saleProduct table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>상품이 존재하지 않습니다</td></tr>");
-					}
-				} , //성공
-				error : function(err){
-					alert(err)
-				} , //실패
-			});
 			  $("#saleProductTable").DataTable({
 				  destroy: true,
+				  "language": {
+					    "zeroRecords": "상품이 존재하지않습니다."
+					  },	
 		 	    	'ajax': {
 		 	    	    "type"   : "POST",
 		 	    	    "url"    : '/controller/board/boardSaleList',
@@ -659,6 +656,41 @@ $(function(){
 				  $(".goodsQuestionContent").remove();
 			  })
 			  
+			  //장바구니 추가 버튼
+			  $(document).on("click",".goodsDetailIcon #cartIcon", function(){
+			        	var eventArray = $('#calendar').fullCalendar('clientEvents');
+			        	for (var i = 0; eventArray.length !== 0 && i < eventArray.length; i++) {
+			        		if(eventArray[i].id=="myReservation") { // 내가 선택한 예약이라면
+			        			var start = eventArray[i].start.format('YYYYMMDD');
+			    	        	var end = moment(eventArray[i].end-(1000*60*60*24)).format('YYYYMMDD');
+			    	        	var boardNum = $("input[name=goodsDetailBoardNo]").val(); // 나중에 값 변경필요
+			    	        	var price = $(".goodsPrice").text();
+			    	        	var form = $('<form></form>');
+			    	        	    form.attr('action', "/controller/board/cartinsert");
+			    	        	    form.attr('method', 'post');
+			    	        	    form.appendTo('body');
+			    	        	    var st = $("<input type='hidden' value="+start+" name='cartStart'>");
+			    	        	    var e = $("<input type='hidden' value="+end+" name='cartEnd'>");
+			    	        	    var mId = $("<input type='hidden' value="+boardNum+" name='boardNo'>");
+			    	        	    var price = $("<input type='hidden' value="+price+" name='cartPrice'>");
+			    	        	    form.append(st);
+			    	        	    form.append(e);
+			    	        	    form.append(mId);
+			    	        	    form.append(price);
+			    	        	    form.submit();
+			    	        	// location.href="<c:url value='/reservation/apply?productid="+productid+"&start="+start+"&end="+end+"'/>";
+			    	    		return;
+			        		}	
+			        	}
+			        	alert("예약 날을 선택해 주세요");
+				})
+			  
+			  //장바구니 결제버튼
+			   $(document).on("click","input[name=paymen]", function(){
+				//   if($("input:checkbox[name='check']").is(":checked") == true)
+					   
+			   })
+
 		  
 			  /* 결제 창에서 수량 변경 될 때 */
 			    $(document).on("change", "input[name=productCount]", function() {
@@ -708,37 +740,51 @@ $(function(){
 					});
 				}
 		  
-		   //saleItemList 
-		  $(document).on("click",".saleItemListForm input[value=비용청구]",function(){
-			  if($(".saleItemListDialog").is(":animated"))return;
-			  $(".saleItemListDialog").css({"left":"60%"});
-			  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
-			  $(".saleItemListDialog").animate({"opacity":"1","left":"50%"},500).show();
-			  
-			  var sharingNum = $(this).parent().children().eq(1).val();
-			  
-			  
-			  $.ajax({
-				  url:"/controller/reservation/selectDemandPayment",
-				  type : "post",
-				  dataType : "json",
-				  data : "sharingNum=" + sharingNum, 
-				  success : function(result) {
-					  $("#price").text(result.board.price + "원"); // 하루 대여료
-					  $("#sharingDays").text(result.sharingStart+"~"+result.sharingEnd+" ("+result.sharingDays+"일)"); // 대여 기간
-					  $("#totalPrice").text(result.totalPrice + "원"); // 기본 총 대여료(대여료*기간)
-					  $("#overDue").text(result.overDue + "일"); // 연체기간
-					  $("#overDueFee").text(result.overDueFee + "원"); // 하루연체료
-					  $("#totalOverDueFee").text(result.totalOverDueFee + "원"); // 총 연체료 
-					  $("#paidMoney").text(result.totalPrice); // 이미 지불한 금액
-					  $("#totalMoney").text(result.totalPrice + result.totalOverDueFee); // 기본비용+연체
-				  },
-				  error : function(err) {
-					  alert(err);
-				  }
-			  })		
-		  });// saleItemListDialog Event End
+			    //saleItemList 
+				var sharingNum = 0;
+				  $(document).on("click",".saleItemListForm input[value=비용청구]",function(){
+					  if($(".saleItemListDialog").is(":animated"))return;
+					  $(".saleItemListDialog").css({"left":"60%"});
+					  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
+					  $(".saleItemListDialog").animate({"opacity":"1","left":"50%"},500).show();
+					  
+					  sharingNum = $(this).parent().children().eq(1).val();
+					  
+					  
+					  $.ajax({
+						  url:"/controller/reservation/selectDemandPayment",
+						  type : "post",
+						  dataType : "json",
+						  data : "sharingNum=" + sharingNum, 
+						  success : function(result) {
+							  $("#price").text(result.board.price); // 하루 대여료
+							  $("#sharingDays").text(result.sharingStart+"~"+result.sharingEnd+" ("+result.sharingDays+"일)"); // 대여 기간
+							  $("#totalPrice").text(result.totalPrice); // 기본 총 대여료(대여료*기간)
+							 
+							  if(result.overDue>0) { // 연체 했다면
+								  $("#overDue").text(result.overDue); // 연체기간
+								  $("#overDueFee").text(result.overDueFee); // 하루연체료
+								  $("#totalOverDueFee").text(result.totalOverDueFee); // 총 연체료 
+								  $("#totalMoney").text(result.totalPrice + result.totalOverDueFee); // 기본비용+연체
+							  } else { // 연체하지 않았다면
+								  $("#totalMoney").text(result.totalPrice);
+							  }
+							  $("#paidMoney").text(result.totalPrice); // 이미 지불한 금액
+							  
+						  },
+						  error : function(err) {
+							  alert(err);
+						  }
+					  })		
+				  });// saleItemListDialog Event End
 		  
+		 var rate=0;
+		 //rentalItemEvaluation 
+		$(".rentalItemEvaluation #rateYo").rateYo().on("rateyo.set", function (e, data) {
+			  alert("The rating is set to " + data.rating + "!");
+			  rate = data.rating;
+		});//rentalItemEvaluation Event End
+			
 		// 청구 비용 이벤트
 		  $(document).on("keyup", ".saleItemAddMoney input[name=demandFee]", function() {
 			 // alert($(this).val());
@@ -747,8 +793,19 @@ $(function(){
 			  } else {
 				  $("#totalMoney").text(parseInt($(this).val())+parseInt($("#totalPrice").text()) + parseInt($("#totalOverDueFee").text()));
 			  }
-			  $("#totalDemandPayment").text(parseInt($("#totalMoney").text())-parseInt($("#paidMoney").text()));
+			  $("#charge").text(parseInt($("#totalMoney").text())-parseInt($("#paidMoney").text()));
 		})
+		
+		$(document).on("click", ".saleItemBtn input[value=신청]", function() {
+			if(saleItemAddMoneyValidityCheck()) {
+				var inputChargeNo = $("<input type='hidden' value="+sharingNum+" name='chargeNo'>");
+				var intputCharge = $("<input type='hidden' value="+parseInt($("#charge").text())+" name='charge'>");
+				  $('#extraChargeForm').append(inputChargeNo);
+				  $('#extraChargeForm').append(intputCharge);
+				  $('#extraChargeForm').submit();
+			}
+		})
+		
 		  
 		  $(document).on("click",".saleItemListDialog .saleItemListClose",function(){
 			  		if($(".saleItemListDialog").is(":animated"))return;
@@ -788,9 +845,8 @@ $(function(){
 					  rentalItemSpan.eq(retalItemNumber).html(str);
 					  rentalItemSpan.eq(retalItemNumber).css({"line-height":"30px"});
 					  rentalItemBtn.eq(retalItemNumber).hide();
-				  }
-				  
-				  else if(rentalItemSpan.eq(retalItemNumber).text() == "추가금결제"){
+				  } else if(rentalItemSpan.eq(retalItemNumber).text() == "비용청구"){
+					  rentalItemSpan.eq(retalItemNumber).text("추가금 결제");          
 					  rentalItemSpan.eq(retalItemNumber).css({"line-height":"30px"});
 					  rentalItemBtn.eq(retalItemNumber).show().val("결제하기");
 				  }else if(rentalItemSpan.eq(retalItemNumber).text() == "거래완료"){
@@ -831,7 +887,13 @@ $(function(){
 				  //대여자 버튼 사라짐
 				  saleItemSpan.eq(saleItemNumber).css({"line-height":"74px"});
 				  saleItemBtn.eq(saleItemNumber).remove();*/
-			  }else if(saleItemSpan.eq(saleItemNumber).text() == "거래완료"){
+			  } else if(saleItemSpan.eq(saleItemNumber).text() == "비용청구"){
+				  // 비용청구 상태
+				  saleItemSpan.eq(saleItemNumber).css({"line-height":"74px"});
+				  saleItemBtn.eq(saleItemNumber).hide();
+			  }
+			  
+			  else if(saleItemSpan.eq(saleItemNumber).text() == "거래완료"){
 				  //거래완료
 			  }
      	    }//saleItemListFor end
@@ -841,12 +903,16 @@ $(function(){
 	   * 구매자의 반납 신청 
 	   * */
 	  var sharingNo = 0;
+	  var sellerId = "";
+	  var boardNo = 0;
 	  $(document).on("click",".rentalItemListForm input[value=반납신청]",function(){
 	 		if($(".rentalItemListDialog").is(":animated"))return;
 	  		$(".rentalItemListDialog").css({"left":"60%"});
 	  		$(".dialogBlack").animate({"opacity":"0.7"},500).show();
 	  		$(".rentalItemListDialog").animate({"opacity":"1","left":"50%"},500).show();
 	  		sharingNo = $(this).attr("id");
+	  		sellerId = $(this).attr("name");
+	  		boardNo = $(this).parent().children().eq(3).val();
 	  });//rentalItemListDialog Event End
 	  
 	  /*
@@ -875,8 +941,16 @@ $(function(){
 		  if(rentalItemValidityCheck()) {/*
 			  var rentalItemList = $(".rentalItemList select[name=rentalItemList]").val();*/
 			  var inputSharingNo = $("<input type='hidden' value="+sharingNo+" name='sharingNo'>");
+			  var inputMemberPoint = $("<input type='hidden' value="+rate+" name='memberPoint'>");
+			  var intputMemberReview = $("<input type='hidden' value="+$("#memberReview").val()+" name='memberReview'>");
+			  var inputSellerId = $("<input type=''hidden' value="+sellerId+" name='sellerId'>");
+			  var inputBoardNo = $("<input type=''hidden' value="+boardNo+" name='boardNo'>");
+			  
 			  $('#returnForm').append(inputSharingNo);
-			  alert(sharingNo);
+			  $('#returnForm').append(inputMemberPoint);
+			  $('#returnForm').append(intputMemberReview);
+			  $('#returnForm').append(inputSellerId);
+			  $('#returnForm').append(inputBoardNo);
 			  $('#returnForm').submit();
 		  } 
 	  });
@@ -904,6 +978,51 @@ $(function(){
     	  form.append(inputResponseState);
     	  form.submit();		   
 	}) 
+	
+	/*
+	 * 추가금 결제
+	 * */
+	$(document).on("click", ".rentalItemListTransactionStatus input[value='결제하기']", function() {
+		if($(".saleItemListDialog").is(":animated"))return;
+		  $(".saleItemListDialog").css({"left":"60%"});
+		  $(".dialogBlack").animate({"opacity":"0.7"},500).show();
+		  $(".saleItemListDialog").animate({"opacity":"1","left":"50%"},500).show();
+		  
+		  $.ajax({
+			  type:'post',
+			  dataType:'json',
+			  data:'sharingNo='+$(this).attr("id"), 
+			  url:'/controller/payment/selectExtraChargeInfo',
+			  success:function(result){
+				  $("#price").text(result.board.price); // 하루 대여료
+				  $("#sharingDays").text(result.sharingStart+"~"+result.sharingEnd+" ("+result.sharingDays+"일)"); // 대여 기간
+				  $("#totalPrice").text(result.totalPrice); // 기본 총 대여료(대여료*기간)
+				 
+				  if(result.overDue>0) { // 연체 했다면
+					  $("#overDue").text(result.overDue); // 연체기간
+					  $("#overDueFee").text(result.overDueFee); // 하루연체료
+					  $("#totalOverDueFee").text(result.totalOverDueFee); // 총 연체료 
+					  $("#totalMoney").text(result.totalPrice + result.totalOverDueFee); // 기본비용+연체
+				  } else { // 연체하지 않았다면
+					  $("#totalMoney").text(result.totalPrice);
+				  }
+				  $("#paidMoney").text(result.totalPrice); // 이미 지불한 금액
+				  $("#chargeReason").text(result.extraCharge.chargeReason); // 사유
+				  $("#demandFee").text(parseInt(result.extraCharge.charge)-parseInt($("#totalOverDueFee").text())); // 청구 금액 (연체 제외)
+				  $("#totalMoney").text(parseInt(result.totalPrice) + parseInt($("#totalOverDueFee").text()) + parseInt(result.extraCharge.charge)); 
+				  $("#charge").text(result.extraCharge.charge); // 총 청구금액
+				  
+				  var sharingNumInput = $("<input type='hidden' value="+result.sharingNo+" name='sharingNum'>");
+				  var stateInput = $("<input type='hidden' value="+'거래완료'+" name='state'>");
+				  $('#extraChargeFormRe').append(sharingNumInput);
+				  $('#extraChargeFormRe').append(stateInput);
+			  },
+			  error:function(err){
+				  alert(err);
+			  }
+			  
+		  })
+	})
 	
 	  
 		  //declaration
@@ -934,7 +1053,7 @@ $(function(){
 	     //userManagement
 	    $(document).on("click","#userManagement ul li a",function(){
 	    	if($(this).text() == "전체회원")$(".userManagementBtn input").val("정지");
-    		if($(this).text() == "신고당한 회원")$(".userManagementBtn input").val("정지");
+    		if($(this).text() == "신고당한회원")$(".userManagementBtn input").val("정지");
 			if($(this).text() == "정지회원")$(".userManagementBtn input").val("정지해제");
 	    });
 	   
@@ -942,23 +1061,11 @@ $(function(){
 	    //받은 쪽지함
 	    function sendInMessage(){
 	    	var user = $(".sendMessageTabForm input[name=sender]").val();
-	    	$(".inMessage table tr:gt(0)").remove();
-	    	$.ajax({
-				url: "/controller/mypage/sendMessageSelect" , //서버요청이름
-				type : "post" , //method방식 (get , post) 
-				dataType :  "json" , //요청결과타입 (text ,xml , html , json)
-				data : "posts=receiver&division="+user,
-				success : function(result){
-					if(result.length <=0){
-						$(".inMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>쪽지가 존재하지 않습니다</td></tr>");
-					}	
-				}, //성공
-				error : function(err){
-					alert("err :"+err);
-				} , //실패
-			});
-	    	 $("#inMessageTable").DataTable({
+	       	 $("#inMessageTable").DataTable({
 	    		  destroy: true,
+	    		  "language": {
+	    			    "zeroRecords": "받은쪽지가 존재하지않습니다."
+	    			  },	
 		 	    	'ajax': {
 		 	    	    "type"   : "POST",
 		 	    	    "url"    : '/controller/mypage/sendMessageSelect',
@@ -1024,31 +1131,11 @@ $(function(){
 	  //보낸 쪽지함
 	    function sendOutMessage(){
 	    	var user = $(".sendMessageTabForm input[name=sender]").val();
-	    	$(".outMessage table tr:gt(0)").remove();
-	    	$.ajax({
-				url: "/controller/mypage/sendMessageSelect" , //서버요청이름
-				type : "post" , //method방식 (get , post) 
-				dataType : "json" , //요청결과타입 (text ,xml , html , json)
-				data : "posts=sender&division="+user,
-				success : function(result){
-					if(result.length <=0 ){
-						$(".outMessage table tr:nth-child(1)").parent().append("<tr><td colspan='4' style='width:100%; text-align:center; border:none;'>쪽지가 존재하지 않습니다</td></tr>");
-					}
-				} , //성공
-				error : function(err){
-					alert(err)
-				} , //실패
-			});
-	    	
 	    	 $("#outMessageTable").DataTable({
 	    		  destroy: true,
 	    		  "oLanguage": {
-	    			  "sZeroRecords": "Please wait - loading data from server"
+	    			  "sZeroRecords": "보낸쪽지가 존재하지않습니다"
 	    			  },
-	    			"fnInitComplete": function ( oSettings ) {
-	    				
-	    				oSettings.oLanguage.sZeroRecords = "No matching records found"
-	    				},
 		 	    	'ajax': {
 		 	    	    "type"   : "POST",
 		 	    	    "url"    : '/controller/mypage/sendMessageSelect',

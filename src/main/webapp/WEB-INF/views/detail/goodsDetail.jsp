@@ -77,7 +77,9 @@
 						<li><div class="rentalPointForm">
 								대여 횟수 <span class="rentalPoint">${boardDTO.memberDTO.memberSharingCount}</span>
 							</div>
+								
 							<div class="starGrade">
+							<input type="text" name="starGrade" value="${gradeDTO.memberPoint}" hidden>
 								<span class="sellerStar"></span>
 							</div>
 							<div class="declaration">
@@ -99,12 +101,12 @@
 			<div class="col-xs-6">
 				<div class="goodsDetailIcon">
 					<span class="material-icons">&#xE87D;</span> <span
-						class="material-icons">&#xE8CC;</span>
+						class="material-icons" id="cartIcon">&#xE8CC;</span>
 				</div>
 				<div class="goodsDetailInformation">
 					<ul>
 						<li>제품이름 : <span class="goodsName">${boardDTO.productName}</span></li>
-						<li>대여비 : <span class="goodsPrice">${boardDTO.price}원/일</span></li>
+						<li>대여비 : <span class="goodsPrice">${boardDTO.price}</span>원/일</li>
 						<li>상품상태 : <span class="goodsCondition">${boardDTO.condition}</span></li>
 						<li>예약 <span>00월00일 ~ 00월00일</span><span
 							class="glyphicon glyphicon-calendar"></span></li>

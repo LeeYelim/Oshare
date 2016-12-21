@@ -70,7 +70,10 @@ footer {
 footer .footerIconForm{width:100%; float:left; position: relative;}
 footer .footerIconForm h1{color:#fff; padding-bottom: 15px; padding-top:15px;} 
 footer .footerIconForm p{color:#FFF176; margin-top:35px; font-size:16px;}
- 
+footer .footerScrollTopUp{ position:fixed; right: 0;  bottom: 0; margin:30px;  cursor: pointer; display:none;}
+footer .footerScrollTopUp i{font-size:48px;  border-radius:5px;  padding:10px; color:#fff; background:#434345; transition:0.8s; }
+footer .footerScrollTopUp i:hover{border-radius:100%;  background:#66BB6A;}
+
 /* content */
 #contentTiles {
 	width: 100%;
@@ -108,11 +111,14 @@ footer .footerIconForm p{color:#FFF176; margin-top:35px; font-size:16px;}
 }
 
 /* bootstrap dataTable */
-.dataTables_empty{display: none;}
+table tbody .odd .dataTables_empty{padding-top:15px; padding-bottom:15px;}
+table tbody tr td{text-align: center;}
+
+#saleProductTable tbody .odd .dataTables_empty{padding-top:15px; padding-bottom:15px;}
 
 table.dataTable.no-footer{border-bottom: none;}
 
-.jq-ry-container>.jq-ry-group-wrapper>.jq-ry-group>svg{width:24px;}
+
 
 /* header */
 .headerNavactionUser {
@@ -150,6 +156,7 @@ table.dataTable.no-footer{border-bottom: none;}
 	line-height: 65px;
 	float: left;
 	background: #fff;
+	position: relative;
 	
 }
 
@@ -2404,7 +2411,7 @@ table.dataTable.no-footer{border-bottom: none;}
 .rentalItemListDialog .rentalItemListDialogForm .rentalItemEvaluation #rateYo
 	{
 	float: left;
-	margin-left: 30px;
+	padding-left: 30px;
 }
 
 .rentalItemListDialog .rentalItemListDialogForm .sellerEvaluation {
@@ -2832,7 +2839,20 @@ table.dataTable.no-footer{border-bottom: none;}
 	.wishListForm {
 		margin-left: 0;
 	}
-
+	.saleItemListForm{
+		margin-left: 0;
+	}
+	.rentalItemListForm{
+		margin-left:0;
+	}
+	#userManagement{
+		margin-left:0;
+	}
+	
+	.sendMessageTabForm{width:100%; margin:0; padding:0;}
+	
+	.mobileMypageMenu ul li:nth-last-child(1){display:none}
+	
 	/* header */
 	.headerNavaction {
 		display: none;
@@ -2913,4 +2933,8 @@ table.dataTable.no-footer{border-bottom: none;}
 	#mobileLogin {
 		display: block;
 	}
+	
+	.sendMessageForm  #writeNote .sendMessageTabForm .recipient span{width:14%}
+	.sendMessageForm  #writeNote .sendMessageTabForm .noteContent textarea{width:92%; margin-left:15px;}
+	.sendMessageForm  #writeNote .sendMessageBtn input{margin-bottom:25px;}
 }

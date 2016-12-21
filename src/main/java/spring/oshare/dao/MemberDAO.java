@@ -1,9 +1,8 @@
 package spring.oshare.dao;
 
-import spring.oshare.dto.GradeDTO;
-import spring.oshare.dto.LocationDTO;
+import java.util.List;
+
 import spring.oshare.dto.MemberDTO;
-import spring.oshare.dto.MessageDTO;
 
 public interface MemberDAO {
 	
@@ -49,6 +48,6 @@ public interface MemberDAO {
 	 * */
 	MemberDTO receiverValidation(String receiver);
 
-	
+
 	
 }

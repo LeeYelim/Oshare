@@ -36,20 +36,34 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach items="${requestScope.allUserMemberDTO}" var="userAllList">
 						<tr>
 							<td><input type="checkbox" name=""></td>
-							<td>DEOND1234</td>
-							<td>awec8745</td>
-							<td>아이유</td>
-							<td>1993.05.16</td>
-							<td>경기 성남시 분당구 판교동</td>
-							<td>205-4588-4755-6421</td>
-							<td>일반</td>
-							<td>12</td>
-							<td>22</td>
-							<td>14</td>
-							<td>010-4843-5484</td>
+							<td>${userAllList.memberId}</td>
+							<td>${userAllList.memberPwd}</td>
+							<td>${userAllList.memberName}</td>
+							<td>${userAllList.memberBirth}</td>
+							<td>${userAllList.memberAddr}</td>
+							<td>${userAllList.memberAccount}</td>
+							<td>
+							<c:choose>
+								<c:when test="${userAllList.memberGrade == 0}">
+									일반
+								</c:when>
+								<c:when test="${userAllList.memberGrade == 1}">
+									신고유저
+								</c:when>
+								<c:otherwise>
+									정지유저
+								</c:otherwise>
+							</c:choose>
+							</td>
+							<td>${userAllList.memberValidMonth}</td>
+							<td>${userAllList.memberValidYear}</td>
+							<td>${userAllList.memberSharingCount}</td>
+							<td>${userAllList.memberPhone}</td>
 						</tr>
+					</c:forEach>
 					 </tbody>
 				 </table>
 	
@@ -71,6 +85,7 @@
 							<th>유효한 년도</th>
 							<th>공유수</th>
 							<th>전화번호</th>
+							<th>신고사유</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -87,6 +102,7 @@
 							<td>22</td>
 							<td>14</td>
 							<td>010-4843-5484</td>
+							<td><input type="button" value="사유확인"></td>
 						</tr>
 					 </tbody>
 					</table>
@@ -109,6 +125,7 @@
 							<th>유효한 년도</th>
 							<th>공유수</th>
 							<th>전화번호</th>
+							<th>신고사유</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -125,6 +142,7 @@
 							<td>22</td>
 							<td>14</td>
 							<td>010-4843-5484</td>
+							<td><input type="button" value="정지사유"></td>
 						</tr>
 					 </tbody>
 					</table>

@@ -17,6 +17,7 @@ public class SharingDTO {
 	private int overDueFee; // 연체 비용
 	private int totalOverDueFee; // 총 연체료
 	private BoardDTO board;
+	private ExtraChargeDTO extraCharge;
 	
 	public SharingDTO() { 	}
 	public SharingDTO(String sharingNo, String sharingStart, String sharingEnd, String transactionState, int totalPrice,
@@ -122,6 +123,12 @@ public class SharingDTO {
 	}
 	public void setBoard(BoardDTO board) {
 		this.board = board;
+	}
+	public ExtraChargeDTO getExtraCharge() {
+		return extraCharge;
+	}
+	public void setExtraCharge(ExtraChargeDTO extraCharge) {
+		this.extraCharge = extraCharge;
 	}
 	
 }

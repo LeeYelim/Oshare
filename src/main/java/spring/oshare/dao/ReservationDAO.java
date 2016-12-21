@@ -53,4 +53,9 @@ public interface ReservationDAO {
 	 * */
 	SharingDTO demandPayment(int sharingNo);
 	
+	/**
+	 * 거래 상태 변경
+	 * */
+	int updateTransactionState(int sharingNo, String state);
+	
 }

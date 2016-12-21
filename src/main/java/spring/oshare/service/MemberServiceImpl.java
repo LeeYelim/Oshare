@@ -1,5 +1,7 @@
 package spring.oshare.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -95,5 +97,7 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDao.receiverValidation(receiver);
 	}
+
+
 
 }

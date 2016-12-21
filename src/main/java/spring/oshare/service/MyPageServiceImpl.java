@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 
 import spring.oshare.dao.MyPageDAO;
 import spring.oshare.dto.BoardDTO;
+import spring.oshare.dto.CartDTO;
+import spring.oshare.dto.GradeDTO;
+import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
 
 @Service
@@ -49,4 +52,31 @@ public class MyPageServiceImpl implements MyPageService{
 		return myPageDAO.deleteMessage(messageNo);
 	}
 	
+	@Override
+	public int insertMemberGrade(GradeDTO dto) {
+		return myPageDAO.insertMemberGrade(dto);
+	}
+	
+	/**
+	 * 장바구니 리스트
+	 */
+	@Override
+	public List<CartDTO> selectCart(String memberId) {
+		return myPageDAO.selectCart(memberId);
+	}
+
+	/**
+	 * 장바구니 삭제
+	 */
+	@Override
+	public int deleteCart(int boardNo) {
+		return myPageDAO.deleteCart(boardNo);
+	}
+	
+	
+	@Override
+	public List<MemberDTO> adminAllUserSelect() {
+		// TODO Auto-generated method stub
+		return myPageDAO.adminAllUserSelect();
+	}
 }

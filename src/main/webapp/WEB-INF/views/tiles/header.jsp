@@ -52,8 +52,61 @@
 		$(document).ready(function(){
 			
 			$('#insertBtn').click(function(){
-				notifyMsg();
+				if(sendMessageValidityCheck()){	
+					notifyMsg();
+					$(".recipient input[type=text]").val("");
+					$(".noteContent textarea").val(""); 
+				 }
 			});
+			
+			function sendMessageValidityCheck(){
+				if($(".recipient input[type=text]").val() == ""){
+					alert("받는이를 입력해주세요");
+					$(".recipient input[type=text]").focus();
+					return false;
+				}
+				
+				if($(".noteContent textarea").val() == ""){
+					alert("쪽지내욤을 입력해주세요");
+					$(".noteContent textarea").focus();
+					return false;
+				}
+				
+				if(!receiverBoolean){
+					alert("수신자가 존재하지않습니다 다시 입력해주십시오");
+					$(".recipient input[name=receiver]").val("");
+					$(".recipient input[name=receiver]").focus();	
+					return false;
+				}
+				
+				return true;
+			}
+
+			//쪽지 수신자 유효성 검사
+			$(document).on("keyup",".recipient input[name=receiver]",function(){
+				$.ajax({
+					url: "/controller/member/receiverSelect" , //서버요청이름
+					type : "post" , //method방식 (get , post) 
+					dataType : "text" , //요청결과타입 (text ,xml , html , json)
+					data : "receiver="+$(".recipient input[name=receiver]").val(),
+					success : function(result){
+						if(result <=0){
+							receiverBoolean = false;
+						}else{
+							receiverBoolean = true;
+						}
+					} , //성공
+					error : function(err){
+						alert("err :"+err)
+						receiverBoolean = false;
+					} , //실패
+				});
+			});	
+	
+			
+			
+			
+			
 			
 			// 메세지 알람끄기
 			$('#msgIcon').click(function(){
@@ -101,7 +154,7 @@
 					</c:when>
 					<c:otherwise>
 						<li>
-							
+							${sessionScope.loginMemberId} 님 안녕하세요
 						</li>
 					</c:otherwise>
 				</c:choose>
@@ -122,6 +175,7 @@
 									<li><a href="<c:url value='/mypage/rentalItem'/>">대여물품목록</a></li>
 									<li><a href="<c:url value='/mypage/message'/>">쪽지함</a></li>
 									<li><a href="<c:url value='/mypage/updateMemberForm'/>">회원정보수정</a></li>
+									<c:if test="${sessionScope.loginMemberId eq 'admin'}"><li><a href="<c:url value='/mypage/userManagement'/>">회원관리</a></li></c:if>
 									<li><a href="<c:url value='/member/logout'/>">로그아웃</a></li>
 								</ul>
 						</div>				
@@ -132,7 +186,7 @@
 				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
 				<div class="headerIconNavaction">
 					<li><span class="material-icons headerSearchIcon">search</span></li>
-					<li><a href="<c:url value='/mypage/shoppingBasket'/>"><span
+					<li><a href="<c:url value='/mypage/cartList'/>"><span
 							class="material-icons">shopping_cart</span></a></li>
 					<li><a href="#"><span class="material-icons" id="msgIcon">notifications_none</span></a></li>
 					<li><a href="#"><span class="material-icons" id="payIcon">attach_money</span></a></li>
