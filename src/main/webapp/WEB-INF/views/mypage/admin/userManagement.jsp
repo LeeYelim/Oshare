@@ -151,6 +151,25 @@
 		</div>
 	</div>
 	
+	<div class="reasonForFiling">
+	<div class="reasonForFilingTitle">
+		<span class="material-icons reasonForFilingClose">&#xE5CD;</span>
+		 <span>신고/정지 사유</span>
+	 </div>
+		<table id="reasonForFilingTable">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>신고자</th>
+					<th>신고대상자</th>
+					<th>신고타입</th>
+					<th>신고이유</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
 	
 
 </body>

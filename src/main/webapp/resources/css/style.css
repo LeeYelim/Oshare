@@ -118,8 +118,6 @@ table tbody tr td{text-align: center;}
 
 table.dataTable.no-footer{border-bottom: none;}
 
-
-
 /* header */
 .headerNavactionUser {
 	width: 100%;
@@ -2795,15 +2793,27 @@ table.dataTable.no-footer{border-bottom: none;}
 	height: 40px;
 }
 
-.userManagementPaging {
-	width: 100%;
-	float: left;
-	text-align: center;
+.reasonForFiling{
+	width:80%;
+	float:left;
+	position: absolute;
+	top:50%;
+	left:60%;
+	transform: translate(-50%, -50%);
+	opacity:0;
+	display:none;
+	z-index: 1001;
+}
+.reasonForFiling .reasonForFilingTitle{width:100%; height:50px; background:#2196F3; float:left; color:#fff; position: relative;}
+.reasonForFiling .reasonForFilingTitle span:nth-child(2){position: absolute; top:50%; left:50%; transform: translate(-50%, -50%);}
+.reasonForFiling .reasonForFilingTitle .reasonForFilingClose{
+	padding:5px;
+	float:right;
+	cursor: pointer;
 }
 
-.userManagementSearch {
-	float: right;
-}
+
+
 
 /* bootstrap pan icon */
 .glyphicon-pencil:before {

@@ -293,4 +293,13 @@ public class MyPageController {
 		myPageService.declarationUserGradeChage(1, declarationDTO.getDeclarationReporter());
 		return declarationInsertResult; 
 		}
+		
+		/**
+		 * 신고/정지 사유 
+		 * */
+		@RequestMapping("reasonForFiling")
+		@ResponseBody
+		public List<DeclarationDTO> reasonForFiling(String declarationReporter){
+			return myPageService.reasonForFiling(declarationReporter);
+		}
 }

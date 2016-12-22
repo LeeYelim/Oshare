@@ -129,4 +129,10 @@ public class MyPageServiceImpl implements MyPageService{
 		// TODO Auto-generated method stub
 		return myPageDAO.declarationUserGradeChage(memberGrade, memberId);
 	}
+
+	@Override
+	public List<DeclarationDTO> reasonForFiling(String declarationReporter) {
+		// TODO Auto-generated method stub
+		return myPageDAO.reasonForFiling(declarationReporter);
+	}
 }

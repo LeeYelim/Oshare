@@ -167,4 +167,10 @@ public class MyPageDAOImpl implements MyPageDAO{
 	    declarationUserMap.put("memberId", memberId);
 	    return sqlSession.update("myPageMapper.declarationUserGradeChage", declarationUserMap);
 	}
+
+	@Override
+	public List<DeclarationDTO> reasonForFiling(String declarationReporter) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("myPageMapper.reasonForFiling", declarationReporter);
+	}
 }

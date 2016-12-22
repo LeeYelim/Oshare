@@ -1085,6 +1085,20 @@ $(function(){
 		 //wishList 
 	    $(document).on("click",".wishListClose",function(){
 	    	$(this).parent().parent().remove();
+	    	var boardNo = $(this).parent().parent().children("td:nth-child(1)").children("input[type=text]").val();
+	    	
+	    	$.ajax({
+				url: "/controller/mypage/deleteWishList" , //서버요청이름
+				type : "post" , //method방식 (get , post) 
+				dataType :  "text" , //요청결과타입 (text ,xml , html , json)
+				data : "boardNo="+boardNo,
+				success : function(result){
+					$(".heartWish").attr("id",boardNo).css({"color":"#000"});
+				}, //성공
+				error : function(err){
+					alert(err);
+				} 
+			})
 	    });
 	    
 /*	     //userManagement

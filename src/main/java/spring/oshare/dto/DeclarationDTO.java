@@ -1,11 +1,11 @@
 package spring.oshare.dto;
 
 public class DeclarationDTO {
-	private int declarationNo;
-	private String declarationSubject;
-	private String declarationReporter;
-	private String declarationType;
-	private String declarationReason;
+	private int declarationNo; //번호
+	private String declarationSubject; //신고자
+	private String declarationReporter; //신고대상자
+	private String declarationType; //산고 유형
+	private String declarationReason;  //신고 이유
 	public int getDeclarationNo() {
 		return declarationNo;
 	}

@@ -269,7 +269,7 @@ CREATE TABLE DECLARATION(
   DECLARATION_REASON VARCHAR2(600)
 );
 
-
+select * from DECLARATION
 
 select * from tab;
 

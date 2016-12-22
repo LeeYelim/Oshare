@@ -108,5 +108,10 @@ public interface MyPageService {
 	 * 판매자 신고 회원등급 변경
 	 * */
 	int declarationUserGradeChage(int memberGrade , String memberId);
+	
+	/**
+	 * 신고/정지 사유 
+	 * */
+	List<DeclarationDTO> reasonForFiling(String declarationReporter);
 
 }

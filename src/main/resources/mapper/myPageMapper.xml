@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</collection>	
 	</resultMap>
 	
-		<resultMap type="memberDTO" id="memberMap">
+	<resultMap type="memberDTO" id="memberMap">
 		<id column="member_id" property="memberId"/>
 		<result column="member_no" property="memberNo"/>
 		<result column="member_pwd" property="memberPwd"/>
@@ -149,4 +149,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="declarationUserGradeChage" parameterType="map">
 		update member set member_grade = #{memberGrade} where member_id = #{memberId}
 	</update>
+	
+	<!-- 신고/정지 사유 Select  -->
+	<select id="reasonForFiling" resultMap="declarationMap" parameterType="String">
+		SELECT DECLARATION_NO ,  DECLARATION_SUBJECT , DECLARATION_REPORTER , DECLARATION_TYPE ,  DECLARATION_REASON FROM DECLARATION WHERE DECLARATION_REPORTER = #{value}   
+	</select>
 </mapper>

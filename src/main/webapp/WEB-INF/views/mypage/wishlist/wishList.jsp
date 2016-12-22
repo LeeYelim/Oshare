@@ -25,6 +25,7 @@
 			<tr>
 			
 				<td>
+					<input type="text" value="${wishlist.boardNo}" hidden>
 					<a href="<c:url value='/board/goodsDetail?boardNo=${wishlist.boardNo}'/>">
 					<img src="<c:url value='/${wishlist.board.filePath}'/>"alt="asd"></a>
 				</td>

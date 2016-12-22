@@ -322,7 +322,7 @@ $(function(){
 	
 	function userManagementStop(){
 	$("#userManagementStopTable").DataTable({
-	    destroy: true,
+		 destroy: true,
 		"autoWidth": false,
 		"language": {
 		    "zeroRecords": "정지회원 존재하지 않습니다."
@@ -378,7 +378,74 @@ $(function(){
 		     		
 	});
 	
+	//신고사유 버튼 Event
+	$(document).on("click","#userManagementDeclaration table tr td input[value=신고사유]",function(){	
+		var userID =  $(this).parent().children("input[type=text]").val();
+		if($(".reasonForFiling").is(":animated"))return;
+		$(".reasonForFiling").css({"left":"60%"});
+		$(".dialogBlack").animate({"opacity":"0.7"},500).show();
+		$(".reasonForFiling").animate({"opacity":"1","left":"50%"},500).show();
+	//신고 이유 	
+	$("#reasonForFilingTable").DataTable({
+		 destroy: true,
+			"autoWidth": false,
+			"language": {
+			    "zeroRecords": "신고사유가 존재하지 않습니다."
+			  },
+			  'ajax': {
+		    	    "type"   : "POST",
+		    	    "url"    : '/controller/mypage/reasonForFiling',
+		    	    "data"   :{
+		    	    	"declarationReporter" : userID
+		    	    },
+		    	    "dataSrc": ""
+		   },  			  
+			    "columns" : [
+               {"targets": "0" ,"width":"10%" , "data" : "declarationNo"},
+               {"targets": "1" ,"width":"10%" , "data" : "declarationSubject"},
+               {"targets": "2" ,"width":"10%" , "data" : "declarationReporter"},
+               {"targets": "3" ,"width":"10%" , "data" : "declarationType"},
+               {"targets": "4" ,"width":"50%" , "data" : "declarationReason"}
+           ]
+		})
+	});
 	
+	//정지버튼 Event END
+	$(document).on("click","#userManagementStop table tr td input[value=정지사유]",function(){	
+		var userID =  $(this).parent().children("input[type=text]").val();
+		if($(".reasonForFiling").is(":animated"))return;
+		$(".reasonForFiling").css({"left":"60%"});
+		$(".dialogBlack").animate({"opacity":"0.7"},500).show();
+		$(".reasonForFiling").animate({"opacity":"1","left":"50%"},500).show();
+		//신고 이유 	
+		$("#reasonForFilingTable").DataTable({
+			 destroy: true,
+				"autoWidth": false,
+				"language": {
+				    "zeroRecords": "정지사유가 존재하지 않습니다."
+				  },	
+				  'ajax': {
+			    	    "type"   : "POST",
+			    	    "url"    : '/controller/mypage/reasonForFiling',
+			    	    "data"   :{
+			    	    	"declarationReporter" : userID
+			    	    },
+			    	    "dataSrc": ""
+			   },  			  
+				    "columns" : [
+	               {"targets": "0" ,"width":"10%" , "data" : "declarationNo"},
+	               {"targets": "1" ,"width":"10%" , "data" : "declarationSubject"},
+	               {"targets": "2" ,"width":"10%" , "data" : "declarationReporter"},
+	               {"targets": "3" ,"width":"10%" , "data" : "declarationType"},
+	               {"targets": "4" ,"width":"50%" , "data" : "declarationReason"}
+	           ]
+			})
+		});
 	
-		
+	// 신고 / 정지 사유 Close 버튼 Event End
+	$(document).on("click",".reasonForFiling .reasonForFilingClose",function(){
+		if($(".reasonForFiling").is(":animated"))return;
+		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+		$(".reasonForFiling").animate({"opacity":"0","left":"40%"},500).hidez(10);
+	})
 });
