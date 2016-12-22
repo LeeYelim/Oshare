@@ -127,21 +127,24 @@ public class MemberController {
 	 * 로그인 실패시 에러 페이지 이동
 	 */
 	@RequestMapping("loginCheck")
-	public String loginCheck(MemberDTO memberDTO, HttpSession session, HttpServletRequest request) {
+	public String loginCheck(MemberDTO memberDTO, HttpSession session, HttpServletRequest request) throws Exception {
 		// 아이디 + 비번을 통하여 db에 계정조회
 		MemberDTO dbMemberDTO = memberService.loginCheck(memberDTO);
 		
 		System.out.println("이름=" + dbMemberDTO.getMemberName());
 		System.out.println("아이디=" + dbMemberDTO.getMemberId());
-		
+
 		if(dbMemberDTO == null) {
-			request.setAttribute("errorMsg", "계정정보를 다시 확인해주세요.");
+			/*request.setAttribute("errorMsg", "계정정보를 다시 확인해주세요.");*/
+		}else if(dbMemberDTO.getMemberGrade() == 2){
+			request.setAttribute("errorMsg", "이 계정은 정지당한 계정입니다 관리자에게 문의를 해주십시오");
+			throw new Exception();
 		}
 		
 		// 세션에 계정정보 저장
 		session.setAttribute("loginMemberName", dbMemberDTO.getMemberName());
 		session.setAttribute("loginMemberId", dbMemberDTO.getMemberId());
-		
+	
 		return "redirect:/";
 	}
 	

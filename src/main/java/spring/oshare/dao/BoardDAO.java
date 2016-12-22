@@ -132,4 +132,15 @@ public interface BoardDAO {
 	 *  상세보기 평점 
 	 * */
 	GradeDTO boardDetailSaleGrade(String sellerId);
+	
+	/**
+	 * 물품검색
+	 */
+	List<BoardDTO> searchBoard(String productName);
+	
+	/**
+	 *  검색 게시글 갯수
+	 */
+	int getBoardSearchCount(Map<String, Object> map);
+
 }

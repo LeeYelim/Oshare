@@ -38,6 +38,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="member_grade" property="memberGrade"/>
 	</resultMap>
 	
+	<!-- 위시리스트 -->
+	<resultMap type="wishlistDTO" id="wishMap">
+		<id column="wishlist_no" property="wishlistNo"/>
+		<result column="board_no" property="boardNo"/>
+		<association property="board" javaType="boardDTO">
+			<result column="product_name" property="productName"/>
+			<result column="thumbnail" property="filePath"/>
+		</association>
+	</resultMap>
+	
+	<resultMap type="DeclarationDTO" id="declarationMap">
+		<id property="declarationNo" column="DECLARATION_NO"/>
+		<result property="declarationSubject" column="DECLARATION_SUBJECT"/>
+		<result property="declarationReporter" column="DECLARATION_REPORTER"/>
+		<result property="declarationType" column="DECLARATION_TYPE"/>
+		<result property="declarationReason" column="DECLARATION_REASON"/>
+	</resultMap>
+	
+	
 	<!-- 판매 물품 조회 -->
 	<select id="salesItemList" parameterType="string" resultMap="salesDTO">
 		select DISTINCT b.board_no, b.product_name, s.sharing_no, s.seller_id, s.buyer_id, m.member_phone, s.sharing_start, s.sharing_end, s.transaction_state 
@@ -91,8 +110,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원관리 전체회원 Select -->
 	<select id="adminAllUserSelect" resultMap="memberMap">
-		select member_id,member_pwd,member_name,member_birth,member_addr,member_bank,member_account,
+		select member_no , member_id,member_pwd,member_name,member_birth,member_addr,member_bank,member_account,
 		member_valid_month,member_valid_year,member_sharing_count,member_phone, member_grade from member
 	</select>
 	
+	<!-- 회원관리 신고 정지회원 Select -->
+	<select id="adminUserBlacklistSelect" resultMap="memberMap" parameterType="int">
+		select member_no , member_id,member_pwd,member_name,member_birth,member_addr,member_bank,member_account,
+		member_valid_month,member_valid_year,member_sharing_count,member_phone, member_grade from member where member_grade = #{value} 
+	</select>
+	
+	<!--회원관리 회원 계정 등급 변경 Update -->
+	<update id="adminUserGradeChage" parameterType="map">
+		update member set member_grade = #{memberGrade} where member_no = #{memberNo}
+	</update>
+	
+	<!-- 위시리스트 추가 -->
+	<insert id="insertWishList" parameterType="wishlistDTO">
+		insert into wishlist(wishlist_no, board_no, member_id) values (SEQ_WISHLIST_NO.nextval, #{boardNo}, #{memberId}) 
+	</insert>
+	
+	<!-- 위시리스트 삭제 -->
+	<delete id="deleteWishList" parameterType="wishlistDTO">
+		delete from wishlist where board_no=#{boardNo} and member_id=#{memberId}
+	</delete>
+	
+	<!-- 위시리스트 조회 -->
+	<select id="selectWIshList" parameterType="string" resultMap="wishMap">
+		select w.wishlist_no, w.board_no, b.product_name, b.thumbnail from wishlist w join board b on w.board_no=b.board_no and w.member_id=#{value}
+	</select>
+	
+	<!-- 신고 Insert -->
+	<insert id="declarationInsert" parameterType="declarationDTO">
+		insert into DECLARATION values(SEQ_DECLARATION_NO.NEXTVAL,#{declarationSubject},#{declarationReporter},#{declarationType},#{declarationReason})
+	</insert>
+	
+	<!-- 신고하기 회원 계정 등급 변경 UPDATE -->
+	<update id="declarationUserGradeChage" parameterType="map">
+		update member set member_grade = #{memberGrade} where member_id = #{memberId}
+	</update>
 </mapper>

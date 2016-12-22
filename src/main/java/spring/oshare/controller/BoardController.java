@@ -22,6 +22,7 @@ import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
 import spring.oshare.service.BoardService;
+import spring.oshare.service.MyPageService;
 import spring.oshare.util.PagingUtil;
 
 /**
@@ -33,6 +34,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private MyPageService myPageService;
 
 	// 페이지 하나당 게시글 수 
 	private int pageSize = 12;
@@ -46,35 +50,63 @@ public class BoardController {
 	public ModelAndView goodsListForm(@RequestParam(value = "pageNum", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyField", defaultValue = "") String keyField,
 			@RequestParam(value = "keyWord", defaultValue = "") String keyWord,
+			@RequestParam(value = "searchBar",defaultValue = "") String searchBar,
 			HttpServletRequest request) {
-
+		int count=0;
 		String pagingHtml = "";
-
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		//map.put("keyField", keyField);
-		//map.put("keyWord", keyWord);
-
-		// 총 글의 개수 또는 검색된 글의 개수
-		int count = boardService.getBoardCount(map);
-
 		String path = request.getSession().getServletContext().getContextPath() + "/board/goodsList";
-		
-		// 페이징 처리
-		//PagingUtil page = new PagingUtil(keyField, keyWord, currentPage, count, pageSize, blockCount, "board/goodsList");
-		PagingUtil page = new PagingUtil(null, null, currentPage, count, pageSize, blockCount, path);
-
-		pagingHtml = page.getPagingHtml().toString();
-
-		map.put("start", page.getStartCount()-1);
-		map.put("end", page.getEndCount());
-
 		List<BoardDTO> list = null;
-		if (count > 0) {
-			list = boardService.pageList(map);
-		} else {
-			list = Collections.emptyList();
-		}
+		
+		System.out.println("@@@@@@@@@@@@"+searchBar);
+		if(searchBar.equals("")){
 
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			//map.put("keyField", keyField);
+			//map.put("keyWord", keyWord);
+	
+			// 총 글의 개수 또는 검색된 글의 개수
+			count = boardService.getBoardCount(map);
+	
+			
+			// 페이징 처리
+			//PagingUtil page = new PagingUtil(keyField, keyWord, currentPage, count, pageSize, blockCount, "board/goodsList");
+			PagingUtil page = new PagingUtil(null, null, currentPage, count, pageSize, blockCount, path);
+	
+			pagingHtml = page.getPagingHtml().toString();
+	
+			map.put("start", page.getStartCount()-1);
+			map.put("end", page.getEndCount());
+	
+			if (count > 0) {
+				list = boardService.pageList(map);
+			} else {
+				list = Collections.emptyList();
+			}
+		}else{
+			
+			System.out.println("@@@@@@@@@@@@"+searchBar);
+			HashMap<String, Object> map = new HashMap<String, Object>();
+			//map.put("keyField", keyField);
+			
+			map.put("keyWord", searchBar);
+	
+
+			count = boardService.getBoardSearchCount(map);
+			// 페이징 처리
+			//PagingUtil page = new PagingUtil(keyField, keyWord, currentPage, count, pageSize, blockCount, "board/goodsList");
+			PagingUtil page = new PagingUtil(null, searchBar, currentPage, count, pageSize, blockCount, path);
+	
+			pagingHtml = page.getPagingHtml().toString();
+	/*
+			map.put("start", page.getStartCount()-1);
+			map.put("end", page.getEndCount());*/
+	
+			if (count > 0) {
+				list = boardService.searchBoard(searchBar);
+			} else {
+				list = Collections.emptyList();
+			}
+		}
 		// 글 목록에 표시할 연번
 		int number = count - (currentPage - 1) * pageSize;
 
@@ -88,6 +120,7 @@ public class BoardController {
 
 		return mav;
 	}
+
 
 	/**
 	 * 제품 상세 게시판 이동 게시글 번호 boardNo에 맞는 상세페이지
@@ -249,4 +282,13 @@ public class BoardController {
 		}
 	}
 
+	/**
+	 * 물품검색
+	 */
+	@RequestMapping("searchBoard")
+	@ResponseBody
+	public List<BoardDTO> searchBoard(String productName){
+		
+		return boardService.searchBoard(productName);
+	}
 }

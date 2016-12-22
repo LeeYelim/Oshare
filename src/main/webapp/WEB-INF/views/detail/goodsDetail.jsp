@@ -92,7 +92,7 @@
 					</ul>
 				</div>
 				<c:set value="${boardDTO.memberDTO.memberId}" var="memberId"/>
-				<c:if test="${sessionScope.loginMemberId == memberId}">
+				<c:if test="${sessionScope.loginMemberId == memberId || sessionScope.loginMemberId == 'admin'}">
 				<div class="goodsDetailChage">
 					<span>수정하기</span><span>삭제하기</span>
 				</div>
@@ -359,20 +359,21 @@
 		</div>
 		<form action="" method="">
 			<div class="declarationList">
-				<span>신고사유</span> <select name="">
+				<span>신고사유</span> <select name="declarationType">
 					<option value="비속어사용">비속어사용</option>
 					<option value="태도분량">태도분량</option>
 					<option value="타홍보">타홍보</option>
 					<option value="사기성">사기성</option>
 				</select>
 			</div>
+			<input type="text" name="declarationSubject" value="${sessionScope.loginMemberId}"  hidden>
+			<input type="text" name="declarationReporter" value="${boardDTO.memberDTO.memberId}" hidden >
 			<div class="reasonForReport">
 				<span>신고이유</span>
-				<textarea></textarea>
+				<textarea name="declarationReason"></textarea>
 			</div>
 			<div class="declarationBtn">
-				<input type="submit" value="전송"> <input type="button"
-					value="취소">
+				<input type="button" value="전송"> <input type="button" value="취소">
 			</div>
 		</form>
 	</div>

@@ -47,13 +47,50 @@ $(function(){
 		$(".HeaderSearchForm").animate({"opacity":"0"},500).hide(10);
 	});//HeaaderSearch Event Close End
 	
+	
+	
+	
+	/* 목록에서 위시리스트 */
 	$(document).on("click",".heartWish",function(){
-		if($(this).css('color') == 'rgb(0, 0, 0)' == true){
-			$(this).css({"color":"#ff0000"});
-		}else{
-			$(this).css({"color":"#000"});
-		}	
+		var boardNo = $(this).attr("id");
+		if($(this).css('color') == 'rgb(0, 0, 0)' == true){		
+			insertWishList(boardNo, $(this)); 
+		} else {
+			deleteWishList(boardNo, $(this));
+		}
 	});//wish Event End
+	
+	/* 위시리스트 추가 */
+	function insertWishList(boardNo, wishObj) {
+		$.ajax({
+			url: "/controller/mypage/insertWishList" , //서버요청이름
+			type : "post" , //method방식 (get , post) 
+			dataType :  "text" , //요청결과타입 (text ,xml , html , json)
+			data : "boardNo="+boardNo,
+			success : function(result){
+				wishObj.css({"color":"#ff0000"});
+			}, //성공
+			error : function(err){
+				alert(err);
+			} 
+		})
+	}
+	
+	/* 위시리스트 삭제 */
+	function deleteWishList(boardNo, wishObj) {
+		$.ajax({
+			url: "/controller/mypage/deleteWishList" , //서버요청이름
+			type : "post" , //method방식 (get , post) 
+			dataType :  "text" , //요청결과타입 (text ,xml , html , json)
+			data : "boardNo="+boardNo,
+			success : function(result){
+				wishObj.css({"color":"#000"});
+			}, //성공
+			error : function(err){
+				alert(err);
+			} 
+		})
+	}
 	
 	$(document).on("click",".mobileHeaderNavaction .mobileHeaderNavactionBtn",function(){
 		if($(".mobileHeaderNavactionMenu").is(":animated"))return;
@@ -291,9 +328,9 @@ $(function(){
 		 	    	  'columns': [
 		 	    	    {"targets":"0" , "width" : "30%" , "data" : "boardNo"}, 
 		 	    	    {"targets" : "1", "width" : "30%" ,"data" : "filePath",render: function ( data, type, row ) {
-		                      return '<a href=/controller/board/goodsDetail?boardNo='+row.boardNo+'><img src=/controller'+data+' alt='+data+'>';
+		                      return '<a href=/controller/board/goodsDetail?boardNo='+row.boardNo+'><img src=/controller'+data+' alt='+data+'></a>';
 		    	            }},
-		 	    	   	{"targets":"0" , "width" : "30%" , "data" : "productName"},	
+		 	    	   	{"targets":"2" , "width" : "30%" , "data" : "productName"},	
 		 	    	  ]
 			  });
 		  }//goodsDetail profile saleList dataTable + ajax End
@@ -1050,13 +1087,13 @@ $(function(){
 	    	$(this).parent().parent().remove();
 	    });
 	    
-	     //userManagement
+/*	     //userManagement
 	    $(document).on("click","#userManagement ul li a",function(){
-	    	if($(this).text() == "전체회원")$(".userManagementBtn input").val("정지");
-    		if($(this).text() == "신고당한회원")$(".userManagementBtn input").val("정지");
-			if($(this).text() == "정지회원")$(".userManagementBtn input").val("정지해제");
+	    	if($(this).text() == "전체회원")$(".userManagementBtn input:nth-child(2)").val("정지");
+    		if($(this).text() == "신고당한회원")$(".userManagementBtn input:nth-child(2)").val("정지")$(".userManagementBtn input:nth-child(1)").val("신고해제");
+			if($(this).text() == "정지회원")$(".userManagementBtn input:nth-child(2)").val("정지해제");
 	    });
-	   
+	   */
 	    //sendMessage
 	    //받은 쪽지함
 	    function sendInMessage(){
@@ -1193,6 +1230,38 @@ $(function(){
 				} , //실패
 			});
 	    	
+	    });
+	    
+	  //신고하기 serialize
+	    $(document).on("click",".declarationBtn input[value=전송]",function(){
+
+	    	if($(".reasonForReport textarea").val() == ""){
+	    		alert("신고이유를 입력해 주십시오");
+	    		$(".reasonForReport textarea").focus();
+	    	}else{
+	    		$.ajax({
+					url: "/controller/mypage/declarationInsert" , //서버요청이름
+					type : "post" , //method방식 (get , post) 
+					dataType : "text" , //요청결과타입 (text ,xml , html , json)
+					data : $(".declarationDialog form").serialize(),
+					success : function(result){
+						if(result <=0){
+							
+							alert("신고 실패 다시 입력해주십시오");
+							$(".reasonForReport textarea").text("");
+						}else{
+							
+							alert("신고가 완료되었습니다");
+							 if($(".declarationDialog").is(":animated"))return;
+							  $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+							  $(".declarationDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
+						}
+					} , //성공
+					error : function(err){
+						alert("err :"+err)
+					} , //실패
+				});
+	    	}
 	    });
 	   
 	});

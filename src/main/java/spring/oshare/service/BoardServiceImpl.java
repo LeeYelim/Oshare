@@ -164,4 +164,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardDao.boardDetailSaleGrade(sellerId);
 	}
 	
+	@Override
+	public List<BoardDTO> searchBoard(String productName) {
+		return boardDao.searchBoard(productName);
+	}
+	
+	@Override
+	public int getBoardSearchCount(Map<String, Object> map) {
+		return boardDao.getBoardSearchCount(map);
+	}
 }

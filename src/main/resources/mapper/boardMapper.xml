@@ -189,4 +189,17 @@
 	<insert id="cartInsert" parameterType="CartDTO">
 		insert into Cart values(SEQ_CART_NO.NEXTVAL , #{boardNo}, #{memberId}, #{cartStart}, #{cartEnd}, #{cartPrice})
 	</insert>
+	
+<!-- 게시물검색 -->
+	<select id="searchBoard" parameterType="String" resultMap="boardMap">
+		select BOARD_NO, MEMBER_ID, PRODUCT_NAME, PRODUCT_CATEGORY, BOARD_TYPE, PRODUCT_PRICE_PER_DAY, PRODUCT_CONDITION, DEALING_TYPE, PRODUCT_DETAIL, REG_DATE, THUMBNAIL, VIEWCOUNT 
+		from board where product_name like '%${value}%'
+	</select>
+
+
+<!-- PAGING : 검색 게시글 수 조회 -->
+	<select id="selectSearchCount" resultType="int" parameterType="map">
+		select COUNT(*) from board where product_name like '%${keyWord}%'
+	</select>
+	
 </mapper>

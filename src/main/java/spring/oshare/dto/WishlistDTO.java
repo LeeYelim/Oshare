@@ -4,6 +4,7 @@ public class WishlistDTO {
 	private int wishlistNo;
 	private int boardNo;
 	private String memberId;
+	private BoardDTO board;
 	
 	public WishlistDTO() {	}
 	public WishlistDTO(int wishlistNo, int boardNo, String memberId) {
@@ -30,6 +31,12 @@ public class WishlistDTO {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	public BoardDTO getBoard() {
+		return board;
+	}
+	public void setBoard(BoardDTO board) {
+		this.board = board;
 	}
 	
 }

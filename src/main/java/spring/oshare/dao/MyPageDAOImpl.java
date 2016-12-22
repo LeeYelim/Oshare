@@ -1,6 +1,8 @@
 package spring.oshare.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +10,12 @@ import org.springframework.stereotype.Repository;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CartDTO;
+import spring.oshare.dto.DeclarationDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.LocationDTO;
 import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
+import spring.oshare.dto.WishlistDTO;
 
 @Repository
 public class MyPageDAOImpl implements MyPageDAO{
@@ -104,5 +108,63 @@ public class MyPageDAOImpl implements MyPageDAO{
 	public List<MemberDTO> adminAllUserSelect() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("myPageMapper.adminAllUserSelect");
+	}
+
+	@Override
+	public List<MemberDTO> adminUserBlacklistSelect(int memberGrade) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("myPageMapper.adminUserBlacklistSelect", memberGrade);
+	}
+
+	@Override
+	public int adminUserGradeChage(int[] memberNo, int memberGrade) {
+		// TODO Auto-generated method stub
+		Map<String, Integer> userMap = new HashMap<>();
+		int adminUserGradeChageResult = 0;
+		
+		for(int UserMemberNo : memberNo){
+		userMap.put("memberGrade", memberGrade);
+		userMap.put("memberNo", UserMemberNo);
+		adminUserGradeChageResult = sqlSession.update("myPageMapper.adminUserGradeChage",userMap);
+		}
+		return adminUserGradeChageResult;
+	}
+	
+	/**
+	 * 위시리스트 추가
+	 * */
+	@Override
+	public int insertWishList(WishlistDTO dto) {
+		return sqlSession.insert("myPageMapper.insertWishList", dto);
+	}
+
+	/**
+	 * 위시리스트 삭제
+	 * */
+	@Override
+	public int deleteWishList(WishlistDTO dto) {
+		return sqlSession.delete("myPageMapper.deleteWishList", dto);
+	}
+
+	/**
+	 * 위시리스트 조회
+	 * */
+	@Override
+	public List<WishlistDTO> selectWishList(String memberId) {
+		return sqlSession.selectList("myPageMapper.selectWIshList", memberId);
+	}
+	
+	@Override
+	public int declarationInsert(DeclarationDTO declarationDTO) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("myPageMapper.declarationInsert", declarationDTO);
+	}
+
+	@Override
+	public int declarationUserGradeChage(int memberGrade, String memberId) {
+	    Map<String,Object> declarationUserMap = new HashMap<>();
+	    declarationUserMap.put("memberGrade", memberGrade);
+	    declarationUserMap.put("memberId", memberId);
+	    return sqlSession.update("myPageMapper.declarationUserGradeChage", declarationUserMap);
 	}
 }

@@ -21,11 +21,17 @@
 			</tr>
 		</thead>
 		<tbody>
-		 <tr>
-				<td><img src="<c:url value='/resources/image/book.jpg'/>"alt="asd"></td>
+		 <c:forEach items="${list}" var="wishlist">
+			<tr>
+			
+				<td>
+					<a href="<c:url value='/board/goodsDetail?boardNo=${wishlist.boardNo}'/>">
+					<img src="<c:url value='/${wishlist.board.filePath}'/>"alt="asd"></a>
+				</td>
 				<td><span class="material-icons close wishListClose ">&#xE5CD;</span>
-					<h3>컴퓨터 I-7 5세대 RAM 8G</td>
-	    </tr>
+				<h3>${wishlist.board.productName}</td>
+		    </tr>	
+		</c:forEach>
     </tbody>
 		</table>
 		

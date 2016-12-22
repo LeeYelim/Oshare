@@ -187,4 +187,20 @@ public class BoardDAOImpl implements BoardDAO {
 		
 		return sqlSession.selectOne("boardMapper.boardDetailSaleGrade",sellerId);
 	}
+	
+	/**
+	 * 물품검색
+	 */
+	@Override
+	public List<BoardDTO> searchBoard(String productName) {
+		return sqlSession.selectList("boardMapper.searchBoard", productName);
+	}
+	
+	/**
+	 *  검색 게시글 갯수
+	 */
+	@Override
+	public int getBoardSearchCount(Map<String, Object> map) {
+		return sqlSession.selectOne("boardMapper.selectSearchCount", map);
+	}
 }

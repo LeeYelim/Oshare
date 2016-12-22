@@ -57,7 +57,32 @@
 						</a></li>
 						<li>제품명 : ${sharingItem.productName}</li>
 						<li>가격 : ${sharingItem.price}원 / 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
+						<li>
+						<script type="text/javascript">
+							var className="material-icons heartWish";
+						</script>
+						
+						<c:choose>
+							<c:when test="${empty wishs}">
+								<span class="material-icons heartWish" id="${sharingItem.boardNo}" >&#xE87D;</span>
+							</c:when>
+							<c:otherwise>
+								<span class="material-icons heartWish" id="${sharingItem.boardNo}">&#xE87D;</span>
+								<c:forEach items="${wishs}" var="wish">
+									<c:choose>
+									<c:when test="${sharingItem.boardNo eq wish.boardNo}">
+										<script type="text/javascript">
+											$(function() {
+												$("#${sharingItem.boardNo}").css({"color":"#ff0000"});
+											})									
+										</script>						
+									</c:when> 
+									</c:choose>
+								</c:forEach>
+							</c:otherwise> 
+						</c:choose>
+							
+						</li>
 					</ul>
 				</div>
 				</c:forEach>

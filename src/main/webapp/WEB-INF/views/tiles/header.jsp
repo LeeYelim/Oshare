@@ -185,7 +185,7 @@
 				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
 				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
 				<div class="headerIconNavaction">
-					<li><span class="material-icons headerSearchIcon">search</span></li>
+					<li><span class="material-icons headerSearchIcon" id="Bsearch">search</span></li>
 					<li><a href="<c:url value='/mypage/cartList'/>"><span
 							class="material-icons">shopping_cart</span></a></li>
 					<li><a href="#"><span class="material-icons" id="msgIcon">notifications_none</span></a></li>
@@ -193,9 +193,8 @@
 				</div>
 			</ul>
 			<div class="HeaderSearchForm">
-				<form action="" method=""
-					onsubmit="return headerSearchValidityCheck()">
-					<input type="text" name="" placeholder="Search">
+				<form action="<c:url value="/board/goodsList"/>" method="" onsubmit="return headerSearchValidityCheck()">
+					<input type="text" name="searchBar" placeholder="Search">
 				</form>
 				<div class="HeaderSearchClose">
 					<span class="material-icons">&#xE5CD;</span>
