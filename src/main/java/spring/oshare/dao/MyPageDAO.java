@@ -4,10 +4,12 @@ import java.util.List;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CartDTO;
+import spring.oshare.dto.DeclarationDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.LocationDTO;
 import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
+import spring.oshare.dto.WishlistDTO;
 
 public interface MyPageDAO {
 
@@ -82,4 +84,38 @@ public interface MyPageDAO {
 	 * */
 	List<MemberDTO> adminAllUserSelect();
 	
+	/**
+	 * 관리자 신고 정지회원
+	 * */
+	List<MemberDTO> adminUserBlacklistSelect(int memberGrade);
+	
+	/**
+	 * 관리자 회원 계정 등급 변경
+	 * */
+	int adminUserGradeChage(int[] memberNo ,  int memberGrade);
+	
+	/**
+	 * 위시리스트 삽입
+	 * */
+	int insertWishList(WishlistDTO dto);
+	
+	/**
+	 * 위시리스트 삭제
+	 * */
+	int deleteWishList(WishlistDTO dto);
+	
+	/**
+	 * 위시리스트 조회
+	 * */
+	List<WishlistDTO> selectWishList(String memberId);
+	
+	/**
+	 * 판매자 신고하기;
+	 * */
+	int declarationInsert(DeclarationDTO declarationDTO);
+
+	/**
+	 * 판매자 신고 회원등급 변경
+	 * */
+	int declarationUserGradeChage(int memberGrade , String memberId);
 }

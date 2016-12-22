@@ -63,50 +63,309 @@ $(function(){
 		             ]
 	});
 	
+	
+	$(document).on("click","#userManagement ul li:nth-child(1)",function(){
+		$("#userManagementTable .allCheck").prop("checked",false);
+		$("#userManagementTable tr td input[type=checkbox]").prop("checked",false);
+	});
+	
+	
+	
+	//전체유저 Checkbox ALL Event
+	$(document).on("click","#userManagementTable .allCheck",function(){
+		if($("#userManagementTable .allCheck").prop("checked")){
+    		$("#userManagementTable tr td input[type=checkbox]").prop("checked",true);
+    	}else{
+    		$("#userManagementTable tr td input[type=checkbox]").prop("checked",false);
+    	}
+	});
+	
+	//전체회원 탭
+	$(document).on("click","#userManagement ul li:nth-child(1)",function(){
+		document.location.href="/controller/mypage/userManagement";
+	});
+	
+	//전체회원 신고버튼
+	$(document).on("click","#userManagementAllUser .userManagementBtn input[value=신고]",function(){
+		var userManagementCheckBoxVal = [];
+		$("#userManagementTable tr td input[type=checkbox]:checked").each(function(index){
+			userManagementCheckBoxVal.push($(this).val())
+		});
+		  $.ajax({
+			  type:'post',
+			  dataType:'text',
+			  data:'memberGrade=1&memberNo='+userManagementCheckBoxVal, 
+			  url:'/controller/mypage/userBtn',
+			  success:function(result){
+				  if(result<=0){
+					  alert("항목을 선택해 주십시오");
+					  
+				  }else{
+					
+					  document.location.href="/controller/mypage/userManagement"
+				  }
+			  },
+			  error:function(err){
+				 
+				  alert("err : "+err);
+			  }  
+		  })	   
+	}); //전체회원 신고버튼 Event End
+	
+	//전체회원 정지버튼
+	$(document).on("click","#userManagementAllUser .userManagementBtn input[value=정지]",function(){
+		var userManagementCheckBoxVal = [];
+		$("#userManagementTable tr td input[type=checkbox]:checked").each(function(index){
+			userManagementCheckBoxVal.push($(this).val())
+		});
+		  $.ajax({
+			  type:'post',
+			  dataType:'text',
+			  data:'memberGrade=2&memberNo='+userManagementCheckBoxVal, 
+			  url:'/controller/mypage/userBtn',
+			  success:function(result){
+				  if(result<=0){
+					  alert("항목을 선택해 주십시오");		  
+				  }else{	
+					  document.location.href="/controller/mypage/userManagement"
+				  }
+			  },
+			  error:function(err){
+				 
+				  alert("err : "+err);
+			  }	  
+		  });
+	});//전체회원 정지버튼 Event End
+	
+	
+	//신고회원 신고취소버튼
+	$(document).on("click","#userManagementDeclaration .userManagementBtn input[value=신고취소]",function(){
+		var userManagementCheckBoxVal = [];
+		$("#userManagementDeclarationTable tr td input[type=checkbox]:checked").each(function(index){
+			userManagementCheckBoxVal.push($(this).val())
+		});
+		  $.ajax({
+			  type:'post',
+			  dataType:'text',
+			  data:'memberGrade=0&memberNo='+userManagementCheckBoxVal, 
+			  url:'/controller/mypage/userBtn',
+			  success:function(result){
+				  if(result<=0){
+					  alert("항목을 선택해 주십시오");		  
+				  }else{	
+					  userManagementDeclaration();
+				  }
+			  },
+			  error:function(err){
+				 
+				  alert("err : "+err);
+			  }	
+		  });
+	});//신고회원 신고취소버튼 Event End
+	
+	//신고회원 정지버튼
+	$(document).on("click","#userManagementDeclaration .userManagementBtn input[value=정지]",function(){
+		var userManagementCheckBoxVal = [];
+		$("#userManagementDeclarationTable tr td input[type=checkbox]:checked").each(function(index){
+			userManagementCheckBoxVal.push($(this).val())
+		});
+		  $.ajax({
+			  type:'post',
+			  dataType:'text',
+			  data:'memberGrade=2&memberNo='+userManagementCheckBoxVal, 
+			  url:'/controller/mypage/userBtn',
+			  success:function(result){
+				  if(result<=0){
+					  alert("항목을 선택해 주십시오");		  
+				  }else{	
+					  userManagementDeclaration();
+				  }
+			  },
+			  error:function(err){
+				 
+				  alert("err : "+err);
+			  }	
+		  });
+	});//신고회원 정지버튼 Event End
+	
+	
+	//정지회원 정지취소버튼
+	$(document).on("click","#userManagementStop .userManagementBtn input[value=정지취소]",function(){
+		var userManagementCheckBoxVal = [];
+		$("#userManagementStopTable tr td input[type=checkbox]:checked").each(function(index){
+			userManagementCheckBoxVal.push($(this).val())
+		});
+		  $.ajax({
+			  type:'post',
+			  dataType:'text',
+			  data:'memberGrade=0&memberNo='+userManagementCheckBoxVal, 
+			  url:'/controller/mypage/userBtn',
+			  success:function(result){
+				  if(result<=0){
+					  alert("항목을 선택해 주십시오");		  
+				  }else{	
+					  userManagementStop();
+				  }
+			  },
+			  error:function(err){
+				 
+				  alert("err : "+err);
+			  }	
+		  });
+	});//정지회원 정지취소버튼 Event End
+	
+	//정지회원 신고변경버튼
+	$(document).on("click","#userManagementStop .userManagementBtn input[value=신고]",function(){
+		var userManagementCheckBoxVal = [];
+		$("#userManagementStopTable tr td input[type=checkbox]:checked").each(function(index){
+			userManagementCheckBoxVal.push($(this).val())
+		});
+		  $.ajax({
+			  type:'post',
+			  dataType:'text',
+			  data:'memberGrade=1&memberNo='+userManagementCheckBoxVal, 
+			  url:'/controller/mypage/userBtn',
+			  success:function(result){
+				  if(result<=0){
+					  alert("항목을 선택해 주십시오");		  
+				  }else{	
+					  userManagementStop();
+				  }
+			  },
+			  error:function(err){
+				 
+				  alert("err : "+err);
+			  }	
+		  });
+	});
+	
+	
+	
+	//신고 Tab Event Click End
+	$(document).on("click","#userManagement ul li:nth-child(2)",function(){
+		$("#userManagementDeclarationTable .allCheck").prop("checked",false)
+		userManagementDeclaration();
+	});
+	
+	//신고 Checkbox ALL Event
+	$(document).on("click","#userManagementDeclarationTable .allCheck",function(){
+		if($("#userManagementDeclarationTable .allCheck").prop("checked")){
+    		$("#userManagementDeclarationTable tr td input[type=checkbox]").prop("checked",true);
+    	}else{
+    		$("#userManagementDeclarationTable tr td input[type=checkbox]").prop("checked",false);
+    	}
+	});
+	
+	function userManagementDeclaration(){
 	$("#userManagementDeclarationTable").DataTable({
+		 destroy: true,
 		"autoWidth": false,
 		"language": {
 		    "zeroRecords": "신고회원이 존재하지 않습니다."
-		  },	
+		  },
+	  'ajax': {
+	    	    "type"   : "POST",
+	    	    "url"    : '/controller/mypage/userBlacklist',
+	    	    "data"   :{
+	    	    	"memberGrade" : 1
+	    	    },
+	    	    "dataSrc": ""
+	   },  
 		"columns" : [
-		             {"targets":"0","width":"1%"},
-		             {"targets":"1","width":"10%"},
-		             {"targets":"2","width":"10%"},
-		             {"targets":"3","width":"10%"},
-		             {"targets":"4","width":"10%"},
-		             {"targets":"5","width":"10%"},
-		             {"targets":"6","width":"10%"},
-		             {"targets":"7","width":"10%"},
-		             {"targets":"8","width":"10%"},
-		             {"targets":"9","width":"10%"},
-		             {"targets":"10","width":"10%"},
-		             {"targets":"11","width":"10%"},
-		             {"targets":"12","width":"10%"},
+		             {"targets":"0","width":"1%","data" : "memberNo",render : function(data ,type , row){
+		            	 return '<input type="checkbox" name="userBlacklistCheckbox" value='+data+'>';
+		             }},
+		             {"targets":"1","width":"10%","data":"memberId"},
+		             {"targets":"2","width":"10%","data":"memberPwd"},
+		             {"targets":"3","width":"10%","data":"memberName"},
+		             {"targets":"4","width":"10%","data":"memberBirth"},
+		             {"targets":"5","width":"10%","data":"memberAddr"},
+		             {"targets":"6","width":"10%","data":"memberAccount"},
+		             {"targets":"7","width":"10%","data":"memberGrade",render : function(data,type,row){
+		            	 if(data == 0){
+		            		 return '일반'
+		            	 }else if(data == 1){
+		            		 return '신고유저'
+		            	 }else if(data ==2){
+		            		 return '정지유저'
+		            	 }else{
+		            		 return '어드민'
+		            	 }
+		             }},
+		             {"targets":"8","width":"10%","data":"memberValidMonth"},
+		             {"targets":"9","width":"10%","data":"memberValidYear"},
+		             {"targets":"10","width":"10%","data":"memberSharingCount"},
+		             {"targets":"11","width":"10%","data":"memberPhone"},
+		             {"targets":"12","width":"10%","data":"memberId",render : function(data , type , row){
+		            	 return "<input type='text' value="+data+" hidden><input type='button' value='신고사유'>"
+		             }},
 		             ]
-	});//신고회원 table
+ 
+	   
+		});//신고회원 table
+	}
 	
+	//정지 Tab Event Click End
+	$(document).on("click","#userManagement ul li:nth-child(3)",function(){
+	$("#userManagementStopTable .allCheck").prop("checked",false)
+		userManagementStop();
+	});
+	
+	//정지 Checkbox ALL Event
+	$(document).on("click","#userManagementStopTable .allCheck",function(){
+		if($("#userManagementStopTable .allCheck").prop("checked")){
+    		$("#userManagementStopTable tr td input[type=checkbox]").prop("checked",true);
+    	}else{
+    		$("#userManagementStopTable tr td input[type=checkbox]").prop("checked",false);
+    	}
+	});
+	
+	function userManagementStop(){
 	$("#userManagementStopTable").DataTable({
+	    destroy: true,
 		"autoWidth": false,
 		"language": {
 		    "zeroRecords": "정지회원 존재하지 않습니다."
 		  },	
+		  'ajax': {
+	    	    "type"   : "POST",
+	    	    "url"    : '/controller/mypage/userBlacklist',
+	    	    "data"   :{
+	    	    	"memberGrade" : 2
+	    	    },
+	    	    "dataSrc": ""
+	   },  
 		"columns" : [
-		             {"targets":"0","width":"1%"},
-		             {"targets":"1","width":"10%"},
-		             {"targets":"2","width":"10%"},
-		             {"targets":"3","width":"15%"},
-		             {"targets":"4","width":"10%"},
-		             {"targets":"5","width":"10%"},
-		             {"targets":"6","width":"10%"},
-		             {"targets":"7","width":"10%"},
-		             {"targets":"8","width":"10%"},
-		             {"targets":"9","width":"10%"},
-		             {"targets":"10","width":"10%"},
-		             {"targets":"11","width":"10%"},
-		             {"targets":"12","width":"10%"}
+		             {"targets":"0","width":"1%","data" : "memberNo",render : function(data ,type , row){
+		            	 return '<input type="checkbox" name="userManagementStopCheckbox" value='+data+'>';
+		             }},
+		             {"targets":"1","width":"10%","data":"memberId"},
+		             {"targets":"2","width":"10%","data":"memberPwd"},
+		             {"targets":"3","width":"10%","data":"memberName"},
+		             {"targets":"4","width":"10%","data":"memberBirth"},
+		             {"targets":"5","width":"10%","data":"memberAddr"},
+		             {"targets":"6","width":"10%","data":"memberAccount"},
+		             {"targets":"7","width":"10%","data":"memberGrade",render : function(data,type,row){
+		            	 if(data == 0){
+		            		 return '일반'
+		            	 }else if(data == 1){
+		            		 return '신고유저'
+		            	 }else if(data ==2){
+		            		 return '정지유저'
+		            	 }else{
+		            		 return '어드민'
+		            	 }
+		             }},
+		             {"targets":"8","width":"10%","data":"memberValidMonth"},
+		             {"targets":"9","width":"10%","data":"memberValidYear"},
+		             {"targets":"10","width":"10%","data":"memberSharingCount"},
+		             {"targets":"11","width":"10%","data":"memberPhone"},
+		             {"targets":"12","width":"10%","data":"memberId",render : function(data , type , row){
+		            	 return "<input type='text' value="+data+" hidden><input type='button' value='정지사유'>"
+		             }},
 		             ]
-	});
-	
+		});
+	}
 	
 	
 	$("#saleProductTable").DataTable({

@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.CartDTO;
+import spring.oshare.dto.DeclarationDTO;
 import spring.oshare.dto.MemberDTO;
 import spring.oshare.dto.MessageDTO;
+import spring.oshare.dto.WishlistDTO;
 import spring.oshare.service.MemberService;
 import spring.oshare.service.MyPageService;
 
@@ -38,14 +40,6 @@ public class MyPageController {
 	
 	@Autowired
 	private MemberService memberService;
-	
-	/**
-	 *  위시리스트 이동
-	 */
-	@RequestMapping("wishList")
-	public String myPageWishListForm(){
-		return "mypage/wishlist/wishList";
-	}
 	
 	/**
 	 * 빌려준 물품 목록
@@ -156,6 +150,7 @@ public class MyPageController {
 	 * 어드민[회원 관리]
 	 * */	
 	@RequestMapping("userManagement")
+	@ResponseBody
 	public ModelAndView userManagementForm(){
 		List<MemberDTO> allUserList = myPageService.adminAllUserSelect();
 		ModelAndView mv = new ModelAndView();
@@ -164,6 +159,26 @@ public class MyPageController {
 		return mv;
 		
 	}
+	
+	/**
+	 * 어드민 [신고 정지회원 관리]
+	 * */
+	@RequestMapping("userBlacklist")
+	@ResponseBody
+	public List<MemberDTO> adminUserBlacklistSelect(int memberGrade){
+		return myPageService.adminUserBlacklistSelect(memberGrade);
+	}
+	
+	/**
+	 * 어드민 [버튼]
+	 * */
+	@RequestMapping("userBtn")
+	@ResponseBody
+	public int adminUserGradeChage(int[] memberNo , int memberGrade){
+			
+		return myPageService.adminUserGradeChage(memberNo, memberGrade);
+	}
+	
 	
 	/**
 	    * 회원정보 수정폼 이동
@@ -230,4 +245,52 @@ public class MyPageController {
 		   
 		   return myPageService.deleteCart(boardNo);
 	   }
+	   
+	   /**
+	    * 위시리스트 추가
+	    * */
+	   @RequestMapping("insertWishList")
+	   @ResponseBody
+	   public int insertWishList(HttpSession session, WishlistDTO dto) {
+		   String userId = (String)session.getAttribute("loginMemberId");
+		   dto.setMemberId(userId);
+		   System.out.println("=================================" + dto.getBoardNo());
+		   return myPageService.insertWishList(dto);
+	   }
+	   
+	   /**
+	    * 위시리스트 삭제
+	    * */
+	   @RequestMapping("deleteWishList")
+	   @ResponseBody
+	   public int deleteWishList(HttpSession session, WishlistDTO dto) {
+		   String userId = (String)session.getAttribute("loginMemberId");
+		   dto.setMemberId(userId);
+		   System.out.println("=================================" + dto.getBoardNo());
+		   return myPageService.deleteWishList(dto);
+	   }
+		
+	   /**
+	    * 위시리스트 이동 및 조회
+	    * */
+	   @RequestMapping("wishList")
+	   public ModelAndView selectWishList(HttpSession session) {
+		   String memberId = (String)session.getAttribute("loginMemberId");
+		   List<WishlistDTO> list = myPageService.selectWishList(memberId);
+		   ModelAndView mv = new ModelAndView();
+		   mv.addObject("list", list);
+		   mv.setViewName("mypage/wishlist/wishList");
+		   return mv;
+	   }
+	   
+	   /**
+		 * 신고하기  , 판매자 등급 변경
+		 * */
+		@RequestMapping("declarationInsert")
+		@ResponseBody
+		public int declarationInsert(DeclarationDTO declarationDTO){
+		int declarationInsertResult =  myPageService.declarationInsert(declarationDTO);
+		myPageService.declarationUserGradeChage(1, declarationDTO.getDeclarationReporter());
+		return declarationInsertResult; 
+		}
 }

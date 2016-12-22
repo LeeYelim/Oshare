@@ -21,7 +21,9 @@ import spring.oshare.dto.CartDTO;
 import spring.oshare.dto.CommentDTO;
 import spring.oshare.dto.GradeDTO;
 import spring.oshare.dto.ReviewDTO;
+import spring.oshare.dto.WishlistDTO;
 import spring.oshare.service.BoardService;
+import spring.oshare.service.MyPageService;
 import spring.oshare.util.PagingUtil;
 
 /**
@@ -33,6 +35,9 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private MyPageService myPageService;
 
 	// 페이지 하나당 게시글 수 
 	private int pageSize = 12;
@@ -74,6 +79,7 @@ public class BoardController {
 		} else {
 			list = Collections.emptyList();
 		}
+		
 
 		// 글 목록에 표시할 연번
 		int number = count - (currentPage - 1) * pageSize;
@@ -82,6 +88,14 @@ public class BoardController {
 		mav.setViewName("list/goodsList");
 		mav.addObject("count", count);
 		mav.addObject("list", list);
+		// 위시리스트
+		String memberId = (String)request.getSession().getAttribute("loginMemberId");
+		List<WishlistDTO> wishs = null;
+		if(memberId!=null) {
+			wishs = myPageService.selectWishList(memberId);
+		}
+
+		mav.addObject("wishs", wishs);
 		mav.addObject("pagingHtml", pagingHtml);
 		mav.addObject("currentPage",currentPage);
 		mav.addObject("number", number);

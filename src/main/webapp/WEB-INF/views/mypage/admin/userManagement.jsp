@@ -11,7 +11,7 @@
 	<div id="userManagement">
 		<ul class="nav nav-tabs">
 			<li class="active"><a data-toggle="tab"	href="#userManagementAllUser">전체회원</a></li>
-			<li><a data-toggle="tab" href="#userManagementDeclaration">신고당한	회원</a></li>
+			<li><a data-toggle="tab" href="#userManagementDeclaration">신고당한회원</a></li>
 			<li><a data-toggle="tab" href="#userManagementStop">정지회원</a></li>
 		</ul>
 
@@ -21,7 +21,7 @@
 					<table id="userManagementTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th><input type="checkbox" disabled></td>
+							<th><input type="checkbox" class="allCheck"></td>
 							<th>아이디</th>
 							<th>비밀번호</th>
 							<th>이름</th>
@@ -38,7 +38,7 @@
 					<tbody>
 					<c:forEach items="${requestScope.allUserMemberDTO}" var="userAllList">
 						<tr>
-							<td><input type="checkbox" name=""></td>
+							<td><input type="checkbox" name="allUserCheckBox" value="${userAllList.memberNo}" ></td>
 							<td>${userAllList.memberId}</td>
 							<td>${userAllList.memberPwd}</td>
 							<td>${userAllList.memberName}</td>
@@ -53,8 +53,11 @@
 								<c:when test="${userAllList.memberGrade == 1}">
 									신고유저
 								</c:when>
-								<c:otherwise>
+								<c:when test="${userAllList.memberGrade == 2}">
 									정지유저
+								</c:when>
+								<c:otherwise>
+									어드민
 								</c:otherwise>
 							</c:choose>
 							</td>
@@ -66,14 +69,17 @@
 					</c:forEach>
 					 </tbody>
 				 </table>
-	
+				<div class="userManagementBtn">	
+						<input type="button" value="신고">
+						<input type="button" value="정지">
+				</div>
 			</div>
 			<div id="userManagementDeclaration" class="tab-pane fade">
 				
-									<table id="userManagementDeclarationTable" class="display" cellspacing="0" width="100%">
+				<table id="userManagementDeclarationTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th><input type="checkbox" disabled></td>
+							<th><input type="checkbox" class="allCheck"></td>
 							<th>아이디</th>
 							<th>비밀번호</th>
 							<th>이름</th>
@@ -89,31 +95,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><input type="checkbox" name=""></td>
-							<td>DEOND1234</td>
-							<td>awec8745</td>
-							<td>아이유</td>
-							<td>1993.05.16</td>
-							<td>경기 성남시 분당구 판교동</td>
-							<td>205-4588-4755-6421</td>
-							<td>일반</td>
-							<td>12</td>
-							<td>22</td>
-							<td>14</td>
-							<td>010-4843-5484</td>
-							<td><input type="button" value="사유확인"></td>
-						</tr>
+		
 					 </tbody>
 					</table>
-		
+				<div class="userManagementBtn">	
+						<input type="button" value="신고취소">
+						<input type="button" value="정지">
+				</div>
 			</div>
 			<div id="userManagementStop" class="tab-pane fade">
 			
 			<table id="userManagementStopTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th><input type="checkbox" disabled></td>
+							<th><input type="checkbox" class="allCheck"></td>
 							<th>아이디</th>
 							<th>비밀번호</th>
 							<th>이름</th>
@@ -146,14 +141,16 @@
 						</tr>
 					 </tbody>
 					</table>
-			
+				<div class="userManagementBtn">	
+						<input type="button" value="신고">
+						<input type="button" value="정지취소">
+				</div>
+				
 			</div>
+			
 		</div>
 	</div>
-	<div class="userManagementBtn">
-		<input type="button" value="정지">
-	</div>
-
+	
 	
 
 </body>

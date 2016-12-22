@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 로그인 -->
 	<select id="loginCheck" parameterType="memberDTO" resultType="memberDTO">
-		select member_id as memberId ,member_name as memberName from member
+		select member_id as memberId ,member_name as memberName , member_grade as memberGrade from member
 		where member_id=#{memberId} and member_pwd=#{memberPwd}
 	</select>
 	
