@@ -1,5 +1,7 @@
 package spring.oshare.controller;
 
+import java.io.File;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.oshare.dto.BoardDTO;
 import spring.oshare.dto.MemberDTO;
+import spring.oshare.dto.SharingDTO;
 import spring.oshare.service.MemberService;
 
 @Controller
@@ -97,14 +101,17 @@ public class MemberController {
 	      String memberPhone =                                        
 	            memberPhone1 + memberPhone2 + memberPhone3; //전화번호 = 지역번호(010) + 앞자리4개 + 뒷자리4개
 	      
+	      String memberProfilePath = dto.getMemberProfilePath();
+	      
 	      MemberDTO member = new MemberDTO(
 	                              memberNo, memberId, memberPwd1,memberPwd2,memberPwd,
 	                              memberName, memberBirth1,memberBirth2,memberBirth3,memberBirth,
 	                              memberAddr1, memberAddr2, memberAddr3, memberAddr, memberBank, 
 	                              memberAccount1,memberAccount2,memberAccount3,memberAccount4,
 	                              memberAccount,memberValidMonth, memberValidYear, memberSharingCount, 
-	                              memberPhone1,memberPhone2,memberPhone3,memberPhone
+	                              memberPhone1,memberPhone2,memberPhone3,memberPhone,memberProfilePath
 	                              );
+	      
 	      memberService.signUp(member);
 	      
 	      return "login/loginForm"; // 회원가입 후 로그인 페이지로 이동
@@ -201,13 +208,15 @@ public class MemberController {
 	      String memberPhone3 = dto.getMemberPhone3();
 	      String memberPhone = memberPhone1 + memberPhone2 + memberPhone3;
 	      
+	      String memberProfilePath = dto.getMemberProfilePath();
+	      
 	      MemberDTO member = new MemberDTO(
 	                              memberNo, memberId, memberPwd1, memberPwd2, memberPwd, memberName, 
 	                              memberBirth1, memberBirth2, memberBirth3, memberBirth,
 	                              memberAddr1, memberAddr2, memberAddr3, memberAddr, memberBank, 
 	                              memberAccount1,memberAccount2,memberAccount3,memberAccount4,memberAccount,
 	                              memberValidMonth,memberValidYear, memberSharingCount,
-	                              memberPhone1,memberPhone2,memberPhone3,memberPhone
+	                              memberPhone1,memberPhone2,memberPhone3,memberPhone, memberProfilePath
 	                              );
 	      
 	      MemberDTO dbMemberDto = memberService.selectByMember(memberId);
@@ -215,64 +224,145 @@ public class MemberController {
 	      return new ModelAndView("member/updateMember", "dbMemberDto", dbMemberDto);
 	   }
 	
-	 /**
-	    * 회원정보 수정
-	    */
-	   @RequestMapping("updateMember")
-	   public String updateMember(HttpServletRequest request , MemberDTO member, String name, HttpSession session, @RequestParam MultipartFile file){
-	      
-	      String memberId = request.getParameter("memberId"); //아이디
-	      
-	      String memberName = request.getParameter("memberName"); //이름
-	      
-	      String memberAddr1 = request.getParameter("memberAddr1"); //우편번호
-	      String memberAddr2 = request.getParameter("memberAddr2"); //주소
-	      String memberAddr3 = request.getParameter("memberAddr3"); //상세주소
-	      String memberAddr = memberAddr1 + "_" + memberAddr2 + "_" + memberAddr3; // 우편번호+주소+상세주소
-	      member.setMemberAddr(memberAddr); //저장
-	      
-	      String memberBank = request.getParameter("memberBank"); //결제카드
-	      
-	      String memberAccount = request.getParameter("memberAccount1"); //카드번호 16자리
-	      member.setMemberAccount(memberAccount); //저장
-	      
-	      int memberValidMonth = Integer.parseInt(request.getParameter("memberValidMonth")); //유효기간 월
-	      member.setMemberValidMonth(memberValidMonth); //저장
-	      
-	      int memberValidYear = Integer.parseInt(request.getParameter("memberValidYear")); //유효기간 연
-	      member.setMemberValidYear(memberValidYear); //저장
+	/**
+	 * 회원정보 수정
+	 */
+	@RequestMapping("updateMember")
+	public String updateMember(HttpServletRequest request, MemberDTO member, String name, HttpSession session) {
 
-	      String memberPhone = request.getParameter("memberPhone1"); //휴대전화 11자리
-	      member.setMemberPhone(memberPhone); //저장
-	      
-	      //이미지 저장경로
-	      String saveDir = session.getServletContext().getRealPath("/WEB-INF/saveUpLoad");
-	      
-	      //파일정보 확인
-	      String fileName = file.getOriginalFilename();
-	      String fileName2 = file.getName();
-	      long size = file.getSize();
-	      
-//	      try{
-//	         file.transferTo(new File(saveDir + "/" + fileName));
-//	      }catch(Exception e){
-//	         e.printStackTrace();
-//	      }
-	      
-	      ModelAndView mav = new ModelAndView();
-	      
-	      mav.addObject("saveDir", saveDir);
-	      mav.addObject("fileName", fileName);
-	      mav.addObject("fileName2", fileName2);
-	      mav.addObject("size", size);
-	      
-	      mav.setViewName("updateMemberForm");
-	      
-	      //call
-	      memberService.updateMember(member);
-	      
-	      return "redirect:/";
-	   }
+		String memberId = request.getParameter("memberId"); // 아이디
+
+		String memberName = request.getParameter("memberName"); // 이름
+
+		String memberAddr1 = request.getParameter("memberAddr1"); // 우편번호
+		String memberAddr2 = request.getParameter("memberAddr2"); // 주소
+		String memberAddr3 = request.getParameter("memberAddr3"); // 상세주소
+		String memberAddr = memberAddr1 + "_" + memberAddr2 + "_" + memberAddr3; // 우편번호+주소+상세주소
+		member.setMemberAddr(memberAddr); // 저장
+
+		String memberBank = request.getParameter("memberBank"); // 결제카드
+
+		String memberAccount = request.getParameter("memberAccount1"); // 카드번호
+																		// 16자리
+		member.setMemberAccount(memberAccount); // 저장
+
+		int memberValidMonth = Integer.parseInt(request.getParameter("memberValidMonth")); // 유효기간
+																							// 월
+		member.setMemberValidMonth(memberValidMonth); // 저장
+
+		int memberValidYear = Integer.parseInt(request.getParameter("memberValidYear")); // 유효기간
+																							// 연
+		member.setMemberValidYear(memberValidYear); // 저장
+
+		String memberPhone = request.getParameter("memberPhone1"); // 휴대전화 11자리
+		member.setMemberPhone(memberPhone); // 저장
+
+		MultipartFile file = member.getFile();
+		
+		String fileName = file.getOriginalFilename();
+		member.setFileName(fileName); //첨부파일이름
+
+		long fileSize = file.getSize();
+		member.setFileSize(fileSize); //파일 용량
+		
+	  //경로를 "\" 로 구분해서 받을 리스트 선언
+		String [] array;
+		
+		// 이미지 저장경로
+		String path = session.getServletContext().getRealPath("/resources/profileImg");
+		
+	  //경로를 "\"로 구분해서 인덱스 나누기 (필요한 index[11]=resources , index[12]=profileImg )
+		array = path.split("\\\\");
+		String resources = array[11]; //resources
+		String profileImg = array[12];	//profileImg
+		String memberProfilePath = "/" + resources + "/" + profileImg + "/" + fileName;	// index[11] + index[12] + 저장된파이리름.확장자
+	  //DTO로 보낼경로 + 파일이름
+		member.setMemberProfilePath(memberProfilePath);
+				
+	  //저장완료
+		try {
+			member.getFile().transferTo(new File(path+"/"+member.getFileName()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	  // call
+		memberService.updateMember(member);
+		
+		return "redirect:/";
+	}
+	
+	
+/*	*//**
+	 *  탈퇴전 마지막확인
+	 * *//*
+	@RequestMapping("deleteLoginCheckForm")
+	public String deleteLoginCheckForm(){
+		return "mypage/deleteMember/deleteMemberConfirm";
+	}*/
+	
+	
+	/**
+	 * 탈퇴 마지막확인
+	 */
+	@RequestMapping("deleteLoginCheck")
+	public String deleteLoginCheck(HttpServletRequest request, HttpSession session, MemberDTO memberDTO) {
+		
+		
+		// 아이디 + 비번을 통하여 db에 계정조회
+		MemberDTO dbdbMemberDTO = memberService.loginCheck(memberDTO);
+
+		if (dbdbMemberDTO == null) {
+			request.setAttribute("errorMsg", "계정정보를 다시 확인해주세요.");
+		}else{
+		String memberId = (String) session.getAttribute("loginMemberId");
+		memberService.deleteMember(memberId);
+		session.invalidate();
+		}
+		return "redirect:/";
+
+	}
+
+	/**
+	 * 거래상태 확인
+	 */
+	@RequestMapping("deleteMemberConfirm")
+	public ModelAndView deleteMemberConfirm(HttpServletRequest request, String transactionState ,String memberId , String memberPwd) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		transactionState = "반납";
+
+		SharingDTO dbSharingDTO = memberService.deleteMemberConfirm(transactionState , memberId);
+			
+		if( !(transactionState=="반납")){
+			request.setAttribute("errorMsg", "탈퇴 할수없습니다.");
+		}
+		
+		System.out.println("memberID asdaSDASDASD ASDAD LYL : ASDASD "+ memberId + " , "+ memberPwd);
+		
+		mv.setViewName("mypage/deleteMember/deleteSuccess");
+		mv.addObject("memberId", memberId);
+		mv.addObject("memberPwd", memberPwd);
+
+		return mv;
+	}
+	
+/*	*//**
+	 * 회원탈퇴
+	 *//*
+	@RequestMapping("deleteMember")
+	public String deleteMember(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		String memberId = (String) session.getAttribute("loginMemberId");
+		memberService.deleteMember(memberId);
+		
+		session.invalidate();
+
+		
+		return "redirect:/";
+	}
+*/
 
 
 	

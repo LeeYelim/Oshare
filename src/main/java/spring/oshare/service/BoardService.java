@@ -49,14 +49,19 @@ public interface BoardService {
 	BoardDTO selectByBoardNo(int boardNo, boolean flag);
 
 	/**
-	 *  리스트
+	 * Sharing 리스트
 	 */
-	List<BoardDTO> pageList(Map<String, Object> map);
+	List<BoardDTO> pageList(Map<String, Object> map , String productCategory);
+	
+	/**
+	 * Rental 리스트
+	 * */
+	public List<BoardDTO> pageRentalList(Map<String, Object> map , String productCategory);
 	
 	/**
 	 *  게시글 갯수
 	 */
-	int getBoardCount(Map<String, Object> map);
+	int getBoardCount(Map<String, Object> map , String boardType , String productCategory);
 	
 	/**
 	 * 물품 상세 정보(게시물 번호로 조회)
@@ -128,4 +133,6 @@ public interface BoardService {
 	 *  검색 게시글 갯수
 	 */
 	int getBoardSearchCount(Map<String, Object> map);
+	
+
 }

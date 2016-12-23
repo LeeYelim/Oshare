@@ -30,13 +30,14 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public int updateBoard(BoardDTO board) {
 		// TODO Auto-generated method stub
-		return 0;
+	
+		return boardDao.updateBoard(board);
 	}
 
 	@Override
 	public int deleteBoard(int boardNo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return boardDao.deleteBoard(boardNo);
 	}
 
 	@Override
@@ -67,13 +68,17 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardDTO> pageList(Map<String, Object> map) {
-		return boardDao.pageList(map);
+	public List<BoardDTO> pageList(Map<String, Object> map ,String productCategory) {
+		return boardDao.pageList(map ,productCategory);
+	}
+	@Override
+	public List<BoardDTO> pageRentalList(Map<String, Object> map , String productCategory) {
+		return boardDao.pageRentalList(map ,productCategory);
 	}
 
 	@Override
-	public int getBoardCount(Map<String, Object> map) {
-		return boardDao.getBoardCount(map);
+	public int getBoardCount(Map<String, Object> map , String boardType , String productCategory) {
+		return boardDao.getBoardCount(map , boardType ,productCategory);
 	}
 	
 	@Override
@@ -173,4 +178,6 @@ public class BoardServiceImpl implements BoardService {
 	public int getBoardSearchCount(Map<String, Object> map) {
 		return boardDao.getBoardSearchCount(map);
 	}
+
+
 }

@@ -3,6 +3,7 @@ package spring.oshare.dao;
 import java.util.List;
 
 import spring.oshare.dto.MemberDTO;
+import spring.oshare.dto.SharingDTO;
 
 public interface MemberDAO {
 	
@@ -38,11 +39,16 @@ public interface MemberDAO {
 	int updateMember(MemberDTO member);
 	
 	/**
-	 * 회원 탈퇴
-	 * */
-	int deleteUser(MemberDTO user);
+	 * 거래상태 확인
+	 */
+	public SharingDTO deleteMemberConfirm(String transactionState , String memberId);
 	
-
+	/**
+	 * 회원 탈퇴
+	 * @return 
+	 * */
+	int deleteMember(String memberId);
+	
 	/**
 	 * 수신자 유효성검사
 	 * */

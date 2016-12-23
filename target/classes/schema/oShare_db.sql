@@ -105,7 +105,8 @@ CREATE TABLE MEMBER (
 	MEMBER_VALID_YEAR       NUMBER  NOT NULL ,
 	MEMBER_SHARING_COUNT    NUMBER  NULL ,
 	MEMBER_PHONE            VARCHAR2(15)  NULL,
-	MEMBER_GRADE 			NUMBER NOT NULL
+	MEMBER_GRADE 			NUMBER NOT NULL,
+	MEMBER_PROFILE_PATH
 );
 ALTER TABLE MEMBER ADD(MEMBER_GRADE NUMBER);
 select * from member;
@@ -287,5 +288,13 @@ select * from PRODUCT_REVIEW;
 
 select * from board
 
+SELECT BOARD_NO,PRODUCT_NAME,PRODUCT_PRICE_PER_DAY,THUMBNAIL FROM BOARD
+		WHERE BOARD_TYPE = 'rental' AND PRODUCT_CATEGORY = '∏Ì«∞'
+		ORDER BY BOARD_NO DESC
+
 
 ALTER TABLE MEMBER ADD(MEMBER_PROFILE_PATH VARCHAR2(100));
+
+select * from sharing;
+
+update board set product_name= 'a' , product_price_per_day = 1 , PRODUCT_CONDITION = 'ªÛ' , product_detail = '/DDD' , THUMBNAIL = '/DDD'  where board_no = 91  and member_id = 'qwe'

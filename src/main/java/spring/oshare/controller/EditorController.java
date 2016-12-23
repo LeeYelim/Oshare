@@ -10,6 +10,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,15 +35,52 @@ public class EditorController {
 	 *  제품 등록 게시판으로 이동
 	 */
 	@RequestMapping("insertProduct")
-	public ModelAndView insertProduct(HttpServletRequest request, HttpServletResponse response){		
+	public ModelAndView insertProduct(HttpServletRequest request, HttpServletResponse response , HttpSession session) throws Exception{		
+		
+		if(session.getAttribute("loginMemberId") == null){
+			request.setAttribute("errorMsg", "로그인하고 오십시오");
+			throw new Exception();
+		}
+		
 		return new ModelAndView("list/insertProduct","boardType", request.getParameter("boardType") );
 	}
+	
+	/**
+	 * 상품수정폼
+	 * */
+	@RequestMapping("boardUpdate")
+	public ModelAndView boardUpdate(int boardNo, HttpServletRequest request ,HttpSession session) throws Exception{
+		if(session.getAttribute("loginMemberId") == null){
+			request.setAttribute("errorMsg", "로그인하고 오십시오");
+			throw new Exception();
+		}	
+		BoardDTO boardDTO = boardService.selectByBoardNo(boardNo, true);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("boardDTO", boardDTO);
+		mv.setViewName("list/updateProduct");
+		return mv;
+	}
+	
+	/**
+	 * 상품수정
+	 * */
+	@RequestMapping("updateSubmit")
+	public String updateSubmit(BoardDTO boardDTO){
+		
+		int boardNo = boardService.updateBoard(boardDTO);
+		
+		System.out.println("bardNo Update asdasd asd : " + boardNo);
+		
+		return "redirect:/board/goodsDetail?boardNo="+91;
+	}
+	
+	
 	
 	/**
 	 *  제품 등록폼에 작성된 데이터를 DB에 저장
 	 */
 	@RequestMapping("submit")
-	public String submit(HttpServletRequest request, @RequestParam MultipartFile file){
+	public String submit(HttpServletRequest request, @RequestParam MultipartFile file , String boardType){
 		// System.out.println("에디터 컨텐츠값:"+request.getParameter("editor"));
 		
 		/*

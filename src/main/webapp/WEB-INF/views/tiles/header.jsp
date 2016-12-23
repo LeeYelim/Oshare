@@ -175,6 +175,7 @@
 									<li><a href="<c:url value='/mypage/rentalItem'/>">대여물품목록</a></li>
 									<li><a href="<c:url value='/mypage/message'/>">쪽지함</a></li>
 									<li><a href="<c:url value='/mypage/updateMemberForm'/>">회원정보수정</a></li>
+									<li><a href="<c:url value='/mypage/deleteLoginForm'/>">회원탈퇴</a></li>
 									<c:if test="${sessionScope.loginMemberId eq 'admin'}"><li><a href="<c:url value='/mypage/userManagement'/>">회원관리</a></li></c:if>
 									<li><a href="<c:url value='/member/logout'/>">로그아웃</a></li>
 								</ul>
@@ -183,7 +184,7 @@
 				</c:if>		
 				<li><a href="<c:url value='/'/>">Home</a></li>
 				<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
-				<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
+				<li><a href="<c:url value='/board/goodsRentalList'/>">Rental</a></li>
 				<div class="headerIconNavaction">
 					<li><span class="material-icons headerSearchIcon" id="Bsearch">search</span></li>
 					<li><a href="<c:url value='/mypage/cartList'/>"><span
@@ -241,15 +242,16 @@
 							<li><a href="<c:url value='/mypage/wishList'/>">My Page</a></li>
 							<li><a href="<c:url value='/'/>">Home</a></li>
 							<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
-							<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>	
+							<li><a href="<c:url value='/board/goodsRentalList'/>">Rental</a></li>
+							<li><a href="<c:url value='/mypage/deleteLoginForm'/>">Member Leave</a></li>	
 							<li><a href="<c:url value='/member/logout'/>">logout</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="<c:url value='/'/>">Home</a></li>
 							<li><a href="<c:url value='/board/goodsList'/>">Sharing</a></li>
-							<li><a href="<c:url value='/board/goodsList'/>">Rental</a></li>
+							<li><a href="<c:url value='/board/goodsRentalList'/>">Rental</a></li>
 							<li><a href="<c:url value='/member/loginForm'/>">Login</a></li>
-							<li><a href="#">Join us</a></li>
+							<li><a href="<c:url value='/member/signupForm'/>">Join us</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

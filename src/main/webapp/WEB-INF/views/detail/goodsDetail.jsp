@@ -82,19 +82,21 @@
 							<input type="text" name="starGrade" value="${gradeDTO.memberPoint}" hidden>
 								<span class="sellerStar"></span>
 							</div>
+							<c:if test="${!empty sessionScope.loginMemberId}">
 							<div class="declaration">
 								<img src="<c:url value='/resources/image/siren.png'/>"
 									alt="신고버튼">
 							</div></li>
+							</c:if>
 						<li><div class="sellerSub">
-								<span>프로필보기</span><span>쪽지보내기</span>
+								<span>프로필보기</span><c:if test="${!empty sessionScope.loginMemberId}"><span>쪽지보내기</span></c:if>	
 							</div></li>
 					</ul>
 				</div>
 				<c:set value="${boardDTO.memberDTO.memberId}" var="memberId"/>
 				<c:if test="${sessionScope.loginMemberId == memberId || sessionScope.loginMemberId == 'admin'}">
 				<div class="goodsDetailChage">
-					<span>수정하기</span><span>삭제하기</span>
+					<span><a href="<c:url value='/editor/boardUpdate?boardNo=${boardDTO.boardNo}'/>">수정하기</a></span><span><a href="<c:url value='/board/boardDelete?boardNo=${boardDTO.boardNo}'/>">삭제하기</a></span>
 				</div>
 				</c:if>
 			</div>
@@ -115,7 +117,7 @@
 				<div id="calendar"></div>
 				<div class="goodsPayment">
 					<form name="requestForm" method=post action="">
-						<button type="button">결제하기</button>
+						<c:if test="${!empty sessionScope.loginMemberId}"><button type="button">결제하기</button></c:if>
 					</form>
 				</div>
 			</div>
@@ -139,7 +141,7 @@
 						</div>
 
 						<div class="goodsReviewPlus">
-							<span>후기남기기</span>
+							<c:if test="${!empty sessionScope.loginMemberId}" ><span>후기남기기</span></c:if>
 						</div>
 
 						<div class="goodsReviewPaing">
@@ -160,7 +162,7 @@
 						
 						</div>
 						<div class="goodsQuestionPlus">
-							<span>질문하기</span>
+							<c:if test="${!empty sessionScope.loginMemberId}" ><span>질문하기</span></c:if>
 						</div>
 						<div class="goodsQuestionPaing">
 							<ul class="pagination">
@@ -285,10 +287,18 @@
 		<div class="saleProfileTitle">
 			<span>프로필</span> <span class="material-icons saleProfileClose">&#xE5CD;</span>
 		</div>
+		
 		<div class="saleProfileImg">
-			<img src="<c:url value='/resources/image/sampleProfile.png'/>"
-				alt="프로필이미지">
+		<c:choose>
+			<c:when test="${boardDTO.memberDTO.memberProfilePath == null}">
+			<img src="<c:url value='/resources/image/sampleProfile.png'/>" alt="프로필이미지">
+			</c:when>
+			<c:otherwise>
+			<img src="<c:url value='/${boardDTO.memberDTO.memberProfilePath}'/>" alt="프로필이미지">
+			</c:otherwise>
+		</c:choose>
 		</div>
+		
 		<div class="saleProfileImformation">
 			아이디 : <span>${boardDTO.memberDTO.memberId}</span>
 		</div>
@@ -348,6 +358,7 @@
 				<span>쪽지내용</span>
 				<textarea name="content"></textarea>
 			</div>
+			
 			<div class="saleMessageBtn">
 				<input type="button" value="쪽지보내기">
 			</div>

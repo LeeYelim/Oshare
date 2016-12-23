@@ -32,14 +32,19 @@ public interface BoardDAO {
 	BoardDTO selectByBoardNo(int boardNo);
 	
 	/**
-	 *  리스트
+	 * Sharing 리스트
 	 */
-	List<BoardDTO> pageList(Map<String, Object> map);
+	List<BoardDTO> pageList(Map<String, Object> map , String productCategory);
+	
+	/**
+	 * Rental 리스트
+	 * */
+	public List<BoardDTO> pageRentalList(Map<String, Object> map , String productCategory);
 	
 	/**
 	 *  게시글 갯수
 	 */
-	int getBoardCount(Map<String, Object> map);
+	int getBoardCount(Map<String, Object> map ,String boardType , String productCategory);
 	
 	/**
 	 * 물품 수정
@@ -141,6 +146,10 @@ public interface BoardDAO {
 	/**
 	 *  검색 게시글 갯수
 	 */
-	int getBoardSearchCount(Map<String, Object> map);
+	int getBoardSearchCount(Map<String, Object> map );
+	
+	
+
+	
 
 }

@@ -42,6 +42,16 @@ public class BoardDTO {
 		this.viewCount = viewCount;
 	}
 	
+
+		public BoardDTO(String productName,  String memberId, int price, String condition,  String detail) {
+			this.productName = productName;
+			this.memberId = memberId;
+			this.price = price;
+			this.condition = condition;
+			this.detail = detail;
+			this.filePath = filePath;
+		}
+	
 	
 	public int getBoardNo() {
 		return boardNo;

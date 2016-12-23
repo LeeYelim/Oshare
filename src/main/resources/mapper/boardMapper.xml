@@ -51,6 +51,7 @@
 			<result column="MEMBER_VALID_YEAR" property="memberValidYear" />
 			<result column="MEMBER_SHARING_COUNT" property="memberSharingCount" />
 			<result column="MEMBER_PHONE" property="memberPhone" />
+			<result column="member_profile_path" property="memberProfilePath"/>
 		</association>
 	</resultMap>
 	
@@ -121,7 +122,7 @@
 	<select id="selectByBoardNo" parameterType="int" resultMap="boardMemberJoinMap">
 		SELECT
 		B.BOARD_NO,B.PRODUCT_NAME,B.PRODUCT_CATEGORY,B.BOARD_TYPE,B.PRODUCT_PRICE_PER_DAY,B.PRODUCT_CONDITION,
-		B.PRODUCT_DETAIL,B.REG_DATE,B.THUMBNAIL,B.VIEWCOUNT,M.MEMBER_ID,M.MEMBER_NAME
+		B.PRODUCT_DETAIL,B.REG_DATE,B.THUMBNAIL,B.VIEWCOUNT,M.MEMBER_ID,M.MEMBER_NAME , M.member_profile_path
 		FROM BOARD B JOIN MEMBER M
 		ON B.BOARD_NO=#{value} AND
 		B.MEMBER_ID=M.MEMBER_ID
@@ -145,14 +146,32 @@
 
 	
 	<!-- PAGING : 전체 페이지 레코드 조회(sharing, rental 게시판) -->
-	<select id="selectList" resultMap="boardMap">
+	<select id="selectList" resultMap="boardMap" parameterType="map">
 		SELECT BOARD_NO,PRODUCT_NAME,PRODUCT_PRICE_PER_DAY,THUMBNAIL FROM BOARD
+		WHERE BOARD_TYPE = #{boardType}
+		<if test="productCategory!=	null">
+			AND PRODUCT_CATEGORY = #{productCategory} 
+		</if>
+		 ORDER BY BOARD_NO DESC
+	</select>
+	
+	<!-- PAGING : 전체 페이지 레코드 조회(sharing, rental 게시판) -->
+	<select id="selectRentalList" resultMap="boardMap" parameterType="map">
+		SELECT BOARD_NO,PRODUCT_NAME,PRODUCT_PRICE_PER_DAY,THUMBNAIL FROM BOARD
+		WHERE BOARD_TYPE = #{boardType}
+		<if test="productCategory!=	null">
+			AND PRODUCT_CATEGORY = #{productCategory} 
+		</if>
 		ORDER BY BOARD_NO DESC
 	</select>
 	
 	<!-- PAGING : 전체 게시글 수 조회 -->
-	<select id="selectCount" resultType="int">
-		SELECT COUNT(*) FROM BOARD ORDER BY BOARD_NO DESC
+	<select id="selectCount" resultType="int" parameterType="map">
+		SELECT COUNT(*) FROM BOARD WHERE BOARD_TYPE = #{boardType}
+		<if test="productCategory!=	null">
+		AND PRODUCT_CATEGORY = #{productCategory} 
+		</if>
+		 ORDER BY BOARD_NO DESC
 	</select>
 	
 	<!-- selectBoardDetail -->
@@ -190,16 +209,27 @@
 		insert into Cart values(SEQ_CART_NO.NEXTVAL , #{boardNo}, #{memberId}, #{cartStart}, #{cartEnd}, #{cartPrice})
 	</insert>
 	
-<!-- 게시물검색 -->
+	<!-- 게시물검색 -->
 	<select id="searchBoard" parameterType="String" resultMap="boardMap">
 		select BOARD_NO, MEMBER_ID, PRODUCT_NAME, PRODUCT_CATEGORY, BOARD_TYPE, PRODUCT_PRICE_PER_DAY, PRODUCT_CONDITION, DEALING_TYPE, PRODUCT_DETAIL, REG_DATE, THUMBNAIL, VIEWCOUNT 
 		from board where product_name like '%${value}%'
 	</select>
 
 
-<!-- PAGING : 검색 게시글 수 조회 -->
+	<!-- PAGING : 검색 게시글 수 조회 -->
 	<select id="selectSearchCount" resultType="int" parameterType="map">
 		select COUNT(*) from board where product_name like '%${keyWord}%'
 	</select>
+	
+	<!-- 상품삭제  -->
+	<delete id="boardDelete" parameterType="int">
+		delete from board where board_no = #{value}
+	</delete>
+	
+	<!-- 상품수정 -->
+	<update id="boardUpdate" parameterType="boardDTO">
+		update board set product_name= #{productName} , product_price_per_day = #{price} , PRODUCT_CONDITION = #{condition} , product_detail = #{detail} where board_no = #{boardNo}  and member_id = #{memberId}
+	</update>
+		
 	
 </mapper>

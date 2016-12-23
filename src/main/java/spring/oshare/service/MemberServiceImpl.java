@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import spring.oshare.dao.MemberDAO;
 import spring.oshare.dto.MemberDTO;
+import spring.oshare.dto.SharingDTO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -78,13 +79,22 @@ public class MemberServiceImpl implements MemberService {
 	   }
 
 	   /**
-	    * Å»Åð
-	    */
-	@Override
-	public int deleteMember(MemberDTO member) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		 * °Å·¡»óÅÂ È®ÀÎ
+		 */
+		public SharingDTO deleteMemberConfirm(String transactionState , String memberId) {
+			return memberDao.deleteMemberConfirm(transactionState , memberId);
+		}
+
+		/**
+		 * È¸¿øÅ»Åð
+		 */
+		@Override
+		public int deleteMember(String memberId) {
+			
+			int result = memberDao.deleteMember(memberId);
+			
+			return result;
+		}
 
 
 

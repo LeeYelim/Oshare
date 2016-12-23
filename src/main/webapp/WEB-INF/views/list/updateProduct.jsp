@@ -44,34 +44,24 @@
 <div class="container">
 	
 	<!-- action : 에디터에 입력한 html 코드를 전달받을 Controller페이지 URL -->
-	<form action="<c:url value='/editor/submit'/>" method="post" id="frm" class="form-horizontal" enctype="multipart/form-data">
+	<form action="<c:url value='/editor/updateSubmit'/>" method="post" id="frm" class="form-horizontal" enctype="multipart/form-data">
 		<fieldset>
 		<c:choose>
-			<c:when test="${requestScope.boardType == 'sharing'}">
-				<legend>셰어링 글 등록</legend>
+			<c:when test="${boardDTO.boardType == 'sharing'}">
+				<legend>셰어링 글 수정</legend>
 			</c:when>
 			<c:otherwise>
-				<legend>렌탈 글 등록</legend>
+				<legend>렌탈 글 수정</legend>
 			</c:otherwise>
 		</c:choose>
 			
-		
-			<input type="hidden" value="${boardType}" name="boardType">
-			<input type="hidden" value="${sessionScope.loginMemberId}" name="memberId">
-			<input type="hidden" value="${sessionScope.loginMemberName}" name="memberName">			
-			
+
+			<input type="hidden" value="${sessionScope.loginMemberId}" name="memberId">			
+			<input type="hidden" value="${boardDTO.boardNo}" name="boardNo">
 			<div class="form-group">
 				<label for="selectCategory" class="control-label col-lg-2">카테고리</label>	
 				<div class="col-lg-8">
-					<select class="form-controler" id="selectCategory" name="selectCategory">
-						<option>취미/도서/티켓</option>		
-						<option>가구/생활/주방/식품</option>		
-						<option>출산/유아동</option>		
-						<option>가전/디지털/컴퓨터</option>		
-						<option>패션/뷰티</option>		
-						<option>스포츠/레저용품</option>		
-						<option>명품</option>		
-					</select>
+					${boardDTO.category}
 				</div>
 				<div class="col-lg-2"></div>
 			</div>
@@ -79,7 +69,7 @@
 			<div class="form-group">
 				<label for="title" class="control-label col-lg-2">제목</label>
 				<div class="col-lg-6">
-					<input type="text" name="title" id=title" class="form-control">
+					<input type="text" name="productName" id=title" class="form-control" value="${boardDTO.productName}">
 				</div>
 				<div class="col-lg-4"></div>
 			</div>
@@ -87,13 +77,13 @@
 			<div class="form-group">
 				<label for="sharingPrice" class="control-label col-lg-2">일대여비용</label>
 				<div class="col-lg-3">
-					<input type="text" name="sharingPrice" id=sharingPrice" class="form-control">
+					<input type="text" name="price" id=sharingPrice" class="form-control" value="${boardDTO.price}">
 				</div>
 				<div class="col-lg-1"><p class="form-control-static">원/일</p></div>
 				
 				<label for="productState" class="control-label col-lg-1">물건상태</label>
 				<div class="col-lg-2">
-					<select class="form-controler" id="productState" name="productState">
+					<select class="form-controler" id="productState" name="condition">
 						<option>상</option>		
 						<option>중</option>		
 						<option>하</option>		
@@ -101,24 +91,16 @@
 				</div>
 				<div class="col-lg-2"></div>
 			</div>
-			
-			<div class="form-group">
-				<label for="thumbnailImage" class="control-label col-lg-2">썸네일</label>
-				<div class="col-lg-3">
-					<input type="file" id="thumbnailImage" name="file">
-				</div>
-			</div>
-			
 			<div class="form-group">
 				<label for="editor" class="control-label col-lg-2">상세내용</label>
 		    	<div class="col-lg-9">
-		    		<textarea name="editor" id="editor" rows="20" cols="118"></textarea>
+		    		<textarea name="detail" id="editor" rows="20" cols="118">${boardDTO.detail}</textarea>
 		    	</div>
 		    	<div class="col-lg-1"></div>
 			</div>
 			
 			<div class="form-group">
-		    	<button type="button" id="savebutton" value="서버전송" class="btn btn-default col-lg-offset-9 col-lg-1">전송</button>
+		    	<button type="button" id="savebutton" value="서버전송" class="btn btn-default col-lg-offset-9 col-lg-1">수정</button>
 		    	<button type="reset" id="reset" class="btn btn-default col-lg-1">취소</button>
 		    	<div class="col-lg-1"></div>
 			</div>

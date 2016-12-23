@@ -15,14 +15,29 @@
 			</div>
 			<div class="goodsListCategory">
 				<ul>
-					<li><a href="#">카테고리</a></li>
-					<li><a href="#">취미 / 도서 / 티켓</a></li>
-					<li><a href="#">가구 / 생활 / 주방</a></li>
-					<li><a href="#">출산 / 유아</a></li>
-					<li><a href="#">가전 / 디지털 / 컴퓨터</a></li>
-					<li><a href="#">패션 / 뷰티</a></li>
-					<li><a href="#">스포츠 / 레져용품</a></li>
-					<li><a href="#">명품</a></li>
+				
+					<c:choose>
+						<c:when test="${boardType == 'sharing'}">
+							<li><a href="<c:url value='/board/goodsList'/>">${boardType}</li>	
+							<li><a href="<c:url value='/board/goodsList?productCategory=취미/도서/티켓'/>">취미 / 도서 / 티켓</a></li>
+							<li><a href="<c:url value='/board/goodsList?productCategory=가구/생활/주방/식품'/>">가구 / 생활 / 주방</a></li>
+							<li><a href="<c:url value='/board/goodsList?productCategory=출산/유아동'/>">출산 / 유아</a></li>
+							<li><a href="<c:url value='/board/goodsList?productCategory=가전/디지털/컴퓨터'/>">가전 / 디지털 / 컴퓨터</a></li>
+							<li><a href="<c:url value='/board/goodsList?productCategory=패션/뷰티'/>">패션 / 뷰티</a></li>
+							<li><a href="<c:url value='/board/goodsList?productCategory=스포츠/레저용품'/>">스포츠 / 레져용품</a></li>
+							<li><a href="<c:url value='/board/goodsList?productCategory=명품'/>">명품</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="<c:url value='/board/goodsRentalList'/>">${boardType}</li>	
+							<li><a href="<c:url value='/board/goodsRentalList?productCategory=취미/도서/티켓'/>">취미 / 도서 / 티켓</a></li>
+							<li><a href="<c:url value='/board/goodsRentalList?productCategory=가구/생활/주방/식품'/>">가구 / 생활 / 주방</a></li>
+							<li><a href="<c:url value='/board/goodsRentalList?productCategory=출산/유아동'/>">출산 / 유아</a></li>
+							<li><a href="<c:url value='/board/goodsRentalList?productCategory=가전/디지털/컴퓨터'/>">가전 / 디지털 / 컴퓨터</a></li>
+							<li><a href="<c:url value='/board/goodsRentalList?productCategory=패션/뷰티'/>">패션 / 뷰티</a></li>
+							<li><a href="<c:url value='/board/goodsRentalList?productCategory=스포츠/레저용품'/>">스포츠 / 레져용품</a></li>
+							<li><a href="<c:url value='/board/goodsRentalList?productCategory=명품'/>">명품</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>
@@ -33,13 +48,28 @@
 				<div class="mobileGoodsListCategory">
 					<span class="material-icons goodsListPrev">&#xE408;</span>
 					<ul class="owl-carousel">
-						<li class="item"><a href="#">취미 / 도서 / 티켓</a></li>
-						<li class="item"><a href="#">가구 / 생활 / 주방</a></li>
-						<li class="item"><a href="#">출산 / 유아</a></li>
-						<li class="item"><a href="#">가전 / 디지털 / 컴퓨터</a></li>
-						<li class="item"><a href="#">패션 / 뷰티</a></li>
-						<li class="item"><a href="#">스포츠 / 레져용품</a></li>
-						<li class="item"><a href="#">명품</a></li>
+					<c:choose>
+						<c:when test="${boardType == 'sharing'}">
+							<li class="item"><a href="<c:url value='/board/goodsList'/>">${boardType}</a></li>	
+							<li class="item"><a href="<c:url value='/board/goodsList?productCategory=취미/도서/티켓'/>">취미 / 도서 / 티켓</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsList?productCategory=가구/생활/주방/식품'/>">가구 / 생활 / 주방</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsList?productCategory=출산/유아동'/>">출산 / 유아</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsList?productCategory=가전/디지털/컴퓨터'/>">가전 / 디지털 / 컴퓨터</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsList?productCategory=패션/뷰티'/>">패션 / 뷰티</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsList?productCategory=스포츠/레저용품'/>">스포츠 / 레져용품</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsList?productCategory=명품'/>">명품</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="item"><a href="<c:url value='/board/goodsRentalList'/>">${boardType}</a></li>	
+							<li class="item"><a href="<c:url value='/board/goodsRentalList?productCategory=취미/도서/티켓'/>">취미 / 도서 / 티켓</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsRentalList?productCategory=가구/생활/주방/식품'/>">가구 / 생활 / 주방</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsRentalList?productCategory=출산/유아동'/>">출산 / 유아</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsRentalList?productCategory=가전/디지털/컴퓨터'/>">가전 / 디지털 / 컴퓨터</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsRentalList?productCategory=패션/뷰티'/>">패션 / 뷰티</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsRentalList?productCategory=스포츠/레저용품'/>">스포츠 / 레져용품</a></li>
+							<li class="item"><a href="<c:url value='/board/goodsRentalList?productCategory=명품'/>">명품</a></li>
+						</c:otherwise>
+					</c:choose>
 					</ul>
 					<span class="material-icons goodsListNext">&#xE409;</span>
 				</div>
@@ -88,7 +118,7 @@
 				</c:forEach>
 				<c:if test="${!empty sessionScope.loginMemberId}">
 				<div class="goodsListInsertBtn">
-				<a href="<c:url value='/editor/insertProduct'/>?boardType=sharing"><span class="glyphicon glyphicon-pencil">제품등록</span></a>
+				<a href="<c:url value='/editor/insertProduct'/>?boardType=${requestScope.boardType}"><span class="glyphicon glyphicon-pencil">제품등록</span></a>
 				</div>
 				</c:if>
 				

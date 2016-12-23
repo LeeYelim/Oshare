@@ -1,12 +1,14 @@
 package spring.oshare.dao;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import spring.oshare.dto.MemberDTO;
+import spring.oshare.dto.SharingDTO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -64,12 +66,24 @@ public class MemberDAOImpl implements MemberDAO {
    }
 
    /**
+    * °Å·¡»óÅÂ È®ÀÎ
+    */
+	@Override
+	public SharingDTO deleteMemberConfirm(String transactionState , String memberId) {
+		Map<String , String>  deleteMemberConfirmMap = new HashMap<>();
+		deleteMemberConfirmMap.put("transactionState", transactionState);
+		deleteMemberConfirmMap.put("memberId", memberId);
+		
+		return sqlSession.selectOne("memberMapper.sharingState", deleteMemberConfirmMap);
+	}
+   
+
+   /**
     * È¸¿øÅ»Åð
     */
 	@Override
-	public int deleteUser(MemberDTO user) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteMember(String memberId) {
+		return sqlSession.delete("memberMapper.deleteMember", memberId);
 	}
 
 

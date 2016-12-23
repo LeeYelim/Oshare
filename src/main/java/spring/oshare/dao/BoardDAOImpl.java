@@ -1,5 +1,6 @@
 package spring.oshare.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,13 +43,32 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	@Override
-	public List<BoardDTO> pageList(Map<String, Object> map) {
-		return sqlSession.selectList("boardMapper.selectList", null, new RowBounds((Integer)map.get("start"), 12));
+	public List<BoardDTO> pageList(Map<String, Object> map  , String productCategory) {
+		Map<String , String> sharingMap = new HashMap<String, String>();
+		sharingMap.put("boardType", "sharing");
+		sharingMap.put("productCategory" , productCategory);
+		 
+		return sqlSession.selectList("boardMapper.selectList", sharingMap , new RowBounds((Integer)map.get("start"), 12));
+	}
+	
+	@Override
+	public List<BoardDTO> pageRentalList(Map<String, Object> map , String productCategory) {
+		Map<String , String> rentalMap = new HashMap<String, String>();
+		rentalMap.put("boardType", "rental");
+	
+			rentalMap.put("productCategory" , productCategory);
+
+		return sqlSession.selectList("boardMapper.selectRentalList", rentalMap, new RowBounds((Integer)map.get("start"), 12));
 	}
 
 	@Override
-	public int getBoardCount(Map<String, Object> map) {
-		return sqlSession.selectOne("boardMapper.selectCount");
+	public int getBoardCount(Map<String, Object> map , String boardType , String productCategory) {
+		Map<String,String> boardListCount = new HashMap<>();
+		boardListCount.put("boardType", boardType);
+		
+			boardListCount.put("productCategory" , productCategory);
+		
+		return sqlSession.selectOne("boardMapper.selectCount" , boardListCount);
 	}
 	
 	@Override
@@ -64,13 +84,14 @@ public class BoardDAOImpl implements BoardDAO {
 	@Override
 	public int updateBoard(BoardDTO board) {
 		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("LYL  : " +  board.getBoardNo() + " , "+ board.getPrice() + board.getCondition()+ board.getProductName()+ board.getDetail()+ board.getMemberId());
+		return sqlSession.update("boardMapper.boardUpdate", board);
 	}
 
 	@Override
 	public int deleteBoard(int boardNo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("boardMapper.boardDelete", boardNo);
 	}
 
 	@Override
@@ -203,4 +224,6 @@ public class BoardDAOImpl implements BoardDAO {
 	public int getBoardSearchCount(Map<String, Object> map) {
 		return sqlSession.selectOne("boardMapper.selectSearchCount", map);
 	}
+
+
 }
