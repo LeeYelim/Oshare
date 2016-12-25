@@ -10,6 +10,8 @@ public class CartDTO {
 	private int cartPrice;
 	private String productName;
 	
+	private String filePath;
+	
 	public CartDTO() {	}
 	
 	public CartDTO(int cartNo, int boardNo, String memberId, String cartStart,
@@ -75,6 +77,18 @@ public class CartDTO {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+
+	
+	
 	
 	
 }

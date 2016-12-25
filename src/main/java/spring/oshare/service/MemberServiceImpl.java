@@ -92,6 +92,10 @@ public class MemberServiceImpl implements MemberService {
 		public int deleteMember(String memberId) {
 			
 			int result = memberDao.deleteMember(memberId);
+			result = memberDao.deleteMemberBoard(memberId);
+			 
+		
+		
 			
 			return result;
 		}

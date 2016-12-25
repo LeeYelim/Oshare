@@ -290,22 +290,12 @@ public class MemberController {
 		
 		return "redirect:/";
 	}
-	
-	
-/*	*//**
-	 *  탈퇴전 마지막확인
-	 * *//*
-	@RequestMapping("deleteLoginCheckForm")
-	public String deleteLoginCheckForm(){
-		return "mypage/deleteMember/deleteMemberConfirm";
-	}*/
-	
-	
+		
 	/**
 	 * 탈퇴 마지막확인
 	 */
 	@RequestMapping("deleteLoginCheck")
-	public String deleteLoginCheck(HttpServletRequest request, HttpSession session, MemberDTO memberDTO) {
+	public String deleteLoginCheck(HttpServletRequest request, HttpSession session, MemberDTO memberDTO)throws Exception{
 		
 		
 		// 아이디 + 비번을 통하여 db에 계정조회
@@ -313,9 +303,10 @@ public class MemberController {
 
 		if (dbdbMemberDTO == null) {
 			request.setAttribute("errorMsg", "계정정보를 다시 확인해주세요.");
+			throw new Exception();
 		}else{
-		String memberId = (String) session.getAttribute("loginMemberId");
-		memberService.deleteMember(memberId);
+		memberService.deleteMember(memberDTO.getMemberId());
+		
 		session.invalidate();
 		}
 		return "redirect:/";
@@ -326,7 +317,7 @@ public class MemberController {
 	 * 거래상태 확인
 	 */
 	@RequestMapping("deleteMemberConfirm")
-	public ModelAndView deleteMemberConfirm(HttpServletRequest request, String transactionState ,String memberId , String memberPwd) {
+	public ModelAndView deleteMemberConfirm(HttpServletRequest request, String transactionState ,String memberId , String memberPwd)throws Exception {
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -334,8 +325,9 @@ public class MemberController {
 
 		SharingDTO dbSharingDTO = memberService.deleteMemberConfirm(transactionState , memberId);
 			
-		if( !(transactionState=="반납")){
+		if(dbSharingDTO != null){
 			request.setAttribute("errorMsg", "탈퇴 할수없습니다.");
+			throw new Exception();
 		}
 		
 		System.out.println("memberID asdaSDASDASD ASDAD LYL : ASDASD "+ memberId + " , "+ memberPwd);
@@ -346,27 +338,6 @@ public class MemberController {
 
 		return mv;
 	}
-	
-/*	*//**
-	 * 회원탈퇴
-	 *//*
-	@RequestMapping("deleteMember")
-	public String deleteMember(HttpServletRequest request) {
-		
-		HttpSession session = request.getSession();
-		String memberId = (String) session.getAttribute("loginMemberId");
-		memberService.deleteMember(memberId);
-		
-		session.invalidate();
-
-		
-		return "redirect:/";
-	}
-*/
-
-
-	
-	
 	
 	/**
 	 * 쪽지 수신자 유효성검사

@@ -53,7 +53,16 @@ public interface MemberDAO {
 	 * 수신자 유효성검사
 	 * */
 	MemberDTO receiverValidation(String receiver);
-
+	
+	/**
+	 * 회원탈퇴 탈퇴된  게시물 삭제
+	 * */
+	int deleteMemberBoard(String memberId);
+	
+	/**
+	 * 회원탈퇴 탈퇴된 평점삭제
+	 * */
+	int deleteMemberGrade(String memberId);
 
 	
 }

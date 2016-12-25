@@ -30,8 +30,10 @@ public class HomeController {
 		t.start();
 		
 		List<BoardDTO> sharingTopList = boardService.selectTopList("sharing");
+		List<BoardDTO> rentalTopList = boardService.selectTopList("rental");
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("sharingTopList", sharingTopList);
+		mv.addObject("rentalTopList",rentalTopList);
 		mv.setViewName("main/index");
 		
 		return mv; //tilesView½ÇÇà

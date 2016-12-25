@@ -23,32 +23,30 @@
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="<c:url value='/resources/image/book.jpg'/>" alt="book">
+					<img src="<c:url value='/resources/image/BannerImg01.png'/>" alt="banner">
 					<div class="carousel-caption"></div>
 				</div>
 				<div class="item">
-					<img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-						alt="book">
+					<img src="<c:url value='/resources/image/BannerImg02.png'/>" alt="banner">
 					<div class="carousel-caption"></div>
 				</div>
 				<div class="item">
-					<img src="<c:url value='/resources/image/camera.jpg'/>" alt="book">
+					<img src="<c:url value='/resources/image/BannerImg03.png'/>" alt="banner">
 					<div class="carousel-caption"></div>
 				</div>
 				<div class="item">
-					<img src="<c:url value='/resources/image/Stand.jpg'/>" alt="book">
+					<img src="<c:url value='/resources/image/BannerImg04.png'/>" alt="banner">
 					<div class="carousel-caption"></div>
 				</div>
 			</div>
 
 			<!-- Controls -->
-			<a class="left carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="prev"> <span
-				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="background-image:none; color:#000;">
+			 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</a> 
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="background-image:none; color:#000;">
+			 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
@@ -94,52 +92,18 @@
 				</div>
 			</div>
 			<div class="indexRentalList owl-carousel">
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"><a href="<c:url value='/board/goodsDetail'/>"><span
-								class="material-icons goodsDetailViewSee">&#xE8F4;</span></a></li>
-						<li>제품명 : IOS</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS2</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS3</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS4</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
-				<div class="item">
-					<ul>
-						<li><img src="<c:url value='/resources/image/NoteBook.jpg'/>"
-							alt="book"></li>
-						<li>제품명 : IOS5</li>
-						<li>가격 : 0원 / 0 일</li>
-						<li><span class="material-icons heartWish">&#xE87D;</span></li>
-					</ul>
-				</div>
+				<c:forEach items="${rentalTopList}" var="boardDTO">
+					<div class="item">
+						<ul>
+							<li><img src="<c:url value='${boardDTO.filePath}'/>" alt="book">
+							<a href="<c:url value='/board/goodsDetail?boardNo=${boardDTO.boardNo}'/>"><span class="material-icons goodsDetailViewSee">&#xE8F4;</span></a>
+							</li>
+							<li>제품명 : ${boardDTO.productName}</li>
+							<li>가격 : ${boardDTO.price} 원/일</li>
+							<li><span class="material-icons heartWish">&#xE87D;</span></li>
+						</ul>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

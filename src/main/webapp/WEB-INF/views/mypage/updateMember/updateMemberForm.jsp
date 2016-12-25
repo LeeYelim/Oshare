@@ -214,63 +214,73 @@ function checkValue() {
          <form id="updateForm" class="form-horizontal  col-lg-offset-2 col-lg-8" method="post" onsubmit="return checkValue()" action="<c:url value='/member/updateMember'/>" enctype="multipart/form-data">
 <!-- 아이디 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="id">아이디:</label>
-               <div class="col-lg-10">
-                  <input type="text" class="memberId" id="memberId" name="memberId" size="16" value="${splitMemberDTO[0]}" readonly="readonly"/>
+               <label class="control-label col-md-2" for="id">아이디</label>
+               <div class="col-md-6">
+                  <input type="text" class="memberId form-control" id="memberId" name="memberId" size="16" value="${splitMemberDTO[0]}" readonly="readonly"/>
                </div>
             </div>
 <!-- 변경 비밀번호 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="pwd">변경 비밀번호:</label>
-               <div class="col-lg-10">
-                  <input type="password" class="memberPwd1" id="memberPwd1" name="memberPwd1" placeholder="변경 비밀번호" size="16" maxlength="16">
+               <label class="control-label col-md-2" for="pwd">변경 비밀번호</label>
+               <div class="col-md-6">
+                  <input type="password" class="memberPwd1 form-control" id="memberPwd1" name="memberPwd1" placeholder="변경 비밀번호" size="16" maxlength="16">
                </div>
             </div>
 <!-- 변경 비밀번호 확인 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="pwd">변경 비밀번호:</label>
-               <div class="col-lg-10">
-                  <input type="password" class="memberPwd2" id="memberPwd2" name="memberPwd2" placeholder="변경 비밀번호" size="16" maxlength="16">
+               <label class="control-label col-md-2" for="pwd">변경 비밀번호</label>
+               <div class="col-md-6">
+                  <input type="password" class="memberPwd2 form-control"  id="memberPwd2" name="memberPwd2" placeholder="변경 비밀번호" size="16" maxlength="16">
+               </div>
+          	   <div class="col-md-4">
                   <span class="memberPwd3" id="memberPwd3">비밀번호 확인</span>
                </div>
             </div>
 <!-- 이미지 업로드 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="pwd">이미지 선택</label>
-               <div class="col-lg-10">
+               <label class="control-label col-md-2" for="pwd">이미지 선택</label>
+               <div class="col-md-4">
                   <input type="file" class="file" id="file" name="file">
                </div>
             </div>            
             
 <!-- 이름 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="name" maxlength="16">이름:</label>
-               <div class="col-lg-10">
-                  <input type="text" class="memberName" id="memberName" name="memberName" placeholder="이름" size="10" maxlength="5" value="${splitMemberDTO[1]}">
+               <label class="control-label col-md-2" for="name" maxlength="16">이름</label>
+               <div class="col-md-6">
+                  <input type="text" class="memberName form-control" id="memberName" name="memberName" placeholder="이름" size="10" maxlength="5" value="${splitMemberDTO[1]}">
                </div>
             </div>
 <!-- 주소찾기 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="addr">주소:</label>
-               <div class="col-lg-10">
-                  <input type="text" class="memberAddr1" id="memberAddr1" name="memberAddr1" placeholder="우편번호" value="${splitMemberDTO[2]}">
-                  <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                  <input type="text" class="memberAddr2" id="memberAddr2" name="memberAddr2" placeholder="주소" size="40" value="${splitMemberDTO[3]}">
-                  <input type="text" class="memberAddr3" id="memberAddr3" name="memberAddr3" placeholder="상세주소" size="40" value="${splitMemberDTO[4]}">
+               <label class="control-label col-md-2" for="addr">주소</label>
+               <div class="col-md-8">
+						<div class="input-group">
+                  <input type="text" class="memberAddr1 form-control" id="memberAddr1" name="memberAddr1" placeholder="우편번호" value="${splitMemberDTO[2]}">
+                  <span class="input-group-btn"> 
+							<button type="button" class="btn btn-success" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">우편번호 찾기<i class="fa fa-search" aria-hidden="true"></i></button>
+							</span>
+				</div>
+				<div class="col-md-6" style=" padding-top:10px;">
+                  <input type="text" class="memberAddr2 form-control" id="memberAddr2" name="memberAddr2" placeholder="주소" size="40" value="${splitMemberDTO[3]}">
+                </div>
+                <div class="col-md-6" style="padding-right:0; padding-top:10px;">
+                  <input type="text" class="memberAddr3 form-control" id="memberAddr3" name="memberAddr3" placeholder="상세주소" size="40" value="${splitMemberDTO[4]}">
+              	</div>
                </div>
             </div>
 <!-- 전화번호 입력 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="cellphone">전화번호:</label>
-               <div class="col-lg-10">
-                  <input type="text" class="memberPhone1" id="memberPhone1" name="memberPhone1" placeholder="-없이 11자리 번호만" size="12" maxlength="11" value="${splitMemberDTO[5]}">
+               <label class="control-label col-md-2" for="cellphone">전화번호:</label>
+               <div class="col-md-6">
+                  <input type="text" class="memberPhone1 form-control" id="memberPhone1" name="memberPhone1" placeholder="-없이 11자리 번호만" size="12" maxlength="11" value="${splitMemberDTO[5]}">
                </div>
             </div>
 <!-- 카드선택 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="memberBank">카드선택:</label>
-               <div class="col-lg-10">
-                  <select class="memberBank" id="memberBank" name="memberBank">
+               <label class="control-label col-md-2" for="memberBank">카드선택:</label>
+               <div class="col-md-4">
+                  <select class="memberBank form-control" id="memberBank" name="memberBank">
                      <option value="">직접선택</option>
                      <option value="KB국민카드">KB국민카드</option>
                      <option value="신한카드">신한카드</option>
@@ -288,19 +298,22 @@ function checkValue() {
             </div>
 <!-- 카드번호 16자리 입력 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="cardNumber">카드번호:</label>
-               <div class="col-lg-10">
-                  <input type="text" class="memberAccount1" id="memberAccount1" name="memberAccount1" placeholder="-없이 16자리" size="20" maxlength="16" value="${splitMemberDTO[6]}">
+               <label class="control-label col-md-2" for="cardNumber">카드번호:</label>
+               <div class="col-md-6">
+                  <input type="text" class="memberAccount1 form-control" id="memberAccount1" name="memberAccount1" placeholder="-없이 16자리" size="20" maxlength="16" value="${splitMemberDTO[6]}">
                </div>
             </div>
 <!-- 카드 유효기간 선택/입력 -->
             <div class="form-group">
-               <label class="control-label col-lg-2" for="cardDate">유효기간:</label>
-               <div class="col-lg-10">
+               <label class="control-label col-md-2" for="cardDate">유효기간:</label>
+             <div class="col-md-4">
       <!-- 입력 -->
-                  <input type="text" class="memberValidYear" id="memberValidYear" name="memberValidYear" placeholder="4자리" size="4" maxlength="4" value="${splitMemberDTO[7]}">년
+                  <input type="text" class="memberValidYear form-control" id="memberValidYear" name="memberValidYear" placeholder="4자리" size="4" maxlength="4" value="${splitMemberDTO[7]}">
+      		 </div>
+      		   <div class="col-md-1" style="padding-right:30px; padding-top:5px; width:3%;">년</div>
       <!-- 선택 -->
-                  <select class="memberValidMonth" id="memberValidMonth" name="memberValidMonth">
+      		  <div class="col-md-4">
+                  <select class="memberValidMonth form-control" id="memberValidMonth" name="memberValidMonth">
                      <option value="">월</option>
                      <option value="01">01</option>
                      <option value="02">02</option>
@@ -315,18 +328,20 @@ function checkValue() {
                      <option value="11">11</option>
                      <option value="12">12</option>
                   </select>
+                 </div>
                </div>
             </div>
 <!-- 수정/취소 버튼 -->
             <div class="form-group">
-               <div class="col-sm-offset-2 col-lg-10" align="left">
-                  <input type="submit" class="btn-update" id="btn-update" name="btn-update" value="수정">
-                  <input type="button" value="취소" class="btn-cancel" id="btn-cancel" name="btn-cancel" onClick="location.href='<c:url value="/"/>';">
+               <div class="col-sm-offset-2 col-lg-10" style="text-align: center;">
+                  <button type="submit" class="btn btn-primary" id="btn-join"name="btn-join">회원수정
+                  <i class="fa fa-check spaceLeft"></i></button>
+				<button type="reset" class="btn btn-danger" id="btn-cancel"	name="btn-cancel" onclick="location.href=<c:url value='/'/>">수정취소
+				<i class="fa fa-times spaceLeft"></i></button>
                </div>
             </div>
          </form>
       </fieldset>
    </div>
-
 </body>
 </html>

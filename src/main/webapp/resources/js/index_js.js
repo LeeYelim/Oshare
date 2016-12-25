@@ -23,13 +23,20 @@ $(function(){
 	 	 
 	 $(document).on("scroll",function(){		
 		if($(document).scrollTop() > 170){	
-			$("footer .footerScrollTopUp").fadeIn();
-		
+			$("footer .footerScrollTopUp").fadeIn();	
 		}else{		
-			
 			$("footer .footerScrollTopUp").fadeOut();
 		}
 	});
+	
+	$(".headerNavaction ul li .myPageList").hover(function(){
+		
+		$(".headerNavaction ul li .myPageList ul").stop(true,false).animate({"opacity":"1" , "top" : "100%"},500).show();
+	},function(){
+	
+		$(".headerNavaction ul li .myPageList ul").stop(true,false).animate({"opacity":"0" , "top" : "130%"},500).hide(10);
+	});
+	 
 	 
 	$(document).on("click","footer .footerScrollTopUp",function(){
 		  $("html, body").stop().animate({ scrollTop: 0 }, 600);
@@ -166,28 +173,7 @@ $(function(){
 	    owl2.trigger('prev.owl');
 	  })//Rental List Event End
 	  
-	  // goodsList Search 
-	  $(document).on("click",".goodsListDetailSearch,.goodsListDetailSearch2",function(){
-	  if($("#goodsListDetailSearchDialog").is(":animated"))return;
-	  	$("#goodsListDetailSearchDialog").css({"left":"60%"});
-		 $(".dialogBlack").animate({"opacity":"0.7"},500).show();
-		 $("#goodsListDetailSearchDialog").animate({"opacity":"1","left":"50%"},500).show();
-	  }); //goodsListDetailSearch Dialog Event end
 	  
-	  $(document).on("click","#goodsListDetailSearchDialog .goodsCategory .goodsListDialogClose",function(){
-		  if($("goodsListDetailSearchDialog").is(":animated"))return;
-			 $(".dialogBlack").animate({"opacity":"0"},500).hide(10);
-			 $("#goodsListDetailSearchDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
-	  }); //goodsListDetailSearch Close Dialog Event end 
-	   
-	   //goodsList mobileSearch
-	  if($(window).width()<=992 && $(window).width() >=768 ){
-		  $(".mobileDetailSearch span").addClass("goodsListDetailSearch2");
-		  $(".mobileDetailSearch span").removeClass("mobilegoodsListDetailSearch");
-	  }else{
-		  $(".mobileDetailSearch span").addClass("mobilegoodsListDetailSearch");
-		  $(".mobileDetailSearch span").removeClass("goodsListDetailSearch2");
-	  }
 	  
 	  var owl3 = $(".mobileGoodsListCategory>ul");	
 		 owl3.owlCarousel({
@@ -974,20 +960,21 @@ $(function(){
 	  /*
 	   * 반납 신청
 	   * */
-	  $(document).on("click",".rentalItemListDialog .rentalItemListBtn input[type=button]",function(){
+	  $(document).on("click",".rentalItemListDialog .rentalItemListBtn input[value=신청]",function(){
 		  if(rentalItemValidityCheck()) {/*
 			  var rentalItemList = $(".rentalItemList select[name=rentalItemList]").val();*/
 			  var inputSharingNo = $("<input type='hidden' value="+sharingNo+" name='sharingNo'>");
 			  var inputMemberPoint = $("<input type='hidden' value="+rate+" name='memberPoint'>");
 			  var intputMemberReview = $("<input type='hidden' value="+$("#memberReview").val()+" name='memberReview'>");
-			  var inputSellerId = $("<input type=''hidden' value="+sellerId+" name='sellerId'>");
-			  var inputBoardNo = $("<input type=''hidden' value="+boardNo+" name='boardNo'>");
+			  var inputSellerId = $("<input type='hidden' value="+sellerId+" name='sellerId'>");
+			  var inputBoardNo = $("<input type='hidden' value="+boardNo+" name='boardNo'>");
 			  
 			  $('#returnForm').append(inputSharingNo);
 			  $('#returnForm').append(inputMemberPoint);
 			  $('#returnForm').append(intputMemberReview);
 			  $('#returnForm').append(inputSellerId);
 			  $('#returnForm').append(inputBoardNo);
+			
 			  $('#returnForm').submit();
 		  } 
 	  });
@@ -997,7 +984,12 @@ $(function(){
 		  		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
 		  		$(".rentalItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
 	  });//rentalItemListDialog Close Event End
-
+	  
+	  $(document).on("click",".rentalItemListDialog .rentalItemListBtn input[value=취소]",function(){
+		  if($(".rentalItemListDialog").is(":animated"))return;
+	  		$(".dialogBlack").animate({"opacity":"0"},500).hide(10);
+	  		$(".rentalItemListDialog").animate({"opacity":"0","left":"40%"},500).hide(10);
+	  });
 	  /*
 	   * 구매자의 반납 확인(일반 반납시)
 	   * */

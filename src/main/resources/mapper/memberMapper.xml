@@ -108,7 +108,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		TOTAL_PRICE as totalPrice, PRODUCT_COUNT as productCount
 		from SHARING
 		where
-		TRANSACTION_STATE = #{transactionState} AND SELLER_ID = #{memberId} OR BUYER_ID = #{memberId}
+	    NOT TRANSACTION_STATE = '거래완료' AND SELLER_ID = #{memberId} OR NOT TRANSACTION_STATE = '거래완료' AND BUYER_ID = #{memberId}
 	</select>
 
 	<!-- 회원 탈퇴 -->
@@ -122,7 +122,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="String">
 		select member_id from member where member_id = #{value}
 	</select>
-
-
+	
+	<!-- 회원탈퇴 탈퇴된 계정 게시물 삭제 -->
+	<delete id="deleteMemberBoard" parameterType="String">
+	  delete from board where member_id =#{value}
+	</delete>
+	<!-- 회원탈퇴 탈퇴된 계정 평점 삭제 -->
+	<delete id="deleteMemberGrade" parameterType="String">
+	  delete from member_grade seller_id = #{value}
+	</delete>
 
 </mapper>

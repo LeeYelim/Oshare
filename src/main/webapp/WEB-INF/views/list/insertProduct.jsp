@@ -34,8 +34,28 @@
 		        //id가 smarteditor인 textarea에 에디터에서 대입
 		        obj.getById["editor"].exec("UPDATE_CONTENTS_FIELD", []);
 		        //폼 submit
+		        if($("#title").val() == ""){
+		    		alert("제목을 입력해주세요");
+		    		$("#title input[name=title]").focus();
+		    		return;
+		        }
+		        if($("#sharingPrice").val()==""){
+		    		alert("일대비여비용을 입력해주세요")
+		    		$("#sharingPrice").focus();
+		    		return;
+		        }
+		        if($("#thumbnailImage").val()==""){
+		    		alert("썸네일 이미지를 넣어주십시오");
+		    		return;
+		        }
+				if($("#editor").val()==""){
+		    		alert("상세내용을 입력해주십시오");
+		    		$("#editor").focus();
+		    		return;
+		    	}
 		        $("#frm").submit();
-		    })
+		    	
+	    	})
 		});
 	</script>
 </head>
@@ -44,7 +64,7 @@
 <div class="container">
 	
 	<!-- action : 에디터에 입력한 html 코드를 전달받을 Controller페이지 URL -->
-	<form action="<c:url value='/editor/submit'/>" method="post" id="frm" class="form-horizontal" enctype="multipart/form-data">
+	<form action="<c:url value='/editor/submit'/>" method="post" id="frm" class="form-horizontal" enctype="multipart/form-data" >
 		<fieldset>
 		<c:choose>
 			<c:when test="${requestScope.boardType == 'sharing'}">
@@ -79,7 +99,7 @@
 			<div class="form-group">
 				<label for="title" class="control-label col-lg-2">제목</label>
 				<div class="col-lg-6">
-					<input type="text" name="title" id=title" class="form-control">
+					<input type="text" name="title" id=title" class="form-control" placeholder="제목을 입력해주세요">
 				</div>
 				<div class="col-lg-4"></div>
 			</div>
@@ -87,7 +107,7 @@
 			<div class="form-group">
 				<label for="sharingPrice" class="control-label col-lg-2">일대여비용</label>
 				<div class="col-lg-3">
-					<input type="text" name="sharingPrice" id=sharingPrice" class="form-control">
+					<input type="text" name="sharingPrice" id=sharingPrice" class="form-control" placeholder="일대여비용을 입력해주세요">
 				</div>
 				<div class="col-lg-1"><p class="form-control-static">원/일</p></div>
 				

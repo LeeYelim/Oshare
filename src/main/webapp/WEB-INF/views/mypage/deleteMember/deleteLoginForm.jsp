@@ -33,16 +33,17 @@ function checkValid() {
 <body>
 	<div id="login">
 		<div class="loginForm">
-
+				<div class="loginTitle">
+				<span>회원탈퇴</span>
+			</div>
 			<form name="loginForm" action="<c:url value='/member/deleteMemberConfirm'/>"
 				method="post" onsubmit='return checkValid()'>
 				<ul>
 					<li><span>아이디</span> <input type="text" name="memberId"
-						placeholder="아이디"></li>
+						placeholder="아이디" value="${sessionScope.loginMemberId}" readonly ="readonly"></li>
 					<li><span>비밀번호</span> <input type="password" name="memberPwd"
 						placeholder="비밀번호"></li>
-					<li><input type="submit" value="로그인"> <input
-						type="button" value="취소"></li>
+					<li><input type="submit" value="로그인"></li>
 				</ul>
 			</form>
 

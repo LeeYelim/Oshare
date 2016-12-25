@@ -271,55 +271,59 @@
 			</legend>
 			<br>
 			<!--form-->
-			<form id="joinForm" class="form-horizontal  col-lg-offset-2 col-lg-8"
+		<div class="col-md-12">			<form id="joinForm" class="form-horizontal  col-lg-offset-2 col-lg-8"
 				method="post" onsubmit="return checkValue()"
 				action="<c:url value="/member/joinUs"/>">
 
 				<!-- 아이디 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="id">아이디:</label>
-					<div class="col-lg-10">
-						<input type="text" class="memberId" id="memberId" name="memberId"
-							placeholder="아이디 입력" size="16" maxlength="16"> <span
-							id="duplicateCheck">중복확인</span> <span id="memberIdCombine">(영문+숫자)조합</span>
-					</div>
+					<label class="control-label col-md-2" for="id" style="float:left">아이디</label>
+					<div class="col-md-6">
+						<input type="text" class="memberId form-control " id="memberId" name="memberId"
+							placeholder="아이디 입력" size="16" maxlength="16"> 
+							</div>
+							<div class="col-md-4">
+							<span id="duplicateCheck">중복확인</span> <span id="memberIdCombine">(영문+숫자)조합</span>	
+							</div>
 				</div>
 
 				<!-- 비밀번호 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="pw">비밀번호:</label>
-					<div class="col-lg-10">
-						<input type="password" class="memberPwd1" id="memberPwd1"
+					<label class="control-label col-md-2" for="pw">비밀번호</label>
+						<div class="col-md-6">
+						<input type="password" class="memberPwd1 form-control" id="memberPwd1"
 							name="memberPwd1" placeholder="비밀번호 입력" size="16" maxlength="16">
-					</div>
+						</div>
 				</div>
 
 				<!-- 비밀번호확인 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="pwd">비밀번호 확인:</label>
-					<div class="col-lg-10">
-						<input type="password" class="memberPwd2" id="memberPwd2"
+					<label class="control-label col-md-2" for="pwd">비밀번호 확인</label>
+					<div class="col-md-6">
+						<input type="password" class="memberPwd2 form-control" id="memberPwd2"
 							name="memberPwd2" placeholder="비밀번호 확인" size="16" maxlength="16">
-						<span class="memberPwd3" id="memberPwd3">비밀번호 확인</span>
 					</div>
+					<div class="col-md-4"><span class="memberPwd3" id="memberPwd3">비밀번호 확인</span></div>
 				</div>
 
 				<!-- 이름 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="name" maxlength="16">이름:</label>
-					<div class="col-lg-10">
-						<input type="text" class="memberName" id="memberName"
+					<label class="control-label col-md-2" for="name" maxlength="16">이름</label>
+					<div class="col-md-6">
+						<input type="text" class="memberName form-control" id="memberName"
 							name="memberName" placeholder="이름" size="10" maxlength="5">
 					</div>
 				</div>
 
 				<!-- 생년월일 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="birth">생년월일:</label>
-					<div class="col-lg-10">
-						<input type="text" class="memberBirth1" id="memberBirth1"
+					<label class="control-label col-md-2" for="birth">생년월일</label>
+					<div class="col-md-3">
+						<input type="text" class="memberBirth1 form-control" id="memberBirth1"
 							name="memberBirth1" placeholder="4자리" size="4" maxlength="4">
-						<select class="memberBirth2" id="memberBirth2" name="memberBirth2">
+					</div>
+					<div class="col-md-2">
+						<select class="memberBirth2 form-control" id="memberBirth2" name="memberBirth2">
 							<option value="">월</option>
 							<option value="01">01</option>
 							<option value="02">02</option>
@@ -333,7 +337,9 @@
 							<option value="10">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
-						</select> <select class="memberBirth3" id="memberBirth3"
+						</select></div>
+						<div class="col-md-2">
+						 <select class="memberBirth3 form-control" id="memberBirth3"
 							name="memberBirth3">
 							<option value="">일</option>
 							<option value="01">01</option>
@@ -373,44 +379,55 @@
 
 				<!-- 주소찾기 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="addr">주소:</label>
-					<div class="col-lg-10">
-						<input type="text" class="memberAddr1" id="memberAddr1"
-							name="memberAddr1" placeholder="우편번호"> <input
-							type="button" onclick="sample6_execDaumPostcode()"
-							value="우편번호 찾기"><br> <input type="text"
-							class="memberAddr2" id="memberAddr2" name="memberAddr2"
-							placeholder="주소" size="40"> <input type="text"
-							class="memberAddr3" id="memberAddr3" name="memberAddr3"
-							placeholder="상세주소" size="40">
+					<label class="control-label col-md-2" for="addr">주소</label>
+					<div class="col-md-8">
+						<div class="input-group">
+						<input type="text" class="memberAddr1 form-control" id="memberAddr1"
+							name="memberAddr1" placeholder="우편번호"> 
+							<span class="input-group-btn"> 
+							<button type="button" class="btn btn-success" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">우편번호 찾기<i class="fa fa-search" aria-hidden="true"></i></button>
+							</span>
+						</div>
+						<div class="col-md-6" style=" padding-top:10px;">
+								 <input type="text"	class="memberAddr2 form-control" id="memberAddr2" name="memberAddr2"	placeholder="주소" size="40">
+				 		</div>
+				 		<div class="col-md-6" style="padding-right:0; padding-top:10px;">
+						 		 <input type="text"	class="memberAddr3 form-control" id="memberAddr3" name="memberAddr3"	placeholder="상세주소" size="40">
+						</div>
 					</div>
+					
+					
 				</div>
 				<!-- 전화번호 입력 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="cellphone">전화번호:</label>
-					<div class="col-lg-10">
+					<label class="control-label col-md-2" for="cellphone">전화번호</label>
+					<div class="col-md-3">
 						<!-- 010선택 -->
-						<select class="memberPhone1" id="memberPhone1" name="memberPhone1">
+						<select class="memberPhone1 form-control" id="memberPhone1" name="memberPhone1">
 							<option value="">직접선택</option>
 							<option value="010">010</option>
 							<option value="011">011</option>
 							<option value="016">016</option>
 							<option value="019">019</option>
 						</select>
+						</div>
+						<div class="col-md-3">
 						<!-- 앞4자리 -->
-						<input type="text" class="memberPhone2" id="memberPhone2"
-							name="memberPhone2" size="4" maxlength="4"> -
+						<input type="text" class="memberPhone2 form-control" id="memberPhone2"
+							name="memberPhone2" size="4" maxlength="4"></div>
+						<div class="col-md-3">
 						<!-- 뒤4자리 -->
-						<input type="text" class="memberPhone3" id="memberPhone3"
+						<input type="text" class="memberPhone3 form-control" id="memberPhone3"
 							name="memberPhone3" size="4" maxlength="4">
-					</div>
+						</div>
+				
 				</div>
 
 				<!-- 카드선택 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="memberBank">카드선택:</label>
-					<div class="col-lg-10">
-						<select class="memberBank" id="memberBank" name="memberBank">
+					<label class="control-label col-md-2" for="memberBank">카드선택 </label>
+					<div class="col-md-4">
+						<select class="memberBank form-control" id="memberBank" name="memberBank">
 							<option value="">직접선택</option>
 							<option value="KB국민카드">KB국민카드</option>
 							<option value="신한카드">신한카드</option>
@@ -429,28 +446,33 @@
 
 				<!-- 카드번호 16자리 입력 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="cardNumber">카드번호:</label>
-					<div class="col-lg-10">
-						<input type="text" class="memberAccount1" id="memberAccount1"
-							name="memberAccount1" size="4" maxlength="4">- <input
-							type="text" class="memberAccount2" id="memberAccount2"
-							name="memberAccount2" size="4" maxlength="4">- <input
-							type="text" class="memberAccount3" id="memberAccount3"
-							name="memberAccount3" size="4" maxlength="4">- <input
-							type="text" class="memberAccount4" id="memberAccount4"
-							name="memberAccount4" size="4" maxlength="4">
+					<label class="control-label col-md-2" for="cardNumber">카드번호</label>
+					<div class="col-md-2">
+						<input type="text" class="memberAccount1 form-control" id="memberAccount1" name="memberAccount1" size="4" maxlength="4">
+					</div>
+					<div class="col-md-2">
+						<input type="text" class="memberAccount2 form-control" id="memberAccount2" name="memberAccount2" size="4" maxlength="4">
+				    </div>
+			    	<div class="col-md-2">
+						  <input type="text" class="memberAccount3 form-control" id="memberAccount3" name="memberAccount3" size="4" maxlength="4">
+				    </div>
+			    	<div class="col-md-2">
+				    <input type="text" class="memberAccount4 form-control" id="memberAccount4" name="memberAccount4" size="4" maxlength="4">
 					</div>
 				</div>
 
 				<!-- 카드 유효기간 선택/입력 -->
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="cardDate">유효기간:</label>
-					<div class="col-lg-10">
+					<label class="control-label col-md-2" for="cardDate">유효기간</label>
+					<div class="col-md-4">
 						<!-- 입력 -->
-						<input type="text" class="memberValidYear" id="memberValidYear"
-							name="memberValidYear" placeholder="4자리" size="4" maxlength="4">년
+						<input type="text" class="memberValidYear form-control" id="memberValidYear"
+							name="memberValidYear" placeholder="4자리" size="4" maxlength="4">
 						<!-- 선택 -->
-						<select class="memberValidMonth" id="memberValidMonth"
+					</div>
+					<span class="col-md-1" style="padding-right:30px; padding-top:5px; width:3%;">년</span>
+					<div class="col-md-4">
+						<select class="memberValidMonth form-control" id="memberValidMonth"
 							name="memberValidMonth">
 							<option value="">월</option>
 							<option value="01">01</option>
@@ -471,14 +493,15 @@
 
 				<!-- 가입/취소 버튼 -->
 				<div class="form-group">
-					<div class="col-sm-offset-2 col-lg-10" align="left">
-						<button type="submit" class="btn-join" id="btn-join"
-							name="btn-join">가입</button>
-						<button type="reset" class="btn-cancel" id="btn-cancel"
-							name="btn-cancel">취소</button>
+					<div class="col-sm-offset-2 col-lg-10" style="text-align: center">
+						<button type="submit" class="btn btn-primary" id="btn-join"	name="btn-join">회원가입
+						<i class="fa fa-check spaceLeft"></i></button>
+						<button type="reset" class="btn btn-danger" id="btn-cancel"	name="btn-cancel" onclick="location.href=<c:url value='/'/>">가입취소
+						<i class="fa fa-times spaceLeft"></i></button>
 					</div>
 				</div>
 			</form>
+		</div>
 		</fieldset>
 	</div>
 

@@ -12,7 +12,9 @@
 	<div class="container">
 		<form action="" method="">
 			<div class="shoppingBasketForm">
+				<div class="shoppingBasketTitle">
 				<span>장바구니</span>
+				</div>
 				<table>
 					<tr>
 						<td><input type="checkbox" disabled></td>
@@ -24,7 +26,7 @@
 	<c:choose>
     <c:when test="${empty requestScope.cartList}">
 	<tr>
-        <td colspan="5">
+        <td colspan="5" style="width:100%;">
             <p align="center"><b><span>등록된 상품이 없습니다.</span></b></p>
         </td>
     </tr>
@@ -37,22 +39,22 @@
 		            <input type="checkbox" name="check">
 		        </td>
 		        <td>
-					<p><span>
+					<span>
 							<a href="<c:url value='/board/goodsDetail?boardNo=${cartDTO.boardNo}'/>">
-					<img src="<c:url value='/resources/image/book.jpg'/>"alt="장바구니 이미지">
+					<img src="<c:url value='${cartDTO.filePath}'/>"alt="장바구니 이미지">
 					</a>
-					</span></p>
+					</span>
 		        </td>
 		         <td>
-		            <p align="center"><span>${cartDTO.productName}</span></p>
+		           <span>${cartDTO.productName}</span>
 		        </td>
 		        <td>
-		            <p align="center"><span>${cartDTO.cartStart}~${cartDTO.cartEnd }</span></p>
+		         <span>${cartDTO.cartStart}~${cartDTO.cartEnd }</span>
 		        </td>
 		         
 		        <td>
-		            <p align="center"><span>
-		            <fmt:formatNumber value="${cartDTO.cartPrice}"/></span></p>
+		           <span>
+		            <fmt:formatNumber value="${cartDTO.cartPrice}"/></span>
 		        </td>
 		    </tr>
     </c:forEach>
@@ -62,12 +64,10 @@
 			</div>
 			<div class="shoppingBasketTotalAmountForm">
 				<div class="shoppingBasketTotalAmount">
-					<span>총액 : <span>${total}원</span></span>
+					<span>총액 : <span> <fmt:formatNumber value="${total}"/></span>원</span>
 				</div>
 				<div class="shoppingBasketTotalAmountBtn">
-					<input type="button" name="" value="취소하기">
 					<input type="button" name="paymen" value="결제하기">
-					<input type="button" name="" value="삭제하기">
 				</div>
 			</div>
 		</form>

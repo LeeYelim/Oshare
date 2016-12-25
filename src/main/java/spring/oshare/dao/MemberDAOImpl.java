@@ -96,6 +96,20 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("memberMapper.receiverValidation", receiver);
 	}
 
+	@Override
+	public int deleteMemberBoard(String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("memberMapper.deleteMemberBoard",memberId);
+	}
+
+	@Override
+	public int deleteMemberGrade(String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("memberMapper.deleteMemberGrade",memberId);
+	}
+	
+
+
 
 
 }

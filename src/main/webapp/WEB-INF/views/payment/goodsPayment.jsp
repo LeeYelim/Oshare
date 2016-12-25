@@ -52,8 +52,8 @@
 	<div class="shippingInformation">
 		<span>배송지 정보</span>
 		<ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#latelyShipping">쪽지쓰기</a></li>
-			<li><a data-toggle="tab" href="#newShipping">받은쪽지함</a></li>
+			<li class="active"><a data-toggle="tab" href="#latelyShipping">최근배송지</a></li>
+			<li><a data-toggle="tab" href="#newShipping">새로운배송지</a></li>
 		</ul>
 
 		<div class="tab-content">
@@ -77,11 +77,14 @@
 					<form action="" method="">
 					<ul>
 						<li><span>수령인 :</span> <input type="text" name=""></li>
-						<li><span>배송지명 :</span> <input type="text" name=""> <input type="button" value="찾기"></li>
+						<li><span>배송지명 :</span> <input type="text" name=""><span style="float:inherit"><i class="fa fa-search" aria-hidden="true"></i></span></li>
 						<li><span id="">배송지 :</span> <input type="text" name=""></li>
 						<li><span>연락처 :</span>
 						<select name="">
-							<option value="010">010	</option>
+							<option value="010">010</option>
+							<option value="011">011</option>
+							<option value="013">013</option>
+							<option value="012">012</option>
 						</select>
 						<input type="number" name="">
 						<input type="number" name="">
@@ -92,6 +95,7 @@
 				</div>
 			</div>
 	</div>
+</div>
 	<div class="paymentMoney">
 		<span>결제금액</span>
 		<ul>
@@ -108,9 +112,8 @@
 			<input type="hidden" name="sellerId" value="${board.memberDTO.memberId}">
 			<input type="hidden" name="buyerId" value="${member.memberId}">
 			<input type="hidden" id="totalPrice" name="totalPrice" value="${totalPayment}">
-		<input type="button" value="취소">
+		<input type="button" value="취소" onclick="location.href=<c:url value='/'/>">
 	</div>
-	
 </div>
 </form>
 </body>

@@ -162,9 +162,9 @@
 		</div>
 		<div class="headerNavaction container">
 			<div class="headerIcon">
-				<a href="<c:url value='/'/>">Logo</a>
+				<a href="<c:url value='/'/>"><img src="<c:url value='/resources/image/icon.png'/>" alt="logo"></a>
 			</div>
-			<ul class="navactiponUl">
+			<ul>
 			<c:if test="${!empty sessionScope.loginMemberId}">
 				<li style="padding:0">					
 					<div class="myPageList">

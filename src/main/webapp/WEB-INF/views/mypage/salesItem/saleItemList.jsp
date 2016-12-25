@@ -29,7 +29,7 @@
 			<c:forEach items="${requestScope.saleslist}" var="board">
 				<c:forEach items="${board.sharing}" var="sharing">
 					<tr><td>
-						<img src="<c:url value='/resources/image/book.jpg'/>"alt="asd">
+						<a href="<c:url value='/board/goodsDetail?boardNo=${board.boardNo}'/>"><img src="<c:url value='/${board.filePath}'/>"alt="제품사진"></a>
 					</td>
 					<td>
 						${board.productName} 

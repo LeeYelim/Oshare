@@ -58,7 +58,7 @@
 			<c:forEach items="${requestScope.rentallist}" var="board">
 					<c:forEach items="${board.sharing}" var="sharing" >
 						<tr><td>
-							<img src="<c:url value='/resources/image/book.jpg'/>"alt="asd">
+							<a href="<c:url value='/board/goodsDetail?boardNo=${board.boardNo}'/>"><img src="<c:url value='/${board.filePath}'/>"alt="제품사진"></a>
 						</td>
 						<td> 
 							${board.productName} 
@@ -104,7 +104,7 @@
 		</div>
 			<div class="sellerEvaluation">
 				<span>판매자평가 </span>
-				<textarea name="memberReview" id="memberReview"></textarea>
+				<textarea id="memberReview"></textarea>
 			</div>
 			<div class="rentalItemListBtn">
 	   		 	<input type="button" value="신청"><input type="button" value="취소">
@@ -112,7 +112,7 @@
    		 </div>
 	   	</form>
 	   	</div>
-	   	<div class="saleItemListDialog">
+  	<div class="saleItemListDialog">
 	<div class="saleItemListDialogTitle">
 	<span>비용청구</span>
 	<span class="material-icons saleItemListClose ">&#xE5CD;</span>
@@ -156,5 +156,6 @@
 			<input type="button" value="취소">
 		</div>
 		</form>
+		</div>
 	</body>
 </html>

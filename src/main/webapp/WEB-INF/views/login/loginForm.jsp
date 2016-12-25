@@ -33,16 +33,15 @@ function checkValid() {
 <body>
 	<div id="login">
 		<div class="loginForm">
-
+			<div class="loginTitle">
+				<span>Login</span>
+			</div>
 			<form name="loginForm" action="<c:url value='/member/loginCheck'/>"
 				method="post" onsubmit='return checkValid()'>
 				<ul>
-					<li><span>아이디</span> <input type="text" name="memberId"
-						placeholder="아이디"></li>
-					<li><span>비밀번호</span> <input type="password" name="memberPwd"
-						placeholder="비밀번호"></li>
-					<li><input type="submit" value="로그인"> <input
-						type="button" value="취소"></li>
+					<li><span>아이디</span> <input type="text" name="memberId" placeholder="아이디"></li>
+					<li><span>비밀번호</span> <input type="password" name="memberPwd" placeholder="비밀번호"></li>
+					<li><input type="submit" value="로그인"></li>
 				</ul>
 			</form>
 
@@ -55,12 +54,12 @@ function checkValid() {
 
 	<div id="mobileLogin">
 		<div class="mobileLoginForm">
-			<a href="<c:url value='/'/>"><h1>Logo</h1></a>
+			<a href="<c:url value='/'/>"><img src="<c:url value='/resources/image/icon.png'/>" alt="logo"></a>
 
-			<form action="" method="post">
-				<input type="text" name="id" placeholder="아이디"> <input
-					type="password" name="passowrd" placeholder="패스워드"> <input
-					type="submit" value="로그인">
+			<form action="<c:url value='/member/loginCheck'/>" method="post">
+				<input type="text" name="id" placeholder="아이디"> 
+				<input type="password" name="passowrd" placeholder="패스워드">
+				 <input	type="submit" value="로그인">
 			</form>
 
 			<div class="mobileLoginSub">

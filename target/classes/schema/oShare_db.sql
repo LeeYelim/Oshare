@@ -278,10 +278,13 @@ select * from tab;
 
 INSERT INTO 
 MEMBER(MEMBER_NO,MEMBER_ID,MEMBER_PWD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_ADDR,MEMBER_BANK,MEMBER_ACCOUNT,MEMBER_VALID_MONTH,MEMBER_VALID_YEAR,MEMBER_SHARING_COUNT,MEMBER_PHONE,MEMBER_GRADE) 
-VALUES(6,'LYLL','123','테스트',sysdate,'경기도성남시판교동','국민은행','0000000010000000',02,2019,2,'01012345678',2);
+VALUES(1,'qwe','123','테스트',sysdate,'경기도성남시판교동','국민은행','0000000010000000',02,2019,2,'01012345678',0);
 
 select * from member;
 
+select * from member_grade
+
+delete from member_grade seller_id = 'qwe'
 
 select * from COMMENTS;
 select * from PRODUCT_REVIEW;
@@ -292,9 +295,28 @@ SELECT BOARD_NO,PRODUCT_NAME,PRODUCT_PRICE_PER_DAY,THUMBNAIL FROM BOARD
 		WHERE BOARD_TYPE = 'rental' AND PRODUCT_CATEGORY = '명품'
 		ORDER BY BOARD_NO DESC
 
+		insert into SHARING 
+		values(SEQ_SHARING_NO.nextval, '44', 'admin', 'qwe', sysdate , sysdate , '대여대기', '123', '123')
+		
+select * from grade;
 
 ALTER TABLE MEMBER ADD(MEMBER_PROFILE_PATH VARCHAR2(100));
 
 select * from sharing;
 
+
+
 update board set product_name= 'a' , product_price_per_day = 1 , PRODUCT_CONDITION = '상' , product_detail = '/DDD' , THUMBNAIL = '/DDD'  where board_no = 91  and member_id = 'qwe'
+
+
+
+
+select
+		SHARING_NO as sharingNo, BOARD_NO as boardNo, SELLER_ID as sellerId, BUYER_ID as
+		buyerId,
+		SHARING_START as sharingStart, SHARING_END as shringEnd, TRANSACTION_STATE as
+		transactionState,
+		TOTAL_PRICE as totalPrice, PRODUCT_COUNT as productCount
+		from SHARING
+		where
+	    NOT TRANSACTION_STATE = '거래완료' AND SELLER_ID = 'eee' OR NOT TRANSACTION_STATE = '거래완료' AND BUYER_ID = 'eee'
